@@ -15,6 +15,5 @@
     "source.fixAll.eslint": true,
     "source.fixAll": true
   },
-  "git.ignoreLimitWarning": true,
-  "git.enableSmartCommit": true
+  "cSpell.words": ["naver", "zustand"]
 }
