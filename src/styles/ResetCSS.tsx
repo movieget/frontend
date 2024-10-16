@@ -75,7 +75,7 @@ button{
   cursor: pointer;
 }
 html, body {
-	height: 100%;
+	height: 100vh;
 	font-size: 62.5%;
 	letter-spacing: -0.6px;
 	background: ${({ theme }) => theme.colors.bg};
