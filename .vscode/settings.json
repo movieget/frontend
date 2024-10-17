@@ -15,5 +15,5 @@
     "source.fixAll.eslint": "explicit",
     "source.fixAll": "explicit"
   },
-  "cSpell.words": ["naver", "zustand"]
+  "cSpell.words": ["naver", "Weui", "zustand"]
 }
