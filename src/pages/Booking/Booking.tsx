@@ -1,5 +1,11 @@
+import DateHeader from './ui/DateHeader/DateHeader'
+
 const Booking = () => {
-  return <div>Booking</div>
+  return (
+    <>
+      <DateHeader />
+    </>
+  )
 }
 
 export default Booking
