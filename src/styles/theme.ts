@@ -14,8 +14,8 @@ export const commonFonts = {
 
 export const commonColors = {
   primary: '#733FF1',
-  success: '##2CE003',
-  warning: '##FFAA00',
+  success: '#2CE003',
+  warning: '#FFAA00',
   error: '#F22421',
   text_in_box: '#FDFDFD',
   bg_btn_normal: '#353535',
