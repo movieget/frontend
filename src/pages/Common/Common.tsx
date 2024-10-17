@@ -18,7 +18,7 @@ import {
   TextareaBox,
 } from '../../components/Input/style'
 import { Checkbox, CheckboxWrapper, CheckHeart, CheckText } from '../../components/Checkbox/style'
-import { BadgeBox, Badge } from '../../components/Badge/style'
+import { BadgeBox, Badge, StyleAge, StyleTitle } from '../../components/Badge/style'
 
 const Common = () => {
   const {
@@ -345,8 +345,6 @@ const Common = () => {
                       <BadgeBox>
                         <Badge>일반/장르</Badge>
                         <Badge color='orange'>러닝타임</Badge>
-                        <Badge color='orange'>180분</Badge>
-                        <Badge>길어집니다아아아아아아아아</Badge>
                         <Badge playing='playing'>상영중입니다</Badge>
                         <Badge playing='notPlaying'>상영예정</Badge>
                       </BadgeBox>
@@ -358,16 +356,32 @@ const Common = () => {
                       <br />
                       &nbsp;&nbsp;&lt;Badge color="orange"&gt;러닝타임&lt;/Badge&gt;
                       <br />
-                      &nbsp;&nbsp;&lt;Badge color="orange"&gt;180분&lt;/Badge&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Badge&gt;길어집니다아아아아아아아아&lt;/Badge&gt;
-                      <br />
                       &nbsp;&nbsp;&lt;Badge playing="playing"&gt;상영중입니다&lt;/Badge&gt;
                       <br />
                       &nbsp;&nbsp;&lt;Badge playing="notPlaying"&gt;상영예정&lt;/Badge&gt;
                       <br />
                       &lt;/BadgeBox&gt;
                     </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <StyleAge age='all' />
+                      <StyleAge age='12' />
+                      <StyleAge age='15' />
+                      <StyleAge age='18' />
+                    </th>
+                    <td>
+                      &lt;StyleAge age='all' /&gt; <br />
+                      &lt;StyleAge age='12' /&gt; <br />
+                      &lt;StyleAge age='15' /&gt; <br />
+                      &lt;StyleAge age='18' /&gt; <br />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <StyleTitle>상영중 TOP 10</StyleTitle>
+                    </th>
+                    <td>&lt;StyleTitle&gt;상영중 TOP 10&lt;/StyleTitle&gt;</td>
                   </tr>
                 </tbody>
               </table>
@@ -380,13 +394,3 @@ const Common = () => {
 }
 
 export default Common
-
-// -------------------------------------------------------- //
-
-// -------------------------------------------------------- //
-
-// -------------------------------------------------------- //
-
-// -------------------------------------------------------- //
-
-// -------------------------------------------------------- //
