@@ -24,7 +24,7 @@ export const CheckText = styled.label`
     display: block;
     width: 2.6rem;
     height: 2.6rem;
-    background: no-repeat 50% 50%;
+    background: no-repeat 50% 50% / 2.6rem;
     background-image: url(${CheckboxTextUnChecked});
   }
 
@@ -36,6 +36,8 @@ export const CheckHeart = styled.label`
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
+  width: 2.4rem;
+  height: 2.4rem;
   font-size: 1.6rem;
   font-weight: 400;
   color: #fff;
@@ -44,9 +46,9 @@ export const CheckHeart = styled.label`
   &::before {
     content: '';
     display: block;
-    width: 2.4rem;
-    height: 2.4rem;
-    background: no-repeat 50% 50%;
+    width: 100%;
+    height: 100%;
+    background: no-repeat 50% 50% / 100%;
     background-image: url(${HeartUnChecked});
   }
 
