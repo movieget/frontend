@@ -90,3 +90,21 @@ export const StyleTitle = styled.div`
     background: linear-gradient(180deg, #6321f200 0%, #39138c 100%);
   }
 `
+
+// profile
+export const StyleProfile = styled.span`
+  width: 2rem;
+  height: 2rem;
+  background-color: #292929;
+  border: 1px solid;
+  border-color: #3f3f3f;
+  border-radius: 50%;
+  background: no-repeat center / 100%;
+  overflow: hidden;
+`
+
+export const StyleProfileImg = styled.img`
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+`

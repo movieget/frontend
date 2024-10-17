@@ -1,5 +1,6 @@
 import Bell from '../../assets/svg/bell.svg'
 import Profile from '../../assets/img/Profile.svg'
+import BasicProfile from '../../assets/svg/profile_user.svg'
 import './style.css'
 
 import useImagePreview from '../../hooks/useImagePreview'
@@ -23,7 +24,14 @@ import {
   ProfilePreviewImg,
 } from '../../components/Input/style'
 import { Checkbox, CheckboxWrapper, CheckHeart, CheckText } from '../../components/Checkbox/style'
-import { BadgeBox, Badge, StyleAge, StyleTitle } from '../../components/Badge/style'
+import {
+  BadgeBox,
+  Badge,
+  StyleAge,
+  StyleTitle,
+  StyleProfile,
+  StyleProfileImg,
+} from '../../components/Badge/style'
 
 const Common = () => {
   const {
@@ -455,6 +463,18 @@ const Common = () => {
                       <StyleTitle>상영중 TOP 10</StyleTitle>
                     </th>
                     <td>&lt;StyleTitle&gt;상영중 TOP 10&lt;/StyleTitle&gt;</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <StyleProfile>
+                        <StyleProfileImg src={BasicProfile} />
+                      </StyleProfile>
+                    </th>
+                    <td>
+                      &lt;StyleProfile&gt; <br />
+                      &nbsp;&nbsp;&lt;StyleProfileImg src=&#123;BasicProfile&#125;/&gt; <br />
+                      &lt;/StyleProfile&gt;
+                    </td>
                   </tr>
                 </tbody>
               </table>
