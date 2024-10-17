@@ -2,7 +2,6 @@ import Bell from '../../assets/svg/bell.svg'
 import Profile from '../../assets/img/Profile.svg'
 import './style.css'
 
-// import useImagePreview from './assets/data/useImagePreview'
 import useImagePreview from '../../hooks/useImagePreview'
 import { BasicBtn, IconBtn, IconBtnImg, MainBtn, SocialBtn } from '../../components/Button/style'
 import {
@@ -16,16 +15,23 @@ import {
   PreviewImgBox,
   Textarea,
   TextareaBox,
+  ProfileImgInpBox,
+  ProfileAreaImgInpBox,
+  ProfileInputFile,
+  ProfileInputFileLabel,
+  ProfilePreviewImgBox,
+  ProfilePreviewImg,
 } from '../../components/Input/style'
 import { Checkbox, CheckboxWrapper, CheckHeart, CheckText } from '../../components/Checkbox/style'
 import { BadgeBox, Badge, StyleAge, StyleTitle } from '../../components/Badge/style'
 
 const Common = () => {
   const {
-    image: image,
-    handleImageChange: handleImageChange,
-    resetImage: resetImage,
+    image: image1,
+    handleImageChange: handleImageChange1,
+    resetImage: resetImage1,
   } = useImagePreview()
+  const { image: image2, handleImageChange: handleImageChange2 } = useImagePreview()
   return (
     <>
       <div className='common'>
@@ -272,15 +278,15 @@ const Common = () => {
                         <InputFile
                           type='file'
                           accept='image/*'
-                          onChange={handleImageChange}
+                          onChange={handleImageChange1}
                           id='file01'
                           ref={(input) => input && (input.value = '')}
                         />
                         <InputFileLabel htmlFor='file01'>파일첨부</InputFileLabel>
-                        {image && (
+                        {image1 && (
                           <PreviewImgBox>
-                            <PreviewImg src={image} alt='첨부한 이미지 미리보기' />
-                            <DeletePreviewImg onClick={resetImage} />
+                            <PreviewImg src={image1} alt='첨부한 이미지 미리보기' />
+                            <DeletePreviewImg onClick={resetImage1} />
                           </PreviewImgBox>
                         )}
                       </ImgInpBox>
@@ -320,6 +326,73 @@ const Common = () => {
                       &nbsp;&nbsp;)&#125;
                       <br />
                       &lt;/ImgInpBox&gt;
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <ProfileImgInpBox>
+                        <ProfileAreaImgInpBox>
+                          <ProfileInputFile
+                            type='file'
+                            accept='image/*'
+                            onChange={handleImageChange2}
+                            id='file02'
+                            ref={(input) => input && (input.value = '')}
+                          />
+                          <ProfileInputFileLabel htmlFor='file02'>파일첨부</ProfileInputFileLabel>
+                          {image2 && (
+                            <ProfilePreviewImgBox>
+                              <ProfilePreviewImg src={image2} alt='첨부한 이미지 미리보기' />
+                            </ProfilePreviewImgBox>
+                          )}
+                        </ProfileAreaImgInpBox>
+                      </ProfileImgInpBox>
+                    </th>
+                    <td>
+                      &lt;ProfileImgInpBox&gt;
+                      <br />
+                      &nbsp;&nbsp;&lt;ProfileAreaImgInpBox&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;ProfileInputFile
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="file"
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;accept="image/*"
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onChange=&#123;handleImageChange2&#125;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id="file02"
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ref=&#123;(input) =&gt; input &&
+                      (input.value = "")&#125;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;/&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;ProfileInputFileLabel htmlFor="file02"&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;파일첨부
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ProfileInputFileLabel&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&#123;image2 && (<br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ProfilePreviewImgBox&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ProfilePreviewImg
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src=&#123;image2&#125;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt="첨부한
+                      이미지 미리보기"
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ProfilePreviewImgBox&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;)&#125;
+                      <br />
+                      &nbsp;&nbsp;&lt;/ProfileAreaImgInpBox&gt;
+                      <br />
+                      &lt;/ProfileImgInpBox&gt;
                     </td>
                   </tr>
                 </tbody>
