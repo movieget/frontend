@@ -1,5 +1,3 @@
-import styled from 'styled-components'
-
 import Bell from '../../assets/svg/bell.svg'
 import Profile from '../../assets/img/Profile.svg'
 import './style.css'

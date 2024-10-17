@@ -1,6 +1,4 @@
 import styled from 'styled-components'
 
 //style.ts
-export const Container = styled.section`
-  height: 100%;
-`
+export const Container = styled.section``
