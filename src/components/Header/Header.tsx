@@ -29,6 +29,11 @@ const Header = () => {
               간편예매
             </Link>
           </li>
+          <li>
+            <Link to='/common' aria-label='공통UI 페이지로 이동'>
+              공통UI
+            </Link>
+          </li>
         </GNB>
       </Nav>
     </StyledHeader>
