@@ -17,10 +17,12 @@ declare module 'styled-components' {
       border_normal: string
       border_purple: string
       border_orange: string
+      border_wrapper: string
       bg_kakao: string
       text_kakao: string
       bg_naver: string
       bg: string
+      bg_wrapper: string
       text: string
     }
     fonts: {
