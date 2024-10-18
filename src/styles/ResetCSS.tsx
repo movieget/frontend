@@ -73,8 +73,12 @@ button{
   display: inline-block;
   cursor: pointer;
 }
+#root {
+	height: 100%;
+}
 html, body {
 	min-height: 100vh;
+	height: 100%;
 	font-size: 62.5%;
 	letter-spacing: -0.6px;
 	background: ${({ theme }) => theme.colors.bg};

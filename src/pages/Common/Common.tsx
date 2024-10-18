@@ -572,7 +572,7 @@ const Common = () => {
                       <br />
                       &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 5&lt;/div&gt;
                       <br />
-                      &nbsp;&nbsp;]&#123;
+                      &nbsp;&nbsp;]&#125;
                       <br />
                       /&gt;
                     </td>

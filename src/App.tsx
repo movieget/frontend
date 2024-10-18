@@ -2,7 +2,7 @@ import { ThemeProvider } from 'styled-components'
 import AppRoutes from './routes/AppRoutes'
 import useDarkModeStore from './stores/darkModeStore'
 import theme from './styles/theme'
-import CommonLayout from './components/Layout/CommonLayout'
+import CommonLayout from './components/Layouts/CommonLayout'
 import ResetCSS from './styles/ResetCSS'
 
 function App() {
