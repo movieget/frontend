@@ -6,8 +6,8 @@ import Age18Icon from '../../assets/svg/18.svg'
 
 // commons badge
 interface IfBadgeColor {
-  color?: 'gray' | 'orange' | 'primary'
-  playing?: 'playing' | 'notPlaying' | 'none'
+  $color?: 'gray' | 'orange' | 'primary'
+  $playing?: 'playing' | 'notPlaying' | 'none'
 }
 export const BadgeBox = styled.div`
   display: flex;
@@ -21,40 +21,36 @@ export const Badge = styled.span<IfBadgeColor>`
   height: 2rem;
   padding: 0 0.8rem;
   font-size: 1rem;
-  background-color: ${(props) => {
-    if (props.color === 'orange') return '#F45917'
-    if (props.color === 'primary') return '#733FF1'
+  background-color: ${({ $color }) => {
+    if ($color === 'orange') return '#F45917'
+    if ($color === 'primary') return '#733FF1'
     return '#353535'
   }};
   border: 1px solid;
-  border-color: ${(props) => {
-    if (props.color === 'orange') return '#FF8B59'
-    if (props.color === 'primary') return '#8D70CD'
+  border-color: ${({ $color }) => {
+    if ($color === 'orange') return '#FF8B59'
+    if ($color === 'primary') return '#8D70CD'
     return '#3F3F3F' // 기본 색상
   }};
   border-radius: 0.4rem;
   color: #fdfdfd;
 
   &::before {
-    content: ${(props) =>
-      props.playing === 'playing' || props.playing === 'notPlaying' ? '""' : 'none'};
+    content: ${({ $playing }) =>
+      $playing === 'playing' || $playing === 'notPlaying' ? '""' : 'none'};
     display: inline-block;
     width: 0.6rem;
     height: 0.6rem;
     margin-right: 0.5rem;
-    background-color: ${(props) =>
-      props.playing === 'playing'
-        ? '#2CE003'
-        : props.playing === 'notPlaying'
-          ? '#F22421'
-          : 'transparent'};
+    background-color: ${({ $playing }) =>
+      $playing === 'playing' ? '#2CE003' : $playing === 'notPlaying' ? '#F22421' : 'transparent'};
     border-radius: 50%;
   }
 `
 
 // age badge
 interface IfStyleAge {
-  age: 'all' | '12' | '15' | '18'
+  $age: 'all' | '12' | '15' | '18'
 }
 
 export const StyleAge = styled.span<IfStyleAge>`
@@ -65,12 +61,12 @@ export const StyleAge = styled.span<IfStyleAge>`
   height: 2rem;
   border-radius: 0.4rem;
   background: no-repeat center / 100%;
-  background-image: ${(props) =>
-    props.age === 'all'
+  background-image: ${({ $age }) =>
+    $age === 'all'
       ? `url(${AllIcon})`
-      : props.age === '12'
+      : $age === '12'
         ? `url(${Age12Icon})`
-        : props.age === '15'
+        : $age === '15'
           ? `url(${Age15Icon})`
           : `url(${Age18Icon})`};
 `

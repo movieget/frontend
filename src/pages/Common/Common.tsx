@@ -75,57 +75,57 @@ const Common = () => {
                 <tbody>
                   <tr>
                     <th>
-                      <BasicBtn size='large'>기본버튼</BasicBtn>
+                      <BasicBtn $size='large'>기본버튼</BasicBtn>
                     </th>
-                    <td>&lt;BasicBtn size="large"&gt;기본버튼&lt;/BasicBtn&gt;</td>
+                    <td>&lt;BasicBtn $size="large"&gt;기본버튼&lt;/BasicBtn&gt;</td>
                   </tr>
                   <tr>
                     <th>
-                      <BasicBtn size='medium'>기본버튼</BasicBtn>
+                      <BasicBtn $size='medium'>기본버튼</BasicBtn>
                     </th>
-                    <td>&lt;BasicBtn size="medium"&gt;기본버튼&lt;/BasicBtn&gt;</td>
+                    <td>&lt;BasicBtn $size="medium"&gt;기본버튼&lt;/BasicBtn&gt;</td>
                   </tr>
                   <tr>
                     <th>
-                      <BasicBtn size='small'>기본버튼</BasicBtn>
+                      <BasicBtn $size='small'>기본버튼</BasicBtn>
                     </th>
-                    <td>&lt;BasicBtn size="small"&gt;기본버튼&lt;/BasicBtn&gt;</td>
+                    <td>&lt;BasicBtn $size="small"&gt;기본버튼&lt;/BasicBtn&gt;</td>
                   </tr>
                   <tr>
                     <th>
-                      <MainBtn size='large'>메인버튼</MainBtn>
+                      <MainBtn $size='large'>메인버튼</MainBtn>
                     </th>
-                    <td>&lt;MainBtn size="large"&gt;메인버튼&lt;/MainBtn&gt;</td>
+                    <td>&lt;MainBtn $size="large"&gt;메인버튼&lt;/MainBtn&gt;</td>
                   </tr>
                   <tr>
                     <th>
-                      <MainBtn size='medium'>메인버튼</MainBtn>
+                      <MainBtn $size='medium'>메인버튼</MainBtn>
                     </th>
-                    <td>&lt;MainBtn size="medium"&gt;메인버튼&lt;/MainBtn&gt;</td>
+                    <td>&lt;MainBtn $size="medium"&gt;메인버튼&lt;/MainBtn&gt;</td>
                   </tr>
                   <tr>
                     <th>
-                      <MainBtn size='small'>메인버튼</MainBtn>
+                      <MainBtn $size='small'>메인버튼</MainBtn>
                     </th>
-                    <td>&lt;MainBtn size="small"&gt;메인버튼&lt;/MainBtn&gt;</td>
+                    <td>&lt;MainBtn $size="small"&gt;메인버튼&lt;/MainBtn&gt;</td>
                   </tr>
                   <tr>
                     <th>
-                      <BasicBtn disabled>disabled 버튼(Basic/Main) 공용</BasicBtn>
+                      <BasicBtn $disabled>disabled 버튼(Basic/Main) 공용</BasicBtn>
                     </th>
                     <td>&lt;BasicBtn disabled&gt;버튼&lt;/BasicBtn&gt;</td>
                   </tr>
                   <tr>
                     <th>
-                      <SocialBtn social='kakao'>카카오로 시작하기</SocialBtn>
+                      <SocialBtn $social='kakao'>카카오로 시작하기</SocialBtn>
                     </th>
-                    <td>&lt;SocialBtn social="kakao"&gt;카카오로 시작하기&lt;/SocialBtn&gt;</td>
+                    <td>&lt;SocialBtn $social="kakao"&gt;카카오로 시작하기&lt;/SocialBtn&gt;</td>
                   </tr>
                   <tr>
                     <th>
-                      <SocialBtn social='naver'>네이버로 시작하기</SocialBtn>
+                      <SocialBtn $social='naver'>네이버로 시작하기</SocialBtn>
                     </th>
-                    <td>&lt;SocialBtn social="naver"&gt;네이버로 시작하기&lt;/SocialBtn&gt;</td>
+                    <td>&lt;SocialBtn $social="naver"&gt;네이버로 시작하기&lt;/SocialBtn&gt;</td>
                   </tr>
                 </tbody>
               </table>
@@ -480,8 +480,8 @@ const Common = () => {
                       <BadgeBox>
                         <Badge>일반/장르</Badge>
                         <Badge color='orange'>러닝타임</Badge>
-                        <Badge playing='playing'>상영중입니다</Badge>
-                        <Badge playing='notPlaying'>상영예정</Badge>
+                        <Badge $playing='playing'>상영중입니다</Badge>
+                        <Badge $playing='notPlaying'>상영예정</Badge>
                       </BadgeBox>
                     </th>
                     <td>
@@ -491,25 +491,25 @@ const Common = () => {
                       <br />
                       &nbsp;&nbsp;&lt;Badge color="orange"&gt;러닝타임&lt;/Badge&gt;
                       <br />
-                      &nbsp;&nbsp;&lt;Badge playing="playing"&gt;상영중입니다&lt;/Badge&gt;
+                      &nbsp;&nbsp;&lt;Badge $playing="playing"&gt;상영중입니다&lt;/Badge&gt;
                       <br />
-                      &nbsp;&nbsp;&lt;Badge playing="notPlaying"&gt;상영예정&lt;/Badge&gt;
+                      &nbsp;&nbsp;&lt;Badge $playing="notPlaying"&gt;상영예정&lt;/Badge&gt;
                       <br />
                       &lt;/BadgeBox&gt;
                     </td>
                   </tr>
                   <tr>
                     <th>
-                      <StyleAge age='all' />
-                      <StyleAge age='12' />
-                      <StyleAge age='15' />
-                      <StyleAge age='18' />
+                      <StyleAge $age='all' />
+                      <StyleAge $age='12' />
+                      <StyleAge $age='15' />
+                      <StyleAge $age='18' />
                     </th>
                     <td>
-                      &lt;StyleAge age='all' /&gt; <br />
-                      &lt;StyleAge age='12' /&gt; <br />
-                      &lt;StyleAge age='15' /&gt; <br />
-                      &lt;StyleAge age='18' /&gt; <br />
+                      &lt;StyleAge $age='all' /&gt; <br />
+                      &lt;StyleAge $age='12' /&gt; <br />
+                      &lt;StyleAge $age='15' /&gt; <br />
+                      &lt;StyleAge $age='18' /&gt; <br />
                     </td>
                   </tr>
                   <tr>
@@ -572,7 +572,7 @@ const Common = () => {
                       <br />
                       &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 5&lt;/div&gt;
                       <br />
-                      &nbsp;&nbsp;]&#123;
+                      &nbsp;&nbsp;]&#125;
                       <br />
                       /&gt;
                     </td>
