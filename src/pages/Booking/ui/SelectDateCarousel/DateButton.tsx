@@ -7,7 +7,7 @@ const DateButton = ({ date, today, onSelect }: IDateButtonProps) => {
 
   return (
     <DateBtn $week={weekday} onClick={() => onSelect(date)}>
-      {(today === day || day === '01') && <Badge color='primary'>{`${year}.${month}`}</Badge>}
+      {(today === day || day === '01') && <Badge $color='primary'>{`${year}.${month}`}</Badge>}
       <Day>{`${day} ${weekday}`}</Day>
     </DateBtn>
   )

@@ -1,11 +1,11 @@
-import { Container } from './booking.style'
+import CenterPageLayout from '../../components/Layouts/CenterPageLayout'
 import SelectDateCarousel from './ui/SelectDateCarousel/SelectDateCarousel'
 
 const Booking = () => {
   return (
-    <Container>
+    <CenterPageLayout>
       <SelectDateCarousel />
-    </Container>
+    </CenterPageLayout>
   )
 }
 
