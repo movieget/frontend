@@ -12,7 +12,9 @@ const enableMocking = async () => {
   }
 
   const { worker } = await import('./mocks/browser')
-  return worker.start()
+  return worker.start({
+    onUnhandledRequest: 'bypass', // 핸들러가 없는 요청은 무시하고 그냥 통과시킵니다.
+  })
 }
 
 enableMocking().then(() => {
