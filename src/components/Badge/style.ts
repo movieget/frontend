@@ -93,6 +93,7 @@ export const StyleTitle = styled.div`
 
 // profile
 export const StyleProfile = styled.span`
+  display: inline-block;
   width: 2rem;
   height: 2rem;
   background-color: #292929;
@@ -104,7 +105,7 @@ export const StyleProfile = styled.span`
 `
 
 export const StyleProfileImg = styled.img`
-  width: 2rem;
-  height: 2rem;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 `
