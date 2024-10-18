@@ -32,6 +32,8 @@ import {
   StyleProfile,
   StyleProfileImg,
 } from '../../components/Badge/style'
+import StarRating from '../../components/StarRating/StarRating'
+import useRating from '../../hooks/useRating'
 
 const Common = () => {
   const {
@@ -40,6 +42,9 @@ const Common = () => {
     resetImage: resetImage1,
   } = useImagePreview()
   const { image: image2, handleImageChange: handleImageChange2 } = useImagePreview()
+
+  const { rating: userRating1, handleRatingChange: handleRatingChange1 } = useRating()
+  const { rating: userRating2, handleRatingChange: handleRatingChange2 } = useRating()
   return (
     <>
       <div className='common'>
@@ -300,6 +305,10 @@ const Common = () => {
                       </ImgInpBox>
                     </th>
                     <td>
+                      const &#123; image: image1, handleImageChange: handleImageChange1, resetImage:
+                      resetImage1, &#125; = useImagePreview()
+                      <br />
+                      <br />
                       &lt;ImgInpBox&gt;
                       <br />
                       &nbsp;&nbsp;&lt;InputFile
@@ -357,6 +366,10 @@ const Common = () => {
                       </ProfileImgInpBox>
                     </th>
                     <td>
+                      const &#123; image: image2, handleImageChange: handleImageChange2 &#125; =
+                      useImagePreview()
+                      <br />
+                      <br />
                       &lt;ProfileImgInpBox&gt;
                       <br />
                       &nbsp;&nbsp;&lt;ProfileAreaImgInpBox&gt;
@@ -460,12 +473,6 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <StyleTitle>상영중 TOP 10</StyleTitle>
-                    </th>
-                    <td>&lt;StyleTitle&gt;상영중 TOP 10&lt;/StyleTitle&gt;</td>
-                  </tr>
-                  <tr>
-                    <th>
                       <StyleProfile>
                         <StyleProfileImg src={BasicProfile} />
                       </StyleProfile>
@@ -474,6 +481,86 @@ const Common = () => {
                       &lt;StyleProfile&gt; <br />
                       &nbsp;&nbsp;&lt;StyleProfileImg src=&#123;BasicProfile&#125;/&gt; <br />
                       &lt;/StyleProfile&gt;
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* ETC */}
+          <section className='section'>
+            <h3 className='sec-title'>- ETC</h3>
+            <p className='sec-exp'>기타등등...</p>
+            <div className='table-box'>
+              <table>
+                <thead>
+                  <tr>
+                    <th>컴포넌트</th>
+                    <th>태그</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>
+                      <StyleTitle>상영중 TOP 10</StyleTitle>
+                    </th>
+                    <td>&lt;StyleTitle&gt;상영중 TOP 10&lt;/StyleTitle&gt;</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p className='th-tit'>선택 가능</p>
+                      <StarRating
+                        rating={userRating1}
+                        onRatingChange={handleRatingChange1}
+                        userId='user1'
+                      />
+                    </th>
+                    <td>
+                      const &#123; rating: userRating1, handleRatingChange: handleRatingChange1
+                      &#125; = useRating()
+                      <br />
+                      <br />
+                      &lt;StarRating
+                      <br />
+                      &nbsp;&nbsp;rating=&#123;userRating1&#125;
+                      <br />
+                      &nbsp;&nbsp;onRatingChange=&#123;handleRatingChange1&#125;
+                      <br />
+                      &nbsp;&nbsp;userId='user1'
+                      <br />
+                      /&gt;
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p className='th-tit'>선택 불가능</p>
+                      <StarRating
+                        rating={userRating2}
+                        onRatingChange={handleRatingChange2}
+                        userId='user2'
+                        value={3}
+                        disabled={true}
+                      />
+                    </th>
+                    <td>
+                      const &#123; rating: userRating2, handleRatingChange: handleRatingChange2
+                      &#125; = useRating()
+                      <br />
+                      <br />
+                      &lt;StarRating
+                      <br />
+                      &nbsp;&nbsp;rating=&#123;userRating2&#125;
+                      <br />
+                      &nbsp;&nbsp;onRatingChange=&#123;handleRatingChange2&#125;
+                      <br />
+                      &nbsp;&nbsp;userId='user2'
+                      <br />
+                      &nbsp;&nbsp;value=&#123;3&#125;
+                      <br />
+                      &nbsp;&nbsp;disabled=&#123;true&#125;
+                      <br />
+                      /&gt;
                     </td>
                   </tr>
                 </tbody>

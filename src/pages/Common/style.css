@@ -56,3 +56,7 @@
 .common .table-box table tbody td:first-child {
   text-align: center;
 }
+.common .table-box table tbody th .th-tit {
+  margin-bottom: 4px;
+  text-align: left;
+}
