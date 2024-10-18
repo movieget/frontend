@@ -41,6 +41,7 @@ import {
 import StarRating from '../../components/StarRating/StarRating'
 import useRating from '../../hooks/useRating'
 import Tabs from '../../components/Tab/Tab'
+import CustomSelect from '../../components/Select/CusomSelect'
 
 const Common = () => {
   const {
@@ -220,6 +221,15 @@ const Common = () => {
                       &nbsp;&nbsp;&lt;Textarea width="" placeholder="텍스트를 입력하세요." /&gt;
                       <br />
                       &lt;/TextareaBox&gt;
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className='h280'>
+                      <CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} />
+                    </th>
+                    <td>
+                      &lt;CustomSelect items=&#123;['바나나', '원숭이', '사나움사나움사나움']&#125;
+                      /&gt;
                     </td>
                   </tr>
                 </tbody>
