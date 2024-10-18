@@ -18,6 +18,7 @@ declare module 'styled-components' {
       border_purple: string
       border_orange: string
       border_wrapper: string
+      border_box: string
       bg_kakao: string
       text_kakao: string
       bg_naver: string

@@ -27,6 +27,7 @@ export const commonColors = {
   border_purple: '#8D70CD',
   border_orange: '#FF8B59',
   border_wrapper: '#474747',
+  border_box: '#F5F5F5',
   bg_kakao: '#FEE500',
   text_kakao: '#3D1D1D',
   bg_naver: '#03C75A',
