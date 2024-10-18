@@ -11,16 +11,16 @@ export const TabButtonBox = styled.div`
   gap: 1.2rem;
 `
 
-export const TabButton = styled.button<{ isActive: boolean }>`
+export const TabButton = styled.button<{ $isActive: boolean }>`
   min-width: 12.4rem;
   height: 4rem;
   padding: 0 1.2rem;
   font-size: 1.6rem;
   font-weight: 600;
-  background: ${({ isActive }) =>
-    isActive ? 'linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb)' : '#353535'};
+  background: ${({ $isActive }) =>
+    $isActive ? 'linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb)' : '#353535'};
   border: 1px solid;
-  border-color: ${({ isActive }) => (isActive ? '#9D7CE5' : '#353535')};
+  border-color: ${({ $isActive }) => ($isActive ? '#9D7CE5' : '#353535')};
   border-radius: 1.2rem;
   color: white;
   cursor: pointer;

@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import { TabButton, TabButtonBox, TabContainer, TabContentsBox } from './style'
 
 interface ButtonProps {
-  label: string
-  isActive: boolean
+  $label: string
+  $isActive: boolean
   onClick: () => void
 }
 
-const Button: React.FC<ButtonProps> = ({ label, isActive, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ $label, $isActive, onClick }) => {
   return (
-    <TabButton isActive={isActive} onClick={onClick}>
-      {label}
+    <TabButton $isActive={$isActive} onClick={onClick}>
+      {$label}
     </TabButton>
   )
 }
@@ -29,8 +29,8 @@ const Tabs: React.FC<TabsProps> = ({ tabs, contents }) => {
         {tabs.map((tab, index) => (
           <Button
             key={index}
-            label={tab}
-            isActive={index === activeIndex}
+            $label={tab}
+            $isActive={index === activeIndex}
             onClick={() => setActiveIndex(index)}
           />
         ))}
