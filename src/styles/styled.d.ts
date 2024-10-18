@@ -23,6 +23,7 @@ declare module 'styled-components' {
       bg_naver: string
       bg: string
       bg_wrapper: string
+      bg_box: string
       text: string
     }
     fonts: {
