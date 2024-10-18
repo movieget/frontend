@@ -6,7 +6,7 @@ import Age18Icon from '../../assets/svg/18.svg'
 
 // commons badge
 interface IfBadgeColor {
-  color?: 'gray' | 'orange'
+  color?: 'gray' | 'orange' | 'primary'
   playing?: 'playing' | 'notPlaying' | 'none'
 }
 export const BadgeBox = styled.div`
@@ -21,9 +21,17 @@ export const Badge = styled.span<IfBadgeColor>`
   height: 2rem;
   padding: 0 0.8rem;
   font-size: 1rem;
-  background-color: ${(props) => (props.color === 'orange' ? '#F45917' : '#353535')};
+  background-color: ${(props) => {
+    if (props.color === 'orange') return '#F45917'
+    if (props.color === 'primary') return '#733FF1'
+    return '#353535'
+  }};
   border: 1px solid;
-  border-color: ${(props) => (props.color === 'orange' ? '#FF8B59' : '#3F3F3F')};
+  border-color: ${(props) => {
+    if (props.color === 'orange') return '#FF8B59'
+    if (props.color === 'primary') return '#8D70CD'
+    return '#3F3F3F' // 기본 색상
+  }};
   border-radius: 0.4rem;
   color: #fdfdfd;
 
