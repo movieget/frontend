@@ -21,7 +21,7 @@ export const DateButton = styled(CustomArrow)<{ $week: string }>`
   justify-content: center;
   align-items: center;
   min-width: 5rem;
-  padding: 1rem 0;
+  padding: 1.2rem 0;
   font-family: inherit;
   font-size: 1.8rem;
   font-weight: ${({ theme }) => theme.fonts.weight.thin};
@@ -31,12 +31,7 @@ export const DateButton = styled(CustomArrow)<{ $week: string }>`
 
   span {
     position: absolute;
-    top: -1rem;
-    font-family: inherit;
-    white-space: nowrap;
-  }
-
-  p {
+    top: -1.2rem;
     font-family: inherit;
     white-space: nowrap;
   }

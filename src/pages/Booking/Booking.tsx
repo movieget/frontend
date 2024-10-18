@@ -25,19 +25,21 @@ const Booking = () => {
   return (
     <Container>
       <CarouselWrapper>
-        <Slider {...settings}>
-          {dates.map((date, idx) => {
-            const [year, month, day, weekday] = date.split('-')
-            return (
-              <>
-                <DateButton key={idx} $week={weekday}>
-                  <Badge color='primary'>{`${year}.${month}`}</Badge>
-                  <p>{`${day} ${weekday}`}</p>
-                </DateButton>
-              </>
-            )
-          })}
-        </Slider>
+        <SliderWrapper>
+          <Slider {...settings}>
+            {dates.map((date, idx) => {
+              const [year, month, day, weekday] = date.split('-')
+              return (
+                <>
+                  <DateButton key={idx} $week={weekday}>
+                    <Badge color='primary'>{`${year}.${month}`}</Badge>
+                    <Day>{`${day} ${weekday}`}</Day>
+                  </DateButton>
+                </>
+              )
+            })}
+          </Slider>
+        </SliderWrapper>
       </CarouselWrapper>
     </Container>
   )
@@ -47,12 +49,18 @@ export default Booking
 
 const CarouselWrapper = styled.div`
   width: 100%;
-  height: 74px;
+  height: 62px;
   background-color: ${({ theme }) => theme.colors.bg_wrapper};
   border: 1px solid ${({ theme }) => theme.colors.border_wrapper};
   border-radius: 4px;
   padding: 0 1.8rem;
+  position: relative;
 
+  .slick-list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
   .slick-slider {
     width: 100%;
     display: flex;
@@ -65,4 +73,18 @@ const CarouselWrapper = styled.div`
     display: flex;
     gap: 1rem;
   }
+`
+
+const SliderWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 0 1.8rem;
+  height: 100px;
+`
+const Day = styled.p`
+  font-family: inherit;
+  white-space: nowrap;
 `
