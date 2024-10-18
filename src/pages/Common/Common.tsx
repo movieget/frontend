@@ -23,7 +23,13 @@ import {
   ProfilePreviewImgBox,
   ProfilePreviewImg,
 } from '../../components/Input/style'
-import { Checkbox, CheckboxWrapper, CheckHeart, CheckText } from '../../components/Checkbox/style'
+import {
+  Checkbox,
+  CheckboxWrapper,
+  CheckHeart,
+  CheckSeat,
+  CheckText,
+} from '../../components/Checkbox/style'
 import {
   BadgeBox,
   Badge,
@@ -265,6 +271,30 @@ const Common = () => {
                       &nbsp;&nbsp;&lt;CheckHeart htmlFor="checkboxHeart"&gt;&lt;/CheckHeart&gt;
                       <br />
                       &lt;/CheckboxWrapper&gt;
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <CheckboxWrapper>
+                        <Checkbox type='checkbox' id='seat' />
+                        <CheckSeat htmlFor='seat' />
+                        <Checkbox type='checkbox' id='disableSeat' disabled />
+                        <CheckSeat htmlFor='disableSeat' />
+                      </CheckboxWrapper>
+                    </th>
+                    <td>
+                      &lt;CheckboxWrapper&gt;
+                      <br />
+                      &nbsp;&nbsp;&lt;Checkbox type='checkbox' id='seat' checked /&gt;
+                      <br />
+                      &nbsp;&nbsp;&lt;CheckSeat htmlFor='seat' /&gt;
+                      <br />
+                      &nbsp;&nbsp;&lt;Checkbox type='checkbox' id='disableSeat' disabled /&gt;
+                      <br />
+                      &nbsp;&nbsp;&lt;CheckSeat htmlFor='disableSeat' /&gt;
+                      <br />
+                      &lt;/CheckboxWrapper&gt;
+                      <br />
                     </td>
                   </tr>
                 </tbody>

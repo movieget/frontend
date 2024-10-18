@@ -3,6 +3,9 @@ import CheckboxTextUnChecked from '../../assets/svg/checkbox_unchecked.svg'
 import CheckboxTextChecked from '../../assets/svg/checkbox_checked.svg'
 import HeartUnChecked from '../../assets/svg/heart_unchecked.svg'
 import HeartChecked from '../../assets/svg/heart_checked.svg'
+import SeatUnchecked from '../../assets/svg/seat_unchecked.svg'
+import SeatChecked from '../../assets/svg/seat_checked.svg'
+import SeatDisabled from '../../assets/svg/seat_disabled.svg'
 
 // checkbox
 export const CheckboxWrapper = styled.span``
@@ -54,5 +57,29 @@ export const CheckHeart = styled.label`
 
   ${Checkbox}:checked + &::before {
     background-image: url(${HeartChecked});
+  }
+`
+
+//seat
+export const CheckSeat = styled.label`
+  display: inline-block;
+  width: 2rem;
+  height: 1.8rem;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: no-repeat 50% 50% / 100%;
+    background-image: url(${SeatUnchecked});
+  }
+  ${Checkbox}:checked + &::before {
+    background-image: url(${SeatChecked});
+  }
+  ${Checkbox}:disabled + &::before {
+    background-image: url(${SeatDisabled});
+    cursor: initial;
   }
 `
