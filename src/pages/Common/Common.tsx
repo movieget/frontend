@@ -40,6 +40,7 @@ import {
 } from '../../components/Badge/style'
 import StarRating from '../../components/StarRating/StarRating'
 import useRating from '../../hooks/useRating'
+import Tabs from '../../components/Tab/Tab'
 
 const Common = () => {
   const {
@@ -511,6 +512,59 @@ const Common = () => {
                       &lt;StyleProfile&gt; <br />
                       &nbsp;&nbsp;&lt;StyleProfileImg src=&#123;BasicProfile&#125;/&gt; <br />
                       &lt;/StyleProfile&gt;
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* TAB */}
+          <section className='section'>
+            <h3 className='sec-title'>- TAB</h3>
+            <p className='sec-exp'>내용없음</p>
+            <div className='table-box'>
+              <table>
+                <thead>
+                  <tr>
+                    <th>컴포넌트</th>
+                    <th>태그</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>
+                      <Tabs
+                        tabs={['탭 1', '탭 2', '탭 3', '탭 4', '탭 5']}
+                        contents={[
+                          <div>탭 컨텐츠 1</div>,
+                          <div>탭 컨텐츠 2</div>,
+                          <div>탭 컨텐츠 3</div>,
+                          <div>탭 컨텐츠 4</div>,
+                          <div>탭 컨텐츠 5</div>,
+                        ]}
+                      />
+                    </th>
+                    <td>
+                      &lt;Tabs
+                      <br />
+                      &nbsp;&nbsp;tabs=&#123;["탭 1", "탭 2", "탭 3", "탭 4", "탭 5"]&#123;
+                      <br />
+                      &nbsp;&nbsp;contents=&#123;[
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 1&lt;/div&gt;,
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 2&lt;/div&gt;,
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 3&lt;/div&gt;,
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 4&lt;/div&gt;,
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 5&lt;/div&gt;
+                      <br />
+                      &nbsp;&nbsp;]&#123;
+                      <br />
+                      /&gt;
                     </td>
                   </tr>
                 </tbody>
