@@ -95,11 +95,15 @@ export const StyleTitle = styled.div`
   }
 `
 
+interface StyleProfileSize {
+  $width?: string
+  $height?: string
+}
 // profile
-export const StyleProfile = styled.span`
+export const StyleProfile = styled.span<StyleProfileSize>`
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
+  width: ${({ $width }) => $width || '2rem'};
+  height: ${({ $height }) => $height || '2rem'};
   background-color: #292929;
   border: 1px solid;
   border-color: #3f3f3f;

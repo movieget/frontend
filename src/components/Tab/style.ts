@@ -26,7 +26,7 @@ export const TabButton = styled.button<{ $isActive: boolean }>`
   cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb);
   }
 `
 
