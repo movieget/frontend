@@ -19,7 +19,7 @@ const EditInfo = () => {
 
   return (
     <>
-      <EditBox>
+      <EditWrapper>
         <EditProfileBox>
           <ProfileImgInpBox>
             <ProfileAreaImgInpBox>
@@ -40,8 +40,8 @@ const EditInfo = () => {
           </ProfileImgInpBox>
           <UserNickName>닉네임</UserNickName>
         </EditProfileBox>
-      </EditBox>
-      <EditBox>
+      </EditWrapper>
+      <EditWrapper>
         <ContentsBigTitle>닉네임 변경</ContentsBigTitle>
         <EditNickNameHolder>
           <ContentsTitle>닉네임</ContentsTitle>
@@ -50,14 +50,14 @@ const EditInfo = () => {
             <MainBtn $size='large'>닉네임 변경</MainBtn>
           </InputBox>
         </EditNickNameHolder>
-      </EditBox>
+      </EditWrapper>
     </>
   )
 }
 
 export default EditInfo
 
-const EditBox = styled.div`
+const EditWrapper = styled.div`
   padding: 3.2rem 0;
   border-top: 1px solid #494949;
 
