@@ -37,6 +37,11 @@ const Header = () => {
                   공통UI
                 </Link>
               </li>
+              <li>
+                <Link to='/mypage' aria-label='마이페이지 페이지로 이동'>
+                  마이페이지
+                </Link>
+              </li>
             </GNB>
           </Nav>
         </HeaderLeft>
