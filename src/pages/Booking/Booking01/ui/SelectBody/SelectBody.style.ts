@@ -44,7 +44,7 @@ export const SelectList = styled.li`
   gap: 1rem;
 `
 
-export const SelectBtn = styled.button`
+export const OptionStyle = styled.button`
   width: 100%;
   padding: 0.8rem 0.4rem;
   display: flex;
@@ -63,7 +63,7 @@ export const SelectBtn = styled.button`
     background-color: ${({ theme }) => theme.colors.bg_btn_purple};
   }
 `
-export const MovieName = styled.span`
+export const OptionLabel = styled.span`
   font-size: 1.6rem;
 `
 
@@ -86,11 +86,15 @@ export const SelectMovie = styled.div`
   flex-direction: column;
   gap: 1rem;
 `
-export const SelectLocation = styled(SelectMovie)``
-export const SelectTheater = styled(SelectMovie)``
+export const SelectLocation = styled(SelectMovie)`
+  flex: 1;
+`
+export const SelectTheater = styled(SelectMovie)`
+  flex: 1;
+`
 export const SelectTime = styled(SelectMovie)``
 
-export const SelectTitle = styled.h2`
+export const SelectTitleStyle = styled.h2`
   font-size: 2.2rem;
   font-weight: ${({ theme }) => theme.fonts.weight.light_bold};
 `
