@@ -514,12 +514,12 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <StyleProfile>
+                      <StyleProfile width='' height=''>
                         <StyleProfileImg src={BasicProfile} />
                       </StyleProfile>
                     </th>
                     <td>
-                      &lt;StyleProfile&gt; <br />
+                      &lt;StyleProfile width='' height=''&gt; <br />
                       &nbsp;&nbsp;&lt;StyleProfileImg src=&#123;BasicProfile&#125;/&gt; <br />
                       &lt;/StyleProfile&gt;
                     </td>
@@ -558,7 +558,7 @@ const Common = () => {
                     <td>
                       &lt;Tabs
                       <br />
-                      &nbsp;&nbsp;tabs=&#123;["탭 1", "탭 2", "탭 3", "탭 4", "탭 5"]&#123;
+                      &nbsp;&nbsp;tabs=&#123;["탭 1", "탭 2", "탭 3", "탭 4", "탭 5"]&#125;
                       <br />
                       &nbsp;&nbsp;contents=&#123;[
                       <br />
