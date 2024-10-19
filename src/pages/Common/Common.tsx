@@ -1,7 +1,6 @@
 import Bell from '../../assets/svg/bell.svg'
 import Profile from '../../assets/img/Profile.svg'
 import BasicProfile from '../../assets/svg/profile_user.svg'
-import MoviePosterImage from '../../assets/img/profile.svg'
 import './style.css'
 
 import useImagePreview from '../../hooks/useImagePreview'
@@ -43,18 +42,38 @@ import StarRating from '../../components/StarRating/StarRating'
 import useRating from '../../hooks/useRating'
 import Tabs from '../../components/Tab/Tab'
 import CustomSelect from '../../components/Select/CusomSelect'
+import MovieInfoCard from '../../components/MovieInfoCard/MovieInfoCard'
+import styled from 'styled-components'
 import {
-  MovieDetailBox,
-  MovieInfo,
-  MovieInfoCard,
-  MovieInfoContent,
-  MovieInfoList,
-  MovieInfoTitle,
-  MoviePoster,
-  MoviePosterBox,
-  MovieTitle,
-  MovieTitleBox,
-} from '../../components/MovieInfoCard/style'
+  C_BasicBtn_L,
+  C_BasicBtn_M,
+  C_BasicBtn_S,
+  C_MainBtn_L,
+  C_MainBtn_M,
+  C_MainBtn_S,
+  C_DisabledBtn,
+  C_MovieInfoCard,
+  C_SocialBtnKakao,
+  C_SocialBtnNaver,
+  C_IconBtn,
+  C_IconBtnAlarm,
+  C_IconBtnMypage,
+  C_InputBox,
+  C_TextareaBox,
+  C_CustomSelect,
+  C_CheckboxBasic,
+  C_CheckboxHeart,
+  C_CheckboxSeat,
+  C_ProfileImgInpBox,
+  C_ImgInpBox,
+  C_Badge,
+  C_StyleAge,
+  C_StyleProfile,
+  C_Tabs,
+  C_StyleTitle,
+  C_StarRating,
+  C_StarRating2,
+} from './CommonCodes'
 
 const Common = () => {
   const {
@@ -90,55 +109,73 @@ const Common = () => {
                     <th>
                       <BasicBtn $size='large'>기본버튼</BasicBtn>
                     </th>
-                    <td>&lt;BasicBtn $size="large"&gt;기본버튼&lt;/BasicBtn&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_BasicBtn_L} />
+                    </td>
                   </tr>
                   <tr>
                     <th>
                       <BasicBtn $size='medium'>기본버튼</BasicBtn>
                     </th>
-                    <td>&lt;BasicBtn $size="medium"&gt;기본버튼&lt;/BasicBtn&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_BasicBtn_M} />
+                    </td>
                   </tr>
                   <tr>
                     <th>
                       <BasicBtn $size='small'>기본버튼</BasicBtn>
                     </th>
-                    <td>&lt;BasicBtn $size="small"&gt;기본버튼&lt;/BasicBtn&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_BasicBtn_S} />
+                    </td>
                   </tr>
                   <tr>
                     <th>
                       <MainBtn $size='large'>메인버튼</MainBtn>
                     </th>
-                    <td>&lt;MainBtn $size="large"&gt;메인버튼&lt;/MainBtn&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_MainBtn_L} />
+                    </td>
                   </tr>
                   <tr>
                     <th>
                       <MainBtn $size='medium'>메인버튼</MainBtn>
                     </th>
-                    <td>&lt;MainBtn $size="medium"&gt;메인버튼&lt;/MainBtn&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_MainBtn_M} />
+                    </td>
                   </tr>
                   <tr>
                     <th>
                       <MainBtn $size='small'>메인버튼</MainBtn>
                     </th>
-                    <td>&lt;MainBtn $size="small"&gt;메인버튼&lt;/MainBtn&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_MainBtn_S} />
+                    </td>
                   </tr>
                   <tr>
                     <th>
                       <BasicBtn $disabled>disabled 버튼(Basic/Main) 공용</BasicBtn>
                     </th>
-                    <td>&lt;BasicBtn disabled&gt;버튼&lt;/BasicBtn&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_DisabledBtn} />
+                    </td>
                   </tr>
                   <tr>
                     <th>
                       <SocialBtn $social='kakao'>카카오로 시작하기</SocialBtn>
                     </th>
-                    <td>&lt;SocialBtn $social="kakao"&gt;카카오로 시작하기&lt;/SocialBtn&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_SocialBtnKakao} />
+                    </td>
                   </tr>
                   <tr>
                     <th>
                       <SocialBtn $social='naver'>네이버로 시작하기</SocialBtn>
                     </th>
-                    <td>&lt;SocialBtn $social="naver"&gt;네이버로 시작하기&lt;/SocialBtn&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_SocialBtnNaver} />
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -165,11 +202,7 @@ const Common = () => {
                       </IconBtn>
                     </th>
                     <td>
-                      &lt;IconBtn&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;IconBtnImg src=&#123;Bell&#125; /&gt;
-                      <br />
-                      &lt;/IconBtn&gt;
+                      <MultilineTextComponent code={C_IconBtnAlarm} />
                     </td>
                   </tr>
                   <tr>
@@ -179,12 +212,7 @@ const Common = () => {
                       </IconBtn>
                     </th>
                     <td>
-                      &lt;IconBtn&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;IconBtnImg width="100%" height="100%" src=&#123;Profile&#125;
-                      /&gt;
-                      <br />
-                      &lt;/IconBtn&gt;
+                      <MultilineTextComponent code={C_IconBtnMypage} />
                     </td>
                   </tr>
                 </tbody>
@@ -213,13 +241,7 @@ const Common = () => {
                       </InputBox>
                     </th>
                     <td>
-                      &lt;InputBox width=""&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Input type="text" width="" /&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Input type="password" width="" /&gt;
-                      <br />
-                      &lt;/InputBox&gt;
+                      <MultilineTextComponent code={C_InputBox} />
                     </td>
                   </tr>
                   <tr>
@@ -229,11 +251,7 @@ const Common = () => {
                       </TextareaBox>
                     </th>
                     <td>
-                      &lt;TextareaBox width=""&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Textarea width="" placeholder="텍스트를 입력하세요." /&gt;
-                      <br />
-                      &lt;/TextareaBox&gt;
+                      <MultilineTextComponent code={C_TextareaBox} />
                     </td>
                   </tr>
                   <tr>
@@ -241,8 +259,7 @@ const Common = () => {
                       <CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} />
                     </th>
                     <td>
-                      &lt;CustomSelect items=&#123;['바나나', '원숭이', '사나움사나움사나움']&#125;
-                      /&gt;
+                      <MultilineTextComponent code={C_CustomSelect} />
                     </td>
                   </tr>
                 </tbody>
@@ -271,13 +288,7 @@ const Common = () => {
                       </CheckboxWrapper>
                     </th>
                     <td>
-                      &lt;CheckboxWrapper&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Checkbox type="checkbox" id="checkboxText" name="" /&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;CheckText htmlFor="checkboxText"&gt;체크박스&lt;/CheckText&gt;
-                      <br />
-                      &lt;/CheckboxWrapper&gt;
+                      <MultilineTextComponent code={C_CheckboxBasic} />
                     </td>
                   </tr>
                   <tr>
@@ -288,13 +299,7 @@ const Common = () => {
                       </CheckboxWrapper>
                     </th>
                     <td>
-                      &lt;CheckboxWrapper&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Checkbox type="checkbox" id="checkboxHeart" name="" /&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;CheckHeart htmlFor="checkboxHeart"&gt;&lt;/CheckHeart&gt;
-                      <br />
-                      &lt;/CheckboxWrapper&gt;
+                      <MultilineTextComponent code={C_CheckboxHeart} />
                     </td>
                   </tr>
                   <tr>
@@ -307,18 +312,7 @@ const Common = () => {
                       </CheckboxWrapper>
                     </th>
                     <td>
-                      &lt;CheckboxWrapper&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Checkbox type='checkbox' id='seat' checked /&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;CheckSeat htmlFor='seat' /&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Checkbox type='checkbox' id='disableSeat' disabled /&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;CheckSeat htmlFor='disableSeat' /&gt;
-                      <br />
-                      &lt;/CheckboxWrapper&gt;
-                      <br />
+                      <MultilineTextComponent code={C_CheckboxSeat} />
                     </td>
                   </tr>
                 </tbody>
@@ -359,44 +353,7 @@ const Common = () => {
                       </ImgInpBox>
                     </th>
                     <td>
-                      const &#123; image: image1, handleImageChange: handleImageChange1, resetImage:
-                      resetImage1, &#125; = useImagePreview()
-                      <br />
-                      <br />
-                      &lt;ImgInpBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;InputFile
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;type="file"
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;accept="image/*"
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;onChange=&#123;handleImageChange&#125;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;id="file01"
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;ref=&#123;(input) =&gt; input && (input.value =
-                      "")&#125;
-                      <br />
-                      &nbsp;&nbsp;/&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;InputFileLabel
-                      htmlFor="file01"&gt;파일첨부&lt;/InputFileLabel&gt;
-                      <br />
-                      &nbsp;&nbsp;&#123;image && (<br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;PreviewImgBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;PreviewImg src=&#123;image&#125;
-                      alt="첨부한 이미지 미리보기" /&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DeletePreviewImg
-                      onClick=&#123;resetImage&#125; /&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/PreviewImgBox&gt;
-                      <br />
-                      &nbsp;&nbsp;)&#125;
-                      <br />
-                      &lt;/ImgInpBox&gt;
+                      <MultilineTextComponent code={C_ImgInpBox} />
                     </td>
                   </tr>
                   <tr>
@@ -420,54 +377,7 @@ const Common = () => {
                       </ProfileImgInpBox>
                     </th>
                     <td>
-                      const &#123; image: image2, handleImageChange: handleImageChange2 &#125; =
-                      useImagePreview()
-                      <br />
-                      <br />
-                      &lt;ProfileImgInpBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;ProfileAreaImgInpBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;ProfileInputFile
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="file"
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;accept="image/*"
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onChange=&#123;handleImageChange2&#125;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id="file02"
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ref=&#123;(input) =&gt; input &&
-                      (input.value = "")&#125;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;/&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;ProfileInputFileLabel htmlFor="file02"&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;파일첨부
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ProfileInputFileLabel&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&#123;image2 && (<br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ProfilePreviewImgBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ProfilePreviewImg
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src=&#123;image2&#125;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt="첨부한
-                      이미지 미리보기"
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ProfilePreviewImgBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;)&#125;
-                      <br />
-                      &nbsp;&nbsp;&lt;/ProfileAreaImgInpBox&gt;
-                      <br />
-                      &lt;/ProfileImgInpBox&gt;
+                      <MultilineTextComponent code={C_ProfileImgInpBox} />
                     </td>
                   </tr>
                 </tbody>
@@ -498,17 +408,7 @@ const Common = () => {
                       </BadgeBox>
                     </th>
                     <td>
-                      &lt;BadgeBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Badge&gt;일반/장르&lt;/Badge&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Badge color="orange"&gt;러닝타임&lt;/Badge&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Badge $playing="playing"&gt;상영중입니다&lt;/Badge&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;Badge $playing="notPlaying"&gt;상영예정&lt;/Badge&gt;
-                      <br />
-                      &lt;/BadgeBox&gt;
+                      <MultilineTextComponent code={C_Badge} />
                     </td>
                   </tr>
                   <tr>
@@ -519,10 +419,7 @@ const Common = () => {
                       <StyleAge $age='18' />
                     </th>
                     <td>
-                      &lt;StyleAge $age='all' /&gt; <br />
-                      &lt;StyleAge $age='12' /&gt; <br />
-                      &lt;StyleAge $age='15' /&gt; <br />
-                      &lt;StyleAge $age='18' /&gt; <br />
+                      <MultilineTextComponent code={C_StyleAge} />
                     </td>
                   </tr>
                   <tr>
@@ -532,9 +429,7 @@ const Common = () => {
                       </StyleProfile>
                     </th>
                     <td>
-                      &lt;StyleProfile $width='' $height=''&gt; <br />
-                      &nbsp;&nbsp;&lt;StyleProfileImg src=&#123;BasicProfile&#125;/&gt; <br />
-                      &lt;/StyleProfile&gt;
+                      <MultilineTextComponent code={C_StyleProfile} />
                     </td>
                   </tr>
                 </tbody>
@@ -569,25 +464,7 @@ const Common = () => {
                       />
                     </th>
                     <td>
-                      &lt;Tabs
-                      <br />
-                      &nbsp;&nbsp;tabs=&#123;["탭 1", "탭 2", "탭 3", "탭 4", "탭 5"]&#125;
-                      <br />
-                      &nbsp;&nbsp;contents=&#123;[
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 1&lt;/div&gt;,
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 2&lt;/div&gt;,
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 3&lt;/div&gt;,
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 4&lt;/div&gt;,
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;탭 컨텐츠 5&lt;/div&gt;
-                      <br />
-                      &nbsp;&nbsp;]&#125;
-                      <br />
-                      /&gt;
+                      <MultilineTextComponent code={C_Tabs} />
                     </td>
                   </tr>
                 </tbody>
@@ -612,7 +489,9 @@ const Common = () => {
                     <th>
                       <StyleTitle>상영중 TOP 10</StyleTitle>
                     </th>
-                    <td>&lt;StyleTitle&gt;상영중 TOP 10&lt;/StyleTitle&gt;</td>
+                    <td>
+                      <MultilineTextComponent code={C_StyleTitle} />
+                    </td>
                   </tr>
                   <tr>
                     <th>
@@ -624,19 +503,7 @@ const Common = () => {
                       />
                     </th>
                     <td>
-                      const &#123; rating: userRating1, handleRatingChange: handleRatingChange1
-                      &#125; = useRating()
-                      <br />
-                      <br />
-                      &lt;StarRating
-                      <br />
-                      &nbsp;&nbsp;rating=&#123;userRating1&#125;
-                      <br />
-                      &nbsp;&nbsp;onRatingChange=&#123;handleRatingChange1&#125;
-                      <br />
-                      &nbsp;&nbsp;userId='user1'
-                      <br />
-                      /&gt;
+                      <MultilineTextComponent code={C_StarRating} />
                     </td>
                   </tr>
                   <tr>
@@ -651,23 +518,7 @@ const Common = () => {
                       />
                     </th>
                     <td>
-                      const &#123; rating: userRating2, handleRatingChange: handleRatingChange2
-                      &#125; = useRating()
-                      <br />
-                      <br />
-                      &lt;StarRating
-                      <br />
-                      &nbsp;&nbsp;rating=&#123;userRating2&#125;
-                      <br />
-                      &nbsp;&nbsp;onRatingChange=&#123;handleRatingChange2&#125;
-                      <br />
-                      &nbsp;&nbsp;userId='user2'
-                      <br />
-                      &nbsp;&nbsp;value=&#123;3&#125;
-                      <br />
-                      &nbsp;&nbsp;disabled=&#123;true&#125;
-                      <br />
-                      /&gt;
+                      <MultilineTextComponent code={C_StarRating2} />
                     </td>
                   </tr>
                 </tbody>
@@ -690,134 +541,27 @@ const Common = () => {
                 <tbody>
                   <tr>
                     <th>
-                      <MovieInfoCard>
-                        <MoviePosterBox $width='' $height=''>
-                          <MoviePoster src={MoviePosterImage} alt='영화타이틀' />
-                        </MoviePosterBox>
-                        <MovieDetailBox>
-                          <MovieTitleBox>
-                            <StyleAge $age='18' />
-                            <MovieTitle>크라벤</MovieTitle>
-                          </MovieTitleBox>
-
-                          <MovieInfoList>
-                            <MovieInfo>
-                              <MovieInfoTitle>예매일&nbsp;</MovieInfoTitle>
-                              <MovieInfoContent>:&nbsp; 2024년 10월 13일</MovieInfoContent>
-                            </MovieInfo>
-                            <MovieInfo>
-                              <MovieInfoTitle>좌석&nbsp;</MovieInfoTitle>
-                              <MovieInfoContent>
-                                :&nbsp; E열 24석 / E열 25석 / E열 26석 / E열 27석 / E열 28석 / E열
-                                29석
-                              </MovieInfoContent>
-                            </MovieInfo>
-                            <MovieInfo>
-                              <MovieInfoTitle>가격&nbsp;</MovieInfoTitle>
-                              <MovieInfoContent>:&nbsp; 120,000원</MovieInfoContent>
-                            </MovieInfo>
-                            <MovieInfo>
-                              <MovieInfoTitle>인원 수&nbsp;</MovieInfoTitle>
-                              <MovieInfoContent>:&nbsp; 6명</MovieInfoContent>
-                            </MovieInfo>
-                            <MovieInfo>
-                              <MovieInfoTitle>상영시간&nbsp;</MovieInfoTitle>
-                              <MovieInfoContent>:&nbsp; 204분</MovieInfoContent>
-                            </MovieInfo>
-                            <MovieInfo>
-                              <MovieInfoTitle>지점&nbsp;</MovieInfoTitle>
-                              <MovieInfoContent>:&nbsp; 메가박스 울산 성남 지점</MovieInfoContent>
-                            </MovieInfo>
-                          </MovieInfoList>
-                        </MovieDetailBox>
-                      </MovieInfoCard>
+                      <MovieInfoCard
+                        $title='크라벤' // 영화 제목
+                        $age='18' // 연령
+                        $screeningDate='2024년 10월 20일' // 상영 날짜
+                        $cancelDate='2024년 10월 18일' // 취소 가능한 날짜
+                        $createdDate='2024년 10월 01일' // 작성된 날짜
+                        $duration={204} // 상영 시간 (분 단위)
+                        $reviewType='포토리뷰' // 리뷰의 종류
+                        $rating={5} // 남긴 평점 (0~5 점)
+                        $rewardPoints={120} // 적립 포인트
+                        $seats={['E열 24석', 'E열 25석', 'E열 26석']} // 예약한 좌석 목록
+                        $price={120000} // 총 가격 (원 단위)
+                        $refundAmount={80000} // 환불 금액 (원 단위)
+                        $adultCount={4} // 성인 수
+                        $youthCount={2} // 청소년 수
+                        $location='메가박스 울산 성남 지점' // 상영 지점
+                        $posterImage='' // 영화 포스터 이미지 경로
+                      />
                     </th>
                     <td>
-                      &lt;MovieInfoCard&gt;
-                      <br />
-                      &nbsp;&nbsp; &lt;MoviePosterBox $width='' $height=''&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp; &lt;MoviePoster src=&#123;MoviePosterImage&#125;
-                      alt='영화타이틀' /&gt;
-                      <br />
-                      &nbsp;&nbsp; &lt;/MoviePosterBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;MovieDetailBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieTitleBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;StyleAge $age='18' /&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieTitle&gt;크라벤&lt;/MovieTitle&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieTitleBox&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoList&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;예매일&nbsp;&lt;/MovieInfoTitle&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
-                      2024년 10월 13일&lt;/MovieInfoContent&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;좌석&nbsp;&lt;/MovieInfoTitle&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; E열 24석 /
-                      E열 25석 / E열 26석 / E열 27석 / E열 28석 / E열
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;29석
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfoContent&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;가격&nbsp;&lt;/MovieInfoTitle&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
-                      120,000원&lt;/MovieInfoContent&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;인원
-                      수&nbsp;&lt;/MovieInfoTitle&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
-                      6명&lt;/MovieInfoContent&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;상영시간&nbsp;&lt;/MovieInfoTitle&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
-                      204분&lt;/MovieInfoContent&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;지점&nbsp;&lt;/MovieInfoTitle&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
-                      메가박스 울산 성남 지점&lt;/MovieInfoContent&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
-                      <br />
-                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfoList&gt;
-                      <br />
-                      &nbsp;&nbsp;&lt;/MovieDetailBox&gt;
-                      <br />
-                      &lt;/MovieInfoCard&gt;
+                      <MultilineTextComponent code={C_MovieInfoCard} />
                     </td>
                   </tr>
                 </tbody>
@@ -831,3 +575,14 @@ const Common = () => {
 }
 
 export default Common
+
+const MultilineTextComponent = ({ code }) => {
+  return <TextWithLineBreak>{code}</TextWithLineBreak>
+}
+
+const TextWithLineBreak = styled.code`
+  white-space: pre; /* 줄바꿈을 유지하면서 텍스트를 표시 */
+  font-size: 1.8rem; /* 텍스트 크기 조정 */
+  line-height: 1.5;
+  letter-spacing: 0.8px;
+`

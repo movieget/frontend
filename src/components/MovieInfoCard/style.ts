@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const MovieInfoCard = styled.div`
+export const MovieInfoCardWrapper = styled.div`
   display: flex;
   gap: 3.6rem;
 `
