@@ -1,6 +1,7 @@
 import Bell from '../../assets/svg/bell.svg'
 import Profile from '../../assets/img/Profile.svg'
 import BasicProfile from '../../assets/svg/profile_user.svg'
+import MoviePosterImage from '../../assets/img/profile.svg'
 import './style.css'
 
 import useImagePreview from '../../hooks/useImagePreview'
@@ -42,6 +43,18 @@ import StarRating from '../../components/StarRating/StarRating'
 import useRating from '../../hooks/useRating'
 import Tabs from '../../components/Tab/Tab'
 import CustomSelect from '../../components/Select/CusomSelect'
+import {
+  MovieDetailBox,
+  MovieInfo,
+  MovieInfoCard,
+  MovieInfoContent,
+  MovieInfoList,
+  MovieInfoTitle,
+  MoviePoster,
+  MoviePosterBox,
+  MovieTitle,
+  MovieTitleBox,
+} from '../../components/MovieInfoCard/style'
 
 const Common = () => {
   const {
@@ -655,6 +668,156 @@ const Common = () => {
                       &nbsp;&nbsp;disabled=&#123;true&#125;
                       <br />
                       /&gt;
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* MovieCard */}
+          <section className='section'>
+            <h3 className='sec-title'>- MovieCard</h3>
+            <p className='sec-exp'>내용없음</p>
+            <div className='table-box'>
+              <table>
+                <thead>
+                  <tr>
+                    <th>컴포넌트</th>
+                    <th>태그</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>
+                      <MovieInfoCard>
+                        <MoviePosterBox $width='' $height=''>
+                          <MoviePoster src={MoviePosterImage} alt='영화타이틀' />
+                        </MoviePosterBox>
+                        <MovieDetailBox>
+                          <MovieTitleBox>
+                            <StyleAge $age='18' />
+                            <MovieTitle>크라벤</MovieTitle>
+                          </MovieTitleBox>
+
+                          <MovieInfoList>
+                            <MovieInfo>
+                              <MovieInfoTitle>예매일&nbsp;</MovieInfoTitle>
+                              <MovieInfoContent>:&nbsp; 2024년 10월 13일</MovieInfoContent>
+                            </MovieInfo>
+                            <MovieInfo>
+                              <MovieInfoTitle>좌석&nbsp;</MovieInfoTitle>
+                              <MovieInfoContent>
+                                :&nbsp; E열 24석 / E열 25석 / E열 26석 / E열 27석 / E열 28석 / E열
+                                29석
+                              </MovieInfoContent>
+                            </MovieInfo>
+                            <MovieInfo>
+                              <MovieInfoTitle>가격&nbsp;</MovieInfoTitle>
+                              <MovieInfoContent>:&nbsp; 120,000원</MovieInfoContent>
+                            </MovieInfo>
+                            <MovieInfo>
+                              <MovieInfoTitle>인원 수&nbsp;</MovieInfoTitle>
+                              <MovieInfoContent>:&nbsp; 6명</MovieInfoContent>
+                            </MovieInfo>
+                            <MovieInfo>
+                              <MovieInfoTitle>상영시간&nbsp;</MovieInfoTitle>
+                              <MovieInfoContent>:&nbsp; 204분</MovieInfoContent>
+                            </MovieInfo>
+                            <MovieInfo>
+                              <MovieInfoTitle>지점&nbsp;</MovieInfoTitle>
+                              <MovieInfoContent>:&nbsp; 메가박스 울산 성남 지점</MovieInfoContent>
+                            </MovieInfo>
+                          </MovieInfoList>
+                        </MovieDetailBox>
+                      </MovieInfoCard>
+                    </th>
+                    <td>
+                      &lt;MovieInfoCard&gt;
+                      <br />
+                      &nbsp;&nbsp; &lt;MoviePosterBox $width='' $height=''&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp; &lt;MoviePoster src=&#123;MoviePosterImage&#125;
+                      alt='영화타이틀' /&gt;
+                      <br />
+                      &nbsp;&nbsp; &lt;/MoviePosterBox&gt;
+                      <br />
+                      &nbsp;&nbsp;&lt;MovieDetailBox&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieTitleBox&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;StyleAge $age='18' /&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieTitle&gt;크라벤&lt;/MovieTitle&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieTitleBox&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoList&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;예매일&nbsp;&lt;/MovieInfoTitle&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
+                      2024년 10월 13일&lt;/MovieInfoContent&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;좌석&nbsp;&lt;/MovieInfoTitle&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; E열 24석 /
+                      E열 25석 / E열 26석 / E열 27석 / E열 28석 / E열
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;29석
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfoContent&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;가격&nbsp;&lt;/MovieInfoTitle&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
+                      120,000원&lt;/MovieInfoContent&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;인원
+                      수&nbsp;&lt;/MovieInfoTitle&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
+                      6명&lt;/MovieInfoContent&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;상영시간&nbsp;&lt;/MovieInfoTitle&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
+                      204분&lt;/MovieInfoContent&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoTitle&gt;지점&nbsp;&lt;/MovieInfoTitle&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;MovieInfoContent&gt;:&nbsp;
+                      메가박스 울산 성남 지점&lt;/MovieInfoContent&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfo&gt;
+                      <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp;&lt;/MovieInfoList&gt;
+                      <br />
+                      &nbsp;&nbsp;&lt;/MovieDetailBox&gt;
+                      <br />
+                      &lt;/MovieInfoCard&gt;
                     </td>
                   </tr>
                 </tbody>
