@@ -514,12 +514,12 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <StyleProfile width='' height=''>
+                      <StyleProfile $width='' $height=''>
                         <StyleProfileImg src={BasicProfile} />
                       </StyleProfile>
                     </th>
                     <td>
-                      &lt;StyleProfile width='' height=''&gt; <br />
+                      &lt;StyleProfile $width='' $height=''&gt; <br />
                       &nbsp;&nbsp;&lt;StyleProfileImg src=&#123;BasicProfile&#125;/&gt; <br />
                       &lt;/StyleProfile&gt;
                     </td>
