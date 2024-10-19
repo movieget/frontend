@@ -2,21 +2,21 @@ import { StyleProfile, StyleProfileImg } from '../../components/Badge/style'
 import BasicProfile from '../../assets/svg/profile_user.svg'
 import styled from 'styled-components'
 import { Link, useSearchParams } from 'react-router-dom'
-import CenterPageLayout from '../../components/Layouts/CenterPageLayout'
 import UserInfo from './ui/UserInfo/UserInfo'
 import BookingHistory from './ui/BookingHistory/BookingHistory'
 import PointsHistory from './ui/PointsHistory/PointsHistory'
 import MyReviews from './ui/MyReviews/MyReviews'
 import MyFavorites from './ui/MyFavorites/MyFavorites'
 import Withdrawal from './ui/Withdrawal/Withdrawal'
+import PageLayout from '../../components/Layouts/PageLayout'
 
 const Mypage = () => {
   const [URLSearchParams] = useSearchParams()
   const menu = URLSearchParams.get('menu') || 'default' // 기본 모드 설정
 
   return (
-    <CenterPageLayout>
-      <MyPageContainer className='dsds'>
+    <PageLayout>
+      <MyPageContainer>
         <MyMenuWrapper>
           <MyMenuBox>
             <MyMenuTitle>마이 메뉴</MyMenuTitle>
@@ -46,11 +46,11 @@ const Mypage = () => {
               <StyleProfile width='10rem' height='10rem'>
                 <StyleProfileImg src={BasicProfile} />
               </StyleProfile>
-              <UserName>
+              <MyName>
                 안녕하세요!
                 <br />
-                <UserNameStrong>김진모님</UserNameStrong>
-              </UserName>
+                <MyNameStrong>김진모님</MyNameStrong>
+              </MyName>
             </MyInfo>
             <MyPoint>350,000P</MyPoint>
           </MyInfoBox>
@@ -78,17 +78,19 @@ const Mypage = () => {
               </MyMovieStory>
             </MyMovieStoryList>
           </MyMovieStoryBox>
-          <MyContentsBox>
-            {menu === 'user-info' && <UserInfo />}
-            {menu === 'booking-history' && <BookingHistory />}
-            {menu === 'points-history' && <PointsHistory />}
-            {menu === 'my-reviews' && <MyReviews />}
-            {menu === 'my-favorites' && <MyFavorites />}
-            {menu === 'withdrawal' && <Withdrawal />}
-          </MyContentsBox>
+          {menu !== 'default' && (
+            <MyContentsBox>
+              {menu === 'user-info' && <UserInfo />}
+              {menu === 'booking-history' && <BookingHistory />}
+              {menu === 'points-history' && <PointsHistory />}
+              {menu === 'my-reviews' && <MyReviews />}
+              {menu === 'my-favorites' && <MyFavorites />}
+              {menu === 'withdrawal' && <Withdrawal />}
+            </MyContentsBox>
+          )}
         </MypageContents>
       </MyPageContainer>
-    </CenterPageLayout>
+    </PageLayout>
   )
 }
 
@@ -143,12 +145,12 @@ const MyInfo = styled.div`
   align-items: center;
   gap: 2rem;
 `
-const UserName = styled.h2`
+const MyName = styled.h2`
   font-size: 3.6rem;
   font-weight: 500;
   line-height: 4.4rem;
 `
-const UserNameStrong = styled.strong`
+const MyNameStrong = styled.strong`
   font-weight: 800;
 `
 const MyPoint = styled.div`
