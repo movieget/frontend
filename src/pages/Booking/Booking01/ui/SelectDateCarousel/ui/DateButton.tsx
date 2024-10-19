@@ -1,6 +1,6 @@
-import { Badge } from '../../../../components/Badge/style'
-import { DateBtn, Day } from './SelectDateCarousel.style'
-import { IDateButtonProps } from './SelectDateCarousel.type'
+import { Badge } from '../../../../../../components/Badge/style'
+import { DateBtn, Day } from '../SelectDateCarousel.style'
+import { IDateButtonProps } from '../SelectDateCarousel.type'
 
 const DateButton = ({ date, today, onSelect }: IDateButtonProps) => {
   const [year, month, day, weekday] = date.split('-')

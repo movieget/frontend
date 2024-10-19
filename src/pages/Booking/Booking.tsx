@@ -1,14 +1,12 @@
 import CenterPageLayout from '../../components/Layouts/CenterPageLayout'
 import { BookingWrapper } from './Booking.style'
-import SelectBody from './ui/SelectBody/SelectBody'
-import SelectDateCarousel from './ui/SelectDateCarousel/SelectDateCarousel'
+import Booking01 from './Booking01/Booking01'
 
 const Booking = () => {
   return (
     <CenterPageLayout>
       <BookingWrapper>
-        <SelectDateCarousel />
-        <SelectBody />
+        <Booking01 />
       </BookingWrapper>
     </CenterPageLayout>
   )

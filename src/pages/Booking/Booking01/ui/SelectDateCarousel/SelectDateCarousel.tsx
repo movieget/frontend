@@ -1,11 +1,11 @@
 import Slider from 'react-slick'
-import { generateDates } from '../../../../utils/generateDates'
-import NextButton from './NextButton'
-import PrevButton from './PrevButton'
 import { CarouselWrapper, SliderWrapper } from './SelectDateCarousel.style'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import DateButton from './DateButton'
+import DateButton from './ui/DateButton'
+import NextButton from './ui/NextButton'
+import PrevButton from './ui/PrevButton'
+import { generateDates } from '../../../../../utils/generateDates'
 
 const SelectDateCarousel = () => {
   const dates = generateDates()
