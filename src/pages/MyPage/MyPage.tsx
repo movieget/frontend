@@ -43,7 +43,7 @@ const Mypage = () => {
           </MyMenuBox>
           <MyInfoBox>
             <MyInfo>
-              <StyleProfile width='10rem' height='10rem'>
+              <StyleProfile $width='10rem' $height='10rem'>
                 <StyleProfileImg src={BasicProfile} />
               </StyleProfile>
               <MyName>

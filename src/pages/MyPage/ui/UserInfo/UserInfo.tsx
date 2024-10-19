@@ -1,5 +1,5 @@
 import Tabs from '../../../../components/Tab/Tab'
-import EditInfo from './ui/EditInfo/EditInfo'
+import EditInfo from './ui/EditInfo'
 
 const UserInfo = () => {
   return (

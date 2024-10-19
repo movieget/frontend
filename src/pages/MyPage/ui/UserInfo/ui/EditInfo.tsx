@@ -9,10 +9,10 @@ import {
   ProfileInputFileLabel,
   ProfilePreviewImg,
   ProfilePreviewImgBox,
-} from '../../../../../../components/Input/style'
-import useImagePreview from '../../../../../../hooks/useImagePreview'
-import { ContentsBigTitle, ContentsTitle } from '../../../../style'
-import { MainBtn } from '../../../../../../components/Button/style'
+} from '../../../../../components/Input/style'
+import useImagePreview from '../../../../../hooks/useImagePreview'
+import { ContentsBigTitle, ContentsTitle } from '../../../style'
+import { MainBtn } from '../../../../../components/Button/style'
 
 const EditInfo = () => {
   const { image: image, handleImageChange: handleImageChange } = useImagePreview()
