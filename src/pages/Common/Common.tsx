@@ -74,6 +74,7 @@ import {
   C_StarRating,
   C_StarRating2,
 } from './CommonCodes'
+import FormattedCodeBlock from '../../components/\btest/CodeFormatter'
 
 const Common = () => {
   const {
@@ -110,7 +111,7 @@ const Common = () => {
                       <BasicBtn $size='large'>기본버튼</BasicBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_BasicBtn_L} />
+                      <FormattedCodeBlock code={C_BasicBtn_L} />
                     </td>
                   </tr>
                   <tr>
@@ -118,7 +119,7 @@ const Common = () => {
                       <BasicBtn $size='medium'>기본버튼</BasicBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_BasicBtn_M} />
+                      <FormattedCodeBlock code={C_BasicBtn_M} />
                     </td>
                   </tr>
                   <tr>
@@ -126,7 +127,7 @@ const Common = () => {
                       <BasicBtn $size='small'>기본버튼</BasicBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_BasicBtn_S} />
+                      <FormattedCodeBlock code={C_BasicBtn_S} />
                     </td>
                   </tr>
                   <tr>
@@ -134,7 +135,7 @@ const Common = () => {
                       <MainBtn $size='large'>메인버튼</MainBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_MainBtn_L} />
+                      <FormattedCodeBlock code={C_MainBtn_L} />
                     </td>
                   </tr>
                   <tr>
@@ -142,7 +143,7 @@ const Common = () => {
                       <MainBtn $size='medium'>메인버튼</MainBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_MainBtn_M} />
+                      <FormattedCodeBlock code={C_MainBtn_M} />
                     </td>
                   </tr>
                   <tr>
@@ -150,7 +151,7 @@ const Common = () => {
                       <MainBtn $size='small'>메인버튼</MainBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_MainBtn_S} />
+                      <FormattedCodeBlock code={C_MainBtn_S} />
                     </td>
                   </tr>
                   <tr>
@@ -158,7 +159,7 @@ const Common = () => {
                       <BasicBtn $disabled>disabled 버튼(Basic/Main) 공용</BasicBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_DisabledBtn} />
+                      <FormattedCodeBlock code={C_DisabledBtn} />
                     </td>
                   </tr>
                   <tr>
@@ -166,7 +167,7 @@ const Common = () => {
                       <SocialBtn $social='kakao'>카카오로 시작하기</SocialBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_SocialBtnKakao} />
+                      <FormattedCodeBlock code={C_SocialBtnKakao} />
                     </td>
                   </tr>
                   <tr>
@@ -174,7 +175,7 @@ const Common = () => {
                       <SocialBtn $social='naver'>네이버로 시작하기</SocialBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_SocialBtnNaver} />
+                      <FormattedCodeBlock code={C_SocialBtnNaver} />
                     </td>
                   </tr>
                 </tbody>
@@ -202,7 +203,7 @@ const Common = () => {
                       </IconBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_IconBtnAlarm} />
+                      <FormattedCodeBlock code={C_IconBtnAlarm} />
                     </td>
                   </tr>
                   <tr>
@@ -212,7 +213,7 @@ const Common = () => {
                       </IconBtn>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_IconBtnMypage} />
+                      <FormattedCodeBlock code={C_IconBtnMypage} />
                     </td>
                   </tr>
                 </tbody>
@@ -241,7 +242,7 @@ const Common = () => {
                       </InputBox>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_InputBox} />
+                      <FormattedCodeBlock code={C_InputBox} />
                     </td>
                   </tr>
                   <tr>
@@ -251,7 +252,7 @@ const Common = () => {
                       </TextareaBox>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_TextareaBox} />
+                      <FormattedCodeBlock code={C_TextareaBox} />
                     </td>
                   </tr>
                   <tr>
@@ -259,7 +260,7 @@ const Common = () => {
                       <CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} />
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_CustomSelect} />
+                      <FormattedCodeBlock code={C_CustomSelect} />
                     </td>
                   </tr>
                 </tbody>
@@ -288,7 +289,7 @@ const Common = () => {
                       </CheckboxWrapper>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_CheckboxBasic} />
+                      <FormattedCodeBlock code={C_CheckboxBasic} />
                     </td>
                   </tr>
                   <tr>
@@ -299,7 +300,7 @@ const Common = () => {
                       </CheckboxWrapper>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_CheckboxHeart} />
+                      <FormattedCodeBlock code={C_CheckboxHeart} />
                     </td>
                   </tr>
                   <tr>
@@ -312,7 +313,7 @@ const Common = () => {
                       </CheckboxWrapper>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_CheckboxSeat} />
+                      <FormattedCodeBlock code={C_CheckboxSeat} />
                     </td>
                   </tr>
                 </tbody>
@@ -353,7 +354,7 @@ const Common = () => {
                       </ImgInpBox>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_ImgInpBox} />
+                      <FormattedCodeBlock code={C_ImgInpBox} />
                     </td>
                   </tr>
                   <tr>
@@ -377,7 +378,7 @@ const Common = () => {
                       </ProfileImgInpBox>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_ProfileImgInpBox} />
+                      <FormattedCodeBlock code={C_ProfileImgInpBox} />
                     </td>
                   </tr>
                 </tbody>
@@ -408,7 +409,7 @@ const Common = () => {
                       </BadgeBox>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_Badge} />
+                      <FormattedCodeBlock code={C_Badge} />
                     </td>
                   </tr>
                   <tr>
@@ -419,7 +420,7 @@ const Common = () => {
                       <StyleAge $age='18' />
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_StyleAge} />
+                      <FormattedCodeBlock code={C_StyleAge} />
                     </td>
                   </tr>
                   <tr>
@@ -429,7 +430,7 @@ const Common = () => {
                       </StyleProfile>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_StyleProfile} />
+                      <FormattedCodeBlock code={C_StyleProfile} />
                     </td>
                   </tr>
                 </tbody>
@@ -464,7 +465,7 @@ const Common = () => {
                       />
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_Tabs} />
+                      <FormattedCodeBlock code={C_Tabs} />
                     </td>
                   </tr>
                 </tbody>
@@ -490,7 +491,7 @@ const Common = () => {
                       <StyleTitle>상영중 TOP 10</StyleTitle>
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_StyleTitle} />
+                      <FormattedCodeBlock code={C_StyleTitle} />
                     </td>
                   </tr>
                   <tr>
@@ -503,7 +504,7 @@ const Common = () => {
                       />
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_StarRating} />
+                      <FormattedCodeBlock code={C_StarRating} />
                     </td>
                   </tr>
                   <tr>
@@ -518,7 +519,7 @@ const Common = () => {
                       />
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_StarRating2} />
+                      <FormattedCodeBlock code={C_StarRating2} />
                     </td>
                   </tr>
                 </tbody>
@@ -561,7 +562,7 @@ const Common = () => {
                       />
                     </th>
                     <td>
-                      <MultilineTextComponent code={C_MovieInfoCard} />
+                      <FormattedCodeBlock code={C_MovieInfoCard} />
                     </td>
                   </tr>
                 </tbody>
@@ -576,13 +577,13 @@ const Common = () => {
 
 export default Common
 
-const MultilineTextComponent = ({ code }) => {
-  return <TextWithLineBreak>{code}</TextWithLineBreak>
-}
+// const FormattedCodeBlock = ({ code }) => {
+//   return <TextWithLineBreak>{code}</TextWithLineBreak>
+// }
 
-const TextWithLineBreak = styled.code`
-  white-space: pre; /* 줄바꿈을 유지하면서 텍스트를 표시 */
-  font-size: 1.8rem; /* 텍스트 크기 조정 */
-  line-height: 1.5;
-  letter-spacing: 0.8px;
-`
+// const TextWithLineBreak = styled.code`
+//   white-space: pre; /* 줄바꿈을 유지하면서 텍스트를 표시 */
+//   font-size: 1.8rem; /* 텍스트 크기 조정 */
+//   line-height: 1.5;
+//   letter-spacing: 0.8px;
+// `
