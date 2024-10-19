@@ -40,7 +40,9 @@ const Header = () => {
             </GNB>
           </Nav>
         </HeaderLeft>
-        <MainBtn size='large'>로그인</MainBtn>
+        <Link to='/login' aria-label='로그인 페이지로 이동'>
+          <MainBtn $size='large'>로그인</MainBtn>
+        </Link>
       </HeaderContainer>
     </StyledHeader>
   )
