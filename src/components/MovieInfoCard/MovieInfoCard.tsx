@@ -128,7 +128,7 @@ const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
               <MovieInfoTitle>인원 수</MovieInfoTitle>
               <MovieInfoContent>
                 : {$adultCount ? `성인 ${$adultCount}` : ''}
-                {' / '}
+                {$adultCount && $youthCount ? ' / ' : ''}
                 {$youthCount ? `청소년 ${$youthCount}` : ''}
               </MovieInfoContent>
             </MovieInfo>
