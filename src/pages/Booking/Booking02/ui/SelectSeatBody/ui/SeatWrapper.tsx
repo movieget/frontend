@@ -16,5 +16,6 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1.4rem;
+  padding: 4rem;
   margin-bottom: 6rem;
 `

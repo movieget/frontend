@@ -17,6 +17,12 @@ const SelectSeatBody = () => {
 export default SelectSeatBody
 
 const BodyWrapper = styled(StyledWrapper)`
+  width: 100%;
   height: 100%;
   padding: 40px 0;
+
+  svg {
+    width: 100%;
+    object-fit: cover;
+  }
 `
