@@ -22,6 +22,7 @@ export default Booking02
 
 const BoxRow = styled(SelectBoxRow)`
   width: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
 `

@@ -93,17 +93,22 @@ export const SocialBtn = styled.button<IfSocialBtn>`
 `
 
 // 아이콘 버튼
-export const IconBtn = styled.button`
+
+interface IconBtnProps {
+  width?: string
+  height?: string
+}
+export const IconBtn = styled.button<IconBtnProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
+  width: ${(props) => props.width || '2.4rem'};
+  height: ${(props) => props.width || '2.4rem'};
   padding: 0;
   background-color: #292929;
   border: 1px solid;
   border-color: #3f3f3f;
-  border-radius: 1.2rem;
+  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
 `
