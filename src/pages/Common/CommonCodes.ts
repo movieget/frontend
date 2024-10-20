@@ -121,6 +121,7 @@ export const C_MovieInfoCard = `<MovieInfoCard
   $title='크라벤'
   $age='18'
   $screeningDate='2024년 10월 20일'
+  $bookingDate='2024년 10월 20일'
   $cancelDate='2024년 10월 18일'
   $createdDate='2024년 10월 01일'
   $duration={204}
