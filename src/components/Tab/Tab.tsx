@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TabButton, TabButtonBox, TabContainer, TabContentsBox } from './style'
+import { TabButton, TabButtonBox, TabButtonWrapper, TabContainer, TabContentsBox } from './style'
 import CustomSelect from '../Select/CusomSelect'
 
 interface ButtonProps {
@@ -27,7 +27,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, contents, isSelect }) => {
 
   return (
     <TabContainer>
-      <div>
+      <TabButtonWrapper>
         <TabButtonBox>
           {tabs.map((tab, index) => (
             <Button
@@ -38,8 +38,10 @@ const Tabs: React.FC<TabsProps> = ({ tabs, contents, isSelect }) => {
             />
           ))}
         </TabButtonBox>
-        {isSelect && <CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} />}
-      </div>
+        {isSelect && (
+          <CustomSelect items={['전체', '당일', '주간', '월간', '최근 1년간']} $direction='right' />
+        )}
+      </TabButtonWrapper>
       <TabContentsBox>{contents[activeIndex]}</TabContentsBox>
     </TabContainer>
   )

@@ -257,7 +257,10 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th className='h280'>
-                      <CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} />
+                      <CustomSelect
+                        items={['바나나', '원숭이', '사나움사나움사나움']}
+                        $direction='right'
+                      />
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_CustomSelect} />
@@ -547,6 +550,7 @@ const Common = () => {
                         $title='크라벤' // 영화 제목
                         $age='18' // 연령
                         $screeningDate='2024년 10월 20일' // 상영 날짜
+                        $bookingDate='2024년 10월 20일' // 예매 날짜
                         $cancelDate='2024년 10월 18일' // 취소 가능한 날짜
                         $createdDate='2024년 10월 01일' // 작성된 날짜
                         $duration={204} // 상영 시간 (분 단위)

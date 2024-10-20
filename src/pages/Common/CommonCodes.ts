@@ -26,7 +26,7 @@ export const C_TextareaBox = `<TextareaBox width=''>
   <Textarea width='' placeholder='텍스트를 입력하세요.' />
 </TextareaBox>`
 
-export const C_CustomSelect = `<CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} />`
+export const C_CustomSelect = `<CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} $direction='right' />`
 
 export const C_CheckboxBasic = `<CheckboxWrapper>
   <Checkbox type='checkbox' id='checkboxText' name='' />
@@ -121,6 +121,7 @@ export const C_MovieInfoCard = `<MovieInfoCard
   $title='크라벤'
   $age='18'
   $screeningDate='2024년 10월 20일'
+  $bookingDate='2024년 10월 20일'
   $cancelDate='2024년 10월 18일'
   $createdDate='2024년 10월 01일'
   $duration={204}

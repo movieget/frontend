@@ -17,6 +17,7 @@ interface MovieInfoCardProps {
   $title?: string // 영화 제목 (선택적, 문자열)
   $age?: 'all' | '12' | '15' | '18' // 연령 정보를 추가
   $screeningDate?: string // 상영 날짜 (선택적, 문자열)
+  $bookingDate?: string // 예매 날짜 (선택적, 문자열)
   $cancelDate?: string // 취소 날짜 (선택적, 문자열)
   $createdDate?: string // 작성 날짜 (선택적, 문자열)
   $duration?: number // 상영 시간 (선택적, 분 단위, 숫자)
@@ -36,6 +37,7 @@ const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
   $title,
   $age,
   $screeningDate,
+  $bookingDate,
   $cancelDate,
   $createdDate,
   $duration,
@@ -61,6 +63,12 @@ const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
           {$title && <MovieTitle>{$title}</MovieTitle>}
         </MovieTitleBox>
         <MovieInfoList>
+          {$bookingDate && (
+            <MovieInfo>
+              <MovieInfoTitle>예매일</MovieInfoTitle>
+              <MovieInfoContent>: {$bookingDate}</MovieInfoContent>
+            </MovieInfo>
+          )}
           {$screeningDate && (
             <MovieInfo>
               <MovieInfoTitle>상영일</MovieInfoTitle>
@@ -77,12 +85,6 @@ const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
             <MovieInfo>
               <MovieInfoTitle>작성일</MovieInfoTitle>
               <MovieInfoContent>: {$createdDate}</MovieInfoContent>
-            </MovieInfo>
-          )}
-          {$duration !== undefined && (
-            <MovieInfo>
-              <MovieInfoTitle>상영시간</MovieInfoTitle>
-              <MovieInfoContent>: {$duration}분</MovieInfoContent>
             </MovieInfo>
           )}
           {$reviewType && (
@@ -126,9 +128,15 @@ const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
               <MovieInfoTitle>인원 수</MovieInfoTitle>
               <MovieInfoContent>
                 : {$adultCount ? `성인 ${$adultCount}` : ''}
-                {' / '}
+                {$adultCount && $youthCount ? ' / ' : ''}
                 {$youthCount ? `청소년 ${$youthCount}` : ''}
               </MovieInfoContent>
+            </MovieInfo>
+          )}
+          {$duration !== undefined && (
+            <MovieInfo>
+              <MovieInfoTitle>상영시간</MovieInfoTitle>
+              <MovieInfoContent>: {$duration}분</MovieInfoContent>
             </MovieInfo>
           )}
           {$location && (
