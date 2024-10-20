@@ -7,6 +7,7 @@ import {
   CheckboxWrapper,
   CheckHeartCount,
 } from '../../../../../components/Checkbox/style'
+import { formatLikes } from '../../../../../utils/formatLikes'
 
 interface Favorite {
   id: number
@@ -42,13 +43,6 @@ const dummyData = [
     isChecked: true,
   },
 ]
-
-const formatLikes = (likes: number) => {
-  if (likes >= 1000) {
-    return (likes / 1000).toFixed(1) + 'k'
-  }
-  return likes.toString()
-}
 
 const MyFavoritList = () => {
   const [favoriteList, setFavoriteList] = useState<Favorite[]>(dummyData)
