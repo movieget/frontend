@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { TabButton, TabButtonBox, TabContainer, TabContentsBox } from './style'
+import CustomSelect from '../Select/CusomSelect'
 
 interface ButtonProps {
   $label: string
@@ -18,23 +19,27 @@ const Button: React.FC<ButtonProps> = ({ $label, $isActive, onClick }) => {
 interface TabsProps {
   tabs: string[]
   contents: React.ReactNode[]
+  isSelect: boolean
 }
 
-const Tabs: React.FC<TabsProps> = ({ tabs, contents }) => {
+const Tabs: React.FC<TabsProps> = ({ tabs, contents, isSelect }) => {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
     <TabContainer>
-      <TabButtonBox>
-        {tabs.map((tab, index) => (
-          <Button
-            key={index}
-            $label={tab}
-            $isActive={index === activeIndex}
-            onClick={() => setActiveIndex(index)}
-          />
-        ))}
-      </TabButtonBox>
+      <div>
+        <TabButtonBox>
+          {tabs.map((tab, index) => (
+            <Button
+              key={index}
+              $label={tab}
+              $isActive={index === activeIndex}
+              onClick={() => setActiveIndex(index)}
+            />
+          ))}
+        </TabButtonBox>
+        {isSelect && <CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} />}
+      </div>
       <TabContentsBox>{contents[activeIndex]}</TabContentsBox>
     </TabContainer>
   )

@@ -99,7 +99,9 @@ export const C_Tabs = `<Tabs
     <div>탭 컨텐츠 3</div>,
     <div>탭 컨텐츠 4</div>,
     <div>탭 컨텐츠 5</div>,
-]}`
+  ]}
+  isSelect={true}
+/>`
 
 export const C_StyleTitle = `<StyleTitle>상영중 TOP 10</StyleTitle>`
 export const C_StarRating = `<StarRating
