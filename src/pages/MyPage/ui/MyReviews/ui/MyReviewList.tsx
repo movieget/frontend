@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { MovieList, MovieListBox } from '../../../style'
+import { BtnBox, MovieList, MovieListBox } from '../../../style'
 import MovieInfoCard from '../../../../../components/MovieInfoCard/MovieInfoCard'
 import { BasicBtn, IssueBtn } from '../../../../../components/Button/style'
 import { useState } from 'react'
@@ -67,9 +67,3 @@ const MyReviewList = () => {
 }
 
 export default MyReviewList
-
-const BtnBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-`

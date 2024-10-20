@@ -50,7 +50,6 @@ import useRating from '../../hooks/useRating'
 import Tabs from '../../components/Tab/Tab'
 import CustomSelect from '../../components/Select/CusomSelect'
 import MovieInfoCard from '../../components/MovieInfoCard/MovieInfoCard'
-import styled from 'styled-components'
 import {
   C_BasicBtn_L,
   C_BasicBtn_M,
@@ -568,6 +567,8 @@ const Common = () => {
                         $bookingDate='2024년 10월 20일' // 예매 날짜
                         $cancelDate='2024년 10월 18일' // 취소 가능한 날짜
                         $createdDate='2024년 10월 01일' // 작성된 날짜
+                        $genre={['액션', '스릴러']} // 장르
+                        $overview='주인공이 가족을 구하기 위해 싸우는 이야기입니다.' // 줄거리
                         $duration={204} // 상영 시간 (분 단위)
                         $reviewType='포토리뷰' // 리뷰의 종류
                         $rating={5} // 남긴 평점 (0~5 점)

@@ -13,6 +13,12 @@ export const ContentsTitle = styled.p`
   font-weight: 600;
 `
 
+export const BtnBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+`
+
 export const MovieListBox = styled.ul`
   display: flex;
   flex-direction: column;

@@ -59,6 +59,34 @@ export const CheckHeart = styled.label`
     background-image: url(${HeartChecked});
   }
 `
+export const CheckHeartCount = styled.label`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: auto;
+  height: 4rem;
+  padding: 0 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  background-color: #292929;
+  border: 1px solid #3f3f3f;
+  border-radius: 0.4rem;
+  color: #fff;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: no-repeat 50% 50% / 100%;
+    background-image: url(${HeartUnChecked});
+  }
+
+  ${Checkbox}:checked + &::before {
+    background-image: url(${HeartChecked});
+  }
+`
 
 //seat
 export const CheckSeat = styled.label`

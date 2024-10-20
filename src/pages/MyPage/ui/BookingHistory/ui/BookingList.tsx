@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import MovieInfoCard from '../../../../../components/MovieInfoCard/MovieInfoCard'
 import { BasicBtn, MainBtn } from '../../../../../components/Button/style'
 import styled from 'styled-components'
-import { MovieList, MovieListBox } from '../../../style'
+import { BtnBox, MovieList, MovieListBox } from '../../../style'
 
 interface Movie {
   id: number
@@ -127,9 +127,3 @@ const BookingList = () => {
 }
 
 export default BookingList
-
-const BtnBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-`
