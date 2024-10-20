@@ -74,7 +74,7 @@ import {
   C_StarRating,
   C_StarRating2,
 } from './CommonCodes'
-import FormattedCodeBlock from '../../components/\btest/CodeFormatter'
+import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
 
 const Common = () => {
   const {
@@ -462,6 +462,7 @@ const Common = () => {
                           <div>탭 컨텐츠 4</div>,
                           <div>탭 컨텐츠 5</div>,
                         ]}
+                        isSelect={true}
                       />
                     </th>
                     <td>
