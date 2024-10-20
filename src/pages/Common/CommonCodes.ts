@@ -6,6 +6,8 @@ export const C_MainBtn_L = `<MainBtn $size='large'>기본버튼</MainBtn>`
 export const C_MainBtn_M = `<MainBtn $size='medium'>기본버튼</MainBtn>`
 export const C_MainBtn_S = `<MainBtn $size='small'>기본버튼</MainBtn>`
 
+export const C_IssueBtn_L = `<IssueBtn $size='large'>이슈버튼</IssueBtn>`
+
 export const C_DisabledBtn = `<BasicBtn $disabled>disabled 버튼(Basic/Main) 공용</BasicBtn>`
 
 export const C_SocialBtnKakao = `<SocialBtn $social='kakao'>카카오로 시작하기</SocialBtn>`

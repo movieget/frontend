@@ -4,7 +4,14 @@ import BasicProfile from '../../assets/svg/profile_user.svg'
 import './style.css'
 
 import useImagePreview from '../../hooks/useImagePreview'
-import { BasicBtn, IconBtn, IconBtnImg, MainBtn, SocialBtn } from '../../components/Button/style'
+import {
+  BasicBtn,
+  IconBtn,
+  IconBtnImg,
+  IssueBtn,
+  MainBtn,
+  SocialBtn,
+} from '../../components/Button/style'
 import {
   DeletePreviewImg,
   ImgInpBox,
@@ -55,7 +62,6 @@ import {
   C_MovieInfoCard,
   C_SocialBtnKakao,
   C_SocialBtnNaver,
-  C_IconBtn,
   C_IconBtnAlarm,
   C_IconBtnMypage,
   C_InputBox,
@@ -73,6 +79,7 @@ import {
   C_StyleTitle,
   C_StarRating,
   C_StarRating2,
+  C_IssueBtn_L,
 } from './CommonCodes'
 import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
 
@@ -152,6 +159,14 @@ const Common = () => {
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_MainBtn_S} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <IssueBtn $size='large'>이슈버튼</IssueBtn>
+                    </th>
+                    <td>
+                      <FormattedCodeBlock code={C_IssueBtn_L} />
                     </td>
                   </tr>
                   <tr>

@@ -40,6 +40,22 @@ export const MainBtn = styled.button<IfBtnHeight>`
   color: ${({ $disabled }) => ($disabled ? '#797979' : '#FDFDFD')};
   cursor: ${({ $disabled }) => ($disabled ? 'initial' : 'pointer')};
 `
+export const IssueBtn = styled.button<IfBtnHeight>`
+  min-width: ${({ $size }) =>
+    $size === 'large' ? '12.4rem' : $size === 'medium' ? '10rem' : '6rem'};
+  height: ${({ $size }) => ($size === 'large' ? '4rem' : $size === 'medium' ? '3.2rem' : '2.4rem')};
+  padding: 0 1.2rem;
+  font-size: ${({ $size }) =>
+    $size === 'large' ? '1.6rem' : $size === 'medium' ? '1.4rem' : '1.2rem'};
+  font-weight: 600;
+  white-space: nowrap;
+  background: ${({ $disabled }) => ($disabled ? '#4B4B4B' : '#F22421')};
+  border: 1px solid;
+  border-color: ${({ $disabled }) => ($disabled ? '#4B4B4B' : '#F29594')};
+  border-radius: 4px;
+  color: ${({ $disabled }) => ($disabled ? '#797979' : '#FDFDFD')};
+  cursor: ${({ $disabled }) => ($disabled ? 'initial' : 'pointer')};
+`
 
 // 소셜 로그인 버튼
 interface IfSocialBtn {
