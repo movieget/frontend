@@ -25,6 +25,7 @@ declare module 'styled-components' {
       bg: string
       bg_wrapper: string
       bg_box: string
+      bg_backdrop: string
       text: string
     }
     fonts: {
