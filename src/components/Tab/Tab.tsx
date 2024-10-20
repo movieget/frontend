@@ -39,7 +39,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, contents, isSelect }) => {
           ))}
         </TabButtonBox>
         {isSelect && (
-          <CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} $direction='right' />
+          <CustomSelect items={['전체', '당일', '주간', '월간', '최근 1년간']} $direction='right' />
         )}
       </TabButtonWrapper>
       <TabContentsBox>{contents[activeIndex]}</TabContentsBox>
