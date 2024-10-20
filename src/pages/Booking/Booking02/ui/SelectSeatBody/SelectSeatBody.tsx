@@ -2,12 +2,14 @@ import styled from 'styled-components'
 import { StyledWrapper } from '../../../Booking01/ui/SelectDateCarousel/SelectDateCarousel.style'
 import SelectSeat from './ui/SelectSeat'
 import GradientLine from '../../../../../assets/svg/GradientLine'
+import SeatStatus from './ui/SeatStatus'
 
 const SelectSeatBody = () => {
   return (
     <BodyWrapper>
       <GradientLine />
       <SelectSeat />
+      <SeatStatus />
     </BodyWrapper>
   )
 }

@@ -15,5 +15,6 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.4rem;
+  margin-bottom: 6rem;
 `

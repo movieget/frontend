@@ -41,7 +41,7 @@ export default SelectSeat
 
 const ColWrapper = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 1.4rem;
 `
 
 const EmptySeat = styled.span`
