@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import MovieInfoCard from '../../../../../components/MovieInfoCard/MovieInfoCard'
 import { BasicBtn, MainBtn } from '../../../../../components/Button/style'
-import styled from 'styled-components'
 import { BtnBox, MovieList, MovieListBox } from '../../../style'
 
 interface Movie {
   id: number
   poster: string
   title: string
-  age: string
+  age: number
   bookingDate: string
   screeningDate: string
   seats: string[]
@@ -25,7 +24,7 @@ const dummyData = [
     id: 0,
     poster: '',
     title: '크라벤',
-    age: '18',
+    age: 18,
     bookingDate: '2024년 10월 20일',
     screeningDate: '2024년 10월 21일',
     seats: ['A열 10석', 'A열 11석'],
@@ -40,7 +39,7 @@ const dummyData = [
     id: 1,
     poster: '',
     title: '갓 더 뽀로로',
-    age: '18',
+    age: 18,
     bookingDate: '2024년 10월 20일',
     screeningDate: '2024년 12월 13일',
     seats: ['J열 3석'],
@@ -70,7 +69,7 @@ const dummyData = [
     id: 3,
     poster: '',
     title: '죠스',
-    age: '12',
+    age: 12,
     bookingDate: '2020년 12월 1일',
     screeningDate: '2020년 12월 3일',
     seats: [

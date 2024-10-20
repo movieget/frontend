@@ -9,10 +9,63 @@ import MyReviews from './ui/MyReviews/MyReviews'
 import MyFavorites from './ui/MyFavorites/MyFavorites'
 import Withdrawal from './ui/Withdrawal/Withdrawal'
 import PageLayout from '../../components/Layouts/PageLayout'
+import { useState } from 'react'
+import MyMovieStory from './ui/MyMovieStory/MyMovieStory'
+
+interface MenuItem {
+  id: number
+  uri: string
+  menuTitle: string
+  menuContents: React.ReactNode // 콘텐츠 타입을 ReactNode로 설정
+}
+
+const mypageMenu: MenuItem[] = [
+  {
+    id: 0,
+    uri: '?menu=user-info',
+    menuTitle: '개인정보수정',
+    menuContents: <UserInfo />,
+  },
+  {
+    id: 1,
+    uri: '?menu=booking-history',
+    menuTitle: '예매/취소 내역',
+    menuContents: <BookingHistory />,
+  },
+  {
+    id: 2,
+    uri: '?menu=points-history',
+    menuTitle: '포인트 이용/적립 내역',
+    menuContents: <PointsHistory />,
+  },
+  {
+    id: 3,
+    uri: '?menu=my-reviews',
+    menuTitle: '나의 리뷰',
+    menuContents: <MyReviews />,
+  },
+  {
+    id: 4,
+    uri: '?menu=my-favorites',
+    menuTitle: '찜 목록',
+    menuContents: <MyFavorites />,
+  },
+  {
+    id: 5,
+    uri: '?menu=withdrawal',
+    menuTitle: '회원탈퇴',
+    menuContents: <Withdrawal />,
+  },
+]
 
 const Mypage = () => {
   const [URLSearchParams] = useSearchParams()
   const menu = URLSearchParams.get('menu') || 'default' // 기본 모드 설정
+
+  const getMenuContent = () => {
+    const menuItem = mypageMenu.find((item) => item.uri === `?menu=${menu}`)
+    return menuItem ? menuItem.menuContents : null
+  }
 
   return (
     <PageLayout>
@@ -21,24 +74,11 @@ const Mypage = () => {
           <MyMenuBox>
             <MyMenuTitle>마이 메뉴</MyMenuTitle>
             <MyMenuList>
-              <MyMenu>
-                <Link to='?menu=user-info'>개인정보수정</Link>
-              </MyMenu>
-              <MyMenu>
-                <Link to='?menu=booking-history'>예매/취소 내역</Link>
-              </MyMenu>
-              <MyMenu>
-                <Link to='?menu=points-history'>포인트 이용/적립 내역</Link>
-              </MyMenu>
-              <MyMenu>
-                <Link to='?menu=my-reviews'>나의 리뷰</Link>
-              </MyMenu>
-              <MyMenu>
-                <Link to='?menu=my-favorites'>찜 목록</Link>
-              </MyMenu>
-              <MyMenu>
-                <Link to='?menu=withdrawal'>회원탈퇴</Link>
-              </MyMenu>
+              {mypageMenu.map((item) => (
+                <MyMenu key={item.id}>
+                  <Link to={item.uri}>{item.menuTitle}</Link>
+                </MyMenu>
+              ))}
             </MyMenuList>
           </MyMenuBox>
           <MyInfoBox>
@@ -57,37 +97,8 @@ const Mypage = () => {
         </MyMenuWrapper>
 
         <MypageContents>
-          <MyMovieStoryBox>
-            <MyMovieStoryTitle>나의 무비스토리</MyMovieStoryTitle>
-            <MyMovieStoryList>
-              <MyMovieStory>
-                <ActivityCount>2</ActivityCount>
-                <ActivityTitle>예매</ActivityTitle>
-              </MyMovieStory>
-              <MyMovieStory>
-                <ActivityCount>4</ActivityCount>
-                <ActivityTitle>본 영화</ActivityTitle>
-              </MyMovieStory>
-              <MyMovieStory>
-                <ActivityCount>2</ActivityCount>
-                <ActivityTitle>리뷰 수</ActivityTitle>
-              </MyMovieStory>
-              <MyMovieStory>
-                <ActivityCount>4</ActivityCount>
-                <ActivityTitle>찜한 영화</ActivityTitle>
-              </MyMovieStory>
-            </MyMovieStoryList>
-          </MyMovieStoryBox>
-          {menu !== 'default' && (
-            <MyContentsBox>
-              {menu === 'user-info' && <UserInfo />}
-              {menu === 'booking-history' && <BookingHistory />}
-              {menu === 'points-history' && <PointsHistory />}
-              {menu === 'my-reviews' && <MyReviews />}
-              {menu === 'my-favorites' && <MyFavorites />}
-              {menu === 'withdrawal' && <Withdrawal />}
-            </MyContentsBox>
-          )}
+          <MyMovieStory />
+          {menu !== 'default' && <MyContentsBox>{getMenuContent()}</MyContentsBox>}
         </MypageContents>
       </MyPageContainer>
     </PageLayout>
@@ -157,7 +168,6 @@ const MyPoint = styled.div`
   font-size: 4.8rem;
 `
 
-// 나의 무비스토리
 const MypageContents = styled.div`
   width: 100%;
   padding: 5.8rem 8rem;
@@ -165,37 +175,6 @@ const MypageContents = styled.div`
   background-color: #1b1b1b;
   border: 1px solid #474747;
   border-radius: 0.4rem;
-`
-const MyMovieStoryBox = styled.div`
-  padding: 2.4rem;
-  background-color: #1b1b1b;
-  border: 1px solid #474747;
-  border-radius: 0.4rem;
-`
-const MyMovieStoryTitle = styled.h3`
-  margin-bottom: rem;
-  font-size: 2.4rem;
-  font-weight: 600;
-  text-align: center;
-`
-const MyMovieStoryList = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10.8rem;
-  margin-top: 3.2rem;
-`
-const MyMovieStory = styled.li`
-  text-align: center;
-`
-const ActivityCount = styled.p`
-  font-size: 2.4rem;
-  font-weight: 800;
-`
-const ActivityTitle = styled.p`
-  margin-top: 0.6rem;
-  font-size: 1.6rem;
-  font-weight: 600;
 `
 
 // 마이페이지 컨텐츠
