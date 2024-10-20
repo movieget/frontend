@@ -9,14 +9,14 @@ import MyReviews from './ui/MyReviews/MyReviews'
 import MyFavorites from './ui/MyFavorites/MyFavorites'
 import Withdrawal from './ui/Withdrawal/Withdrawal'
 import PageLayout from '../../components/Layouts/PageLayout'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import MyMovieStory from './ui/MyMovieStory/MyMovieStory'
 
 interface MenuItem {
   id: number
   uri: string
   menuTitle: string
-  menuContents: React.ReactNode // 콘텐츠 타입을 ReactNode로 설정
+  menuContents: React.ReactNode
 }
 
 const mypageMenu: MenuItem[] = [
@@ -59,11 +59,21 @@ const mypageMenu: MenuItem[] = [
 ]
 
 const Mypage = () => {
-  const [URLSearchParams] = useSearchParams()
-  const menu = URLSearchParams.get('menu') || 'default' // 기본 모드 설정
+  const [URLSearchParams, setSearchParams] = useSearchParams()
+  const menu = URLSearchParams.get('menu') || 'default'
+  const [activeMenu, setActiveMenu] = useState(menu)
+
+  useEffect(() => {
+    setActiveMenu(menu)
+  }, [menu])
+
+  const handleMenuClick = (item) => {
+    setActiveMenu(item.uri.slice(6))
+    setSearchParams({ menu: item.uri.slice(6) })
+  }
 
   const getMenuContent = () => {
-    const menuItem = mypageMenu.find((item) => item.uri === `?menu=${menu}`)
+    const menuItem = mypageMenu.find((item) => item.uri === `?menu=${activeMenu}`)
     return menuItem ? menuItem.menuContents : null
   }
 
@@ -75,8 +85,13 @@ const Mypage = () => {
             <MyMenuTitle>마이 메뉴</MyMenuTitle>
             <MyMenuList>
               {mypageMenu.map((item) => (
-                <MyMenu key={item.id}>
-                  <Link to={item.uri}>{item.menuTitle}</Link>
+                <MyMenu
+                  key={item.id}
+                  active={activeMenu === item.uri.slice(6)} // active 상태 전달
+                >
+                  <Link to={item.uri} onClick={() => handleMenuClick(item)}>
+                    {item.menuTitle}
+                  </Link>
                 </MyMenu>
               ))}
             </MyMenuList>
@@ -115,7 +130,6 @@ const MyMenuWrapper = styled.div`
   gap: 2.4rem;
 `
 
-// 마이메뉴
 const MyMenuBox = styled.div`
   width: 100%;
   max-width: 26.2rem;
@@ -135,9 +149,13 @@ const MyMenuList = styled.ul`
   flex-direction: column;
   gap: 1.2rem;
 `
-const MyMenu = styled.li`
+const MyMenu = styled.li<{ active?: boolean }>`
+  padding: 0 1.2rem;
   font-size: 1.4rem;
   line-height: 2.4rem;
+  background-color: ${({ active }) =>
+    active ? '#3B3B3B' : 'transparent'}; // active 상태에 따라 배경색 변경
+  border-radius: 0.4rem;
 `
 
 // 나의 정보
@@ -177,7 +195,6 @@ const MypageContents = styled.div`
   border-radius: 0.4rem;
 `
 
-// 마이페이지 컨텐츠
 const MyContentsBox = styled.div`
   margin-top: 5.6rem;
 `
