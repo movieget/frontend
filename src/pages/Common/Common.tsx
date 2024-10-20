@@ -257,7 +257,10 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th className='h280'>
-                      <CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} />
+                      <CustomSelect
+                        items={['바나나', '원숭이', '사나움사나움사나움']}
+                        $direction='right'
+                      />
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_CustomSelect} />

@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { CustomSelectBox, Option, Select, SelectButton, SelectLi, SelectUl } from './style'
 
 interface CustomSelectProps {
-  items: string[]
+  items?: string[]
+  $direction?: 'left' | 'right'
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({ items }) => {
+const CustomSelect: React.FC<CustomSelectProps> = ({ items, $direction }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedValue, setSelectedValue] = useState<string>('선택하기')
   const dropdownRef = useRef<HTMLDivElement | null>(null)
@@ -37,7 +38,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ items }) => {
     <CustomSelectBox ref={dropdownRef}>
       <SelectButton onClick={() => setIsOpen((prev) => !prev)}>{selectedValue}</SelectButton>
       {isOpen && (
-        <SelectUl>
+        <SelectUl $direction={$direction}>
           {items.map((item) => (
             <SelectLi
               key={item}

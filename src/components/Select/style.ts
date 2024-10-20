@@ -32,9 +32,15 @@ export const SelectButton = styled.button`
   }
 `
 
-export const SelectUl = styled.ul`
+interface IOptionAlignProps {
+  $direction?: 'left' | 'right'
+}
+
+export const SelectUl = styled.ul<IOptionAlignProps>`
   position: absolute;
-  left: auto;
+  ${({ $direction }) => `
+    ${$direction}: 0;
+  `}
   top: calc(100% + 0.6rem);
   display: flex;
   flex-direction: column;

@@ -26,7 +26,7 @@ export const C_TextareaBox = `<TextareaBox width=''>
   <Textarea width='' placeholder='텍스트를 입력하세요.' />
 </TextareaBox>`
 
-export const C_CustomSelect = `<CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} />`
+export const C_CustomSelect = `<CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} $direction='right' />`
 
 export const C_CheckboxBasic = `<CheckboxWrapper>
   <Checkbox type='checkbox' id='checkboxText' name='' />

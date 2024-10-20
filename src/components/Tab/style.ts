@@ -5,7 +5,11 @@ export const TabContainer = styled.div`
   flex-direction: column;
   gap: 3.4rem;
 `
-
+export const TabButtonWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+`
 export const TabButtonBox = styled.div`
   display: flex;
   gap: 1.2rem;
