@@ -1,31 +1,19 @@
+import { useState } from 'react'
 import MovieInfoCard from '../../../../../components/MovieInfoCard/MovieInfoCard'
 import { MovieList, MovieListBox } from '../../../style'
 
-const CancelList = () => {
-  return (
-    <MovieListBox>
-      {dummyData.map((movie) => {
-        return (
-          <MovieList key={movie.id}>
-            <MovieInfoCard
-              $posterImage=''
-              $title={movie.title}
-              $age={movie.age}
-              $cancelDate={movie.cancelDate}
-              $seats={movie.seats}
-              $refundAmount={movie.refundAmount}
-              $adultCount={movie.adultCount}
-              $youthCount={movie.youthCount}
-              $location={movie.location}
-            />
-          </MovieList>
-        )
-      })}
-    </MovieListBox>
-  )
+interface Movie {
+  id: number
+  poster: string
+  title: string
+  age: string
+  cancelDate: string
+  seats: string[]
+  refundAmount: number
+  adultCount: number
+  youthCount: number
+  location: string
 }
-
-export default CancelList
 
 const dummyData = [
   {
@@ -86,3 +74,30 @@ const dummyData = [
     location: '메가박스 울산 성남 지점',
   },
 ]
+
+const CancelList = () => {
+  const [cancelList, setCancelList] = useState<Movie[]>(dummyData)
+  return (
+    <MovieListBox>
+      {cancelList?.map((movie) => {
+        return (
+          <MovieList key={movie.id}>
+            <MovieInfoCard
+              $posterImage=''
+              $title={movie.title}
+              $age={movie.age}
+              $cancelDate={movie.cancelDate}
+              $seats={movie.seats}
+              $refundAmount={movie.refundAmount}
+              $adultCount={movie.adultCount}
+              $youthCount={movie.youthCount}
+              $location={movie.location}
+            />
+          </MovieList>
+        )
+      })}
+    </MovieListBox>
+  )
+}
+
+export default CancelList

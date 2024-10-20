@@ -1,42 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MovieInfoCard from '../../../../../components/MovieInfoCard/MovieInfoCard'
 import { BasicBtn, MainBtn } from '../../../../../components/Button/style'
 import styled from 'styled-components'
 import { MovieList, MovieListBox } from '../../../style'
 
-const BookingList = () => {
-  return (
-    <MovieListBox>
-      {dummyData.map((movie) => {
-        return (
-          <MovieList key={movie.id}>
-            <MovieInfoCard
-              $posterImage=''
-              $title={movie.title}
-              $age={movie.age}
-              $bookingDate={movie.bookingDate}
-              $screeningDate={movie.screeningDate}
-              $duration={movie.duration}
-              $seats={movie.seats}
-              $price={movie.price}
-              $adultCount={movie.adultCount}
-              $youthCount={movie.youthCount}
-              $location={movie.location}
-            />
-            <BtnBox>
-              <BasicBtn $size='large'>예매 변경</BasicBtn>
-              <MainBtn $size='large' $disabled={movie.watched}>
-                예매 취소
-              </MainBtn>
-            </BtnBox>
-          </MovieList>
-        )
-      })}
-    </MovieListBox>
-  )
+interface Movie {
+  id: number
+  poster: string
+  title: string
+  age: string
+  bookingDate: string
+  screeningDate: string
+  seats: string[]
+  price: number
+  adultCount: number
+  youthCount: number
+  duration: number
+  location: string
+  watched: boolean
 }
-
-export default BookingList
 
 const dummyData = [
   {
@@ -109,6 +91,42 @@ const dummyData = [
     watched: true,
   },
 ]
+
+const BookingList = () => {
+  const [bookingList, setBookingList] = useState<Movie[]>(dummyData)
+
+  return (
+    <MovieListBox>
+      {bookingList?.map((movie) => {
+        return (
+          <MovieList key={movie.id}>
+            <MovieInfoCard
+              $posterImage=''
+              $title={movie.title}
+              $age={movie.age}
+              $bookingDate={movie.bookingDate}
+              $screeningDate={movie.screeningDate}
+              $duration={movie.duration}
+              $seats={movie.seats}
+              $price={movie.price}
+              $adultCount={movie.adultCount}
+              $youthCount={movie.youthCount}
+              $location={movie.location}
+            />
+            <BtnBox>
+              <BasicBtn $size='large'>예매 변경</BasicBtn>
+              <MainBtn $size='large' $disabled={movie.watched}>
+                예매 취소
+              </MainBtn>
+            </BtnBox>
+          </MovieList>
+        )
+      })}
+    </MovieListBox>
+  )
+}
+
+export default BookingList
 
 const BtnBox = styled.div`
   display: flex;
