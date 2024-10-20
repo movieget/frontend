@@ -37,8 +37,6 @@ export const CheckText = styled.label`
 `
 export const CheckHeart = styled.label`
   display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
   width: 2.4rem;
   height: 2.4rem;
   font-size: 1.6rem;
@@ -59,16 +57,21 @@ export const CheckHeart = styled.label`
     background-image: url(${HeartChecked});
   }
 `
-export const CheckHeartCount = styled.label`
+
+interface CheckboxHeartCountProps {
+  $color: string
+}
+
+export const CheckHeartCount = styled.label<CheckboxHeartCountProps>`
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.4rem;
   width: auto;
   height: 4rem;
   padding: 0 1.2rem;
   font-size: 1.6rem;
   font-weight: 400;
-  background-color: #292929;
+  background-color: ${({ $color }) => $color || '#292929'};
   border: 1px solid #3f3f3f;
   border-radius: 0.4rem;
   color: #fff;
