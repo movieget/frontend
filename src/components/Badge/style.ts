@@ -50,7 +50,7 @@ export const Badge = styled.span<IfBadgeColor>`
 
 // age badge
 interface IfStyleAge {
-  $age: 'all' | '12' | '15' | '18'
+  $age: 'all' | 12 | 15 | 18
 }
 
 export const StyleAge = styled.span<IfStyleAge>`
@@ -64,9 +64,9 @@ export const StyleAge = styled.span<IfStyleAge>`
   background-image: ${({ $age }) =>
     $age === 'all'
       ? `url(${AllIcon})`
-      : $age === '12'
+      : $age === 12
         ? `url(${Age12Icon})`
-        : $age === '15'
+        : $age === 15
           ? `url(${Age15Icon})`
           : `url(${Age18Icon})`};
 `
