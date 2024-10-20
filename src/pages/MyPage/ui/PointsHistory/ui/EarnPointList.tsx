@@ -29,7 +29,7 @@ const dummyData: Point[] = [
   },
 ]
 
-const EarnPoint = () => {
+const EarnPointList = () => {
   const [earnPoint, setEarnPoint] = useState<Point[]>(dummyData)
   return (
     <>
@@ -57,4 +57,4 @@ const EarnPoint = () => {
   )
 }
 
-export default EarnPoint
+export default EarnPointList
