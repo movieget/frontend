@@ -43,14 +43,17 @@ export const DateBtn = styled(CustomArrow)<{ $week: string }>`
   }
 `
 
-export const CarouselWrapper = styled.div`
+export const StyledWrapper = styled.div`
   width: 100%;
-  height: 62px;
   background-color: ${({ theme }) => theme.colors.bg_wrapper};
   border: 1px solid ${({ theme }) => theme.colors.border_wrapper};
   border-radius: 4px;
   padding: 0 1.8rem;
   position: relative;
+`
+
+export const CarouselWrapper = styled(StyledWrapper)`
+  height: 62px;
 
   .slick-list {
     height: 100%;
