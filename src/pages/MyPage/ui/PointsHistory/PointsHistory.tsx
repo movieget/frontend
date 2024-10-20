@@ -1,12 +1,12 @@
 import Tabs from '../../../../components/Tab/Tab'
-import EarnPoint from './ui/EarnPoint'
-import UsePoint from './ui/usePoint'
+import EarnPointList from './ui/EarnPointList'
+import UsePointList from './ui/UsePointList'
 
 const PointsHistory = () => {
   return (
     <Tabs
       tabs={['포인트 이용 내역', '포인트 적립 내역']}
-      contents={[<UsePoint />, <EarnPoint />]}
+      contents={[<UsePointList />, <EarnPointList />]}
       isSelect={true}
     />
   )

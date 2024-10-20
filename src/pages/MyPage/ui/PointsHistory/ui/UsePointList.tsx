@@ -26,7 +26,7 @@ const dummyData: Point[] = [
   },
 ]
 
-const UsePoint = () => {
+const UsePointList = () => {
   const [usePoint, setUsePoint] = useState<Point[]>(dummyData)
   return (
     <>
@@ -52,4 +52,4 @@ const UsePoint = () => {
   )
 }
 
-export default UsePoint
+export default UsePointList

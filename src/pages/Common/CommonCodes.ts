@@ -6,6 +6,8 @@ export const C_MainBtn_L = `<MainBtn $size='large'>기본버튼</MainBtn>`
 export const C_MainBtn_M = `<MainBtn $size='medium'>기본버튼</MainBtn>`
 export const C_MainBtn_S = `<MainBtn $size='small'>기본버튼</MainBtn>`
 
+export const C_IssueBtn_L = `<IssueBtn $size='large'>이슈버튼</IssueBtn>`
+
 export const C_DisabledBtn = `<BasicBtn $disabled>disabled 버튼(Basic/Main) 공용</BasicBtn>`
 
 export const C_SocialBtnKakao = `<SocialBtn $social='kakao'>카카오로 시작하기</SocialBtn>`
@@ -124,6 +126,8 @@ export const C_MovieInfoCard = `<MovieInfoCard
   $bookingDate='2024년 10월 20일'
   $cancelDate='2024년 10월 18일'
   $createdDate='2024년 10월 01일'
+  $genre={['액션', '스릴러']}
+  $overview="주인공이 가족을 구하기 위해 싸우는 이야기입니다."
   $duration={204}
   $reviewType='포토리뷰'
   $rating={5}
