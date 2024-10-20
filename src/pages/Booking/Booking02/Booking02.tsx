@@ -20,11 +20,13 @@ const Booking02 = () => {
 
 export default Booking02
 
-const BoxRow = styled(SelectBoxRow)`
+const BoxRow = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
+  gap: 2rem;
 `
 
 const BoxCol = styled(SelectBoxCol)`

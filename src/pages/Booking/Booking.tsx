@@ -7,8 +7,8 @@ const Booking = () => {
   return (
     <CenterPageLayout>
       <BookingWrapper>
-        {/* <Booking01 /> */}
-        <Booking02 />
+        <Booking01 />
+        {/* <Booking02 /> */}
       </BookingWrapper>
     </CenterPageLayout>
   )

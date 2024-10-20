@@ -78,6 +78,7 @@ export const SelectBoxRow = styled.div`
   display: flex;
   flex: 1;
   gap: 2rem;
+  max-height: 30rem;
 `
 
 export const SelectMovie = styled.div`
