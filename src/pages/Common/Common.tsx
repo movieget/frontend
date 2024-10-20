@@ -34,6 +34,7 @@ import {
   Checkbox,
   CheckboxWrapper,
   CheckHeart,
+  CheckHeartCount,
   CheckSeat,
   CheckText,
 } from '../../components/Checkbox/style'
@@ -79,8 +80,10 @@ import {
   C_StarRating,
   C_StarRating2,
   C_IssueBtn_L,
+  C_CheckHeartCount,
 } from './CommonCodes'
 import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
+import { formatLikes } from '../../utils/formatLikes'
 
 const Common = () => {
   const {
@@ -318,6 +321,19 @@ const Common = () => {
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_CheckboxHeart} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <CheckboxWrapper>
+                        <Checkbox type='checkbox' id='CheckHeartCount' name='' />
+                        <CheckHeartCount htmlFor='CheckHeartCount'>
+                          {formatLikes(1000)}
+                        </CheckHeartCount>
+                      </CheckboxWrapper>
+                    </th>
+                    <td>
+                      <FormattedCodeBlock code={C_CheckHeartCount} />
                     </td>
                   </tr>
                   <tr>

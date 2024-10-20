@@ -38,6 +38,12 @@ export const C_CheckboxHeart = `<CheckboxWrapper>
   <Checkbox type='checkbox' id='checkboxHeart' name='' />
   <CheckHeart htmlFor='checkboxHeart' />
 </CheckboxWrapper>`
+export const C_CheckHeartCount = `<CheckboxWrapper>
+  <Checkbox type='checkbox' id='CheckHeartCount' name='' />
+  <CheckHeartCount htmlFor='CheckHeartCount'>
+    {formatLikes(1000)}
+  </CheckHeartCount>
+</CheckboxWrapper>`
 export const C_CheckboxSeat = `<CheckboxWrapper>
   <Checkbox type='checkbox' id='seat' />
   <CheckSeat htmlFor='seat' />

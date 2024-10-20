@@ -37,8 +37,6 @@ export const CheckText = styled.label`
 `
 export const CheckHeart = styled.label`
   display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
   width: 2.4rem;
   height: 2.4rem;
   font-size: 1.6rem;
@@ -62,7 +60,7 @@ export const CheckHeart = styled.label`
 export const CheckHeartCount = styled.label`
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.4rem;
   width: auto;
   height: 4rem;
   padding: 0 1.2rem;
