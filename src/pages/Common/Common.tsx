@@ -327,7 +327,7 @@ const Common = () => {
                     <th>
                       <CheckboxWrapper>
                         <Checkbox type='checkbox' id='CheckHeartCount' name='' />
-                        <CheckHeartCount htmlFor='CheckHeartCount'>
+                        <CheckHeartCount htmlFor='CheckHeartCount' $color=''>
                           {formatLikes(1000)}
                         </CheckHeartCount>
                       </CheckboxWrapper>

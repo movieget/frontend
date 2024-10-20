@@ -40,7 +40,7 @@ export const C_CheckboxHeart = `<CheckboxWrapper>
 </CheckboxWrapper>`
 export const C_CheckHeartCount = `<CheckboxWrapper>
   <Checkbox type='checkbox' id='CheckHeartCount' name='' />
-  <CheckHeartCount htmlFor='CheckHeartCount'>
+  <CheckHeartCount htmlFor='CheckHeartCount' $color=''>
     {formatLikes(1000)}
   </CheckHeartCount>
 </CheckboxWrapper>`
