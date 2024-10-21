@@ -447,10 +447,10 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <StyleAge $age='all' />
-                      <StyleAge $age='12' />
-                      <StyleAge $age='15' />
-                      <StyleAge $age='18' />
+                      <StyleAge $age={'all'} />
+                      <StyleAge $age={12} />
+                      <StyleAge $age={15} />
+                      <StyleAge $age={18} />
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_StyleAge} />
@@ -496,6 +496,7 @@ const Common = () => {
                           <div>탭 컨텐츠 5</div>,
                         ]}
                         isSelect={true}
+                        isAllDeleteBtn={true}
                       />
                     </th>
                     <td>
