@@ -9,8 +9,6 @@ const StarRating: React.FC<{
   disabled?: boolean // disabled prop 추가
   value?: number // value prop 추가
 }> = ({ rating = 1, onRatingChange, userId, disabled = false, value }) => {
-  // value가 있으면 그 값을 사용하고, 아니면 기존 rating 사용
-  // rating의 최소값은 1
   const initialRating = value !== undefined ? Math.max(value, 1) : Math.max(rating, 1)
 
   return (
@@ -37,9 +35,8 @@ const StarRating: React.FC<{
 
 export default StarRating
 
-// 스타일드 컴포넌트
 const RatingBox = styled.div`
-  display: flex;
+  display: inline-flex;
   gap: 2px;
 `
 const RatingItem = styled.div`
@@ -51,5 +48,5 @@ const RatingInput = styled.input`
 `
 const RatingLabel = styled.label<{ disabled?: boolean }>`
   display: block;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'initial' : 'pointer')}; // disabled일 때 커서 스타일 변경
 `

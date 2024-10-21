@@ -35,6 +35,8 @@ export const MovieTitle = styled.span`
 
 export const MovieInfoList = styled.ul``
 export const MovieInfo = styled.li`
+  display: flex;
+  align-items: center;
   margin-top: 1.2rem;
   font-size: 1.6rem;
   line-height: 2rem;
