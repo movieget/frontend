@@ -1,5 +1,6 @@
 import { StyleAge } from '../Badge/style'
 import NoImageCard from '../NoImageCard/NoImageCard'
+import StarRating from '../StarRating/StarRating'
 import {
   MovieInfoCardWrapper,
   MoviePosterBox,
@@ -112,7 +113,15 @@ const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
           {$rating !== undefined && (
             <MovieInfo>
               <MovieInfoTitle>남긴 평점</MovieInfoTitle>
-              <MovieInfoContent>: {$rating}점</MovieInfoContent>
+              <MovieInfoContent>
+                :
+                <StarRating
+                  rating={$rating} // StarRating에 평점 전달
+                  onRatingChange={() => {}} // 평가 변경 처리 (필요에 따라 수정)
+                  userId='movieInfoCard' // 고유한 userId 설정
+                  disabled={true} // 비활성화
+                />
+              </MovieInfoContent>
             </MovieInfo>
           )}
           {$rewardPoints !== undefined && (

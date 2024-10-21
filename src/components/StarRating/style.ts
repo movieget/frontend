@@ -13,5 +13,5 @@ export const RatingInput = styled.input`
 `
 export const RatingLabel = styled.label<{ disabled?: boolean }>`
   display: block;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'initial' : 'pointer')};
 `

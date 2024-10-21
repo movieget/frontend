@@ -40,3 +40,9 @@ export const TabContentsBox = styled.div`
   border: 1px solid #474747;
   border-radius: 4px;
 `
+
+export const AddFeatureBtnBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+`

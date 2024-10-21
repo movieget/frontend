@@ -447,10 +447,10 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <StyleAge $age='all' />
-                      <StyleAge $age='12' />
-                      <StyleAge $age='15' />
-                      <StyleAge $age='18' />
+                      <StyleAge $age={'all'} />
+                      <StyleAge $age={12} />
+                      <StyleAge $age={15} />
+                      <StyleAge $age={18} />
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_StyleAge} />
@@ -496,6 +496,7 @@ const Common = () => {
                           <div>탭 컨텐츠 5</div>,
                         ]}
                         isSelect={true}
+                        isAllDeleteBtn={true}
                       />
                     </th>
                     <td>
@@ -587,7 +588,7 @@ const Common = () => {
                         $overview='주인공이 가족을 구하기 위해 싸우는 이야기입니다.' // 줄거리
                         $duration={204} // 상영 시간 (분 단위)
                         $reviewType='포토리뷰' // 리뷰의 종류
-                        $rating={5} // 남긴 평점 (0~5 점)
+                        $rating={3} // 남긴 평점 (0~5 점)
                         $rewardPoints={120} // 적립 포인트
                         $seats={['E열 24석', 'E열 25석', 'E열 26석']} // 예약한 좌석 목록
                         $price={120000} // 총 가격 (원 단위)
