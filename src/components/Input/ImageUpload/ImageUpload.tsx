@@ -37,6 +37,12 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ image, setImage }) => {
 
   return (
     <ImgInpBox>
+      {image && (
+        <PreviewImgBox>
+          <PreviewImg src={image} alt='첨부한 이미지 미리보기' />
+          <DeletePreviewImg onClick={resetImage}>삭제</DeletePreviewImg>
+        </PreviewImgBox>
+      )}
       <InputFile
         type='file'
         accept='image/*'
@@ -45,12 +51,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ image, setImage }) => {
         id='file01'
       />
       <InputFileLabel htmlFor='file01'>파일첨부</InputFileLabel>
-      {image && (
-        <PreviewImgBox>
-          <PreviewImg src={image} alt='첨부한 이미지 미리보기' />
-          <DeletePreviewImg onClick={resetImage}>삭제</DeletePreviewImg>
-        </PreviewImgBox>
-      )}
     </ImgInpBox>
   )
 }

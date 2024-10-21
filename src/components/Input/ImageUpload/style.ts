@@ -5,10 +5,9 @@ import FileUploadReset from '../../../assets/svg/file_upload_reset.svg'
 // input - file
 export const ImgInpBox = styled.span`
   display: flex;
-  flex-direction: row-reverse;
   align-items: flex-start;
-  justify-content: space-between;
   height: 10rem;
+  gap: 0.8rem;
 `
 export const InputFile = styled.input`
   display: none;
