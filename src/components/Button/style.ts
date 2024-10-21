@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import KakaoLogo from '../../assets/svg/kakao_logo.svg'
 import NaverLogo from '../../assets/svg/naver_logo.svg'
+import AddIconPlus from '../../assets/svg/add_icon_btn_plus.svg'
 
 //button styles
 interface IfBtnHeight {
@@ -55,6 +56,33 @@ export const IssueBtn = styled.button<IfBtnHeight>`
   border-radius: 4px;
   color: ${({ $disabled }) => ($disabled ? '#797979' : '#FDFDFD')};
   cursor: ${({ $disabled }) => ($disabled ? 'initial' : 'pointer')};
+`
+export const AddIconBtn = styled.button<IfBtnHeight>`
+  height: 4rem;
+  padding: 0 1rem 0 4.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: ${({ $disabled }) =>
+    $disabled ? '#4B4B4B' : 'linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb)'};
+  border: 1px solid;
+  border-color: ${({ $disabled }) => ($disabled ? '#4B4B4B' : '#9d7ce5')};
+  border-radius: 1.2rem;
+  color: ${({ $disabled }) => ($disabled ? '#797979' : '#FDFDFD')};
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 3.4rem;
+    height: 4rem;
+    background: url(${AddIconPlus}) no-repeat 50% 50% / 1.4rem;
+    border-right: 1px solid rgba(245, 245, 245, 0.2);
+  }
 `
 
 // 소셜 로그인 버튼
