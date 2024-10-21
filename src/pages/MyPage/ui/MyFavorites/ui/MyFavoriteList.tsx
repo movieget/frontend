@@ -16,8 +16,8 @@ interface Favorite {
   age: string
   genre: string[]
   overview: string
-  TotalLikes: number
-  isChecked: boolean
+  totalLikes: number
+  isLikes: boolean
 }
 
 const dummyData = [
@@ -28,8 +28,8 @@ const dummyData = [
     age: '18',
     genre: ['액션', 'SF/판타지'],
     overview: '줄거리',
-    TotalLikes: 200,
-    isChecked: true,
+    totalLikes: 200,
+    isLikes: true,
   },
   {
     id: 1,
@@ -39,8 +39,8 @@ const dummyData = [
     genre: ['스릴러', '멜로', '공포', '어린이', 'SF/판타지'],
     overview:
       '줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리',
-    TotalLikes: 1262,
-    isChecked: true,
+    totalLikes: 1262,
+    isLikes: true,
   },
 ]
 
@@ -65,10 +65,10 @@ const MyFavoritList = () => {
                   type='checkbox'
                   id={`checkbox-${movie.id}`}
                   name=''
-                  checked={movie.isChecked}
+                  checked={movie.isLikes}
                 />
                 <CheckHeartCount htmlFor={`checkbox-${movie.id}`}>
-                  {formatLikes(movie.TotalLikes)}
+                  {formatLikes(movie.totalLikes)}
                 </CheckHeartCount>
               </CheckboxWrapper>
               <MainBtn $size='large'>예매하기</MainBtn>

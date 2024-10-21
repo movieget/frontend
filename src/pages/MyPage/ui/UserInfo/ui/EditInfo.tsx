@@ -1,43 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import {
-  Input,
-  InputBox,
-  ProfileAreaImgInpBox,
-  ProfileImgInpBox,
-  ProfileInputFile,
-  ProfileInputFileLabel,
-  ProfilePreviewImg,
-  ProfilePreviewImgBox,
-} from '../../../../../components/Input/style'
-import useImagePreview from '../../../../../hooks/useImagePreview'
+import { Input, InputBox } from '../../../../../components/Input/style'
 import { ContentsBigTitle, ContentsTitle } from '../../../style'
 import { MainBtn } from '../../../../../components/Button/style'
+import ProfileImageUpload from '../../../../../components/Input/ProfileImageUpload/ProfileImageUpload'
 
 const EditInfo = () => {
-  const { image: image, handleImageChange: handleImageChange } = useImagePreview()
+  const [image2, setImage2] = useState<string | null>(null)
 
   return (
     <>
       <EditWrapper>
         <EditProfileBox>
-          <ProfileImgInpBox>
-            <ProfileAreaImgInpBox>
-              <ProfileInputFile
-                type='file'
-                accept='image/*'
-                onChange={handleImageChange}
-                id='file02'
-                ref={(input) => input && (input.value = '')}
-              />
-              <ProfileInputFileLabel htmlFor='file02'>파일첨부</ProfileInputFileLabel>
-              {image && (
-                <ProfilePreviewImgBox>
-                  <ProfilePreviewImg src={image} alt='첨부한 이미지 미리보기' />
-                </ProfilePreviewImgBox>
-              )}
-            </ProfileAreaImgInpBox>
-          </ProfileImgInpBox>
+          <ProfileImageUpload image={image2} setImage={setImage2} />
+
           <UserNickName>닉네임</UserNickName>
         </EditProfileBox>
       </EditWrapper>

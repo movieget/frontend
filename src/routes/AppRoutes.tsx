@@ -35,7 +35,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path='/detail/:id'
+          path='/detail'
           element={
             <Suspense fallback={<SvgSpinner />}>
               <Detail />

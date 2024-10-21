@@ -12,24 +12,7 @@ import {
   MainBtn,
   SocialBtn,
 } from '../../components/Button/style'
-import {
-  DeletePreviewImg,
-  ImgInpBox,
-  InputBox,
-  InputFile,
-  InputFileLabel,
-  Input,
-  PreviewImg,
-  PreviewImgBox,
-  Textarea,
-  TextareaBox,
-  ProfileImgInpBox,
-  ProfileAreaImgInpBox,
-  ProfileInputFile,
-  ProfileInputFileLabel,
-  ProfilePreviewImgBox,
-  ProfilePreviewImg,
-} from '../../components/Input/style'
+import { InputBox, Input, Textarea, TextareaBox } from '../../components/Input/style'
 import {
   Checkbox,
   CheckboxWrapper,
@@ -84,14 +67,13 @@ import {
 } from './CommonCodes'
 import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
 import { formatLikes } from '../../utils/formatLikes'
+import ImageUpload from '../../components/Input/ImageUpload/ImageUpload'
+import { useState } from 'react'
+import ProfileImageUpload from '../../components/Input/ProfileImageUpload/ProfileImageUpload'
 
 const Common = () => {
-  const {
-    image: image1,
-    handleImageChange: handleImageChange1,
-    resetImage: resetImage1,
-  } = useImagePreview()
-  const { image: image2, handleImageChange: handleImageChange2 } = useImagePreview()
+  const [image1, setImage1] = useState<string | null>(null)
+  const [image2, setImage2] = useState<string | null>(null)
 
   const { rating: userRating1, handleRatingChange: handleRatingChange1 } = useRating()
   const { rating: userRating2, handleRatingChange: handleRatingChange2 } = useRating()
@@ -369,22 +351,7 @@ const Common = () => {
                 <tbody>
                   <tr>
                     <th>
-                      <ImgInpBox>
-                        <InputFile
-                          type='file'
-                          accept='image/*'
-                          onChange={handleImageChange1}
-                          id='file01'
-                          ref={(input) => input && (input.value = '')}
-                        />
-                        <InputFileLabel htmlFor='file01'>파일첨부</InputFileLabel>
-                        {image1 && (
-                          <PreviewImgBox>
-                            <PreviewImg src={image1} alt='첨부한 이미지 미리보기' />
-                            <DeletePreviewImg onClick={resetImage1} />
-                          </PreviewImgBox>
-                        )}
-                      </ImgInpBox>
+                      <ImageUpload image={image1} setImage={setImage1} />
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_ImgInpBox} />
@@ -392,23 +359,7 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <ProfileImgInpBox>
-                        <ProfileAreaImgInpBox>
-                          <ProfileInputFile
-                            type='file'
-                            accept='image/*'
-                            onChange={handleImageChange2}
-                            id='file02'
-                            ref={(input) => input && (input.value = '')}
-                          />
-                          <ProfileInputFileLabel htmlFor='file02'>파일첨부</ProfileInputFileLabel>
-                          {image2 && (
-                            <ProfilePreviewImgBox>
-                              <ProfilePreviewImg src={image2} alt='첨부한 이미지 미리보기' />
-                            </ProfilePreviewImgBox>
-                          )}
-                        </ProfileAreaImgInpBox>
-                      </ProfileImgInpBox>
+                      <ProfileImageUpload image={image2} setImage={setImage2} />
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_ProfileImgInpBox} />
