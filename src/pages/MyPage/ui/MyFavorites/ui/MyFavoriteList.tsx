@@ -17,7 +17,7 @@ interface Favorite {
   genre: string[]
   overview: string
   TotalLikes: number
-  isChecked: boolean
+  isLikes: boolean
 }
 
 const dummyData = [
@@ -29,7 +29,7 @@ const dummyData = [
     genre: ['액션', 'SF/판타지'],
     overview: '줄거리',
     TotalLikes: 200,
-    isChecked: true,
+    isLikes: true,
   },
   {
     id: 1,
@@ -40,7 +40,7 @@ const dummyData = [
     overview:
       '줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리',
     TotalLikes: 1262,
-    isChecked: true,
+    isLikes: true,
   },
 ]
 
@@ -65,7 +65,7 @@ const MyFavoritList = () => {
                   type='checkbox'
                   id={`checkbox-${movie.id}`}
                   name=''
-                  checked={movie.isChecked}
+                  checked={movie.isLikes}
                 />
                 <CheckHeartCount htmlFor={`checkbox-${movie.id}`}>
                   {formatLikes(movie.TotalLikes)}
