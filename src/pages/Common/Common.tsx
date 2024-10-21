@@ -5,6 +5,7 @@ import './style.css'
 
 import useImagePreview from '../../hooks/useImagePreview'
 import {
+  AddIconBtn,
   BasicBtn,
   IconBtn,
   IconBtnImg,
@@ -64,6 +65,7 @@ import {
   C_StarRating2,
   C_IssueBtn_L,
   C_CheckHeartCount,
+  C_AddIconBtn,
 } from './CommonCodes'
 import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
 import { formatLikes } from '../../utils/formatLikes'
@@ -145,6 +147,16 @@ const Common = () => {
                       <FormattedCodeBlock code={C_MainBtn_S} />
                     </td>
                   </tr>
+                  {/*  */}
+                  <tr>
+                    <th>
+                      <AddIconBtn>아이콘버튼</AddIconBtn>
+                    </th>
+                    <td>
+                      <FormattedCodeBlock code={C_AddIconBtn} />
+                    </td>
+                  </tr>
+                  {/*  */}
                   <tr>
                     <th>
                       <IssueBtn $size='large'>이슈버튼</IssueBtn>

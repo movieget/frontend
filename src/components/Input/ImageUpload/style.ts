@@ -36,7 +36,7 @@ export const InputFileLabel = styled.label`
     width: 3.4rem;
     height: 4rem;
     background: url(${FileButtonIcon}) no-repeat 50% 50% / 1.4rem;
-    border-right: 1px solid #3f3f3f;
+    border-right: 1px solid rgba(245, 245, 245, 0.2);
   }
 `
 export const PreviewImgBox = styled.span`
