@@ -109,6 +109,7 @@ export const C_Tabs = `<Tabs
     <div>탭 컨텐츠 5</div>,
   ]}
   isSelect={true}
+  isAllDeleteBtn={true}
 />`
 
 export const C_StyleTitle = `<StyleTitle>상영중 TOP 10</StyleTitle>`

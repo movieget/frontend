@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
-import { TabButton, TabButtonBox, TabButtonWrapper, TabContainer, TabContentsBox } from './style'
+import {
+  AddFeatureBtnBox,
+  TabButton,
+  TabButtonBox,
+  TabButtonWrapper,
+  TabContainer,
+  TabContentsBox,
+} from './style'
 import CustomSelect from '../Select/CusomSelect'
+import { BasicBtn } from '../Button/style'
 
 interface ButtonProps {
   $label: string
@@ -20,9 +28,10 @@ interface TabsProps {
   tabs: string[]
   contents: React.ReactNode[]
   isSelect: boolean
+  isAllDeleteBtn: boolean
 }
 
-const Tabs: React.FC<TabsProps> = ({ tabs, contents, isSelect }) => {
+const Tabs: React.FC<TabsProps> = ({ tabs, contents, isSelect, isAllDeleteBtn }) => {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
@@ -38,9 +47,15 @@ const Tabs: React.FC<TabsProps> = ({ tabs, contents, isSelect }) => {
             />
           ))}
         </TabButtonBox>
-        {isSelect && (
-          <CustomSelect items={['전체', '당일', '주간', '월간', '최근 1년간']} $direction='right' />
-        )}
+        <AddFeatureBtnBox>
+          {isAllDeleteBtn && <BasicBtn $size='medium'>전체삭제</BasicBtn>}
+          {isSelect && (
+            <CustomSelect
+              items={['전체', '당일', '주간', '월간', '최근 1년간']}
+              $direction='right'
+            />
+          )}
+        </AddFeatureBtnBox>
       </TabButtonWrapper>
       <TabContentsBox>{contents[activeIndex]}</TabContentsBox>
     </TabContainer>
