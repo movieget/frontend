@@ -51,39 +51,12 @@ export const C_CheckboxSeat = `<CheckboxWrapper>
   <CheckSeat htmlFor='disableSeat' />
 </CheckboxWrapper>`
 
-export const C_ImgInpBox = `<ImgInpBox>
-  <InputFile
-    type='file'
-    accept='image/*'
-    onChange={handleImageChange1}
-    id='file01'
-    ref={(input) => input && (input.value = '')}
-  />
-  <InputFileLabel htmlFor='file01'>파일첨부</InputFileLabel>
-  {image1 && (
-    <PreviewImgBox>
-      <PreviewImg src={image1} alt='첨부한 이미지 미리보기' />
-      <DeletePreviewImg onClick={resetImage1} />
-    </PreviewImgBox>
-  )}
-</ImgInpBox>`
-export const C_ProfileImgInpBox = `<ProfileImgInpBox>
-  <ProfileAreaImgInpBox>
-    <ProfileInputFile
-      type='file'
-      accept='image/*'
-      onChange={handleImageChange2}
-      id='file02'
-      ref={(input) => input && (input.value = '')}
-    />
-    <ProfileInputFileLabel htmlFor='file02'>파일첨부</ProfileInputFileLabel>
-    {image2 && (
-      <ProfilePreviewImgBox>
-        <ProfilePreviewImg src={image2} alt='첨부한 이미지 미리보기' />
-      </ProfilePreviewImgBox>
-    )}
-  </ProfileAreaImgInpBox>
-</ProfileImgInpBox>`
+export const C_ImgInpBox = `const [image1, setImage1] = useState<string | null>(null)
+<ImageUpload image={image1} setImage={setImage1} />
+`
+export const C_ProfileImgInpBox = `const [image2, setImage2] = useState<string | null>(null)
+<ProfileImageUpload image={image2} setImage={setImage2} />
+`
 
 export const C_Badge = `<BadgeBox>
   <Badge>일반/장르</Badge>
