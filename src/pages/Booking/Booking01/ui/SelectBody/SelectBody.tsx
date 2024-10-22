@@ -17,18 +17,13 @@ import TimeButton from './ui/TimeButton'
 const SelectBody = () => {
   const initialBookingState = useBookingStore((state) => state.initialBookingState)
   const [isValid, setIsValid] = useState(false)
-  const { date, movie, location, theater } = useBookingStore((state) => state.initialBookingState)
-  console.log(initialBookingState)
+  const { date, movie, location, theater } = initialBookingState // useBookingStore 호출 제거
 
   useEffect(() => {
-    const isDateValid = date !== ''
-    const isMovieValid = movie !== ''
-    const isLocationValid = location !== ''
-    const isTheaterValid = theater !== ''
-    const allValid =
-      isDateValid && isMovieValid && isLocationValid && isTheaterValid && isTheaterValid
+    const fields = [date, movie, location, theater] // 검사할 필드 배열
+    const allValid = fields.every((field) => field !== '') // 모든 필드가 비어있지 않은지 확인
 
-    allValid && setIsValid(true)
+    setIsValid(allValid) // 유효성에 따라 상태 업데이트
   }, [date, movie, location, theater])
 
   return (
