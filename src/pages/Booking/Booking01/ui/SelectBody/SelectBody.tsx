@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { useBookingStore } from '../../../../../stores/store'
 import {
   SelectBodyWrapper,
   SelectBoxCol,
@@ -13,6 +15,8 @@ import SelectTitle from './ui/SelectTitle'
 import TimeButton from './ui/TimeButton'
 
 const SelectBody = () => {
+  const initialBookingState = useBookingStore((state) => state.initialBookingState)
+  console.log(initialBookingState)
   return (
     <SelectBodyWrapper>
       <SelectBoxRow>
