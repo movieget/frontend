@@ -5,9 +5,8 @@ import { IDateButtonProps } from '../SelectDateCarousel.type'
 
 const DateButton = ({ dateNumber, today }: IDateButtonProps) => {
   const [year, month, day, weekday] = dateNumber.split('-')
-  const date = useBookingStore((state) => state.date)
 
-  const setField = useBookingStore((state) => state.setField)
+  const setField = useBookingStore((state) => state.actions.setField)
 
   const handleSelectDay = () => {
     const formattedDate = dateNumber.slice(0, 10)

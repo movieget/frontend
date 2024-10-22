@@ -3,12 +3,13 @@ import OptionButton from './OptionButton'
 import SelectTitle from './SelectTitle'
 
 const SelectTheaters = () => {
+  const title = '영화관'
   return (
     <SelectTheater>
-      <SelectTitle title='영화관' />
+      <SelectTitle title={title} />
       <SelectBox>
         <SelectList>
-          <OptionButton label='울산 중구 성남동 메가박스' />
+          <OptionButton title={title} label='울산 중구 성남동 메가박스' />
         </SelectList>
       </SelectBox>
     </SelectTheater>
