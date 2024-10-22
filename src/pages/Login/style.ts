@@ -21,14 +21,19 @@ export const StyleLoginBtnWrapper = styled.div`
   height: 20rem;
 `
 export const StyleLoginTextWrapper = styled.div`
-  height: 14.8em;
+  height: 24rem;
   text-align: center;
   font-size: 1.6rem;
   font-weight: 500;
 
   h1 {
-    font-size: 4rem;
-    font-weight: 700;
     margin-bottom: 3rem;
+    font-size: 4.8rem;
+    font-weight: 700;
+  }
+  p {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.34;
   }
 `
