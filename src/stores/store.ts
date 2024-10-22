@@ -8,10 +8,8 @@ interface BookingState {
     theater: string
     time: string
   }
-  page: boolean
   actions: {
     setField: (field: keyof BookingState['initialBookingState'], value: string) => void
-    setPage: () => void
   }
 }
 
@@ -37,7 +35,6 @@ export const useDarkModeStore = create<DarkModeState>((set) => ({
 // 예약 스토어
 export const useBookingStore = create<BookingState>((set) => ({
   initialBookingState,
-  page: true, // 기본적으로 첫 번째 페이지로 시작 (Booking01)
   actions: {
     setField: (field, value) =>
       set((state) => ({
@@ -45,10 +42,6 @@ export const useBookingStore = create<BookingState>((set) => ({
           ...state.initialBookingState,
           [field]: value,
         },
-      })),
-    setPage: () =>
-      set((state) => ({
-        page: !state.page, // page 상태만 변경
       })),
   },
 }))
