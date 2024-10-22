@@ -31,6 +31,18 @@ export const SelectLineBox = styled.ul`
   padding: 2rem 0;
   border-top: 1px solid ${({ theme }) => theme.colors.border_wrapper};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border_wrapper};
+
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: 2rem;
+      color: ${({ theme }) => theme.colors.text_disabled};
+    }
+  }
 `
 
 export const SelectList = styled.li`
