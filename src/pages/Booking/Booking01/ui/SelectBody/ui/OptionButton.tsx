@@ -2,7 +2,7 @@ import { StyleAge } from '../../../../../../components/Badge/style'
 import { OptionLabel, OptionStyle } from '../SelectBody.style'
 
 interface IOptionButtonProps {
-  age?: 'all' | '12' | '15' | '18'
+  age?: 'all' | 12 | 15 | 18
   label?: string
 }
 
