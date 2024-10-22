@@ -23,7 +23,7 @@ export const DateBtn = styled(CustomArrow)<{ $week: string; $isSelected: boolean
   justify-content: center;
   align-items: center;
   min-width: 5rem;
-  padding: 1.2rem 1.4rem;
+  padding: 1.2rem 1.8rem;
   font-family: inherit;
   font-size: 1.8rem;
   font-weight: ${({ theme }) => theme.fonts.weight.thin};
