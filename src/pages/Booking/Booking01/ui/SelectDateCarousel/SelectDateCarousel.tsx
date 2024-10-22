@@ -6,9 +6,12 @@ import DateButton from './ui/DateButton'
 import NextButton from './ui/NextButton'
 import PrevButton from './ui/PrevButton'
 import { generateDates } from '../../../../../utils/generateDates'
+import { useBookingStore } from '../../../../../stores/store'
 
 const SelectDateCarousel = () => {
   const dates = generateDates()
+  const bookingStore = useBookingStore()
+  console.log(bookingStore)
   const settings = {
     dots: false,
     infinite: false,
@@ -22,18 +25,12 @@ const SelectDateCarousel = () => {
 
   const today = new Date().getDate().toString().padStart(2, '0')
 
-  const handleSelectDay = (date: string) => {
-    const formattedDate = date.slice(0, 10)
-    console.log(formattedDate)
-    return formattedDate
-  }
-
   return (
     <CarouselWrapper>
       <SliderWrapper>
         <Slider {...settings}>
-          {dates.map((date) => (
-            <DateButton key={date} date={date} today={today} onSelect={handleSelectDay} />
+          {dates.map((el, idx) => (
+            <DateButton key={idx} dateNumber={el} today={today} />
           ))}
         </Slider>
       </SliderWrapper>
