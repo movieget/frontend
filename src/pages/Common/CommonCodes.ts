@@ -62,7 +62,7 @@ export const C_ProfileImgInpBox = `const [image2, setImage2] = useState<string |
 
 export const C_Badge = `<BadgeBox>
   <Badge>일반/장르</Badge>
-  <Badge color='orange'>러닝타임</Badge>
+  <Badge $color='orange'>러닝타임</Badge>
   <Badge $playing='playing'>상영중입니다</Badge>
   <Badge $playing='notPlaying'>상영예정</Badge>
 </BadgeBox>`
@@ -70,9 +70,7 @@ export const C_StyleAge = `<StyleAge $age='all' />
 <StyleAge $age='12' />
 <StyleAge $age='15' />
 <StyleAge $age='18' />`
-export const C_StyleProfile = `<StyleProfile $width='' $height=''>
-  <StyleProfileImg src={BasicProfile} />
-</StyleProfile>`
+export const C_StyleProfile = `<ProfileBadge src='' width='' height='' />`
 
 export const C_Tabs = `<Tabs
   tabs={['탭 1', '탭 2', '탭 3', '탭 4', '탭 5']}

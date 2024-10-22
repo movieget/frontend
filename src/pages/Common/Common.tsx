@@ -72,6 +72,7 @@ import { formatLikes } from '../../utils/formatLikes'
 import ImageUpload from '../../components/Input/ImageUpload/ImageUpload'
 import { useState } from 'react'
 import ProfileImageUpload from '../../components/Input/ProfileImageUpload/ProfileImageUpload'
+import ProfileBadge from '../../components/Badge/ProfileBadge/ProfileBadge'
 
 const Common = () => {
   const [image1, setImage1] = useState<string | null>(null)
@@ -399,7 +400,7 @@ const Common = () => {
                     <th>
                       <BadgeBox>
                         <Badge>일반/장르</Badge>
-                        <Badge color='orange'>러닝타임</Badge>
+                        <Badge $color='orange'>러닝타임</Badge>
                         <Badge $playing='playing'>상영중입니다</Badge>
                         <Badge $playing='notPlaying'>상영예정</Badge>
                       </BadgeBox>
@@ -421,9 +422,7 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <StyleProfile $width='' $height=''>
-                        <StyleProfileImg src={BasicProfile} />
-                      </StyleProfile>
+                      <ProfileBadge src='' width='' height='' />
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_StyleProfile} />
