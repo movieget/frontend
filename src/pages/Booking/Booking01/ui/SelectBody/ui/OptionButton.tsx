@@ -1,5 +1,6 @@
 import { StyleAge } from '../../../../../../components/Badge/style'
-import { OptionLabel, OptionStyle } from '../SelectBody.style'
+import { useBookingStore } from '../../../../../../stores/store'
+import { OptionButtonStyle, OptionLabel } from '../SelectBody.style'
 
 interface IOptionButtonProps {
   age?: 'all' | 12 | 15 | 18
@@ -7,11 +8,16 @@ interface IOptionButtonProps {
 }
 
 const OptionButton = ({ age, label = '옵션라벨' }: IOptionButtonProps) => {
+  const setField = useBookingStore((state) => state.setField)
+  const handleClick = () => {
+    setField('movie', label)
+  }
+
   return (
-    <OptionStyle>
+    <OptionButtonStyle onClick={handleClick}>
       {age && <StyleAge $age={age} />}
       <OptionLabel>{label}</OptionLabel>
-    </OptionStyle>
+    </OptionButtonStyle>
   )
 }
 
