@@ -16,8 +16,9 @@ import TimeButton from './ui/TimeButton'
 
 const SelectBody = () => {
   const initialBookingState = useBookingStore((state) => state.initialBookingState)
+  console.log(initialBookingState)
   const [isValid, setIsValid] = useState(false)
-  const { date, movie, location, theater } = initialBookingState // useBookingStore 호출 제거
+  const { date, movie, location, theater } = initialBookingState
 
   useEffect(() => {
     const fields = [date, movie, location, theater] // 검사할 필드 배열
