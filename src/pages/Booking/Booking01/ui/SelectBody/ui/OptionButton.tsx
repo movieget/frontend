@@ -9,7 +9,7 @@ interface IOptionButtonProps {
 }
 
 const OptionButton = ({ title, age, label = '옵션라벨' }: IOptionButtonProps) => {
-  const setField = useBookingStore((state) => state.setField)
+  const setField = useBookingStore((state) => state.actions.setField)
   const handleClick = () => {
     switch (title) {
       case '영화':

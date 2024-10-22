@@ -6,7 +6,7 @@ interface ITimeButtonProps {
 }
 
 const TimeButton = ({ time = '00:00' }: ITimeButtonProps) => {
-  const setField = useBookingStore((state) => state.setField)
+  const setField = useBookingStore((state) => state.actions.setField)
   const handleClick = () => {
     setField('time', time)
   }

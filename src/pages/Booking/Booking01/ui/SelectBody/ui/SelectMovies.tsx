@@ -4,8 +4,6 @@ import SelectTitle from './SelectTitle'
 import { useBookingStore } from '../../../../../../stores/store'
 
 const SelectMovies = () => {
-  const bookingState = useBookingStore()
-  console.log(bookingState)
   const title = '영화'
 
   return (
