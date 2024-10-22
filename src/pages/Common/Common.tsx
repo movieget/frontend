@@ -72,6 +72,7 @@ import { formatLikes } from '../../utils/formatLikes'
 import ImageUpload from '../../components/Input/ImageUpload/ImageUpload'
 import { useState } from 'react'
 import ProfileImageUpload from '../../components/Input/ProfileImageUpload/ProfileImageUpload'
+import ProfileBadge from '../../components/Badge/ProfileBadge/ProfileBadge'
 
 const Common = () => {
   const [image1, setImage1] = useState<string | null>(null)
@@ -421,9 +422,7 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <StyleProfile $width='' $height=''>
-                        <StyleProfileImg src={BasicProfile} />
-                      </StyleProfile>
+                      <ProfileBadge src='' width='' height='' />
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_StyleProfile} />

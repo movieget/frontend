@@ -94,26 +94,3 @@ export const StyleTitle = styled.div`
     background: linear-gradient(180deg, #6321f200 0%, #39138c 100%);
   }
 `
-
-interface StyleProfileSize {
-  $width?: string
-  $height?: string
-}
-// profile
-export const StyleProfile = styled.span<StyleProfileSize>`
-  display: inline-block;
-  width: ${({ $width }) => $width || '2rem'};
-  height: ${({ $height }) => $height || '2rem'};
-  background-color: #292929;
-  border: 1px solid;
-  border-color: #3f3f3f;
-  border-radius: 50%;
-  background: no-repeat center / 100%;
-  overflow: hidden;
-`
-
-export const StyleProfileImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`
