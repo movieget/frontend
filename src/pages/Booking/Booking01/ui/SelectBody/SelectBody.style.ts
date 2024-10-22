@@ -44,7 +44,7 @@ export const SelectList = styled.li`
   gap: 1rem;
 `
 
-export const OptionStyle = styled.button`
+export const OptionButtonStyle = styled.button`
   width: 100%;
   padding: 0.8rem 0.4rem;
   display: flex;
