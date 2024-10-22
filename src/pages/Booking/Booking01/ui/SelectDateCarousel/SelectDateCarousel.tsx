@@ -17,7 +17,7 @@ const SelectDateCarousel = () => {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 13,
+    slidesToShow: 10,
     slidesToScroll: 4,
     arrows: true,
     nextArrow: <NextButton />,
