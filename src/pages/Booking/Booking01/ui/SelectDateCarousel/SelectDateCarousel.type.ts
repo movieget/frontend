@@ -3,7 +3,6 @@ export interface IArrowButtonProps {
 }
 
 export interface IDateButtonProps {
-  date: string
+  dateNumber: string
   today: string
-  onSelect: (date: string) => void
 }

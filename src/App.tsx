@@ -6,7 +6,7 @@ import CommonLayout from './components/Layouts/CommonLayout'
 import ResetCSS from './styles/ResetCSS'
 
 function App() {
-  const { isDarkMode } = useDarkModeStore()
+  const isDarkMode = useDarkModeStore((state) => state.isDarkMode)
   return (
     <>
       <ThemeProvider theme={isDarkMode ? theme.dark : theme.light}>

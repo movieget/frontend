@@ -2,8 +2,9 @@ import { client } from '../../apis/instances'
 import { Container } from './style'
 
 const Main = () => {
+  const page = 2
   const fetchData = async () => {
-    const res = await client.get('/api/users')
+    const res = await client.get(`/api/v1/review?page=${page}`)
     const data = res.data
     console.log(data)
   }
