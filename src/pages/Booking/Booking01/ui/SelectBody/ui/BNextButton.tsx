@@ -1,14 +1,12 @@
+import { useNavigate } from 'react-router-dom'
 import { MainBtn } from '../../../../../../components/Button/style'
 import { NextBtnWrapper } from '../SelectBody.style'
 
-interface IBNextButtonProps {
-  handler?: React.MouseEventHandler<HTMLButtonElement>
-}
-
-const BNextButton = ({ handler }: IBNextButtonProps) => {
+const BNextButton = () => {
+  const navigate = useNavigate()
   return (
     <NextBtnWrapper>
-      <MainBtn $size='large' onClick={handler}>
+      <MainBtn $size='large' onClick={() => navigate('?page=booking02')}>
         다음
       </MainBtn>
     </NextBtnWrapper>

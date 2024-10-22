@@ -10,8 +10,6 @@ import { useBookingStore } from '../../../../../stores/store'
 
 const SelectDateCarousel = () => {
   const dates = generateDates()
-  const bookingStore = useBookingStore()
-  console.log(bookingStore)
   const settings = {
     dots: false,
     infinite: false,

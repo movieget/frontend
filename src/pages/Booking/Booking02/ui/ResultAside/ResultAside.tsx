@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import backDropImg from '../../../../../assets/img/darkknight.webp'
 import ResultInfo from './ui/ResultInfo'
 import { BasicBtn, MainBtn } from '../../../../../components/Button/style'
+import { useNavigate } from 'react-router-dom'
 
 const dummyData = {
   reservation: {
@@ -24,13 +25,18 @@ const dummyData = {
 }
 
 const ResultAside = () => {
+  const navigate = useNavigate()
   return (
     <AsideWrapper>
       <BackDropLayer>
         <ResultInfo dummyData={dummyData} />
         <ButtonWrapper>
-          <BasicBtn $size='medium'>이전</BasicBtn>
-          <MainBtn $size='medium'>150,000원 결제하기</MainBtn>
+          <BasicBtn $size='medium' onClick={() => navigate(-1)}>
+            이전
+          </BasicBtn>
+          <MainBtn $size='medium' onClick={() => navigate('/charge')}>
+            150,000원 결제하기
+          </MainBtn>
         </ButtonWrapper>
       </BackDropLayer>
       <img src={dummyData.movie.backdrop} alt='' />

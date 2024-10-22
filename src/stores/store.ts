@@ -1,17 +1,29 @@
 import { create } from 'zustand'
 
 interface BookingState {
-  date: string
-  movie: string
-  location: string
-  theater: string
-  time: string
-  setField: (field: keyof BookingState, value: string) => void
+  initialBookingState: {
+    date: string
+    movie: string
+    location: string
+    theater: string
+    time: string
+  }
+  actions: {
+    setField: (field: keyof BookingState['initialBookingState'], value: string) => void
+  }
 }
 
 interface DarkModeState {
   isDarkMode: boolean
   toggleDarkMode: () => void
+}
+
+const initialBookingState = {
+  date: '',
+  movie: '',
+  location: '',
+  theater: '',
+  time: '',
 }
 
 // 다크 모드 스토어
@@ -22,10 +34,14 @@ export const useDarkModeStore = create<DarkModeState>((set) => ({
 
 // 예약 스토어
 export const useBookingStore = create<BookingState>((set) => ({
-  date: '',
-  movie: '',
-  location: '',
-  theater: '',
-  time: '',
-  setField: (field, value) => set((state) => ({ ...state, [field]: value })),
+  initialBookingState,
+  actions: {
+    setField: (field, value) =>
+      set((state) => ({
+        initialBookingState: {
+          ...state.initialBookingState,
+          [field]: value,
+        },
+      })),
+  },
 }))
