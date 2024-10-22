@@ -1,5 +1,3 @@
-import { StyleProfile, StyleProfileImg } from '../../components/Badge/style'
-import BasicProfile from '../../assets/svg/profile_user.svg'
 import styled from 'styled-components'
 import { Link, useSearchParams } from 'react-router-dom'
 import UserInfo from './ui/UserInfo/UserInfo'
@@ -11,6 +9,7 @@ import Withdrawal from './ui/Withdrawal/Withdrawal'
 import PageLayout from '../../components/Layouts/PageLayout'
 import { useEffect, useState } from 'react'
 import MyMovieStory from './ui/MyMovieStory/MyMovieStory'
+import ProfileBadge from '../../components/Badge/ProfileBadge/ProfileBadge'
 
 interface MenuItem {
   id: number
@@ -98,9 +97,7 @@ const Mypage = () => {
           </MyMenuBox>
           <MyInfoBox>
             <MyInfo>
-              <StyleProfile $width='10rem' $height='10rem'>
-                <StyleProfileImg src={BasicProfile} />
-              </StyleProfile>
+              <ProfileBadge src='' width='10rem' height='10rem' />
               <MyName>
                 안녕하세요!
                 <br />
