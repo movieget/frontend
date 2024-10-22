@@ -1,0 +1,102 @@
+[
+  {
+    "id": 50,
+    "userProfile": "",
+    "userId": "user51",
+    "score": 4,
+    "title": "멋진 경험",
+    "content": "감동적이고 멋진 영화였습니다.",
+    "reviewImage": "/public/img/detail_review51.jpg",
+    "creationDate": "2023-11-20"
+  },
+  {
+    "id": 51,
+    "userProfile": "",
+    "userId": "user52",
+    "score": 3,
+    "title": "그냥 그랬어요",
+    "content": "보통이었습니다.",
+    "reviewImage": "/public/img/detail_review52.jpg",
+    "creationDate": "2023-11-21"
+  },
+  {
+    "id": 52,
+    "userProfile": "",
+    "userId": "user53",
+    "score": 5,
+    "title": "대단한 영화",
+    "content": "모든 장면이 매력적이었습니다.",
+    "reviewImage": "/public/img/detail_review53.jpg",
+    "creationDate": "2023-11-22"
+  },
+  {
+    "id": 53,
+    "userProfile": "",
+    "userId": "user54",
+    "score": 2,
+    "title": "실망스러움",
+    "content": "예상보다 못한 작품이었습니다.",
+    "reviewImage": "/public/img/detail_review54.jpg",
+    "creationDate": "2023-11-23"
+  },
+  {
+    "id": 54,
+    "userProfile": "",
+    "userId": "user55",
+    "score": 4,
+    "title": "아름다운 이야기",
+    "content": "감정이 잘 표현된 영화였습니다.",
+    "reviewImage": "/public/img/detail_review55.jpg",
+    "creationDate": "2023-11-24"
+  },
+  {
+    "id": 55,
+    "userProfile": "",
+    "userId": "user56",
+    "score": 3,
+    "title": "무난한 수준",
+    "content": "기대 이하였습니다.",
+    "reviewImage": "/public/img/detail_review56.jpg",
+    "creationDate": "2023-11-25"
+  },
+  {
+    "id": 56,
+    "userProfile": "",
+    "userId": "user57",
+    "score": 5,
+    "title": "인생 영화",
+    "content": "감동적인 순간이 많았습니다.",
+    "reviewImage": "/public/img/detail_review57.jpg",
+    "creationDate": "2023-11-26"
+  },
+  {
+    "id": 57,
+    "userProfile": "",
+    "userId": "user58",
+    "score": 4,
+    "title": "재미있었습니다",
+    "content": "흥미로운 요소가 많았습니다.",
+    "reviewImage": "/public/img/detail_review58.jpg",
+    "creationDate": "2023-11-27"
+  },
+  {
+    "id": 58,
+    "userProfile": "",
+    "userId": "user59",
+    "score": 2,
+    "title": "지루한 전개",
+    "content": "기대 이하의 전개였습니다.",
+    "reviewImage": "/public/img/detail_review59.jpg",
+    "creationDate": "2023-11-28"
+  },
+  {
+    "id": 59,
+    "userProfile": "",
+    "userId": "user60",
+    "score": 5,
+    "title": "완벽한 작품",
+    "content": "모든 요소가 조화를 이루었습니다.",
+    "reviewImage": "/public/img/detail_review60.jpg",
+    "creationDate": "2023-11-29"
+  }
+]

@@ -6,7 +6,7 @@
     "score": 3,
     "title": "재미있는 영화",
     "content": "정말 재밌고 감동적인 영화였습니다. 강추합니다!",
-    "reviewImage": "review01",
+    "reviewImage": "/public/img/detail_review01.jpg",
     "creationDate": "2023-10-01"
   },
   {
@@ -16,7 +16,7 @@
     "score": 5,
     "title": "실망스러움",
     "content": "기대했는데 기대 이하였습니다.",
-    "reviewImage": "review02",
+    "reviewImage": "/public/img/detail_review02.jpg",
     "creationDate": "2023-10-02"
   },
   {
@@ -26,7 +26,7 @@
     "score": 4,
     "title": "훌륭한 작품",
     "content": "각본과 연출 모두 뛰어났습니다. 강력 추천!",
-    "reviewImage": "review03",
+    "reviewImage": "/public/img/detail_review03.jpg",
     "creationDate": "2023-10-03"
   },
   {
@@ -36,7 +36,7 @@
     "score": 2,
     "title": "지루한 영화",
     "content": "스토리가 느려서 지루했습니다.",
-    "reviewImage": "review04",
+    "reviewImage": "/public/img/detail_review04.jpg",
     "creationDate": "2023-10-04"
   },
   {
@@ -46,7 +46,7 @@
     "score": 5,
     "title": "강력 추천",
     "content": "이 영화는 정말 볼 가치가 있습니다. 스토리와 연출 모두 뛰어나고, 다시 보고 싶어요!",
-    "reviewImage": "review05",
+    "reviewImage": "/public/img/detail_review05.jpg",
     "creationDate": "2023-10-05"
   },
   {
@@ -56,7 +56,7 @@
     "score": 3,
     "title": "보통의 영화",
     "content": "재미는 있었지만 큰 감동은 없었습니다.",
-    "reviewImage": "review06",
+    "reviewImage": "/public/img/detail_review06.jpg",
     "creationDate": "2023-10-06"
   },
   {
@@ -66,7 +66,7 @@
     "score": 4,
     "title": "재미있었어요",
     "content": "어느 정도 긴장감이 유지되었습니다. 인상 깊었습니다!",
-    "reviewImage": "review07",
+    "reviewImage": "/public/img/detail_review07.jpg",
     "creationDate": "2023-10-07"
   },
   {
@@ -76,7 +76,7 @@
     "score": 1,
     "title": "최악의 영화",
     "content": "스토리가 엉망이었습니다. 시간을 낭비한 느낌이었습니다.",
-    "reviewImage": "review08",
+    "reviewImage": "/public/img/detail_review08.jpg",
     "creationDate": "2023-10-08"
   },
   {
@@ -86,7 +86,7 @@
     "score": 4,
     "title": "가슴이 따뜻해지는 영화",
     "content": "가족의 소중함을 느끼게 해주는 영화였습니다.",
-    "reviewImage": "review09",
+    "reviewImage": "/public/img/detail_review09.jpg",
     "creationDate": "2023-10-09"
   },
   {
@@ -96,187 +96,7 @@
     "score": 5,
     "title": "진정한 명작",
     "content": "모든 요소가 완벽하게 조화를 이루었습니다.",
-    "reviewImage": "review10",
+    "reviewImage": "/public/img/detail_review10.jpg",
     "creationDate": "2023-10-10"
-  },
-  {
-    "id": 10,
-    "userProfile": "",
-    "userId": "user11",
-    "score": 4,
-    "title": "감동적이었어요",
-    "content": "스토리와 연출이 훌륭했습니다. 강력 추천합니다!",
-    "reviewImage": "review11",
-    "creationDate": "2023-10-11"
-  },
-  {
-    "id": 11,
-    "userProfile": "",
-    "userId": "user12",
-    "score": 3,
-    "title": "그냥 그랬어요",
-    "content": "기대보다 별로였습니다.",
-    "reviewImage": "review12",
-    "creationDate": "2023-10-12"
-  },
-  {
-    "id": 12,
-    "userProfile": "",
-    "userId": "user13",
-    "score": 5,
-    "title": "완벽한 영화",
-    "content": "모든 면에서 완벽했습니다. 잊지 못할 장면이 많았습니다.",
-    "reviewImage": "review13",
-    "creationDate": "2023-10-13"
-  },
-  {
-    "id": 13,
-    "userProfile": "",
-    "userId": "user14",
-    "score": 2,
-    "title": "실망스러운 작품",
-    "content": "스토리가 느리고 집중력이 떨어졌습니다.",
-    "reviewImage": "review14",
-    "creationDate": "2023-10-14"
-  },
-  {
-    "id": 14,
-    "userProfile": "",
-    "userId": "user15",
-    "score": 4,
-    "title": "흥미로운 이야기",
-    "content": "예상치 못한 전개가 많아서 흥미로웠습니다.",
-    "reviewImage": "review15",
-    "creationDate": "2023-10-15"
-  },
-  {
-    "id": 15,
-    "userProfile": "",
-    "userId": "user16",
-    "score": 3,
-    "title": "재미있지만 아쉬운 점",
-    "content": "몇몇 부분에서 아쉬운 점이 있었습니다.",
-    "reviewImage": "review16",
-    "creationDate": "2023-10-16"
-  },
-  {
-    "id": 16,
-    "userProfile": "",
-    "userId": "user17",
-    "score": 5,
-    "title": "눈물이 나네요",
-    "content": "가족 간의 사랑에 대한 깊이 있는 이야기였습니다.",
-    "reviewImage": "review17",
-    "creationDate": "2023-10-17"
-  },
-  {
-    "id": 17,
-    "userProfile": "",
-    "userId": "user18",
-    "score": 4,
-    "title": "매력적인 캐릭터들",
-    "content": "각자의 개성이 잘 드러났습니다.",
-    "reviewImage": "review18",
-    "creationDate": "2023-10-18"
-  },
-  {
-    "id": 18,
-    "userProfile": "",
-    "userId": "user19",
-    "score": 2,
-    "title": "실망스러운 전개",
-    "content": "예측 가능하고 지루했습니다.",
-    "reviewImage": "review19",
-    "creationDate": "2023-10-19"
-  },
-  {
-    "id": 19,
-    "userProfile": "",
-    "userId": "user20",
-    "score": 5,
-    "title": "영화의 묘미",
-    "content": "스토리 전개가 매끄러웠습니다. 감동적이었습니다.",
-    "reviewImage": "review20",
-    "creationDate": "2023-10-20"
-  },
-  {
-    "id": 20,
-    "userProfile": "",
-    "userId": "user21",
-    "score": 3,
-    "title": "보통 수준",
-    "content": "몇몇 장면은 재미있었지만 기억에 남지 않았습니다.",
-    "reviewImage": "review21",
-    "creationDate": "2023-10-21"
-  },
-  {
-    "id": 21,
-    "userProfile": "",
-    "userId": "user22",
-    "score": 4,
-    "title": "감정의 흐름",
-    "content": "주인공의 성장 과정이 인상 깊었습니다.",
-    "reviewImage": "review22",
-    "creationDate": "2023-10-22"
-  },
-  {
-    "id": 22,
-    "userProfile": "",
-    "userId": "user23",
-    "score": 5,
-    "title": "인생 영화",
-    "content": "눈물이 날 정도로 감동적이었습니다.",
-    "reviewImage": "review23",
-    "creationDate": "2023-10-23"
-  },
-  {
-    "id": 23,
-    "userProfile": "",
-    "userId": "user24",
-    "score": 2,
-    "title": "지루한 영화",
-    "content": "스토리가 느리고 흥미가 떨어졌습니다.",
-    "reviewImage": "review24",
-    "creationDate": "2023-10-24"
-  },
-  {
-    "id": 24,
-    "userProfile": "",
-    "userId": "user25",
-    "score": 4,
-    "title": "유머와 감동이 함께",
-    "content": "재미있는 요소가 많아서 좋았습니다.",
-    "reviewImage": "review25",
-    "creationDate": "2023-10-25"
-  },
-  {
-    "id": 25,
-    "userProfile": "",
-    "userId": "user26",
-    "score": 3,
-    "title": "그저 그런",
-    "content": "특별한 감정이 없었던 영화.",
-    "reviewImage": "review26",
-    "creationDate": "2023-10-26"
-  },
-  {
-    "id": 26,
-    "userProfile": "",
-    "userId": "user27",
-    "score": 5,
-    "title": "완벽한 결말",
-    "content": "마지막 장면이 인상 깊었습니다.",
-    "reviewImage": "review27",
-    "creationDate": "2023-10-27"
-  },
-  {
-    "id": 27,
-    "userProfile": "",
-    "userId": "user28",
-    "score": 4,
-    "title": "조금 아쉬운 점",
-    "content": "전체적으로 좋은 영화지만 조금 아쉬웠습니다.",
-    "reviewImage": "review28",
-    "creationDate": "2023-10-28"
   }
 ]
