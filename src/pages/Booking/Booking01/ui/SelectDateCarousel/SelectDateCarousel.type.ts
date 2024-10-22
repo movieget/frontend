@@ -5,4 +5,6 @@ export interface IArrowButtonProps {
 export interface IDateButtonProps {
   dateNumber: string
   today: string
+  isSelected: boolean
+  setIsSelected: any
 }

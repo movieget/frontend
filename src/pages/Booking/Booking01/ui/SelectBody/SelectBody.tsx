@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useBookingStore } from '../../../../../stores/store'
 import {
   SelectBodyWrapper,
