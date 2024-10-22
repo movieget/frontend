@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { SvgSpinner } from '../components/Loading/SvgSpinner'
 import { Suspense, lazy } from 'react'
 import Common from '../pages/Common/Common'
+import Charge from '../pages/Charge/Charge'
 
 const Main = lazy(() => import('../pages/Main/Main'))
 const Movie = lazy(() => import('../pages/Movie/Movie'))
@@ -47,6 +48,14 @@ const AppRoutes = () => {
           element={
             <Suspense fallback={<SvgSpinner />}>
               <Booking />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/charge'
+          element={
+            <Suspense fallback={<SvgSpinner />}>
+              <Charge />
             </Suspense>
           }
         />
