@@ -23,7 +23,7 @@ export const DateBtn = styled(CustomArrow)<{ $week: string; $isSelected: boolean
   justify-content: center;
   align-items: center;
   min-width: 5rem;
-  padding: 1.2rem 0;
+  padding: 1.2rem 1.4rem;
   font-family: inherit;
   font-size: 1.8rem;
   font-weight: ${({ theme }) => theme.fonts.weight.thin};
@@ -31,10 +31,10 @@ export const DateBtn = styled(CustomArrow)<{ $week: string; $isSelected: boolean
     $week === '일' ? theme.colors.error : $week === '토' ? '#007BFF' : theme.colors.text};
   border-radius: 4px;
   background-color: ${({ $isSelected, theme }) =>
-    $isSelected ? `${theme.colors.bg_btn_normal}` : 'transparent;'};
+    $isSelected ? `${theme.colors.bg_btn_normal}` : 'transparent'};
   span {
     position: absolute;
-    top: -3rem;
+    top: -3.2rem;
     font-family: inherit;
     white-space: nowrap;
   }
