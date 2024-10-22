@@ -6,13 +6,14 @@ import { useBookingStore } from '../../../../../../stores/store'
 const SelectMovies = () => {
   const bookingState = useBookingStore()
   console.log(bookingState)
+  const title = '영화'
 
   return (
     <SelectMovie>
-      <SelectTitle title='영화' />
+      <SelectTitle title={title} />
       <SelectBox>
         <SelectList>
-          <OptionButton age={18} label='크라켄' />
+          <OptionButton title={title} age={18} label='크라켄' />
         </SelectList>
       </SelectBox>
     </SelectMovie>
