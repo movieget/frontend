@@ -15,6 +15,7 @@ export const C_DisabledBtn = `<BasicBtn $disabled>disabled 버튼(Basic/Main) �
 export const C_SocialBtnKakao = `<SocialBtn $social='kakao'>카카오로 시작하기</SocialBtn>`
 export const C_SocialBtnNaver = `<SocialBtn $social='naver'>네이버로 시작하기</SocialBtn>`
 export const C_SocialBtnGoogle = `<SocialBtn $social='google'>구글로 시작하기</SocialBtn>`
+export const C_SocialBtnGithub = `<SocialBtn $social='github'>깃허브로 시작하기</SocialBtn>`
 
 export const C_IconBtnAlarm = `<IconBtn>
   <IconBtnImg src={Bell} />
