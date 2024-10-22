@@ -15,6 +15,7 @@ const Login = () => {
         </StyleLoginTextWrapper>
         <StyleLoginBtnWrapper>
           <SocialBtn $social='kakao'>카카오로 시작하기</SocialBtn>
+          <SocialBtn $social='google'>구글로 시작하기</SocialBtn>
           <SocialBtn $social='naver'>네이버로 시작하기</SocialBtn>
         </StyleLoginBtnWrapper>
       </StyleLoginContainer>

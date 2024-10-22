@@ -66,6 +66,7 @@ import {
   C_IssueBtn_L,
   C_CheckHeartCount,
   C_AddIconBtn,
+  C_SocialBtnGoogle,
 } from './CommonCodes'
 import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
 import { formatLikes } from '../../utils/formatLikes'
@@ -188,6 +189,14 @@ const Common = () => {
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_SocialBtnNaver} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <SocialBtn $social='google'>구글로 시작하기</SocialBtn>
+                    </th>
+                    <td>
+                      <FormattedCodeBlock code={C_SocialBtnGoogle} />
                     </td>
                   </tr>
                 </tbody>
