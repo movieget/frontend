@@ -399,7 +399,7 @@ const Common = () => {
                     <th>
                       <BadgeBox>
                         <Badge>일반/장르</Badge>
-                        <Badge color='orange'>러닝타임</Badge>
+                        <Badge $color='orange'>러닝타임</Badge>
                         <Badge $playing='playing'>상영중입니다</Badge>
                         <Badge $playing='notPlaying'>상영예정</Badge>
                       </BadgeBox>

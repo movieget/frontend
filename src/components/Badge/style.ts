@@ -18,9 +18,9 @@ export const Badge = styled.span<IfBadgeColor>`
   align-items: center;
   justify-content: center;
   min-width: 4.2rem;
-  height: 2rem;
-  padding: 0 0.8rem;
-  font-size: 1rem;
+  height: 3.2rem;
+  padding: 0 1.2rem;
+  font-size: 1.4rem;
   background-color: ${({ $color }) => {
     if ($color === 'orange') return '#F45917'
     if ($color === 'primary') return '#733FF1'
