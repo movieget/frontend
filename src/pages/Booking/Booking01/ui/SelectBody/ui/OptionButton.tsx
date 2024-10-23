@@ -3,14 +3,27 @@ import { useBookingStore } from '../../../../../../stores/store'
 import { OptionButtonStyle, OptionLabel } from '../SelectBody.style'
 
 interface IOptionButtonProps {
+  id: number
   title: '영화' | '지역' | '영화관'
   age?: 'all' | 12 | 15 | 18
   label?: string
+  isSelected: boolean
+  setIsSelected: any
 }
 
-const OptionButton = ({ title, age, label = '옵션라벨' }: IOptionButtonProps) => {
+const OptionButton = ({
+  isSelected,
+  id,
+  setIsSelected,
+  title,
+  age,
+  label = '옵션라벨',
+}: IOptionButtonProps) => {
   const setField = useBookingStore((state) => state.actions.setField)
   const handleClick = () => {
+    setIsSelected(id)
+    console.log(isSelected)
+
     switch (title) {
       case '영화':
         setField('movie', label)
@@ -29,7 +42,7 @@ const OptionButton = ({ title, age, label = '옵션라벨' }: IOptionButtonProps
   }
 
   return (
-    <OptionButtonStyle onClick={handleClick}>
+    <OptionButtonStyle $isSelected={isSelected} onClick={handleClick}>
       {age && <StyleAge $age={age} />}
       <OptionLabel>{label}</OptionLabel>
     </OptionButtonStyle>
