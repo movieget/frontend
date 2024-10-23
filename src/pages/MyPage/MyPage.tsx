@@ -63,10 +63,12 @@ const Mypage = () => {
   const [activeMenu, setActiveMenu] = useState(menu)
 
   useEffect(() => {
-    setActiveMenu(menu)
+    // menu가 'default'일 경우 첫 번째 메뉴로 초기화
+    const newMenu = menu === 'default' ? mypageMenu[0].uri.slice(6) : menu
+    setActiveMenu(newMenu)
   }, [menu])
 
-  const handleMenuClick = (item) => {
+  const handleMenuClick = (item: MenuItem) => {
     setActiveMenu(item.uri.slice(6))
     setSearchParams({ menu: item.uri.slice(6) })
   }
@@ -86,7 +88,7 @@ const Mypage = () => {
               {mypageMenu.map((item) => (
                 <MyMenu
                   key={item.id}
-                  active={activeMenu === item.uri.slice(6)} // active 상태 전달
+                  $active={activeMenu === item.uri.slice(6)} // active 상태 전달
                 >
                   <Link to={item.uri} onClick={() => handleMenuClick(item)}>
                     {item.menuTitle}
@@ -146,12 +148,11 @@ const MyMenuList = styled.ul`
   flex-direction: column;
   gap: 1.2rem;
 `
-const MyMenu = styled.li<{ active?: boolean }>`
+const MyMenu = styled.li<{ $active?: boolean }>`
   padding: 0 1.2rem;
   font-size: 1.4rem;
   line-height: 2.4rem;
-  background-color: ${({ active }) =>
-    active ? '#3B3B3B' : 'transparent'}; // active 상태에 따라 배경색 변경
+  background-color: ${({ $active }) => ($active ? '#3B3B3B' : 'transparent')};
   border-radius: 0.4rem;
 `
 

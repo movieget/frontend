@@ -1,9 +1,7 @@
 import Bell from '../../assets/svg/bell.svg'
 import Profile from '../../assets/img/Profile.svg'
-import BasicProfile from '../../assets/svg/profile_user.svg'
 import './style.css'
 
-import useImagePreview from '../../hooks/useImagePreview'
 import {
   AddIconBtn,
   BasicBtn,
@@ -11,6 +9,7 @@ import {
   IconBtnImg,
   IssueBtn,
   MainBtn,
+  MainIconBtn,
   SocialBtn,
 } from '../../components/Button/style'
 import { InputBox, Input, Textarea, TextareaBox } from '../../components/Input/style'
@@ -22,14 +21,7 @@ import {
   CheckSeat,
   CheckText,
 } from '../../components/Checkbox/style'
-import {
-  BadgeBox,
-  Badge,
-  StyleAge,
-  StyleTitle,
-  StyleProfile,
-  StyleProfileImg,
-} from '../../components/Badge/style'
+import { BadgeBox, Badge, StyleAge, StyleTitle } from '../../components/Badge/style'
 import StarRating from '../../components/StarRating/StarRating'
 import useRating from '../../hooks/useRating'
 import Tabs from '../../components/Tab/Tab'
@@ -68,6 +60,7 @@ import {
   C_AddIconBtn,
   C_SocialBtnGoogle,
   C_SocialBtnGithub,
+  C_MainIconBtn,
 } from './CommonCodes'
 import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
 import { formatLikes } from '../../utils/formatLikes'
@@ -246,6 +239,16 @@ const Common = () => {
                       <FormattedCodeBlock code={C_IconBtnMypage} />
                     </td>
                   </tr>
+                  <tr>
+                    <th>
+                      <MainIconBtn>
+                        <IconBtnImg src={Bell} />
+                      </MainIconBtn>
+                    </th>
+                    <td>
+                      <FormattedCodeBlock code={C_MainIconBtn} />
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -266,9 +269,9 @@ const Common = () => {
                 <tbody>
                   <tr>
                     <th>
-                      <InputBox width=''>
-                        <Input type='text' width='' placeholder='텍스트' />
-                        <Input type='password' width='' placeholder='패스워드' />
+                      <InputBox $width=''>
+                        <Input type='text' $width='' placeholder='텍스트' $radius='' />
+                        <Input type='password' $width='' placeholder='패스워드' $radius='' />
                       </InputBox>
                     </th>
                     <td>
@@ -277,8 +280,8 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <TextareaBox width=''>
-                        <Textarea width='' placeholder='텍스트를 입력하세요.' />
+                      <TextareaBox $width=''>
+                        <Textarea $width='' placeholder='텍스트를 입력하세요.' />
                       </TextareaBox>
                     </th>
                     <td>
@@ -594,14 +597,3 @@ const Common = () => {
 }
 
 export default Common
-
-// const FormattedCodeBlock = ({ code }) => {
-//   return <TextWithLineBreak>{code}</TextWithLineBreak>
-// }
-
-// const TextWithLineBreak = styled.code`
-//   white-space: pre; /* 줄바꿈을 유지하면서 텍스트를 표시 */
-//   font-size: 1.8rem; /* 텍스트 크기 조정 */
-//   line-height: 1.5;
-//   letter-spacing: 0.8px;
-// `
