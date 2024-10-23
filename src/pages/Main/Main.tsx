@@ -1,5 +1,5 @@
 import { client } from '../../apis/instances'
-import { Container } from './style'
+import { TrailerContents, TrailerSection, TrailerWrapper } from './style'
 
 const Main = () => {
   const page = 2
@@ -10,10 +10,19 @@ const Main = () => {
   }
   return (
     <>
-      <Container>
-        <h2>메인페이지</h2>
-        <button onClick={fetchData}>fetch!</button>
-      </Container>
+      <h2>메인페이지</h2>
+      <button onClick={fetchData}>fetch!</button>
+      <TrailerSection>
+        <TrailerContents>
+          <TrailerWrapper>
+            <h1>IU, 바이 썸머</h1>
+            <span>
+              안녕? 여름!
+              <br /> 안녕, 여름.
+            </span>
+          </TrailerWrapper>
+        </TrailerContents>
+      </TrailerSection>
     </>
   )
 }
