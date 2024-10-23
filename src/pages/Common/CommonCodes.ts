@@ -27,12 +27,12 @@ export const C_MainIconBtn = `<MainIconBtn>
   <IconBtnImg src={Bell} />
 </MainIconBtn>`
 
-export const C_InputBox = `<InputBox width=''>
-  <Input type='text' width='' placeholder='텍스트' radius='' />
-  <Input type='password' width='' placeholder='패스워드' radius='' />
+export const C_InputBox = `<InputBox $width=''>
+  <Input type='text' $width='' placeholder='텍스트' $radius='' />
+  <Input type='password' $width='' placeholder='패스워드' $radius='' />
 </InputBox>`
-export const C_TextareaBox = `<TextareaBox width=''>
-  <Textarea width='' placeholder='텍스트를 입력하세요.' />
+export const C_TextareaBox = `<TextareaBox $width=''>
+  <Textarea $width='' placeholder='텍스트를 입력하세요.' />
 </TextareaBox>`
 
 export const C_CustomSelect = `<CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} $direction='right' />`

@@ -269,9 +269,9 @@ const Common = () => {
                 <tbody>
                   <tr>
                     <th>
-                      <InputBox width=''>
-                        <Input type='text' width='' placeholder='텍스트' radius='' />
-                        <Input type='password' width='' placeholder='패스워드' radius='' />
+                      <InputBox $width=''>
+                        <Input type='text' $width='' placeholder='텍스트' $radius='' />
+                        <Input type='password' $width='' placeholder='패스워드' $radius='' />
                       </InputBox>
                     </th>
                     <td>
@@ -280,8 +280,8 @@ const Common = () => {
                   </tr>
                   <tr>
                     <th>
-                      <TextareaBox width=''>
-                        <Textarea width='' placeholder='텍스트를 입력하세요.' />
+                      <TextareaBox $width=''>
+                        <Textarea $width='' placeholder='텍스트를 입력하세요.' />
                       </TextareaBox>
                     </th>
                     <td>
