@@ -1,0 +1,338 @@
+[
+  {
+    "date": "2024-10-23",
+    "movies": [
+      {
+        "id": 1,
+        "title": "Movie A",
+        "genre": "Action",
+        "duration": 120,
+        "rating": 15,
+        "age": 15
+      },
+      {
+        "id": 2,
+        "title": "Movie B",
+        "genre": "Comedy",
+        "duration": 110,
+        "rating": 12,
+        "age": 18
+      }
+    ],
+    "locations": [
+      {
+        "id": 1,
+        "spot": "Seoul"
+      },
+      {
+        "id": 2,
+        "spot": "Busan"
+      }
+    ],
+    "cinemas": [
+      {
+        "id": 1,
+        "cinema_name": "CGV Gangnam"
+      },
+      {
+        "id": 2,
+        "cinema_name": "Lotte Cinema Busan"
+      }
+    ],
+    "screenings": [
+      {
+        "id": 1,
+        "start_time": "2024-10-23 14:00",
+        "end_time": "2024-10-23 16:00",
+        "movie__title": "Movie A"
+      },
+      {
+        "id": 2,
+        "start_time": "2024-10-23 18:00",
+        "end_time": "2024-10-23 20:00",
+        "movie__title": "Movie A"
+      },
+      {
+        "id": 3,
+        "start_time": "2024-10-23 20:00",
+        "end_time": "2024-10-23 22:00",
+        "movie__title": "Movie B"
+      }
+    ]
+  },
+  {
+    "date": "2024-10-24",
+    "movies": [
+      {
+        "id": 3,
+        "title": "Movie C",
+        "genre": "Drama",
+        "duration": 130,
+        "rating": 18,
+        "age": 18
+      },
+      {
+        "id": 4,
+        "title": "Movie D",
+        "genre": "Horror",
+        "duration": 100,
+        "rating": 12,
+        "age": 15
+      }
+    ],
+    "locations": [
+      {
+        "id": 1,
+        "spot": "Incheon"
+      },
+      {
+        "id": 2,
+        "spot": "Gyeongju"
+      }
+    ],
+    "cinemas": [
+      {
+        "id": 1,
+        "cinema_name": "Megabox Incheon"
+      },
+      {
+        "id": 2,
+        "cinema_name": "CGV Gyeongju"
+      }
+    ],
+    "screenings": [
+      {
+        "id": 1,
+        "start_time": "2024-10-24 15:00",
+        "end_time": "2024-10-24 17:10",
+        "movie__title": "Movie C"
+      },
+      {
+        "id": 2,
+        "start_time": "2024-10-24 19:00",
+        "end_time": "2024-10-24 20:40",
+        "movie__title": "Movie D"
+      }
+    ]
+  },
+  {
+    "date": "2024-10-25",
+    "movies": [
+      {
+        "id": 5,
+        "title": "Movie E",
+        "genre": "Romance",
+        "duration": 95,
+        "rating": 12,
+        "age": 12
+      },
+      {
+        "id": 6,
+        "title": "Movie F",
+        "genre": "Fantasy",
+        "duration": 140,
+        "rating": 15,
+        "age": 12
+      }
+    ],
+    "locations": [
+      {
+        "id": 1,
+        "spot": "Jeju"
+      },
+      {
+        "id": 2,
+        "spot": "Suwon"
+      }
+    ],
+    "cinemas": [
+      {
+        "id": 1,
+        "cinema_name": "CGV Jeju"
+      },
+      {
+        "id": 2,
+        "cinema_name": "Lotte Cinema Suwon"
+      }
+    ],
+    "screenings": [
+      {
+        "id": 1,
+        "start_time": "2024-10-25 16:00",
+        "end_time": "2024-10-25 17:35",
+        "movie__title": "Movie E"
+      },
+      {
+        "id": 2,
+        "start_time": "2024-10-25 18:00",
+        "end_time": "2024-10-25 20:20",
+        "movie__title": "Movie F"
+      }
+    ]
+  },
+  {
+    "date": "2024-10-26",
+    "movies": [
+      {
+        "id": 7,
+        "title": "Movie G",
+        "genre": "Thriller",
+        "duration": 125,
+        "rating": 15,
+        "age": 15
+      },
+      {
+        "id": 8,
+        "title": "Movie H",
+        "genre": "Animation",
+        "duration": 95,
+        "rating": 0,
+        "age": 18
+      }
+    ],
+    "locations": [
+      {
+        "id": 1,
+        "spot": "Daejeon"
+      },
+      {
+        "id": 2,
+        "spot": "Ulsan"
+      }
+    ],
+    "cinemas": [
+      {
+        "id": 1,
+        "cinema_name": "Megabox Daejeon"
+      },
+      {
+        "id": 2,
+        "cinema_name": "CGV Ulsan"
+      }
+    ],
+    "screenings": [
+      {
+        "id": 1,
+        "start_time": "2024-10-26 13:00",
+        "end_time": "2024-10-26 15:05",
+        "movie__title": "Movie G"
+      },
+      {
+        "id": 2,
+        "start_time": "2024-10-26 17:00",
+        "end_time": "2024-10-26 18:35",
+        "movie__title": "Movie H"
+      }
+    ]
+  },
+  {
+    "date": "2024-10-27",
+    "movies": [
+      {
+        "id": 9,
+        "title": "Movie I",
+        "genre": "Sci-Fi",
+        "duration": 150,
+        "rating": 12,
+        "age": 12
+      },
+      {
+        "id": 10,
+        "title": "Movie J",
+        "genre": "Documentary",
+        "duration": 85,
+        "rating": 0,
+        "age": 18
+      }
+    ],
+    "locations": [
+      {
+        "id": 1,
+        "spot": "Changwon"
+      },
+      {
+        "id": 2,
+        "spot": "Gwangju"
+      }
+    ],
+    "cinemas": [
+      {
+        "id": 1,
+        "cinema_name": "CGV Changwon"
+      },
+      {
+        "id": 2,
+        "cinema_name": "Lotte Cinema Gwangju"
+      }
+    ],
+    "screenings": [
+      {
+        "id": 1,
+        "start_time": "2024-10-27 15:00",
+        "end_time": "2024-10-27 17:30",
+        "movie__title": "Movie I"
+      },
+      {
+        "id": 2,
+        "start_time": "2024-10-27 18:00",
+        "end_time": "2024-10-27 19:30",
+        "movie__title": "Movie J"
+      }
+    ]
+  },
+  {
+    "date": "2024-10-28",
+    "movies": [
+      {
+        "id": 11,
+        "title": "Movie K",
+        "genre": "Adventure",
+        "duration": 140,
+        "rating": 12,
+        "age": 12
+      },
+      {
+        "id": 12,
+        "title": "Movie L",
+        "genre": "Romantic Comedy",
+        "duration": 90,
+        "rating": 0,
+        "age": 18
+      }
+    ],
+    "locations": [
+      {
+        "id": 1,
+        "spot": "Seongnam"
+      },
+      {
+        "id": 2,
+        "spot": "Suwon"
+      }
+    ],
+    "cinemas": [
+      {
+        "id": 1,
+        "cinema_name": "CGV Seongnam"
+      },
+      {
+        "id": 2,
+        "cinema_name": "Lotte Cinema Suwon"
+      }
+    ],
+    "screenings": [
+      {
+        "id": 1,
+        "start_time": "2024-10-28 14:00",
+        "end_time": "2024-10-28 16:20",
+        "movie__title": "Movie K"
+      },
+      {
+        "id": 2,
+        "start_time": "2024-10-28 18:00",
+        "end_time": "2024-10-28 19:30",
+        "movie__title": "Movie L"
+      }
+    ]
+  }
+]

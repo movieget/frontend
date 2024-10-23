@@ -27,6 +27,7 @@ declare module 'styled-components' {
       bg_box: string
       bg_backdrop: string
       text: string
+      text_disabled: string
     }
     fonts: {
       weight: {

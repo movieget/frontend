@@ -41,6 +41,7 @@ const lightTheme: DefaultTheme = {
     bg_box: '#ECECEC',
     bg_backdrop: 'linear-gradient(0deg, rgba(27,27,27,1) 0%, rgba(102,102,102,0) 100%)',
     text: '#0A0A0A',
+    text_disabled: '#797979',
   },
   fonts: commonFonts,
 }
@@ -53,6 +54,7 @@ const darkTheme: DefaultTheme = {
     bg_box: '#292929',
     bg_backdrop: 'linear-gradient(0deg, rgba(27,27,27,1) 40%, rgba(102,102,102,0) 100%)',
     text: '#FDFDFD',
+    text_disabled: '#797979',
   },
   fonts: commonFonts,
 }

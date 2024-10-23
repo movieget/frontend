@@ -19,7 +19,7 @@ const OptionButton = ({ title, age, label = '옵션라벨' }: IOptionButtonProps
         setField('location', label)
         break
       case '영화관':
-        setField('theater', label)
+        setField('cinema', label)
         break
       default:
         throw new Error(

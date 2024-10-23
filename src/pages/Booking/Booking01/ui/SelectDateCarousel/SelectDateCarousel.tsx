@@ -6,29 +6,36 @@ import DateButton from './ui/DateButton'
 import NextButton from './ui/NextButton'
 import PrevButton from './ui/PrevButton'
 import { generateDates } from '../../../../../utils/generateDates'
-import { useBookingStore } from '../../../../../stores/store'
+import { useState } from 'react'
 
 const SelectDateCarousel = () => {
   const dates = generateDates()
+  const today = new Date().getDate().toString().padStart(2, '0')
+  const [isSelected, setIsSelected] = useState(dates[0])
+
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 13,
+    slidesToShow: 10,
     slidesToScroll: 4,
     arrows: true,
     nextArrow: <NextButton />,
     prevArrow: <PrevButton />,
   }
 
-  const today = new Date().getDate().toString().padStart(2, '0')
-
   return (
     <CarouselWrapper>
       <SliderWrapper>
         <Slider {...settings}>
           {dates.map((el, idx) => (
-            <DateButton key={idx} dateNumber={el} today={today} />
+            <DateButton
+              key={idx}
+              dateNumber={el}
+              today={today}
+              isSelected={isSelected === el}
+              setIsSelected={setIsSelected}
+            />
           ))}
         </Slider>
       </SliderWrapper>

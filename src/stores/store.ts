@@ -1,12 +1,15 @@
 import { create } from 'zustand'
+import { generateDates } from '../utils/generateDates'
+
+const initialDates = generateDates()
 
 interface BookingState {
   initialBookingState: {
     date: string
     movie: string
     location: string
-    theater: string
-    time: string
+    cinema: string
+    start_time: string
   }
   actions: {
     setField: (field: keyof BookingState['initialBookingState'], value: string) => void
@@ -19,11 +22,11 @@ interface DarkModeState {
 }
 
 const initialBookingState = {
-  date: '',
+  date: initialDates[0],
   movie: '',
   location: '',
-  theater: '',
-  time: '',
+  cinema: '',
+  start_time: '',
 }
 
 // 다크 모드 스토어

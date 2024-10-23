@@ -4,7 +4,7 @@ export const generateDates = () => {
 
   const dayNames = ['일', '월', '화', '수', '목', '금', '토']
 
-  for (let i = 0; i < 24; i++) {
+  for (let i = 0; i < 14; i++) {
     const date = new Date(today)
     date.setDate(today.getDate() + i)
 
