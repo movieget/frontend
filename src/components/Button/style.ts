@@ -158,13 +158,14 @@ export const IconBtn = styled.button<IconBtnProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: ${(props) => props.width || '2.4rem'};
-  height: ${(props) => props.width || '2.4rem'};
+  min-width: 4.4rem;
+  width: ${(props) => props.width || '4.4rem'};
+  height: ${(props) => props.width || '4rem'};
   padding: 0;
   background-color: #292929;
   border: 1px solid;
   border-color: #3f3f3f;
-  border-radius: 4px;
+  border-radius: 1.2rem;
   overflow: hidden;
   cursor: pointer;
 `
@@ -172,4 +173,20 @@ export const IconBtnImg = styled.img`
   width: ${(props) => props.width || '2.4rem'};
   height: ${(props) => props.width || '2.4rem'};
   object-fit: cover;
+`
+
+export const MainIconBtn = styled.button<IconBtnProps>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 6rem;
+  width: ${(props) => props.width || '6rem'};
+  height: ${(props) => props.width || '4rem'};
+  padding: 0;
+  background: linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb);
+  border: 1px solid;
+  border-color: #3f3f3f;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  cursor: pointer;
 `
