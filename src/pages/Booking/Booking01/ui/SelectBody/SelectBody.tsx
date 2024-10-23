@@ -25,6 +25,8 @@ const SelectBody = () => {
     queryKey: ['bookingData'],
     queryFn: () => fetchMovieData(date),
     enabled: !!date,
+    staleTime: 1000 * 10,
+    retry: 1,
   })
 
   console.log('SelectBody에서 알림2: ', date, movie, location, cinema)
