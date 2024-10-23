@@ -1,13 +1,209 @@
-import { Link, useLocation, useSearchParams } from 'react-router-dom'
-import { Input, InputBox } from '../../components/Input/style'
-import PageLayout from '../../components/Layouts/PageLayout'
-import { IconBtnImg, MainIconBtn } from '../../components/Button/style'
-import SearchIcon from '../../assets/svg/search.svg'
 import styled from 'styled-components'
-import { useEffect, useRef } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Input, InputBox } from '../../components/Input/style'
+import { IconBtnImg, MainIconBtn } from '../../components/Button/style'
+import PageLayout from '../../components/Layouts/PageLayout'
 import CustomSelect from '../../components/Select/CusomSelect'
+import NowPlayingMovie from './ui/NowPlayingMovie/NowPlayingMovie'
+import UpcomingMovie from './ui/UpcomingMovie/UpcomingMovie'
+import SearchIcon from '../../assets/svg/search.svg'
+
+export interface Movie {
+  id: number
+  posterImage: string
+  playing: boolean
+  age: string | number
+  title: string
+  islikes: boolean
+  totalLikes: number
+}
+
+const dummyData: Movie[] = [
+  {
+    id: 1,
+    posterImage: '/public/img/detail_review01.jpg',
+    playing: true,
+    age: 'all',
+    title: '타이틀 1',
+    islikes: true,
+    totalLikes: 22500,
+  },
+  {
+    id: 2,
+    posterImage: '/public/img/detail_review02.jpg',
+    playing: false,
+    age: 12,
+    title: '타이틀 2',
+    islikes: false,
+    totalLikes: 15000,
+  },
+  {
+    id: 3,
+    posterImage: '/public/img/detail_review03.jpg',
+    playing: true,
+    age: 15,
+    title: '타이틀 3',
+    islikes: true,
+    totalLikes: 32000,
+  },
+  {
+    id: 4,
+    posterImage: '/public/img/detail_review04.jpg',
+    playing: false,
+    age: 18,
+    title: '타이틀 4',
+    islikes: false,
+    totalLikes: 8000,
+  },
+  {
+    id: 5,
+    posterImage: '/public/img/detail_review05.jpg',
+    playing: true,
+    age: 'all',
+    title: '타이틀 5',
+    islikes: true,
+    totalLikes: 27000,
+  },
+  {
+    id: 6,
+    posterImage: '/public/img/detail_review06.jpg',
+    playing: false,
+    age: 12,
+    title: '타이틀 6',
+    islikes: false,
+    totalLikes: 19000,
+  },
+  {
+    id: 7,
+    posterImage: '/public/img/detail_review07.jpg',
+    playing: true,
+    age: 15,
+    title: '타이틀 7',
+    islikes: true,
+    totalLikes: 36000,
+  },
+  {
+    id: 8,
+    posterImage: '/public/img/detail_review08.jpg',
+    playing: false,
+    age: 18,
+    title: '타이틀 8',
+    islikes: false,
+    totalLikes: 12000,
+  },
+  {
+    id: 9,
+    posterImage: '/public/img/detail_review09.jpg',
+    playing: true,
+    age: 'all',
+    title: '타이틀 9',
+    islikes: true,
+    totalLikes: 30000,
+  },
+  {
+    id: 10,
+    posterImage: '/public/img/detail_review10.jpg',
+    playing: false,
+    age: 12,
+    title: '타이틀 10',
+    islikes: false,
+    totalLikes: 6000,
+  },
+  {
+    id: 11,
+    posterImage: '/public/img/detail_review11.jpg',
+    playing: true,
+    age: 15,
+    title: '타이틀 11',
+    islikes: true,
+    totalLikes: 28000,
+  },
+  {
+    id: 12,
+    posterImage: '/public/img/detail_review12.jpg',
+    playing: false,
+    age: 18,
+    title: '타이틀 12',
+    islikes: false,
+    totalLikes: 16000,
+  },
+  {
+    id: 13,
+    posterImage: '/public/img/detail_review13.jpg',
+    playing: true,
+    age: 'all',
+    title: '타이틀 13',
+    islikes: true,
+    totalLikes: 23000,
+  },
+  {
+    id: 14,
+    posterImage: '/public/img/detail_review14.jpg',
+    playing: false,
+    age: 12,
+    title: '타이틀 14',
+    islikes: false,
+    totalLikes: 8500,
+  },
+  {
+    id: 15,
+    posterImage: '/public/img/detail_review15.jpg',
+    playing: true,
+    age: 15,
+    title: '타이틀 15',
+    islikes: true,
+    totalLikes: 32000,
+  },
+  {
+    id: 16,
+    posterImage: '/public/img/detail_review16.jpg',
+    playing: false,
+    age: 18,
+    title: '타이틀 16',
+    islikes: false,
+    totalLikes: 19000,
+  },
+  {
+    id: 17,
+    posterImage: '/public/img/detail_review17.jpg',
+    playing: true,
+    age: 'all',
+    title: '타이틀 17',
+    islikes: true,
+    totalLikes: 27000,
+  },
+  {
+    id: 18,
+    posterImage: '/public/img/detail_review18.jpg',
+    playing: false,
+    age: 12,
+    title: '타이틀 18',
+    islikes: false,
+    totalLikes: 11000,
+  },
+  {
+    id: 19,
+    posterImage: '/public/img/detail_review19.jpg',
+    playing: true,
+    age: 15,
+    title: '타이틀 19',
+    islikes: true,
+    totalLikes: 36000,
+  },
+  {
+    id: 20,
+    posterImage: '/public/img/detail_review20.jpg',
+    playing: false,
+    age: 18,
+    title: '타이틀 20',
+    islikes: false,
+    totalLikes: 6500,
+  },
+]
 
 const Movie = () => {
+  const [movies, setMovies] = useState(dummyData)
   const [URLSearchParams, setURLSearchParams] = useSearchParams()
   const menu = URLSearchParams.get('menu')
 
@@ -18,28 +214,41 @@ const Movie = () => {
   }, [menu])
 
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const [inputValue, setInputValue] = useState('')
+
   const inputHandler = () => {
     if (inputRef.current) {
-      const inputValue = inputRef.current.value
+      setInputValue(inputRef.current.value)
+    }
+  }
+
+  const formHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (inputRef.current) {
+      inputRef.current.value = ''
     }
   }
 
   return (
     <PageLayout>
       {/* 검색 */}
-      <SearchBox>
-        <InputBox width='100%'>
-          <Input type='text' radius='1.2rem' placeholder='텍스트' ref={inputRef} />
+      <SearchBox onSubmit={formHandler}>
+        <InputBox $width='100%'>
+          <Input type='text' $radius='1.2rem' placeholder='검색어를 입력해주세요.' ref={inputRef} />
           <MainIconBtn onClick={inputHandler}>
             <IconBtnImg src={SearchIcon} />
           </MainIconBtn>
         </InputBox>
         <CategoryBtnBox>
           <Link to='?menu=now-playing'>
-            <CategoryBtn active={menu === 'now-playing'}>상영중</CategoryBtn>
+            <CategoryBtn type='button' active={menu === 'now-playing'}>
+              상영중
+            </CategoryBtn>
           </Link>
           <Link to='?menu=upcoming'>
-            <CategoryBtn active={menu === 'upcoming'}>개봉예정</CategoryBtn>
+            <CategoryBtn type='button' active={menu === 'upcoming'}>
+              개봉예정
+            </CategoryBtn>
           </Link>
         </CategoryBtnBox>
       </SearchBox>
@@ -47,11 +256,13 @@ const Movie = () => {
       {/* 검색결과 */}
       <SearchResultWrapper>
         <SearchContentBox>
-          <SearchTitle>검색내용</SearchTitle>
-          <CustomSelect items={['바나나', '원숭이', '사나움사나움사나움']} $direction='right' />
+          <SearchTitle>
+            {inputValue ? `${inputValue} 와 관련된 검색어` : '검색어를 입력해주세요.'}
+          </SearchTitle>
+          <CustomSelect items={['최신순', '가나다순', '평점순']} $direction='right' />
         </SearchContentBox>
-        {menu === 'now-playing' && <div>상영중 검색</div>}
-        {menu === 'upcoming' && <div>개봉예정 검색</div>}
+        {menu === 'now-playing' && <NowPlayingMovie movie={movies} />}
+        {menu === 'upcoming' && <UpcomingMovie />}
       </SearchResultWrapper>
     </PageLayout>
   )
@@ -60,7 +271,7 @@ const Movie = () => {
 export default Movie
 
 // 검색
-const SearchBox = styled.div`
+const SearchBox = styled.form`
   max-width: 67.2rem;
   margin: 4rem auto 0;
 `
@@ -85,10 +296,18 @@ const CategoryBtn = styled.button<{ active?: boolean }>`
 `
 
 // 검색결과
-const SearchResultWrapper = styled.div``
+const SearchResultWrapper = styled.div`
+  margin-top: 6rem;
+`
 const SearchContentBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 1.3rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px solid #3f3f3f;
 `
-const SearchTitle = styled.p``
+const SearchTitle = styled.p`
+  font-size: 3.6rem;
+  font-weight: 600;
+`
