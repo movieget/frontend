@@ -2,14 +2,16 @@ import { SelectBox, SelectList, SelectTheater } from '../SelectBody.style'
 import OptionButton from './OptionButton'
 import SelectTitle from './SelectTitle'
 
-const SelectTheaters = () => {
+const SelectTheaters = ({ data }) => {
   const title = '영화관'
   return (
     <SelectTheater>
       <SelectTitle title={title} />
       <SelectBox>
         <SelectList>
-          <OptionButton title={title} label='울산 중구 성남동 메가박스' />
+          {data?.cinemas.map((el) => (
+            <OptionButton key={el.id} title={title} label={el.cinema_name} />
+          ))}
         </SelectList>
       </SelectBox>
     </SelectTheater>

@@ -6,6 +6,7 @@ export const fetchMovieData = async (date: string) => {
     const res = await client.get(`/api/v1/book/screens?date=${formattedDate}`)
     const data = await res.data
     console.log(data)
+    return data
   } catch (err) {
     console.error(err)
   }
