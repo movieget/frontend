@@ -6,6 +6,7 @@ export const InputBox = styled.span`
   align-items: center;
   gap: 0.8rem;
   width: ${(props) => props.width || 'auto'};
+  radius: ${(props) => props.radius || '0.4rem'};
 `
 export const Input = styled.input`
   width: ${(props) => props.width || '100%'};
@@ -13,7 +14,7 @@ export const Input = styled.input`
   padding: 0 1.2rem;
   border: 1px solid;
   border-color: #3f3f3f;
-  border-radius: 0.4rem;
+  border-radius: ${(props) => props.radius || '0.4rem'};
 
   &:focus {
     outline: 1px solid;

@@ -23,10 +23,13 @@ export const C_IconBtnAlarm = `<IconBtn>
 export const C_IconBtnMypage = `<IconBtn>
   <IconBtnImg width='100%' height='100%' src={Profile} />
 </IconBtn>`
+export const C_MainIconBtn = `<MainIconBtn>
+  <IconBtnImg src={Bell} />
+</MainIconBtn>`
 
 export const C_InputBox = `<InputBox width=''>
-  <Input type='text' width='' placeholder='텍스트' />
-  <Input type='password' width='' placeholder='패스워드' />
+  <Input type='text' width='' placeholder='텍스트' radius='' />
+  <Input type='password' width='' placeholder='패스워드' radius='' />
 </InputBox>`
 export const C_TextareaBox = `<TextareaBox width=''>
   <Textarea width='' placeholder='텍스트를 입력하세요.' />

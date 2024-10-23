@@ -60,6 +60,7 @@ import {
   C_AddIconBtn,
   C_SocialBtnGoogle,
   C_SocialBtnGithub,
+  C_MainIconBtn,
 } from './CommonCodes'
 import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
 import { formatLikes } from '../../utils/formatLikes'
@@ -245,7 +246,7 @@ const Common = () => {
                       </MainIconBtn>
                     </th>
                     <td>
-                      <FormattedCodeBlock code={C_IconBtnMypage} />
+                      <FormattedCodeBlock code={C_MainIconBtn} />
                     </td>
                   </tr>
                 </tbody>
@@ -269,8 +270,8 @@ const Common = () => {
                   <tr>
                     <th>
                       <InputBox width=''>
-                        <Input type='text' width='' placeholder='텍스트' />
-                        <Input type='password' width='' placeholder='패스워드' />
+                        <Input type='text' width='' placeholder='텍스트' radius='' />
+                        <Input type='password' width='' placeholder='패스워드' radius='' />
                       </InputBox>
                     </th>
                     <td>
