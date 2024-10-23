@@ -60,6 +60,7 @@ export const CheckHeart = styled.label`
 
 interface CheckboxHeartCountProps {
   $color: string
+  $borderColor: string
 }
 
 export const CheckHeartCount = styled.label<CheckboxHeartCountProps>`
@@ -73,6 +74,7 @@ export const CheckHeartCount = styled.label<CheckboxHeartCountProps>`
   font-weight: 400;
   background-color: ${({ $color }) => $color || '#292929'};
   border: 1px solid #3f3f3f;
+  border-color: ${({ $borderColor }) => $borderColor || '#3f3f3f'};
   border-radius: 0.4rem;
   color: #fff;
   cursor: pointer;
