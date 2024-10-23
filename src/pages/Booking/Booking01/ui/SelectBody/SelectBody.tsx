@@ -22,8 +22,9 @@ const SelectBody = () => {
   const [isValid, setIsValid] = useState(false)
   console.log('SelectBody에서 알림 : ', date)
   const { data, refetch } = useQuery({
-    queryKey: ['movieData'],
+    queryKey: ['bookingData'],
     queryFn: () => fetchMovieData(date),
+    enabled: !!date,
   })
 
   console.log('SelectBody에서 알림2: ', date, movie, location, cinema)
