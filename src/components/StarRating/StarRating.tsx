@@ -6,8 +6,8 @@ interface StarRatingProps {
   rating?: number
   onRatingChange?: (newRating: number) => void
   userId?: string
-  disabled: boolean
-  value: number
+  disabled?: boolean
+  value?: number
 }
 
 const StarRating: React.FC<StarRatingProps> = ({
