@@ -106,7 +106,7 @@ export const C_StarRating2 = `<StarRating
 
 export const C_MovieInfoCard = `<MovieInfoCard
   $title='크라벤'
-  $age='18'
+  $age={18}
   $screeningDate='2024년 10월 20일'
   $bookingDate='2024년 10월 20일'
   $cancelDate='2024년 10월 18일'
@@ -124,4 +124,13 @@ export const C_MovieInfoCard = `<MovieInfoCard
   $youthCount={2}
   $location='메가박스 울산 성남 지점'
   $posterImage=''
+/>`
+export const C_MovieCard = `<MovieCard
+  $movieId={1}
+  $posterImage='/img/detail_review01.jpg'
+  $title='타이틀'
+  $age={18}
+  $playing={true}
+  $totalLikes={3000}
+  $isBooking={true}
 />`

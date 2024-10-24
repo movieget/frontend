@@ -3,6 +3,7 @@ import { Badge, StyleAge } from '../Badge/style'
 import { Checkbox, CheckboxWrapper, CheckHeartCount } from '../Checkbox/style'
 import { formatLikes } from '../../utils/formatLikes'
 import { BasicBtn, MainBtn } from '../Button/style'
+import NoImageCard from '../NoImageCard/NoImageCard'
 
 interface MovieInfoCardProps {
   $movieId: number
@@ -26,7 +27,7 @@ const MovieCard: React.FC<MovieInfoCardProps> = ({
   return (
     <MovieCardHolder>
       <MoviePosterImgBox>
-        <MoviePosterImg src={$posterImage} alt={$title} />
+        {$posterImage ? <MoviePosterImg src={$posterImage} alt={$title} /> : <NoImageCard />}
       </MoviePosterImgBox>
       <MoviePlayingBox>
         <Badge $playing={$playing ? 'playing' : 'notPlaying'}>
@@ -40,21 +41,22 @@ const MovieCard: React.FC<MovieInfoCardProps> = ({
         </MovieTitleHolder>
       </MovieInfoBox>
       <MovieCardActionBox>
-        <CheckboxWrapper>
-          <Checkbox type='checkbox' id={`idFor${$movieId}`} name='' />
-          <CheckHeartCount
-            htmlFor={`idFor${$movieId}`}
-            $color='transparent'
-            $borderColor='transparent'
-            $padding='0'
-          >
-            {formatLikes($totalLikes)}
-          </CheckHeartCount>
-        </CheckboxWrapper>
         <MovieCardBtnBox>
           <BasicBtn $size='large'>영화정보</BasicBtn>
           {$isBooking && <MainBtn $size='large'>예매하기</MainBtn>}
         </MovieCardBtnBox>
+        <CheckboxWrapper>
+          <Checkbox type='checkbox' id={`idFor${$movieId}`} name='' />
+          <CheckHeartCount
+            htmlFor={`idFor${$movieId}`}
+            $padding='0'
+            $fontSize='2rem'
+            $borderColor='transparent'
+            $color='transparent'
+          >
+            {formatLikes($totalLikes)}
+          </CheckHeartCount>
+        </CheckboxWrapper>
       </MovieCardActionBox>
     </MovieCardHolder>
   )
@@ -63,7 +65,7 @@ const MovieCard: React.FC<MovieInfoCardProps> = ({
 export default MovieCard
 
 const MovieCardHolder = styled.div`
-  flex: 0 0 calc(25% - 1.5rem);
+  max-width: 50rem;
   position: relative;
 `
 
@@ -121,6 +123,7 @@ const MovieCardActionBox = styled.div`
   left: 0;
   top: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.6rem;
