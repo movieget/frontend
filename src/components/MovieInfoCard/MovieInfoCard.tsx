@@ -16,7 +16,7 @@ import {
 
 interface MovieInfoCardProps {
   $title?: string // 영화 제목 (선택적, 문자열)
-  $age?: 'all' | '12' | '15' | '18' // 연령 정보를 추가
+  $age?: 'all' | 12 | 15 | 18 // 연령 정보를 추가
   $genre?: string[] // 장르 정보 (선택적, 문자열 배열)
   $overview?: string // 줄거리 정보 (선택적, 문자열)
   $screeningDate?: string // 상영 날짜 (선택적, 문자열)

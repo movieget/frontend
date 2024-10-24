@@ -93,7 +93,7 @@ const MovieTitleHolder = styled.p`
   gap: 0.8rem;
 `
 
-const MovieTitle = styled.p`
+const MovieTitle = styled.span`
   font-size: 2.4rem;
   font-weight: 600;
 `

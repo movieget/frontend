@@ -28,7 +28,7 @@ interface DummyData {
   backdropImage: string
   posterImage: string
   title: string
-  age: number
+  age: 'all' | 12 | 15 | 18
   genre: string[]
   duration: number
   playing: boolean
@@ -66,7 +66,7 @@ const dummyData: DummyData = {
 }
 
 const MovieDetailInfo = () => {
-  const [movie, setMovie] = useState(dummyData)
+  const [movie, setMovie] = useState<DummyData>(dummyData)
 
   const settings = {
     dots: true,
@@ -88,20 +88,20 @@ const MovieDetailInfo = () => {
           </PosterImgBox>
           <MovieInfo>
             <MovieInfoTop>
-              <MovieTitleHoder>
+              <MovieTitleHolder>
                 <MovieTitle>
-                  <StyleAge $age='18' />
-                  {movie.title} 3
+                  <StyleAge $age={movie.age} />
+                  {movie.title}
                 </MovieTitle>
                 <Badge $playing='playing'>상영중</Badge>
-              </MovieTitleHoder>
+              </MovieTitleHolder>
               <BadgeBox>
                 {movie.genre.map((item) => {
                   return <Badge key={item}>{item}</Badge>
                 })}
                 <Badge $color='orange'>{movie.duration}분</Badge>
               </BadgeBox>
-              <MovieOverviwe>{movie.overview}</MovieOverviwe>
+              <MovieOverview>{movie.overview}</MovieOverview>
             </MovieInfoTop>
             <MovieInfoBottom>
               <MainBtn $size='large'>예매하기</MainBtn>
@@ -112,7 +112,7 @@ const MovieDetailInfo = () => {
                   name=''
                   defaultChecked={movie.isLikes}
                 />
-                <CheckHeartCount htmlFor='CheckHeartCount' $color=''>
+                <CheckHeartCount htmlFor='CheckHeartCount'>
                   {formatLikes(movie.totalLikes)}
                 </CheckHeartCount>
               </CheckboxWrapper>
@@ -192,7 +192,7 @@ const MovieInfo = styled.div`
   width: 100%;
 `
 const MovieInfoTop = styled.div``
-const MovieTitleHoder = styled.div`
+const MovieTitleHolder = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -207,7 +207,7 @@ const MovieTitle = styled.p`
   font-size: 3.2rem;
   font-weight: 700;
 `
-const MovieOverviwe = styled.p`
+const MovieOverview = styled.p`
   margin-top: 2rem;
   font-size: 2rem;
   font-weight: 500;
