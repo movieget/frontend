@@ -3,10 +3,20 @@ import Masonry from 'react-masonry-css'
 import { client } from '../../../apis/instances'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useInView } from 'react-intersection-observer'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import ProfileBadge from '../../../components/Badge/ProfileBadge/ProfileBadge'
 import StarRating from '../../../components/StarRating/StarRating'
 import { SvgSpinner } from '../../../components/Loading/SvgSpinner'
+
+interface Review {
+  id: number
+  reviewImage: string
+  userId: string
+  creationDate: string
+  score: number
+  title: string
+  content: string
+}
 
 const fetchReviewData = async (currentPage: any) => {
   const res = await client.get(`/api/v1/review?page=${currentPage}`)
@@ -54,7 +64,7 @@ const UserReviewList = () => {
           columnClassName='my-masonry-grid_column' // 각 열의 클래스 이름
         >
           {data?.pages.map((page) =>
-            page.reviews.map((review) => (
+            page.reviews.map((review: Review) => (
               <UserReviewBox key={review?.id}>
                 <ReviewImgBox>
                   <ReviewImg src={review?.reviewImage} alt='사람들이 업로드한 이미지' />
