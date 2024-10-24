@@ -28,7 +28,7 @@ interface TabsProps {
   tabs: string[]
   contents: React.ReactNode[]
   isSelect: boolean
-  isAllDeleteBtn: boolean
+  isAllDeleteBtn?: boolean
 }
 
 const Tabs: React.FC<TabsProps> = ({ tabs, contents, isSelect, isAllDeleteBtn }) => {

@@ -45,7 +45,13 @@ const dummyData: Favorite[] = [
 ]
 
 const MyFavoriteList = () => {
-  const [favoriteList] = useState<Favorite[]>(dummyData)
+  const [favoriteList, setFavoriteList] = useState<Favorite[]>(dummyData)
+
+  const handleCheckboxChange = (id: number) => {
+    setFavoriteList((prevList) =>
+      prevList.map((movie) => (movie.id === id ? { ...movie, isLikes: !movie.isLikes } : movie)),
+    )
+  }
 
   return (
     <MovieListBox>
@@ -66,6 +72,7 @@ const MyFavoriteList = () => {
                   id={`checkbox-${movie.id}`}
                   name=''
                   checked={movie.isLikes}
+                  onChange={() => handleCheckboxChange(movie.id)}
                 />
                 <CheckHeartCount htmlFor={`checkbox-${movie.id}`}>
                   {formatLikes(movie.totalLikes)}

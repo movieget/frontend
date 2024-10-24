@@ -43,7 +43,7 @@ const EarnPointList = () => {
       <PointTextBox>
         {earnPoint?.map((item) => {
           return (
-            <PointTextLi>
+            <PointTextLi key={item.id}>
               <PointText>{item.division}</PointText>
               <PointText>{item.earnPointDate}</PointText>
               <PointText>{item.title}</PointText>

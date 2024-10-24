@@ -39,7 +39,7 @@ const UsePointList = () => {
       <PointTextBox>
         {usePoint?.map((item) => {
           return (
-            <PointTextLi>
+            <PointTextLi key={item.id}>
               <PointText>{item.title}</PointText>
               <PointText>{item.usePointDate}</PointText>
               <PointText>{item.usedPoint}P</PointText>
