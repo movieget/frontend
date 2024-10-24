@@ -132,5 +132,4 @@ export const C_MovieCard = `<MovieCard
   $age={18}
   $playing={true}
   $totalLikes={3000}
-  $isBooking={true}
 />`
