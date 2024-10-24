@@ -1,16 +1,24 @@
 import OptionButton from './OptionButton'
-import { SelectBox, SelectList, SelectMovie } from '../SelectBody.style'
+import { MsgBoxStyle, SelectBox, SelectList, SelectMovie } from '../SelectBody.style'
 import SelectTitle from './SelectTitle'
 import { useState } from 'react'
 import { TMovies } from '../SelectBody.types'
+import ErrorMessage from './ErrorMessage'
+import { SvgSpinner } from '../../../../../../components/Loading/SvgSpinner'
 
-const SelectMovies = ({ movies }: { movies?: TMovies[] }) => {
+interface ISelectMoviesProps {
+  movies?: TMovies[]
+  isLoading: boolean
+  isError: boolean
+  error?: Error | null
+}
+
+const SelectMovies = ({ movies, isError, error, isLoading }: ISelectMoviesProps) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
   const title = '영화'
-  console.log('SelectMovies에서 알림:', movies)
 
   // age 매핑을 위한 함수
-  const mapAgeToOption = (age: number): 12 | 15 | 18 | 'all' | undefined => {
+  const mapAgeToOption = (age: number): 12 | 15 | 18 | 'all' => {
     if (age === 12 || age === 15 || age === 18) {
       return age
     }
@@ -21,19 +29,28 @@ const SelectMovies = ({ movies }: { movies?: TMovies[] }) => {
     <SelectMovie>
       <SelectTitle title={title} />
       <SelectBox>
-        <SelectList>
-          {movies?.map((el) => (
-            <OptionButton
-              key={el.id}
-              id={el.id}
-              title={title}
-              age={mapAgeToOption(el.age)}
-              label={el.title}
-              isSelected={isSelected === el.id}
-              setIsSelected={setIsSelected}
-            />
-          ))}
-        </SelectList>
+        {isLoading && (
+          <MsgBoxStyle>
+            <SvgSpinner />
+          </MsgBoxStyle>
+        )}
+        {isError ? (
+          <ErrorMessage errorMsg={error?.message} />
+        ) : (
+          <SelectList>
+            {movies?.map((el) => (
+              <OptionButton
+                key={el.id}
+                id={el.id}
+                title={title}
+                age={mapAgeToOption(el.age)}
+                label={el.title}
+                isSelected={isSelected === el.id}
+                setIsSelected={setIsSelected}
+              />
+            ))}
+          </SelectList>
+        )}
       </SelectBox>
     </SelectMovie>
   )

@@ -9,23 +9,22 @@ import SelectTheaters from './ui/SelectTheaters'
 import { useQuery } from '@tanstack/react-query'
 import { fetchMovieData } from '../../../../../apis/bookingApi'
 import SelectTimes from './ui/SelectTimes'
-import { IBookingData } from './SelectBody.types'
 
 const SelectBody = () => {
   const initialBookingState = useBookingStore((state) => state.initialBookingState)
   const setField = useBookingStore((state) => state.actions.setField)
-  const { date, movie, location, cinema, start_time } = initialBookingState
+  const { date, movie, location, cinema } = initialBookingState
   const [isValid, setIsValid] = useState(false)
   const [isTimeSelected, setIsTimeSelected] = useState(false)
-  const { data, refetch } = useQuery<IBookingData>({
-    queryKey: ['bookingData'],
+  const { data, isLoading, error, isError, refetch } = useQuery({
+    queryKey: ['bookingData', initialBookingState],
     queryFn: () => fetchMovieData(date),
     enabled: !!date,
     staleTime: 1000 * 10,
     retry: 1,
   })
 
-  console.log(date, movie, location, cinema, start_time)
+  console.log('SelectBody 렌더링')
 
   useEffect(() => {
     const fields = [date, movie, location, cinema] // 검사할 필드 배열
@@ -33,6 +32,7 @@ const SelectBody = () => {
     setIsValid(allValid) // 유효성에 따라 상태 업데이트
   }, [date, movie, location, cinema])
 
+  // date가 바뀔때마다 전역상태 비우기
   useEffect(() => {
     setField('movie', '')
     setField('location', '')
@@ -47,10 +47,20 @@ const SelectBody = () => {
   return (
     <SelectBodyWrapper>
       <SelectBoxRow>
-        <SelectMovies movies={data?.movies} />
+        <SelectMovies movies={data?.movies} error={error} isError={isError} isLoading={isLoading} />
         <SelectBoxCol>
-          <SelectLocations locations={data?.locations} />
-          <SelectTheaters cinemas={data?.cinemas} />
+          <SelectLocations
+            locations={data?.locations}
+            error={error}
+            isError={isError}
+            isLoading={isLoading}
+          />
+          <SelectTheaters
+            cinemas={data?.cinemas}
+            error={error}
+            isError={isError}
+            isLoading={isLoading}
+          />
         </SelectBoxCol>
       </SelectBoxRow>
 

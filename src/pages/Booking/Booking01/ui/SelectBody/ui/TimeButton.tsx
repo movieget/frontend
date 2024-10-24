@@ -6,7 +6,7 @@ interface ITimeButtonProps {
   id: number
   isSelected: boolean
   setIsSelected: (toggleStyle: number | null) => void
-  setIsTimeSelected: (prev: boolean) => void
+  setIsTimeSelected: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const TimeButton = ({
@@ -20,7 +20,7 @@ const TimeButton = ({
   const handleClick = () => {
     const toggleStyle = isSelected ? null : id
     setIsSelected(toggleStyle)
-    setIsTimeSelected((prev) => !prev)
+    setIsTimeSelected((prev: boolean) => !prev)
     setField('start_time', isSelected ? '' : time)
   }
   return (

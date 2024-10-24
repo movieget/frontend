@@ -2,7 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import { MainBtn } from '../../../../../../components/Button/style'
 import { NextBtnWrapper } from '../SelectBody.style'
 
-const BNextButton = ({ isTimeSelected, isValid }) => {
+interface IBNextButtonProps {
+  isTimeSelected: boolean
+  isValid: boolean
+}
+
+const BNextButton = ({ isTimeSelected, isValid }: IBNextButtonProps) => {
   const navigate = useNavigate()
   const validate = isValid && isTimeSelected
   const handleClick = () => {

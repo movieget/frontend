@@ -83,7 +83,7 @@ export const handlers = [
     // 해당 날짜의 데이터가 없으면 404 오류 응답 반환
     if (!filteredData) {
       return HttpResponse.json(
-        { error: 'No screenings found for the provided date' },
+        { error: '해당 날짜는 상영하고있는 영화정보가 없어요.' },
         { status: 404 },
       )
     }

@@ -128,3 +128,13 @@ export const NextBtnWrapper = styled.div`
   display: flex;
   justify-content: end;
 `
+
+export const MsgBoxStyle = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: ${({ theme }) => theme.colors.text_disabled};
+`

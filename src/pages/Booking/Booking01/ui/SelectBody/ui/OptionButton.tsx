@@ -7,6 +7,7 @@ interface IOptionButtonProps {
   title: '영화' | '지역' | '영화관'
   age?: 'all' | 12 | 15 | 18
   label?: string
+  isSelected: boolean
   setIsSelected: (id: number | null) => void
 }
 

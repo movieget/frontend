@@ -4,14 +4,13 @@ import SelectTitle from './SelectTitle'
 import TimeButton from './TimeButton'
 import { TScreenings } from '../SelectBody.types'
 
-const SelectTimes = ({
-  setIsTimeSelected,
-  screenings,
-  isValid,
-}: {
+interface ISelectTimesProps {
+  setIsTimeSelected: React.Dispatch<React.SetStateAction<boolean>>
   screenings?: TScreenings[]
   isValid: boolean
-}) => {
+}
+
+const SelectTimes = ({ setIsTimeSelected, screenings, isValid }: ISelectTimesProps) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
   return (
     <SelectTime>
