@@ -13,8 +13,10 @@ import { IBookingData } from './SelectBody.types'
 
 const SelectBody = () => {
   const initialBookingState = useBookingStore((state) => state.initialBookingState)
-  const { date, movie, location, cinema } = initialBookingState
+  const setField = useBookingStore((state) => state.actions.setField)
+  const { date, movie, location, cinema, start_time } = initialBookingState
   const [isValid, setIsValid] = useState(false)
+  const [isTimeSelected, setIsTimeSelected] = useState(false)
   const { data, refetch } = useQuery<IBookingData>({
     queryKey: ['bookingData'],
     queryFn: () => fetchMovieData(date),
@@ -23,11 +25,20 @@ const SelectBody = () => {
     retry: 1,
   })
 
+  console.log(date, movie, location, cinema, start_time)
+
   useEffect(() => {
     const fields = [date, movie, location, cinema] // 검사할 필드 배열
     const allValid = fields.every((field) => field !== '') // 모든 필드가 비어있지 않은지 확인
     setIsValid(allValid) // 유효성에 따라 상태 업데이트
   }, [date, movie, location, cinema])
+
+  useEffect(() => {
+    setField('movie', '')
+    setField('location', '')
+    setField('cinema', '')
+    setField('start_time', '')
+  }, [date])
 
   useEffect(() => {
     refetch()
@@ -43,8 +54,12 @@ const SelectBody = () => {
         </SelectBoxCol>
       </SelectBoxRow>
 
-      <SelectTimes screenings={data?.screenings} isValid={isValid} />
-      <BNextButton />
+      <SelectTimes
+        screenings={data?.screenings}
+        isValid={isValid}
+        setIsTimeSelected={setIsTimeSelected}
+      />
+      <BNextButton isValid={isValid} isTimeSelected={isTimeSelected} />
     </SelectBodyWrapper>
   )
 }

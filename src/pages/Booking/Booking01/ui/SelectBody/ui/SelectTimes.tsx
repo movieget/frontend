@@ -4,7 +4,14 @@ import SelectTitle from './SelectTitle'
 import TimeButton from './TimeButton'
 import { TScreenings } from '../SelectBody.types'
 
-const SelectTimes = ({ screenings, isValid }: { screenings?: TScreenings[]; isValid: boolean }) => {
+const SelectTimes = ({
+  setIsTimeSelected,
+  screenings,
+  isValid,
+}: {
+  screenings?: TScreenings[]
+  isValid: boolean
+}) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
   return (
     <SelectTime>
@@ -18,6 +25,7 @@ const SelectTimes = ({ screenings, isValid }: { screenings?: TScreenings[]; isVa
               time={el.start_time.split(' ')[1]}
               isSelected={isSelected === el.id}
               setIsSelected={setIsSelected}
+              setIsTimeSelected={setIsTimeSelected}
             />
           ))
         ) : (

@@ -5,14 +5,23 @@ interface ITimeButtonProps {
   time?: string
   id: number
   isSelected: boolean
-  setIsSelected: (id: number) => void
+  setIsSelected: (toggleStyle: number | null) => void
+  setIsTimeSelected: (prev: boolean) => void
 }
 
-const TimeButton = ({ id, isSelected, setIsSelected, time = '00:00' }: ITimeButtonProps) => {
+const TimeButton = ({
+  id,
+  isSelected,
+  setIsSelected,
+  setIsTimeSelected,
+  time = '00:00',
+}: ITimeButtonProps) => {
   const setField = useBookingStore((state) => state.actions.setField)
   const handleClick = () => {
-    setIsSelected(id)
-    setField('start_time', time)
+    const toggleStyle = isSelected ? null : id
+    setIsSelected(toggleStyle)
+    setIsTimeSelected((prev) => !prev)
+    setField('start_time', isSelected ? '' : time)
   }
   return (
     <BasicBtn $size='medium' onClick={handleClick} $isSelected={isSelected}>
