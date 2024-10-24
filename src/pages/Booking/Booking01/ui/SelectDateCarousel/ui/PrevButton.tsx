@@ -1,6 +1,6 @@
 import { WeuiArrowOutlined } from '../../../../../../assets/svg/WeuiArrowOutlined'
 import { PrevBtn } from '../SelectDateCarousel.style'
-import { IArrowButtonProps } from '../SelectDateCarousel.type'
+import { IArrowButtonProps } from '../SelectDateCarousel.types'
 
 const PrevButton = ({ onClick }: IArrowButtonProps) => {
   return (

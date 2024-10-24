@@ -1,7 +1,7 @@
 import { Badge } from '../../../../../../components/Badge/style'
 import { useBookingStore } from '../../../../../../stores/store'
 import { DateBtn, Day } from '../SelectDateCarousel.style'
-import { IDateButtonProps } from '../SelectDateCarousel.type'
+import { IDateButtonProps } from '../SelectDateCarousel.types'
 const DateButton = ({ isSelected, setIsSelected, dateNumber, today }: IDateButtonProps) => {
   const [year, month, day, weekday] = dateNumber.split('-')
 

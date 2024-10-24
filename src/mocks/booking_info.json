@@ -1,6 +1,6 @@
 [
   {
-    "date": "2024-10-23",
+    "date": "2024-10-24",
     "movies": [
       {
         "id": 1,
@@ -42,26 +42,26 @@
     "screenings": [
       {
         "id": 1,
-        "start_time": "2024-10-23 14:00",
-        "end_time": "2024-10-23 16:00",
+        "start_time": "2024-10-24 14:00",
+        "end_time": "2024-10-24 16:00",
         "movie__title": "Movie A"
       },
       {
         "id": 2,
-        "start_time": "2024-10-23 18:00",
-        "end_time": "2024-10-23 20:00",
+        "start_time": "2024-10-24 18:00",
+        "end_time": "2024-10-24 20:00",
         "movie__title": "Movie A"
       },
       {
         "id": 3,
-        "start_time": "2024-10-23 20:00",
-        "end_time": "2024-10-23 22:00",
+        "start_time": "2024-10-24 20:00",
+        "end_time": "2024-10-24 22:00",
         "movie__title": "Movie B"
       }
     ]
   },
   {
-    "date": "2024-10-24",
+    "date": "2024-10-25",
     "movies": [
       {
         "id": 3,
@@ -103,20 +103,20 @@
     "screenings": [
       {
         "id": 1,
-        "start_time": "2024-10-24 15:00",
+        "start_time": "2024-10-25 15:00",
         "end_time": "2024-10-24 17:10",
         "movie__title": "Movie C"
       },
       {
         "id": 2,
-        "start_time": "2024-10-24 19:00",
+        "start_time": "2024-10-25 19:00",
         "end_time": "2024-10-24 20:40",
         "movie__title": "Movie D"
       }
     ]
   },
   {
-    "date": "2024-10-25",
+    "date": "2024-10-26",
     "movies": [
       {
         "id": 5,
@@ -158,20 +158,20 @@
     "screenings": [
       {
         "id": 1,
-        "start_time": "2024-10-25 16:00",
-        "end_time": "2024-10-25 17:35",
+        "start_time": "2024-10-26 16:00",
+        "end_time": "2024-10-26 17:35",
         "movie__title": "Movie E"
       },
       {
         "id": 2,
-        "start_time": "2024-10-25 18:00",
-        "end_time": "2024-10-25 20:20",
+        "start_time": "2024-10-26 18:00",
+        "end_time": "2024-10-26 20:20",
         "movie__title": "Movie F"
       }
     ]
   },
   {
-    "date": "2024-10-26",
+    "date": "2024-10-27",
     "movies": [
       {
         "id": 7,
@@ -213,20 +213,20 @@
     "screenings": [
       {
         "id": 1,
-        "start_time": "2024-10-26 13:00",
-        "end_time": "2024-10-26 15:05",
+        "start_time": "2024-10-27 13:00",
+        "end_time": "2024-10-27 15:05",
         "movie__title": "Movie G"
       },
       {
         "id": 2,
-        "start_time": "2024-10-26 17:00",
-        "end_time": "2024-10-26 18:35",
+        "start_time": "2024-10-27 17:00",
+        "end_time": "2024-10-27 18:35",
         "movie__title": "Movie H"
       }
     ]
   },
   {
-    "date": "2024-10-27",
+    "date": "2024-10-28",
     "movies": [
       {
         "id": 9,
@@ -268,20 +268,20 @@
     "screenings": [
       {
         "id": 1,
-        "start_time": "2024-10-27 15:00",
-        "end_time": "2024-10-27 17:30",
+        "start_time": "2024-10-28 15:00",
+        "end_time": "2024-10-28 17:30",
         "movie__title": "Movie I"
       },
       {
         "id": 2,
-        "start_time": "2024-10-27 18:00",
-        "end_time": "2024-10-27 19:30",
+        "start_time": "2024-10-28 18:00",
+        "end_time": "2024-10-28 19:30",
         "movie__title": "Movie J"
       }
     ]
   },
   {
-    "date": "2024-10-28",
+    "date": "2024-10-29",
     "movies": [
       {
         "id": 11,
@@ -323,13 +323,13 @@
     "screenings": [
       {
         "id": 1,
-        "start_time": "2024-10-28 14:00",
+        "start_time": "2024-10-29 14:00",
         "end_time": "2024-10-28 16:20",
         "movie__title": "Movie K"
       },
       {
         "id": 2,
-        "start_time": "2024-10-28 18:00",
+        "start_time": "2024-10-29 18:00",
         "end_time": "2024-10-28 19:30",
         "movie__title": "Movie L"
       }

@@ -56,7 +56,7 @@ export const SelectList = styled.li`
   gap: 1rem;
 `
 
-export const OptionButtonStyle = styled.button`
+export const OptionButtonStyle = styled.button<{ $isSelected: boolean }>`
   width: 100%;
   padding: 0.8rem 0.4rem;
   display: flex;
@@ -65,14 +65,26 @@ export const OptionButtonStyle = styled.button`
   color: ${({ theme }) => theme.colors.text_in_box};
   border: none;
   border-radius: 4px;
-  background-color: transparent;
+  background: ${({ $isSelected, theme }) => {
+    if ($isSelected) {
+      return theme.colors.bg_btn_purple
+    }
+    return 'transparent'
+  }};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.bg_btn_normal};
-  }
-
-  &:focus {
-    background-color: ${({ theme }) => theme.colors.bg_btn_purple};
+    background: ${({ $isSelected, theme }) => {
+      if ($isSelected) {
+        return theme.colors.bg_btn_purple
+      }
+      return theme.colors.border_normal
+    }};
+    border-color: ${({ $isSelected, theme }) => {
+      if ($isSelected) {
+        return theme.colors.border_purple
+      }
+      return theme.colors.border_wrapper
+    }};
   }
 `
 export const OptionLabel = styled.span`
@@ -115,4 +127,14 @@ export const SelectTitleStyle = styled.h2`
 export const NextBtnWrapper = styled.div`
   display: flex;
   justify-content: end;
+`
+
+export const MsgBoxStyle = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: ${({ theme }) => theme.colors.text_disabled};
 `

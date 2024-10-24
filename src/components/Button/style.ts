@@ -9,6 +9,7 @@ import AddIconPlus from '../../assets/svg/add_icon_btn_plus.svg'
 interface IfBtnHeight {
   $size?: 'large' | 'medium' | 'small'
   $disabled?: boolean
+  $isSelected?: boolean
 }
 export const BasicBtn = styled.button<IfBtnHeight>`
   min-width: ${({ $size }) =>
@@ -19,12 +20,43 @@ export const BasicBtn = styled.button<IfBtnHeight>`
     $size === 'large' ? '1.6rem' : $size === 'medium' ? '1.4rem' : '1.2rem'};
   font-weight: 600;
   white-space: nowrap;
-  background: ${({ $disabled }) => ($disabled ? '#4B4B4B' : '#353535')};
+  background: ${({ $disabled, $isSelected, theme }) => {
+    if ($disabled) {
+      return theme.colors.bg_btn_disabled
+    }
+    if ($isSelected) {
+      return theme.colors.bg_btn_gradient_purple
+    }
+    return theme.colors.bg_btn_normal
+  }};
   border: 1px solid;
-  border-color: ${({ $disabled }) => ($disabled ? '#4B4B4B' : '#3f3f3f')};
+  border-color: ${({ $disabled, $isSelected, theme }) => {
+    if ($disabled) {
+      return theme.colors.border_disabled
+    }
+    if ($isSelected) {
+      return theme.colors.border_purple
+    }
+    return theme.colors.border_normal
+  }};
   border-radius: 4px;
-  color: ${({ $disabled }) => ($disabled ? '#797979' : '#FDFDFD')};
+  color: ${({ $disabled, theme }) => ($disabled ? theme.colors.text_disabled : theme.colors.text)};
   cursor: ${({ $disabled }) => ($disabled ? 'initial' : 'pointer')};
+
+  &:hover {
+    background: ${({ $isSelected, theme }) => {
+      if ($isSelected) {
+        return theme.colors.bg_btn_purple
+      }
+      return theme.colors.border_normal
+    }};
+    border-color: ${({ $isSelected, theme }) => {
+      if ($isSelected) {
+        return theme.colors.border_purple
+      }
+      return theme.colors.border_wrapper
+    }};
+  }
 `
 export const MainBtn = styled.button<IfBtnHeight>`
   min-width: ${({ $size }) =>

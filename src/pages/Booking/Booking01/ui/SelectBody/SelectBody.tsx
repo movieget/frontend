@@ -1,41 +1,44 @@
 import { useEffect, useState } from 'react'
 import { useBookingStore } from '../../../../../stores/store'
-import {
-  SelectBodyWrapper,
-  SelectBoxCol,
-  SelectBoxRow,
-  SelectLineBox,
-  SelectTime,
-} from './SelectBody.style'
+import { SelectBodyWrapper, SelectBoxCol, SelectBoxRow } from './SelectBody.style'
 import BNextButton from './ui/BNextButton'
 import SelectLocations from './ui/SelectLocations'
 import SelectMovies from './ui/SelectMovies'
 import SelectTheaters from './ui/SelectTheaters'
-import SelectTitle from './ui/SelectTitle'
-import TimeButton from './ui/TimeButton'
+
 import { useQuery } from '@tanstack/react-query'
 import { fetchMovieData } from '../../../../../apis/bookingApi'
+import SelectTimes from './ui/SelectTimes'
 
 const SelectBody = () => {
   const initialBookingState = useBookingStore((state) => state.initialBookingState)
+  const setField = useBookingStore((state) => state.actions.setField)
   const { date, movie, location, cinema } = initialBookingState
   const [isValid, setIsValid] = useState(false)
-  console.log('SelectBody에서 알림 : ', date)
-  const { data, refetch } = useQuery({
-    queryKey: ['bookingData'],
+  const [isTimeSelected, setIsTimeSelected] = useState(false)
+  const { data, isLoading, error, isError, refetch } = useQuery({
+    queryKey: ['bookingData', initialBookingState],
     queryFn: () => fetchMovieData(date),
     enabled: !!date,
     staleTime: 1000 * 10,
     retry: 1,
   })
 
-  console.log('SelectBody에서 알림2: ', date, movie, location, cinema)
+  console.log('SelectBody 렌더링')
 
   useEffect(() => {
     const fields = [date, movie, location, cinema] // 검사할 필드 배열
     const allValid = fields.every((field) => field !== '') // 모든 필드가 비어있지 않은지 확인
     setIsValid(allValid) // 유효성에 따라 상태 업데이트
   }, [date, movie, location, cinema])
+
+  // date가 바뀔때마다 전역상태 비우기
+  useEffect(() => {
+    setField('movie', '')
+    setField('location', '')
+    setField('cinema', '')
+    setField('start_time', '')
+  }, [date])
 
   useEffect(() => {
     refetch()
@@ -44,29 +47,29 @@ const SelectBody = () => {
   return (
     <SelectBodyWrapper>
       <SelectBoxRow>
-        <SelectMovies data={data} />
+        <SelectMovies movies={data?.movies} error={error} isError={isError} isLoading={isLoading} />
         <SelectBoxCol>
-          <SelectLocations data={data} />
-          <SelectTheaters data={data} />
+          <SelectLocations
+            locations={data?.locations}
+            error={error}
+            isError={isError}
+            isLoading={isLoading}
+          />
+          <SelectTheaters
+            cinemas={data?.cinemas}
+            error={error}
+            isError={isError}
+            isLoading={isLoading}
+          />
         </SelectBoxCol>
       </SelectBoxRow>
 
-      <SelectTime>
-        <SelectTitle title='시간선택' />
-        <SelectLineBox>
-          {isValid ? (
-            data?.screenings.map((el: any) => (
-              <TimeButton key={el.id} time={el.start_time.split(' ')[1]} />
-            ))
-          ) : (
-            <div>
-              <p>원하시는 영화, 지역, 영화관을 선택해주세요</p>
-            </div>
-          )}
-        </SelectLineBox>
-      </SelectTime>
-
-      <BNextButton />
+      <SelectTimes
+        screenings={data?.screenings}
+        isValid={isValid}
+        setIsTimeSelected={setIsTimeSelected}
+      />
+      <BNextButton isValid={isValid} isTimeSelected={isTimeSelected} />
     </SelectBodyWrapper>
   )
 }

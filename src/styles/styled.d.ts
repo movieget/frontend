@@ -12,6 +12,7 @@ declare module 'styled-components' {
       bg_btn_normal: string
       bg_btn_disabled: string
       bg_btn_purple: string
+      bg_btn_gradient_purple: string
       bg_btn_orange: string
       border_disabled: string
       border_normal: string
