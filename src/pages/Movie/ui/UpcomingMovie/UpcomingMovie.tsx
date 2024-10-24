@@ -6,7 +6,7 @@ interface NowPlayingMovieProps {
   movieData: Movie[]
 }
 
-const UpcomingMovie: React.FC<NowPlayingMovieProps> = ({ movieData }) => {
+const UpcomingMovie = ({ movieData }: NowPlayingMovieProps) => {
   return (
     <MovieCardWrapper>
       {movieData?.map((movie) => (
