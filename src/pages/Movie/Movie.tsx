@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Input, InputBox } from '../../components/Input/style'
 import { IconBtnImg, MainIconBtn } from '../../components/Button/style'
 import PageLayout from '../../components/Layouts/PageLayout'
-import CustomSelect from '../../components/Select/CusomSelect'
+import CustomSelect from '../../components/Select/CustomSelect'
 import NowPlayingMovie from './ui/NowPlayingMovie/NowPlayingMovie'
 import UpcomingMovie from './ui/UpcomingMovie/UpcomingMovie'
 import SearchIcon from '../../assets/svg/search.svg'
@@ -203,7 +203,7 @@ const dummyData: Movie[] = [
 ]
 
 const Movie = () => {
-  const [movies, setMovies] = useState<Movie[]>(dummyData)
+  const [movies] = useState<Movie[]>(dummyData)
   const [urlSearchParams, setUrlSearchParams] = useSearchParams()
   const menu = urlSearchParams.get('menu')
 

@@ -25,7 +25,7 @@ import { BadgeBox, Badge, StyleAge, StyleTitle } from '../../components/Badge/st
 import StarRating from '../../components/StarRating/StarRating'
 import useRating from '../../hooks/useRating'
 import Tabs from '../../components/Tab/Tab'
-import CustomSelect from '../../components/Select/CusomSelect'
+import CustomSelect from '../../components/Select/CustomSelect'
 import MovieInfoCard from '../../components/MovieInfoCard/MovieInfoCard'
 import {
   C_BasicBtn_L,
