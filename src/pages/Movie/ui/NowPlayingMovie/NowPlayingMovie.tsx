@@ -2,29 +2,26 @@ import styled from 'styled-components'
 import MovieCard from '../../../../components/MovieCard/MovieCard'
 import { Movie } from '../../Movie'
 
-interface MovieCardProps {
-  movie: Movie[]
+interface NowPlayingMovieProps {
+  movieData: Movie[]
 }
 
-const NowPlayingMovie: React.FC<MovieCardProps> = ({ movie }) => {
+const NowPlayingMovie: React.FC<NowPlayingMovieProps> = ({ movieData }) => {
+  console.log(movieData)
   return (
     <MovieCardWrapper>
-      {movie.map((item) => {
-        return (
-          <MovieCardBox>
-            <MovieCard
-              key={item.id}
-              $movieId={item.id}
-              $posterImage={item.posterImage}
-              $title={item.title}
-              $age={item.age ?? 'all'}
-              $playing={true}
-              $totalLikes={item.totalLikes}
-              $isBooking={true}
-            />
-          </MovieCardBox>
-        )
-      })}
+      {movieData?.map((movie) => (
+        <MovieCardBox key={movie.id}>
+          <MovieCard
+            $movieId={movie.id}
+            $posterImage={movie.posterImage}
+            $title={movie.title}
+            $age={movie.age ?? 'all'}
+            $playing={true}
+            $totalLikes={movie.totalLikes}
+          />
+        </MovieCardBox>
+      ))}
     </MovieCardWrapper>
   )
 }
@@ -36,6 +33,7 @@ const MovieCardWrapper = styled.div`
   flex-wrap: wrap;
   gap: 4rem 2rem;
 `
+
 const MovieCardBox = styled.div`
-  flex: 0 0 calc(25% - 1.5rem);
+  flex: 0 0 calc(20% - 1.6rem);
 `

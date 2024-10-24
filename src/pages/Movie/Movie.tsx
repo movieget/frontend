@@ -8,202 +8,47 @@ import CustomSelect from '../../components/Select/CustomSelect'
 import NowPlayingMovie from './ui/NowPlayingMovie/NowPlayingMovie'
 import UpcomingMovie from './ui/UpcomingMovie/UpcomingMovie'
 import SearchIcon from '../../assets/svg/search.svg'
+import { client } from '../../apis/instances'
+import { useInfiniteQuery } from '@tanstack/react-query'
+import { useInView } from 'react-intersection-observer'
+import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 
 export interface Movie {
   id: number
   posterImage: string
-  playing: boolean
   age: 'all' | 12 | 15 | 18
   title: string
   isLikes: boolean
   totalLikes: number
 }
 
-const dummyData: Movie[] = [
-  {
-    id: 1,
-    posterImage: '/public/img/detail_review01.jpg',
-    playing: true,
-    age: 'all',
-    title: '타이틀 1',
-    isLikes: true,
-    totalLikes: 22500,
-  },
-  {
-    id: 2,
-    posterImage: '/public/img/detail_review02.jpg',
-    playing: false,
-    age: 12,
-    title: '타이틀 2',
-    isLikes: false,
-    totalLikes: 15000,
-  },
-  {
-    id: 3,
-    posterImage: '/public/img/detail_review03.jpg',
-    playing: true,
-    age: 15,
-    title: '타이틀 3',
-    isLikes: true,
-    totalLikes: 32000,
-  },
-  {
-    id: 4,
-    posterImage: '/public/img/detail_review04.jpg',
-    playing: false,
-    age: 18,
-    title: '타이틀 4',
-    isLikes: false,
-    totalLikes: 8000,
-  },
-  {
-    id: 5,
-    posterImage: '/public/img/detail_review05.jpg',
-    playing: true,
-    age: 'all',
-    title: '타이틀 5',
-    isLikes: true,
-    totalLikes: 27000,
-  },
-  {
-    id: 6,
-    posterImage: '/public/img/detail_review06.jpg',
-    playing: false,
-    age: 12,
-    title: '타이틀 6',
-    isLikes: false,
-    totalLikes: 19000,
-  },
-  {
-    id: 7,
-    posterImage: '/public/img/detail_review07.jpg',
-    playing: true,
-    age: 15,
-    title: '타이틀 7',
-    isLikes: true,
-    totalLikes: 36000,
-  },
-  {
-    id: 8,
-    posterImage: '/public/img/detail_review08.jpg',
-    playing: false,
-    age: 18,
-    title: '타이틀 8',
-    isLikes: false,
-    totalLikes: 12000,
-  },
-  {
-    id: 9,
-    posterImage: '/public/img/detail_review09.jpg',
-    playing: true,
-    age: 'all',
-    title: '타이틀 9',
-    isLikes: true,
-    totalLikes: 30000,
-  },
-  {
-    id: 10,
-    posterImage: '/public/img/detail_review10.jpg',
-    playing: false,
-    age: 12,
-    title: '타이틀 10',
-    isLikes: false,
-    totalLikes: 6000,
-  },
-  {
-    id: 11,
-    posterImage: '/public/img/detail_review11.jpg',
-    playing: true,
-    age: 15,
-    title: '타이틀 11',
-    isLikes: true,
-    totalLikes: 28000,
-  },
-  {
-    id: 12,
-    posterImage: '/public/img/detail_review12.jpg',
-    playing: false,
-    age: 18,
-    title: '타이틀 12',
-    isLikes: false,
-    totalLikes: 16000,
-  },
-  {
-    id: 13,
-    posterImage: '/public/img/detail_review13.jpg',
-    playing: true,
-    age: 'all',
-    title: '타이틀 13',
-    isLikes: true,
-    totalLikes: 23000,
-  },
-  {
-    id: 14,
-    posterImage: '/public/img/detail_review14.jpg',
-    playing: false,
-    age: 12,
-    title: '타이틀 14',
-    isLikes: false,
-    totalLikes: 8500,
-  },
-  {
-    id: 15,
-    posterImage: '/public/img/detail_review15.jpg',
-    playing: true,
-    age: 15,
-    title: '타이틀 15',
-    isLikes: true,
-    totalLikes: 32000,
-  },
-  {
-    id: 16,
-    posterImage: '/public/img/detail_review16.jpg',
-    playing: false,
-    age: 18,
-    title: '타이틀 16',
-    isLikes: false,
-    totalLikes: 19000,
-  },
-  {
-    id: 17,
-    posterImage: '/public/img/detail_review17.jpg',
-    playing: true,
-    age: 'all',
-    title: '타이틀 17',
-    isLikes: true,
-    totalLikes: 27000,
-  },
-  {
-    id: 18,
-    posterImage: '/public/img/detail_review18.jpg',
-    playing: false,
-    age: 12,
-    title: '타이틀 18',
-    isLikes: false,
-    totalLikes: 11000,
-  },
-  {
-    id: 19,
-    posterImage: '/public/img/detail_review19.jpg',
-    playing: true,
-    age: 15,
-    title: '타이틀 19',
-    isLikes: true,
-    totalLikes: 36000,
-  },
-  {
-    id: 20,
-    posterImage: '/public/img/detail_review20.jpg',
-    playing: false,
-    age: 18,
-    title: '타이틀 20',
-    isLikes: false,
-    totalLikes: 6500,
-  },
-]
+// api 호출
+const fetchMovieData = async (currentPage: number) => {
+  try {
+    const res = await client.get(`/api/v1/movie?page=${currentPage}`)
+    return res.data
+  } catch (error) {
+    console.error('영화 데이터 가져오기 실패:', error)
+    throw new Error('영화 데이터를 가져오는 데 실패했습니다.')
+  }
+}
+
+// 무한스크롤
+const useGetMovieData = () => {
+  return useInfiniteQuery({
+    queryKey: ['movie-data'],
+    queryFn: ({ pageParam }) => fetchMovieData(pageParam),
+    getNextPageParam: (last) => {
+      if (last.currentPage < last.totalPages) {
+        return last.currentPage + 1
+      }
+      return undefined
+    },
+    initialPageParam: 1,
+  })
+}
 
 const Movie = () => {
-  const [movies] = useState<Movie[]>(dummyData)
   const [urlSearchParams, setUrlSearchParams] = useSearchParams()
   const menu = urlSearchParams.get('menu')
 
@@ -213,21 +58,35 @@ const Movie = () => {
     }
   }, [menu])
 
+  // 검색 기능
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [inputValue, setInputValue] = useState('')
-
   const inputHandler = () => {
     if (inputRef.current) {
       setInputValue(inputRef.current.value)
     }
   }
-
   const formHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (inputRef.current) {
       inputRef.current.value = ''
     }
   }
+
+  // api data & 무한 스크롤
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetMovieData()
+  const { ref, inView } = useInView({
+    threshold: 1.0,
+  })
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage()
+    }
+  }, [inView, hasNextPage, fetchNextPage])
+
+  // 영화 목록 추출
+  const movieData = data?.pages.flatMap((page) => page.movies) || []
 
   return (
     <PageLayout>
@@ -257,13 +116,18 @@ const Movie = () => {
       <SearchResultWrapper>
         <SearchContentBox>
           <SearchTitle>
-            {inputValue ? `${inputValue} 와 관련된 검색어` : '검색어를 입력해주세요.'}
+            {inputValue ? `"${inputValue}" 와 관련된 검색어` : '검색어를 입력해주세요.'}
           </SearchTitle>
           <CustomSelect items={['최신순', '가나다순', '평점순']} $direction='right' />
         </SearchContentBox>
-        {menu === 'now-playing' && <NowPlayingMovie movie={movies} />}
-        {menu === 'upcoming' && <UpcomingMovie movie={movies} />}
+
+        {menu === 'now-playing' && <NowPlayingMovie movieData={movieData} />}
+        {menu === 'upcoming' && <UpcomingMovie movieData={movieData} />}
       </SearchResultWrapper>
+
+      {/* 무한 스크롤을 위한 로딩 표시 */}
+      <LoadMovie ref={ref} />
+      {!isLoading && <SvgSpinner />}
     </PageLayout>
   )
 }
@@ -310,4 +174,8 @@ const SearchContentBox = styled.div`
 const SearchTitle = styled.p`
   font-size: 3.6rem;
   font-weight: 600;
+`
+
+const LoadMovie = styled.div`
+  height: 8rem;
 `
