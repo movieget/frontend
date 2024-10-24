@@ -2,8 +2,9 @@ import OptionButton from './OptionButton'
 import { SelectBox, SelectList, SelectLocation } from '../SelectBody.style'
 import SelectTitle from './SelectTitle'
 import { useState } from 'react'
+import { TLocations } from '../SelectBody.types'
 
-const SelectLocations = ({ data }) => {
+const SelectLocations = ({ locations }: { locations?: TLocations[] }) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
   const title = '지역'
   return (
@@ -11,7 +12,7 @@ const SelectLocations = ({ data }) => {
       <SelectTitle title={title} />
       <SelectBox>
         <SelectList>
-          {data?.locations.map((el) => (
+          {locations?.map((el) => (
             <OptionButton
               key={el.id}
               id={el.id}

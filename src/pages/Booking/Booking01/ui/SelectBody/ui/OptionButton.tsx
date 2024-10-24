@@ -20,19 +20,22 @@ const OptionButton = ({
   label = '옵션라벨',
 }: IOptionButtonProps) => {
   const setField = useBookingStore((state) => state.actions.setField)
+  // 상태를 토글
+
   const handleClick = () => {
-    setIsSelected(id)
-    console.log(isSelected)
+    const newSelectedId = isSelected ? null : id
+    setIsSelected(newSelectedId)
+    console.log(newSelectedId)
 
     switch (title) {
       case '영화':
-        setField('movie', label)
+        setField('movie', isSelected ? '' : label)
         break
       case '지역':
-        setField('location', label)
+        setField('location', isSelected ? '' : label)
         break
       case '영화관':
-        setField('cinema', label)
+        setField('cinema', isSelected ? '' : label)
         break
       default:
         throw new Error(

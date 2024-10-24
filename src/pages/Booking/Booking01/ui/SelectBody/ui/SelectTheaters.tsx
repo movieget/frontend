@@ -2,16 +2,18 @@ import { useState } from 'react'
 import { SelectBox, SelectList, SelectTheater } from '../SelectBody.style'
 import OptionButton from './OptionButton'
 import SelectTitle from './SelectTitle'
+import { TCinemas } from '../SelectBody.types'
 
-const SelectTheaters = ({ data }) => {
+const SelectTheaters = ({ cinemas }: { cinemas?: TCinemas[] }) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
   const title = '영화관'
+
   return (
     <SelectTheater>
       <SelectTitle title={title} />
       <SelectBox>
         <SelectList>
-          {data?.cinemas.map((el) => (
+          {cinemas?.map((el) => (
             <OptionButton
               key={el.id}
               id={el.id}
