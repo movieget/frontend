@@ -13,19 +13,19 @@ interface Favorite {
   id: number
   poster: string
   title: string
-  age: string
+  age: 'all' | 12 | 15 | 18
   genre: string[]
   overview: string
   totalLikes: number
   isLikes: boolean
 }
 
-const dummyData = [
+const dummyData: Favorite[] = [
   {
     id: 0,
     poster: '',
     title: '크라벤',
-    age: '18',
+    age: 18,
     genre: ['액션', 'SF/판타지'],
     overview: '줄거리',
     totalLikes: 200,
@@ -44,8 +44,8 @@ const dummyData = [
   },
 ]
 
-const MyFavoritList = () => {
-  const [favoriteList, setFavoriteList] = useState<Favorite[]>(dummyData)
+const MyFavoriteList = () => {
+  const [favoriteList] = useState<Favorite[]>(dummyData)
 
   return (
     <MovieListBox>
@@ -80,4 +80,4 @@ const MyFavoritList = () => {
   )
 }
 
-export default MyFavoritList
+export default MyFavoriteList

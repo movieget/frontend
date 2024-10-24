@@ -7,7 +7,7 @@ import {
   TabContainer,
   TabContentsBox,
 } from './style'
-import CustomSelect from '../Select/CusomSelect'
+import CustomSelect from '../Select/CustomSelect'
 import { BasicBtn } from '../Button/style'
 
 interface ButtonProps {
