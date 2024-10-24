@@ -21,6 +21,7 @@ export const commonColors = {
   bg_btn_normal: '#353535',
   bg_btn_disabled: '#4B4B4B',
   bg_btn_purple: '#733FF1',
+  bg_btn_gradient_purple: 'linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb)',
   bg_btn_orange: '#F45917',
   border_disabled: '#909090',
   border_normal: '#3F3F3F',
