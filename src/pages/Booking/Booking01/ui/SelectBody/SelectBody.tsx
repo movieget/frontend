@@ -1,35 +1,27 @@
 import { useEffect, useState } from 'react'
 import { useBookingStore } from '../../../../../stores/store'
-import {
-  SelectBodyWrapper,
-  SelectBoxCol,
-  SelectBoxRow,
-  SelectLineBox,
-  SelectTime,
-} from './SelectBody.style'
+import { SelectBodyWrapper, SelectBoxCol, SelectBoxRow } from './SelectBody.style'
 import BNextButton from './ui/BNextButton'
 import SelectLocations from './ui/SelectLocations'
 import SelectMovies from './ui/SelectMovies'
 import SelectTheaters from './ui/SelectTheaters'
-import SelectTitle from './ui/SelectTitle'
-import TimeButton from './ui/TimeButton'
+
 import { useQuery } from '@tanstack/react-query'
 import { fetchMovieData } from '../../../../../apis/bookingApi'
+import SelectTimes from './ui/SelectTimes'
+import { IBookingData } from './SelectBody.types'
 
 const SelectBody = () => {
   const initialBookingState = useBookingStore((state) => state.initialBookingState)
   const { date, movie, location, cinema } = initialBookingState
   const [isValid, setIsValid] = useState(false)
-  console.log('SelectBody에서 알림 : ', date)
-  const { data, refetch } = useQuery({
+  const { data, refetch } = useQuery<IBookingData>({
     queryKey: ['bookingData'],
     queryFn: () => fetchMovieData(date),
     enabled: !!date,
     staleTime: 1000 * 10,
     retry: 1,
   })
-
-  console.log('SelectBody에서 알림2: ', date, movie, location, cinema)
 
   useEffect(() => {
     const fields = [date, movie, location, cinema] // 검사할 필드 배열
@@ -44,28 +36,14 @@ const SelectBody = () => {
   return (
     <SelectBodyWrapper>
       <SelectBoxRow>
-        <SelectMovies data={data} />
+        <SelectMovies movies={data?.movies} />
         <SelectBoxCol>
-          <SelectLocations data={data} />
-          <SelectTheaters data={data} />
+          <SelectLocations locations={data?.locations} />
+          <SelectTheaters cinemas={data?.cinemas} />
         </SelectBoxCol>
       </SelectBoxRow>
 
-      <SelectTime>
-        <SelectTitle title='시간선택' />
-        <SelectLineBox>
-          {isValid ? (
-            data?.screenings.map((el: any) => (
-              <TimeButton key={el.id} time={el.start_time.split(' ')[1]} />
-            ))
-          ) : (
-            <div>
-              <p>원하시는 영화, 지역, 영화관을 선택해주세요</p>
-            </div>
-          )}
-        </SelectLineBox>
-      </SelectTime>
-
+      <SelectTimes screenings={data?.screenings} isValid={isValid} />
       <BNextButton />
     </SelectBodyWrapper>
   )

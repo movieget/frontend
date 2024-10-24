@@ -65,15 +65,26 @@ export const OptionButtonStyle = styled.button<{ $isSelected: boolean }>`
   color: ${({ theme }) => theme.colors.text_in_box};
   border: none;
   border-radius: 4px;
-  background-color: ${({ theme, $isSelected }) =>
-    $isSelected ? theme.colors.bg_btn_purple : 'transparent'};
+  background: ${({ $isSelected, theme }) => {
+    if ($isSelected) {
+      return theme.colors.bg_btn_purple
+    }
+    return 'transparent'
+  }};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.bg_btn_normal};
-  }
-
-  &:focus {
-    background-color: ${({ theme }) => theme.colors.bg_btn_purple};
+    background: ${({ $isSelected, theme }) => {
+      if ($isSelected) {
+        return theme.colors.bg_btn_purple
+      }
+      return theme.colors.border_normal
+    }};
+    border-color: ${({ $isSelected, theme }) => {
+      if ($isSelected) {
+        return theme.colors.border_purple
+      }
+      return theme.colors.border_wrapper
+    }};
   }
 `
 export const OptionLabel = styled.span`

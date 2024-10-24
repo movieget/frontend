@@ -3,15 +3,19 @@ import { useBookingStore } from '../../../../../../stores/store'
 
 interface ITimeButtonProps {
   time?: string
+  id: number
+  isSelected: boolean
+  setIsSelected: (id: number) => void
 }
 
-const TimeButton = ({ time = '00:00' }: ITimeButtonProps) => {
+const TimeButton = ({ id, isSelected, setIsSelected, time = '00:00' }: ITimeButtonProps) => {
   const setField = useBookingStore((state) => state.actions.setField)
   const handleClick = () => {
-    setField('time', time)
+    setIsSelected(id)
+    setField('start_time', time)
   }
   return (
-    <BasicBtn $size='medium' onClick={handleClick}>
+    <BasicBtn $size='medium' onClick={handleClick} $isSelected={isSelected}>
       {time}
     </BasicBtn>
   )
