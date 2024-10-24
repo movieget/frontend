@@ -13,9 +13,9 @@ export interface Movie {
   id: number
   posterImage: string
   playing: boolean
-  age: string | number
+  age: 'all' | 12 | 15 | 18
   title: string
-  islikes: boolean
+  isLikes: boolean
   totalLikes: number
 }
 
@@ -26,7 +26,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 'all',
     title: '타이틀 1',
-    islikes: true,
+    isLikes: true,
     totalLikes: 22500,
   },
   {
@@ -35,7 +35,7 @@ const dummyData: Movie[] = [
     playing: false,
     age: 12,
     title: '타이틀 2',
-    islikes: false,
+    isLikes: false,
     totalLikes: 15000,
   },
   {
@@ -44,7 +44,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 15,
     title: '타이틀 3',
-    islikes: true,
+    isLikes: true,
     totalLikes: 32000,
   },
   {
@@ -53,7 +53,7 @@ const dummyData: Movie[] = [
     playing: false,
     age: 18,
     title: '타이틀 4',
-    islikes: false,
+    isLikes: false,
     totalLikes: 8000,
   },
   {
@@ -62,7 +62,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 'all',
     title: '타이틀 5',
-    islikes: true,
+    isLikes: true,
     totalLikes: 27000,
   },
   {
@@ -71,7 +71,7 @@ const dummyData: Movie[] = [
     playing: false,
     age: 12,
     title: '타이틀 6',
-    islikes: false,
+    isLikes: false,
     totalLikes: 19000,
   },
   {
@@ -80,7 +80,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 15,
     title: '타이틀 7',
-    islikes: true,
+    isLikes: true,
     totalLikes: 36000,
   },
   {
@@ -89,7 +89,7 @@ const dummyData: Movie[] = [
     playing: false,
     age: 18,
     title: '타이틀 8',
-    islikes: false,
+    isLikes: false,
     totalLikes: 12000,
   },
   {
@@ -98,7 +98,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 'all',
     title: '타이틀 9',
-    islikes: true,
+    isLikes: true,
     totalLikes: 30000,
   },
   {
@@ -107,7 +107,7 @@ const dummyData: Movie[] = [
     playing: false,
     age: 12,
     title: '타이틀 10',
-    islikes: false,
+    isLikes: false,
     totalLikes: 6000,
   },
   {
@@ -116,7 +116,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 15,
     title: '타이틀 11',
-    islikes: true,
+    isLikes: true,
     totalLikes: 28000,
   },
   {
@@ -125,7 +125,7 @@ const dummyData: Movie[] = [
     playing: false,
     age: 18,
     title: '타이틀 12',
-    islikes: false,
+    isLikes: false,
     totalLikes: 16000,
   },
   {
@@ -134,7 +134,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 'all',
     title: '타이틀 13',
-    islikes: true,
+    isLikes: true,
     totalLikes: 23000,
   },
   {
@@ -143,7 +143,7 @@ const dummyData: Movie[] = [
     playing: false,
     age: 12,
     title: '타이틀 14',
-    islikes: false,
+    isLikes: false,
     totalLikes: 8500,
   },
   {
@@ -152,7 +152,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 15,
     title: '타이틀 15',
-    islikes: true,
+    isLikes: true,
     totalLikes: 32000,
   },
   {
@@ -161,7 +161,7 @@ const dummyData: Movie[] = [
     playing: false,
     age: 18,
     title: '타이틀 16',
-    islikes: false,
+    isLikes: false,
     totalLikes: 19000,
   },
   {
@@ -170,7 +170,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 'all',
     title: '타이틀 17',
-    islikes: true,
+    isLikes: true,
     totalLikes: 27000,
   },
   {
@@ -179,7 +179,7 @@ const dummyData: Movie[] = [
     playing: false,
     age: 12,
     title: '타이틀 18',
-    islikes: false,
+    isLikes: false,
     totalLikes: 11000,
   },
   {
@@ -188,7 +188,7 @@ const dummyData: Movie[] = [
     playing: true,
     age: 15,
     title: '타이틀 19',
-    islikes: true,
+    isLikes: true,
     totalLikes: 36000,
   },
   {
@@ -197,19 +197,19 @@ const dummyData: Movie[] = [
     playing: false,
     age: 18,
     title: '타이틀 20',
-    islikes: false,
+    isLikes: false,
     totalLikes: 6500,
   },
 ]
 
 const Movie = () => {
-  const [movies, setMovies] = useState(dummyData)
-  const [URLSearchParams, setURLSearchParams] = useSearchParams()
-  const menu = URLSearchParams.get('menu')
+  const [movies, setMovies] = useState<Movie[]>(dummyData)
+  const [urlSearchParams, setUrlSearchParams] = useSearchParams()
+  const menu = urlSearchParams.get('menu')
 
   useEffect(() => {
     if (!menu) {
-      setURLSearchParams({ menu: 'now-playing' })
+      setUrlSearchParams({ menu: 'now-playing' })
     }
   }, [menu])
 
@@ -241,12 +241,12 @@ const Movie = () => {
         </InputBox>
         <CategoryBtnBox>
           <Link to='?menu=now-playing'>
-            <CategoryBtn type='button' active={menu === 'now-playing'}>
+            <CategoryBtn type='button' $active={menu === 'now-playing'}>
               상영중
             </CategoryBtn>
           </Link>
           <Link to='?menu=upcoming'>
-            <CategoryBtn type='button' active={menu === 'upcoming'}>
+            <CategoryBtn type='button' $active={menu === 'upcoming'}>
               개봉예정
             </CategoryBtn>
           </Link>
@@ -282,14 +282,14 @@ const CategoryBtnBox = styled.div`
   gap: 1.2rem;
   margin-top: 1.2rem;
 `
-const CategoryBtn = styled.button<{ active?: boolean }>`
+const CategoryBtn = styled.button<{ $active?: boolean }>`
   min-width: 12.4rem;
   height: 4rem;
   padding: 0 1.2rem;
   font-size: 1.6rem;
   font-weight: 600;
   background: ${(props) =>
-    props.active ? 'linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb)' : '#353535'};
+    props.$active ? 'linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb)' : '#353535'};
   border: 1px solid #3f3f3f;
   border-radius: 1.2rem;
   color: #fdfdfd;

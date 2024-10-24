@@ -47,7 +47,7 @@ const UserReviewList = () => {
 
   return (
     <>
-      <UserRiviewWrapper>
+      <UserReviewWrapper>
         <Masonry
           breakpointCols={4} // 화면 크기에 따라 열 수 조정
           className='my-masonry-grid' // 클래스 이름
@@ -55,12 +55,12 @@ const UserReviewList = () => {
         >
           {data?.pages.map((page) =>
             page.reviews.map((review) => (
-              <UserRiviewBox key={review?.id}>
-                <RiviewImgBox>
-                  <RiviewImg src={review?.reviewImage} alt='사람들이 업로드한 이미지' />
-                </RiviewImgBox>
-                <RiviewInfoBox>
-                  <RiviewUserInfo>
+              <UserReviewBox key={review?.id}>
+                <ReviewImgBox>
+                  <ReviewImg src={review?.reviewImage} alt='사람들이 업로드한 이미지' />
+                </ReviewImgBox>
+                <ReviewInfoBox>
+                  <ReviewUserInfo>
                     <UserInfoHolder>
                       <ProfileBadge src='' width='3.2rem' height='3.2rem' />
                       <UserInfoBox>
@@ -69,15 +69,15 @@ const UserReviewList = () => {
                       </UserInfoBox>
                     </UserInfoHolder>
                     <StarRating value={review.score} disabled={true} />
-                  </RiviewUserInfo>
-                  <RiviewTitle>{review.title}</RiviewTitle>
-                  <RiviewContent>{review.content}</RiviewContent>
-                </RiviewInfoBox>
-              </UserRiviewBox>
+                  </ReviewUserInfo>
+                  <ReviewTitle>{review.title}</ReviewTitle>
+                  <ReviewContent>{review.content}</ReviewContent>
+                </ReviewInfoBox>
+              </UserReviewBox>
             )),
           )}
         </Masonry>
-      </UserRiviewWrapper>
+      </UserReviewWrapper>
       <LoadReview ref={ref} />
       {!isLoading && <SvgSpinner />}
     </>
@@ -119,7 +119,7 @@ export default UserReviewList
 //   }
 // `
 
-const UserRiviewWrapper = styled.div`
+const UserReviewWrapper = styled.div`
   .my-masonry-grid {
     display: flex;
     margin-left: -24px; /* 그리드 간격 조정 */
@@ -131,7 +131,7 @@ const UserRiviewWrapper = styled.div`
     background-clip: padding-box; /* 배경 클립 */
   }
 `
-const UserRiviewBox = styled.div`
+const UserReviewBox = styled.div`
   margin-bottom: 2.4rem;
   background-color: #1b1b1b;
   border: 1px solid #494949;
@@ -145,17 +145,17 @@ const UserRiviewBox = styled.div`
   }
 `
 
-const RiviewImgBox = styled.span`
+const ReviewImgBox = styled.span`
   display: block;
 `
-const RiviewImg = styled.img`
+const ReviewImg = styled.img`
   width: 100%;
 `
 
-const RiviewInfoBox = styled.div`
+const ReviewInfoBox = styled.div`
   padding: 1.2rem;
 `
-const RiviewUserInfo = styled.div`
+const ReviewUserInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -178,12 +178,12 @@ const CreationDate = styled.span`
   font-size: 1.2rem;
 `
 
-const RiviewTitle = styled.p`
+const ReviewTitle = styled.p`
   margin-top: 1.2rem;
   font-size: 1.8rem;
   font-weight: 700;
 `
-const RiviewContent = styled.p`
+const ReviewContent = styled.p`
   margin-top: 0.8rem;
   font-size: 1.6rem;
   line-height: 1.25;
