@@ -17,14 +17,13 @@ export const StyleLoginBtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.2rem;
   height: 20rem;
+  gap: 1.2rem;
+  gap: 1.2rem;
 `
 export const StyleLoginTextWrapper = styled.div`
   height: 24rem;
   text-align: center;
-  font-size: 1.6rem;
-  font-weight: 500;
 
   h1 {
     margin-bottom: 3rem;
