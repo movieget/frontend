@@ -12,7 +12,6 @@ interface MovieInfoCardProps {
   $age: 'all' | 12 | 15 | 18
   $playing: boolean
   $totalLikes: number
-  $isBooking?: boolean
 }
 
 const MovieCard: React.FC<MovieInfoCardProps> = ({
@@ -22,7 +21,6 @@ const MovieCard: React.FC<MovieInfoCardProps> = ({
   $age,
   $playing,
   $totalLikes,
-  $isBooking,
 }) => {
   return (
     <MovieCardHolder>
@@ -43,7 +41,7 @@ const MovieCard: React.FC<MovieInfoCardProps> = ({
       <MovieCardActionBox>
         <MovieCardBtnBox>
           <BasicBtn $size='large'>영화정보</BasicBtn>
-          {$isBooking && <MainBtn $size='large'>예매하기</MainBtn>}
+          {$playing && <MainBtn $size='large'>예매하기</MainBtn>}
         </MovieCardBtnBox>
         <CheckboxWrapper>
           <Checkbox type='checkbox' id={`idFor${$movieId}`} name='' />
