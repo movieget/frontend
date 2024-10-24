@@ -1,0 +1,82 @@
+[
+  {
+    "id": 41,
+    "posterImage": "/public/img/detail_review41.jpg",
+    "age": "all",
+    "title": "타이틀 41",
+    "isLikes": true,
+    "totalLikes": 19000
+  },
+  {
+    "id": 42,
+    "posterImage": "/public/img/detail_review42.jpg",
+    "age": 12,
+    "title": "타이틀 42",
+    "isLikes": false,
+    "totalLikes": 11000
+  },
+  {
+    "id": 43,
+    "posterImage": "/public/img/detail_review43.jpg",
+    "age": 15,
+    "title": "타이틀 43",
+    "isLikes": true,
+    "totalLikes": 25000
+  },
+  {
+    "id": 44,
+    "posterImage": "/public/img/detail_review44.jpg",
+    "age": 18,
+    "title": "타이틀 44",
+    "isLikes": false,
+    "totalLikes": 9000
+  },
+  {
+    "id": 45,
+    "posterImage": "/public/img/detail_review45.jpg",
+    "age": "all",
+    "title": "타이틀 45",
+    "isLikes": true,
+    "totalLikes": 32000
+  },
+  {
+    "id": 46,
+    "posterImage": "/public/img/detail_review46.jpg",
+    "age": 12,
+    "title": "타이틀 46",
+    "isLikes": true,
+    "totalLikes": 18000
+  },
+  {
+    "id": 47,
+    "posterImage": "/public/img/detail_review47.jpg",
+    "age": 15,
+    "title": "타이틀 47",
+    "isLikes": false,
+    "totalLikes": 9500
+  },
+  {
+    "id": 48,
+    "posterImage": "/public/img/detail_review48.jpg",
+    "age": 18,
+    "title": "타이틀 48",
+    "isLikes": true,
+    "totalLikes": 34000
+  },
+  {
+    "id": 49,
+    "posterImage": "/public/img/detail_review49.jpg",
+    "age": "all",
+    "title": "타이틀 49",
+    "isLikes": true,
+    "totalLikes": 23000
+  },
+  {
+    "id": 50,
+    "posterImage": "/public/img/detail_review50.jpg",
+    "age": 12,
+    "title": "타이틀 50",
+    "isLikes": false,
+    "totalLikes": 6000
+  }
+]

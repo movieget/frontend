@@ -5,6 +5,12 @@ import review_page3 from './review_page3.json'
 import review_page4 from './review_page4.json'
 import review_page5 from './review_page5.json'
 import review_page6 from './review_page6.json'
+import movie_page1 from './movie_page1.json'
+import movie_page2 from './movie_page2.json'
+import movie_page3 from './movie_page3.json'
+import movie_page4 from './movie_page4.json'
+import movie_page5 from './movie_page5.json'
+import movie_page6 from './movie_page6.json'
 import booking_info from './booking_info.json'
 
 const REVIEWS_PER_PAGE = 10
@@ -16,6 +22,17 @@ const allReviews = [
   ...review_page4,
   ...review_page5,
   ...review_page6,
+]
+
+const MOVIES_PER_PAGE = 10
+
+const allMovies = [
+  ...movie_page1,
+  ...movie_page2,
+  ...movie_page3,
+  ...movie_page4,
+  ...movie_page5,
+  ...movie_page6,
 ]
 
 export const handlers = [
@@ -32,6 +49,22 @@ export const handlers = [
       totalReviews: allReviews.length,
       currentPage: page,
       totalPages: Math.ceil(allReviews.length / REVIEWS_PER_PAGE),
+    })
+  }),
+
+  http.get('/api/v1/movie', ({ request }) => {
+    const url = new URL(request.url)
+    const page = parseInt(url.searchParams.get('page') || '1')
+
+    const startIndex = (page - 1) * MOVIES_PER_PAGE
+    const endIndex = startIndex + MOVIES_PER_PAGE
+    const paginatedMovies = allMovies.slice(startIndex, endIndex)
+
+    return HttpResponse.json({
+      movies: paginatedMovies,
+      totalMovies: allMovies.length,
+      currentPage: page,
+      totalPages: Math.ceil(allMovies.length / MOVIES_PER_PAGE),
     })
   }),
 
