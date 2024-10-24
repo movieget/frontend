@@ -262,7 +262,7 @@ const Movie = () => {
           <CustomSelect items={['최신순', '가나다순', '평점순']} $direction='right' />
         </SearchContentBox>
         {menu === 'now-playing' && <NowPlayingMovie movie={movies} />}
-        {menu === 'upcoming' && <UpcomingMovie />}
+        {menu === 'upcoming' && <UpcomingMovie movie={movies} />}
       </SearchResultWrapper>
     </PageLayout>
   )

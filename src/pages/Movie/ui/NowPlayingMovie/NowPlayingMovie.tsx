@@ -10,7 +10,18 @@ const NowPlayingMovie: React.FC<MovieCardProps> = ({ movie }) => {
   return (
     <MovieCardWrapper>
       {movie.map((item) => {
-        return <MovieCard key={item.id} movie={item} />
+        return (
+          <MovieCard
+            key={item.id}
+            $movieId={item.id}
+            $posterImage={item.posterImage}
+            $title={item.title}
+            $age={item.age ?? 'all'}
+            $playing={true}
+            $totalLikes={item.totalLikes}
+            $isBooking={true}
+          />
+        )
       })}
     </MovieCardWrapper>
   )
