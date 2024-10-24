@@ -61,6 +61,7 @@ import {
   C_SocialBtnGoogle,
   C_SocialBtnGithub,
   C_MainIconBtn,
+  C_MovieCard,
 } from './CommonCodes'
 import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
 import { formatLikes } from '../../utils/formatLikes'
@@ -68,6 +69,7 @@ import ImageUpload from '../../components/Input/ImageUpload/ImageUpload'
 import { useState } from 'react'
 import ProfileImageUpload from '../../components/Input/ProfileImageUpload/ProfileImageUpload'
 import ProfileBadge from '../../components/Badge/ProfileBadge/ProfileBadge'
+import MovieCard from '../../components/MovieCard/MovieCard'
 
 const Common = () => {
   const [image1, setImage1] = useState<string | null>(null)
@@ -562,7 +564,7 @@ const Common = () => {
                     <th>
                       <MovieInfoCard
                         $title='크라벤' // 영화 제목
-                        $age='18' // 연령
+                        $age={18} // 연령
                         $screeningDate='2024년 10월 20일' // 상영 날짜
                         $bookingDate='2024년 10월 20일' // 예매 날짜
                         $cancelDate='2024년 10월 18일' // 취소 가능한 날짜
@@ -584,6 +586,22 @@ const Common = () => {
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_MovieInfoCard} />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <MovieCard
+                        $movieId={1}
+                        $posterImage='/img/detail_review01.jpg'
+                        $title='타이틀'
+                        $age={18}
+                        $playing={true}
+                        $totalLikes={3000}
+                        $isBooking={true}
+                      />
+                    </th>
+                    <td>
+                      <FormattedCodeBlock code={C_MovieCard} />
                     </td>
                   </tr>
                 </tbody>

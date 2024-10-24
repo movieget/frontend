@@ -11,16 +11,18 @@ const NowPlayingMovie: React.FC<MovieCardProps> = ({ movie }) => {
     <MovieCardWrapper>
       {movie.map((item) => {
         return (
-          <MovieCard
-            key={item.id}
-            $movieId={item.id}
-            $posterImage={item.posterImage}
-            $title={item.title}
-            $age={item.age ?? 'all'}
-            $playing={true}
-            $totalLikes={item.totalLikes}
-            $isBooking={true}
-          />
+          <MovieCardBox>
+            <MovieCard
+              key={item.id}
+              $movieId={item.id}
+              $posterImage={item.posterImage}
+              $title={item.title}
+              $age={item.age ?? 'all'}
+              $playing={true}
+              $totalLikes={item.totalLikes}
+              $isBooking={true}
+            />
+          </MovieCardBox>
         )
       })}
     </MovieCardWrapper>
@@ -33,4 +35,7 @@ const MovieCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 4rem 2rem;
+`
+const MovieCardBox = styled.div`
+  flex: 0 0 calc(25% - 1.5rem);
 `
