@@ -7,7 +7,7 @@
     "age": "all",
     "genre": ["로맨스", "드라마"],
     "duration": 125,
-    "playing": false,
+    "playing": true,
     "overview": "달빛 아래에서 서로의 사랑을 찾는 두 사람의 이야기.",
     "trailer": "",
     "actor": [
@@ -55,7 +55,7 @@
     "age": 15,
     "genre": ["스릴러", "미스터리"],
     "duration": 100,
-    "playing": false,
+    "playing": true,
     "overview": "안개로 가득한 도시에서 벌어지는 미스터리한 사건들.",
     "trailer": "",
     "actor": [
@@ -103,7 +103,7 @@
     "age": "all",
     "genre": ["애니메이션", "가족"],
     "duration": 90,
-    "playing": false,
+    "playing": true,
     "overview": "바다의 생물들과의 아름다운 우정을 그린 애니메이션.",
     "trailer": "",
     "actor": [
@@ -151,7 +151,7 @@
     "age": 15,
     "genre": ["액션", "드라마"],
     "duration": 145,
-    "playing": false,
+    "playing": true,
     "overview": "강철의 힘을 가진 사나이가 적과 싸우는 이야기.",
     "trailer": "",
     "actor": [
@@ -199,7 +199,7 @@
     "age": 18,
     "genre": ["공포", "스릴러"],
     "duration": 100,
-    "playing": false,
+    "playing": true,
     "overview": "죽음의 섬에서 벌어지는 공포의 사건들.",
     "trailer": "",
     "actor": [

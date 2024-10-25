@@ -12,12 +12,19 @@ const NowPlayingMovie = ({ movieData }: NowPlayingMovieProps) => {
       {movieData?.map((movie) => (
         <MovieCardBox key={movie.id}>
           <MovieCard
-            $movieId={movie.id}
-            $posterImage={movie.posterImage}
-            $title={movie.title}
-            $age={movie.age ?? 'all'}
-            $playing={true}
-            $totalLikes={movie.totalLikes}
+            id={movie.id}
+            posterImage={movie.posterImage}
+            title={movie.title}
+            age={movie.age ?? 'all'}
+            playing={movie.playing}
+            totalLikes={movie.totalLikes}
+            backdropImage={movie.backdropImage}
+            genre={movie.genre}
+            duration={movie.duration}
+            overview={movie.overview}
+            trailer={movie.trailer}
+            actor={movie.actor}
+            isLikes={movie.isLikes}
           />
         </MovieCardBox>
       ))}

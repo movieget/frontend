@@ -4,59 +4,77 @@ import { Checkbox, CheckboxWrapper, CheckHeartCount } from '../Checkbox/style'
 import { formatLikes } from '../../utils/formatLikes'
 import { BasicBtn, MainBtn } from '../Button/style'
 import NoImageCard from '../NoImageCard/NoImageCard'
+import { Link } from 'react-router-dom'
+import { Movie } from '../../pages/Movie/Movie'
 
-interface MovieInfoCardProps {
-  $movieId: number
-  $posterImage: string
-  $title: string
-  $age: 'all' | 12 | 15 | 18
-  $playing: boolean
-  $totalLikes: number
-}
-
-const MovieCard: React.FC<MovieInfoCardProps> = ({
-  $movieId,
-  $posterImage,
-  $title,
-  $age,
-  $playing,
-  $totalLikes,
-}) => {
+const MovieCard = ({
+  id,
+  posterImage,
+  backdropImage,
+  title,
+  age,
+  playing,
+  genre,
+  duration,
+  overview,
+  trailer,
+  actor,
+  isLikes,
+  totalLikes,
+}: Movie) => {
   return (
     <MovieCardHolder>
       <MoviePosterImgBox>
-        {$posterImage ? (
-          <MoviePosterImg src={$posterImage} alt={$title} />
+        {posterImage ? (
+          <MoviePosterImg src={posterImage} alt={title} />
         ) : (
           <NoImageCard $width='100%' />
         )}
       </MoviePosterImgBox>
       <MoviePlayingBox>
-        <Badge $playing={$playing ? 'playing' : 'notPlaying'}>
-          {$playing ? '상영중' : '개봉예정'}
+        <Badge $playing={playing ? 'playing' : 'notPlaying'}>
+          {playing ? '상영중' : '개봉예정'}
         </Badge>
       </MoviePlayingBox>
       <MovieInfoBox>
         <MovieTitleHolder>
-          <StyleAge $age={$age} />
-          <MovieTitle>{$title}</MovieTitle>
+          <StyleAge $age={age} />
+          <MovieTitle>{title}</MovieTitle>
         </MovieTitleHolder>
       </MovieInfoBox>
       <MovieCardActionBox>
         <MovieCardBtnBox>
-          <BasicBtn $size='large'>영화정보</BasicBtn>
-          {$playing && <MainBtn $size='large'>예매하기</MainBtn>}
+          <Link
+            to='/detail'
+            state={{
+              id,
+              posterImage,
+              backdropImage,
+              title,
+              age,
+              genre,
+              duration,
+              overview,
+              trailer,
+              actor,
+              isLikes,
+              totalLikes,
+            }}
+          >
+            <BasicBtn $size='large'>영화정보</BasicBtn>
+          </Link>
+          {playing && <MainBtn $size='large'>예매하기</MainBtn>}
         </MovieCardBtnBox>
         <CheckboxWrapper>
-          <Checkbox type='checkbox' id={`idFor${$movieId}`} name='' />
+          <Checkbox type='checkbox' id={`idFor${id}`} name='' />
           <CheckHeartCount
-            htmlFor={`idFor${$movieId}`}
+            htmlFor={`idFor${id}`}
             $padding='0'
             $fontSize='2rem'
             $borderColor='transparent'
             $color='transparent'
           >
-            {formatLikes($totalLikes)}
+            {formatLikes(totalLikes)}
           </CheckHeartCount>
         </CheckboxWrapper>
       </MovieCardActionBox>
@@ -90,16 +108,19 @@ const MoviePosterImgBox = styled.span`
     );
   }
 `
+
 const MoviePosterImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `
+
 const MoviePlayingBox = styled.span`
   position: absolute;
   right: 1.6rem;
   top: 1.6rem;
 `
+
 const MovieInfoBox = styled.div`
   position: absolute;
   left: 50%;
@@ -111,15 +132,18 @@ const MovieInfoBox = styled.div`
   gap: 1.2rem;
   width: calc(100% - 2.4rem);
 `
+
 const MovieTitleHolder = styled.p`
   display: flex;
   align-items: center;
   gap: 0.8rem;
 `
+
 const MovieTitle = styled.span`
   font-size: 2.4rem;
   font-weight: 600;
 `
+
 const MovieCardActionBox = styled.div`
   position: absolute;
   left: 0;
@@ -142,6 +166,7 @@ const MovieCardActionBox = styled.div`
     transition: opacity 0.3s;
   }
 `
+
 const MovieCardBtnBox = styled.div`
   display: flex;
   flex-direction: column;

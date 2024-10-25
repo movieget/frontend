@@ -14,12 +14,19 @@ import { useInView } from 'react-intersection-observer'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 
 export interface Movie {
-  id: number
-  posterImage: string
-  age: 'all' | 12 | 15 | 18
-  title: string
-  isLikes: boolean
-  totalLikes: number
+  id: number // 영화 ID
+  posterImage: string // 포스터 이미지 URL
+  backdropImage: string // 배경 이미지 URL
+  title: string // 영화 제목
+  age: 'all' | 12 | 15 | 18 // 연령 제한
+  playing: boolean // 상영중 & 개봉예정
+  genre: string[] // 장르 배열
+  duration: number // 상영 시간 (분)
+  overview: string // 영화 개요
+  trailer?: string // 트레일러 URL (선택적)
+  actor: { name: string; image: string }[] // 출연 배우 배열
+  isLikes: boolean // 좋아요 여부
+  totalLikes: number // 총 좋아요 수
 }
 
 // api 호출
@@ -89,7 +96,6 @@ const Movie = () => {
 
   // 영화 목록 추출
   const movieData = data?.pages.flatMap((page) => page.movies) || []
-  console.log(movieData)
 
   return (
     <PageLayout>
