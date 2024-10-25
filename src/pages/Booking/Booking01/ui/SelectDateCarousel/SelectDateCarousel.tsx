@@ -1,12 +1,11 @@
 import Slider from 'react-slick'
-import { CarouselWrapper, SliderWrapper } from './SelectDateCarousel.styled'
+import BS1 from '../../Booking01.styled'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import DateButton from './ui/DateButton'
-import NextButton from './ui/NextButton'
-import PrevButton from './ui/PrevButton'
 import { generateDates } from '../../../../../utils/generateDates'
 import { useState } from 'react'
+import ArrowButton from './ui/ArrowButton'
 
 const SelectDateCarousel = () => {
   const dates = generateDates()
@@ -20,13 +19,13 @@ const SelectDateCarousel = () => {
     slidesToShow: 10,
     slidesToScroll: 4,
     arrows: true,
-    nextArrow: <NextButton />,
-    prevArrow: <PrevButton />,
+    nextArrow: <ArrowButton type='next' />,
+    prevArrow: <ArrowButton type='prev' />,
   }
 
   return (
-    <CarouselWrapper>
-      <SliderWrapper>
+    <BS1.CarouselWrapper>
+      <BS1.SliderWrapper>
         <Slider {...settings}>
           {dates.map((el, idx) => (
             <DateButton
@@ -38,8 +37,8 @@ const SelectDateCarousel = () => {
             />
           ))}
         </Slider>
-      </SliderWrapper>
-    </CarouselWrapper>
+      </BS1.SliderWrapper>
+    </BS1.CarouselWrapper>
   )
 }
 

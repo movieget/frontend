@@ -1,4 +1,4 @@
-import BS2 from '../../Booking02.styled'
+import BS2 from '../../../Booking02.styled'
 import CounterBtn from './CounterBtn'
 import { useEffect } from 'react'
 import { ICounterProps } from '../../../Booking02.types'

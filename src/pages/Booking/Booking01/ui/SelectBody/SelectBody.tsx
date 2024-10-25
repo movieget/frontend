@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useBookingStore } from '../../../../../stores/store'
-import { SelectBodyWrapper, SelectBoxCol, SelectBoxRow } from './SelectBody.style'
+import BS1 from '../../Booking01.styled'
 import BNextButton from './ui/BNextButton'
 import SelectLocations from './ui/SelectLocations'
 import SelectMovies from './ui/SelectMovies'
 import SelectTheaters from './ui/SelectTheaters'
-
 import { useQuery } from '@tanstack/react-query'
 import { fetchMovieData } from '../../../../../apis/bookingApi'
 import SelectTimes from './ui/SelectTimes'
@@ -24,8 +23,6 @@ const SelectBody = () => {
     retry: 1,
   })
 
-  console.log('SelectBody 렌더링')
-
   useEffect(() => {
     const fields = [date, movie, location, cinema] // 검사할 필드 배열
     const allValid = fields.every((field) => field !== '') // 모든 필드가 비어있지 않은지 확인
@@ -38,17 +35,14 @@ const SelectBody = () => {
     setField('location', '')
     setField('cinema', '')
     setField('start_time', '')
-  }, [date])
-
-  useEffect(() => {
     refetch()
   }, [date])
 
   return (
-    <SelectBodyWrapper>
-      <SelectBoxRow>
+    <BS1.SelectBodyWrapper>
+      <BS1.SelectBoxRow>
         <SelectMovies movies={data?.movies} error={error} isError={isError} isLoading={isLoading} />
-        <SelectBoxCol>
+        <BS1.SelectBoxCol>
           <SelectLocations
             locations={data?.locations}
             error={error}
@@ -61,8 +55,8 @@ const SelectBody = () => {
             isError={isError}
             isLoading={isLoading}
           />
-        </SelectBoxCol>
-      </SelectBoxRow>
+        </BS1.SelectBoxCol>
+      </BS1.SelectBoxRow>
 
       <SelectTimes
         screenings={data?.screenings}
@@ -70,7 +64,7 @@ const SelectBody = () => {
         setIsTimeSelected={setIsTimeSelected}
       />
       <BNextButton isValid={isValid} isTimeSelected={isTimeSelected} />
-    </SelectBodyWrapper>
+    </BS1.SelectBodyWrapper>
   )
 }
 

@@ -1,35 +1,28 @@
 import { useState } from 'react'
-import { MsgBoxStyle, SelectBox, SelectList, SelectTheater } from '../SelectBody.style'
 import OptionButton from './OptionButton'
 import SelectTitle from './SelectTitle'
-import { TCinemas } from '../SelectBody.types'
 import ErrorMessage from './ErrorMessage'
 import { SvgSpinner } from '../../../../../../components/Loading/SvgSpinner'
-
-interface ISelectTheaters {
-  cinemas?: TCinemas[]
-  isError: boolean
-  isLoading: boolean
-  error: Error | null
-}
+import BS1 from '../../../Booking01.styled'
+import { ISelectTheaters } from '../../../Booking01.types'
 
 const SelectTheaters = ({ isLoading, isError, error, cinemas }: ISelectTheaters) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
   const title = '영화관'
 
   return (
-    <SelectTheater>
+    <BS1.SelectTheater>
       <SelectTitle title={title} />
-      <SelectBox>
+      <BS1.SelectBox>
         {isLoading && (
-          <MsgBoxStyle>
+          <BS1.MsgBoxStyle>
             <SvgSpinner />
-          </MsgBoxStyle>
+          </BS1.MsgBoxStyle>
         )}
         {isError ? (
           <ErrorMessage errorMsg={error?.message} />
         ) : (
-          <SelectList>
+          <BS1.SelectList>
             {cinemas?.map((el) => (
               <OptionButton
                 key={el.id}
@@ -40,10 +33,10 @@ const SelectTheaters = ({ isLoading, isError, error, cinemas }: ISelectTheaters)
                 setIsSelected={setIsSelected}
               />
             ))}
-          </SelectList>
+          </BS1.SelectList>
         )}
-      </SelectBox>
-    </SelectTheater>
+      </BS1.SelectBox>
+    </BS1.SelectTheater>
   )
 }
 

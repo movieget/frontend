@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { MainBtn } from '../../../../../../components/Button/style'
-import { NextBtnWrapper } from '../SelectBody.style'
+import BS1 from '../../../Booking01.styled'
 
 interface IBNextButtonProps {
   isTimeSelected: boolean
@@ -18,11 +18,11 @@ const BNextButton = ({ isTimeSelected, isValid }: IBNextButtonProps) => {
     }
   }
   return (
-    <NextBtnWrapper>
+    <BS1.NextBtnWrapper>
       <MainBtn $size='large' onClick={handleClick} $disabled={!validate}>
         다음
       </MainBtn>
-    </NextBtnWrapper>
+    </BS1.NextBtnWrapper>
   )
 }
 

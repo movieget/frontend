@@ -3,7 +3,7 @@ import ResultInfo from './ui/ResultInfo'
 import { BasicBtn, MainBtn } from '../../../../../components/Button/style'
 import { useNavigate } from 'react-router-dom'
 import { IResultAsideProps } from '../../Booking02.types'
-import BS2 from '../Booking02.styled'
+import BS2 from '../../Booking02.styled'
 
 const dummyData = {
   reservation: {

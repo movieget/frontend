@@ -1,17 +1,9 @@
 import OptionButton from './OptionButton'
-import { MsgBoxStyle, SelectBox, SelectList, SelectMovie } from '../SelectBody.style'
-import SelectTitle from './SelectTitle'
 import { useState } from 'react'
-import { TMovies } from '../SelectBody.types'
 import ErrorMessage from './ErrorMessage'
 import { SvgSpinner } from '../../../../../../components/Loading/SvgSpinner'
-
-interface ISelectMoviesProps {
-  movies?: TMovies[]
-  isLoading: boolean
-  isError: boolean
-  error?: Error | null
-}
+import { ISelectMoviesProps } from '../../../Booking01.types'
+import BS1 from '../../../Booking01.styled'
 
 const SelectMovies = ({ movies, isError, error, isLoading }: ISelectMoviesProps) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
@@ -26,18 +18,18 @@ const SelectMovies = ({ movies, isError, error, isLoading }: ISelectMoviesProps)
   }
 
   return (
-    <SelectMovie>
-      <SelectTitle title={title} />
-      <SelectBox>
+    <BS1.SelectMovie>
+      <BS1.SelectTitleStyle title={title} />
+      <BS1.SelectBox>
         {isLoading && (
-          <MsgBoxStyle>
+          <BS1.MsgBoxStyle>
             <SvgSpinner />
-          </MsgBoxStyle>
+          </BS1.MsgBoxStyle>
         )}
         {isError ? (
           <ErrorMessage errorMsg={error?.message} />
         ) : (
-          <SelectList>
+          <BS1.SelectList>
             {movies?.map((el) => (
               <OptionButton
                 key={el.id}
@@ -49,10 +41,10 @@ const SelectMovies = ({ movies, isError, error, isLoading }: ISelectMoviesProps)
                 setIsSelected={setIsSelected}
               />
             ))}
-          </SelectList>
+          </BS1.SelectList>
         )}
-      </SelectBox>
-    </SelectMovie>
+      </BS1.SelectBox>
+    </BS1.SelectMovie>
   )
 }
 

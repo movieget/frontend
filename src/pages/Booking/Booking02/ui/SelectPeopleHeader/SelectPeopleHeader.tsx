@@ -1,5 +1,5 @@
 import Counter from './ui/Counter'
-import BS2 from '../Booking02.styled' // 작성한 스타일 파일 경로
+import BS2 from '../../Booking02.styled' // 작성한 스타일 파일 경로
 import { ISelectPeopleHeaderProps } from '../../Booking02.types'
 
 const SelectPeopleHeader = ({

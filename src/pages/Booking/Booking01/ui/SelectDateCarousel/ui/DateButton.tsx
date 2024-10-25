@@ -1,7 +1,7 @@
 import { Badge } from '../../../../../../components/Badge/style'
 import { useBookingStore } from '../../../../../../stores/store'
-import { DateBtn, Day } from '../SelectDateCarousel.styled'
-import { IDateButtonProps } from '../SelectDateCarousel.types'
+import { IDateButtonProps } from '../../../Booking01.types'
+import BS1 from '../../../Booking01.styled'
 const DateButton = ({ isSelected, setIsSelected, dateNumber, today }: IDateButtonProps) => {
   const [year, month, day, weekday] = dateNumber.split('-')
 
@@ -16,10 +16,10 @@ const DateButton = ({ isSelected, setIsSelected, dateNumber, today }: IDateButto
   const isFirstDay = today === day || day === '01'
 
   return (
-    <DateBtn $week={weekday} $isSelected={isSelected} onClick={handleSelectDay}>
+    <BS1.DateBtn $week={weekday} $isSelected={isSelected} onClick={handleSelectDay}>
       {isFirstDay && <Badge $color='primary'>{`${year}.${month}`}</Badge>}
-      <Day>{`${day} ${weekday}`}</Day>
-    </DateBtn>
+      <BS1.Day>{`${day} ${weekday}`}</BS1.Day>
+    </BS1.DateBtn>
   )
 }
 

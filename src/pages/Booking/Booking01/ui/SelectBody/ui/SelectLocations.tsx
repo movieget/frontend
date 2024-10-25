@@ -1,36 +1,29 @@
 import OptionButton from './OptionButton'
-import { MsgBoxStyle, SelectBox, SelectList, SelectLocation } from '../SelectBody.style'
 import SelectTitle from './SelectTitle'
 import { useState } from 'react'
-import { TLocations } from '../SelectBody.types'
 import ErrorMessage from './ErrorMessage'
 import { SvgSpinner } from '../../../../../../components/Loading/SvgSpinner'
-
-interface ISelectLocationsProps {
-  locations?: TLocations[]
-  isLoading: boolean
-  isError: boolean
-  error?: Error | null
-}
+import BS1 from '../../../Booking01.styled'
+import { ISelectLocationsProps } from '../../../Booking01.types'
 
 const SelectLocations = ({ locations, error, isError, isLoading }: ISelectLocationsProps) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
   const title = '지역'
 
   return (
-    <SelectLocation>
+    <BS1.SelectLocation>
       <SelectTitle title={title} />
-      <SelectBox>
+      <BS1.SelectBox>
         {isLoading && (
-          <MsgBoxStyle>
+          <BS1.MsgBoxStyle>
             <SvgSpinner />
-          </MsgBoxStyle>
+          </BS1.MsgBoxStyle>
         )}
         {isError ? (
           <ErrorMessage errorMsg={error?.message} />
         ) : (
           locations && (
-            <SelectList>
+            <BS1.SelectList>
               {locations.map((el) => (
                 <OptionButton
                   key={el.id}
@@ -41,11 +34,11 @@ const SelectLocations = ({ locations, error, isError, isLoading }: ISelectLocati
                   setIsSelected={setIsSelected}
                 />
               ))}
-            </SelectList>
+            </BS1.SelectList>
           )
         )}
-      </SelectBox>
-    </SelectLocation>
+      </BS1.SelectBox>
+    </BS1.SelectLocation>
   )
 }
 

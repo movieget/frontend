@@ -1,5 +1,22 @@
 import styled from 'styled-components'
 
+const BoxRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 2rem;
+`
+
+const BoxCol = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 2;
+`
+
 /* ----------- Select People Header Styles -----------*/
 const HeaderWrapper = styled.div`
   width: 100%;
@@ -189,6 +206,8 @@ const BS2 = {
   ColWrapper,
   EmptySeat,
   SeatWrapper,
+  BoxCol,
+  BoxRow,
 }
 
 export default BS2

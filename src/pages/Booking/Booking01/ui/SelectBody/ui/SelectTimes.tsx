@@ -1,21 +1,15 @@
 import { useState } from 'react'
-import { SelectLineBox, SelectTime } from '../SelectBody.style'
 import SelectTitle from './SelectTitle'
 import TimeButton from './TimeButton'
-import { TScreenings } from '../SelectBody.types'
-
-interface ISelectTimesProps {
-  setIsTimeSelected: React.Dispatch<React.SetStateAction<boolean>>
-  screenings?: TScreenings[]
-  isValid: boolean
-}
+import { ISelectTimesProps } from '../../../Booking01.types'
+import BS1 from '../../../Booking01.styled'
 
 const SelectTimes = ({ setIsTimeSelected, screenings, isValid }: ISelectTimesProps) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
   return (
-    <SelectTime>
+    <BS1.SelectTime>
       <SelectTitle title='시간선택' />
-      <SelectLineBox>
+      <BS1.SelectLineBox>
         {isValid ? (
           screenings?.map((el: any) => (
             <TimeButton
@@ -32,8 +26,8 @@ const SelectTimes = ({ setIsTimeSelected, screenings, isValid }: ISelectTimesPro
             <p>원하시는 영화, 지역, 영화관을 선택해주세요</p>
           </div>
         )}
-      </SelectLineBox>
-    </SelectTime>
+      </BS1.SelectLineBox>
+    </BS1.SelectTime>
   )
 }
 

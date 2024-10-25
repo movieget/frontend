@@ -2,7 +2,7 @@ import SelectSeat from './ui/SelectSeat'
 import GradientLine from '../../../../../assets/svg/GradientLine'
 import SeatStatus from './ui/SeatStatus'
 import { ISelectSeatBodyProps } from '../../Booking02.types'
-import BS2 from '../Booking02.styled'
+import BS2 from '../../Booking02.styled'
 
 const SelectSeatBody = ({ totalSeat, seatId, setSeatId }: ISelectSeatBodyProps) => {
   return (
