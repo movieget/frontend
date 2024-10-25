@@ -5,12 +5,12 @@ import review_page3 from './review_page3.json'
 import review_page4 from './review_page4.json'
 import review_page5 from './review_page5.json'
 import review_page6 from './review_page6.json'
-import movie_page1 from './movie_page1.json'
-import movie_page2 from './movie_page2.json'
-import movie_page3 from './movie_page3.json'
-import movie_page4 from './movie_page4.json'
-import movie_page5 from './movie_page5.json'
-import movie_page6 from './movie_page6.json'
+import now_playing_movie1 from './now_playing_movie1.json'
+import now_playing_movie2 from './now_playing_movie2.json'
+import now_playing_movie3 from './now_playing_movie3.json'
+import upcoming_movie1 from './upcoming_movie1.json'
+import upcoming_movie2 from './upcoming_movie2.json'
+import upcoming_movie3 from './upcoming_movie3.json'
 import booking_info from './booking_info.json'
 
 const REVIEWS_PER_PAGE = 10
@@ -26,14 +26,8 @@ const allReviews = [
 
 const MOVIES_PER_PAGE = 10
 
-const allMovies = [
-  ...movie_page1,
-  ...movie_page2,
-  ...movie_page3,
-  ...movie_page4,
-  ...movie_page5,
-  ...movie_page6,
-]
+const nowPlayingMovie = [...now_playing_movie1, ...now_playing_movie2, ...now_playing_movie3]
+const upcomingMovie = [...upcoming_movie1, ...upcoming_movie2, ...upcoming_movie3]
 
 export const handlers = [
   http.get('/api/v1/review', ({ request }) => {
@@ -52,19 +46,35 @@ export const handlers = [
     })
   }),
 
-  http.get('/api/v1/movie', ({ request }) => {
+  http.get('/api/v1/now-playing-movie', ({ request }) => {
     const url = new URL(request.url)
     const page = parseInt(url.searchParams.get('page') || '1')
 
     const startIndex = (page - 1) * MOVIES_PER_PAGE
     const endIndex = startIndex + MOVIES_PER_PAGE
-    const paginatedMovies = allMovies.slice(startIndex, endIndex)
+    const paginatedMovies = nowPlayingMovie.slice(startIndex, endIndex)
 
     return HttpResponse.json({
       movies: paginatedMovies,
-      totalMovies: allMovies.length,
+      totalMovies: nowPlayingMovie.length,
       currentPage: page,
-      totalPages: Math.ceil(allMovies.length / MOVIES_PER_PAGE),
+      totalPages: Math.ceil(nowPlayingMovie.length / MOVIES_PER_PAGE),
+    })
+  }),
+
+  http.get('/api/v1/upcoming-movie', ({ request }) => {
+    const url = new URL(request.url)
+    const page = parseInt(url.searchParams.get('page') || '1')
+
+    const startIndex = (page - 1) * MOVIES_PER_PAGE
+    const endIndex = startIndex + MOVIES_PER_PAGE
+    const paginatedMovies = upcomingMovie.slice(startIndex, endIndex)
+
+    return HttpResponse.json({
+      movies: paginatedMovies,
+      totalMovies: upcomingMovie.length,
+      currentPage: page,
+      totalPages: Math.ceil(upcomingMovie.length / MOVIES_PER_PAGE),
     })
   }),
 

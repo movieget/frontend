@@ -23,9 +23,9 @@ export interface Movie {
 }
 
 // api 호출
-const fetchMovieData = async (currentPage: number) => {
+const fetchMovieData = async (page: number, type: 'now-playing' | 'upcoming') => {
   try {
-    const res = await client.get(`/api/v1/movie?page=${currentPage}`)
+    const res = await client.get(`/api/v1/${type}-movie?page=${page}`)
     return res.data
   } catch (error) {
     console.error('영화 데이터 가져오기 실패:', error)
@@ -34,10 +34,10 @@ const fetchMovieData = async (currentPage: number) => {
 }
 
 // 무한스크롤
-const useGetMovieData = () => {
+const useGetMovieData = (type: 'now-playing' | 'upcoming') => {
   return useInfiniteQuery({
-    queryKey: ['movie-data'],
-    queryFn: ({ pageParam }) => fetchMovieData(pageParam),
+    queryKey: [`${type}-data`],
+    queryFn: ({ pageParam = 1 }) => fetchMovieData(pageParam, type),
     getNextPageParam: (last) => {
       if (last.currentPage < last.totalPages) {
         return last.currentPage + 1
@@ -74,7 +74,9 @@ const Movie = () => {
   }
 
   // api data & 무한 스크롤
-  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetMovieData()
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetMovieData(
+    menu === 'now-playing' ? 'now-playing' : 'upcoming',
+  )
   const { ref, inView } = useInView({
     threshold: 1.0,
   })
@@ -87,6 +89,7 @@ const Movie = () => {
 
   // 영화 목록 추출
   const movieData = data?.pages.flatMap((page) => page.movies) || []
+  console.log(movieData)
 
   return (
     <PageLayout>
