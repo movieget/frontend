@@ -1,0 +1,212 @@
+[
+  {
+    "id": 21,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "환상의 정원",
+    "age": "all",
+    "genre": ["판타지", "가족"],
+    "duration": 120,
+    "playing": true,
+    "overview": "환상의 정원에서 펼쳐지는 마법 같은 이야기.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 4900
+  },
+  {
+    "id": 22,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "인간의 조건",
+    "age": 12,
+    "genre": ["드라마", "사회"],
+    "duration": 130,
+    "playing": false,
+    "overview": "인간 존재의 의미를 탐구하는 이야기.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 400
+  },
+  {
+    "id": 23,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "사라진 기억",
+    "age": 15,
+    "genre": ["미스터리", "스릴러"],
+    "duration": 125,
+    "playing": true,
+    "overview": "사라진 기억을 찾아가는 고난의 여정.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 4200
+  },
+  {
+    "id": 24,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "길 잃은 아이들",
+    "age": "all",
+    "genre": ["드라마", "가족"],
+    "duration": 110,
+    "playing": false,
+    "overview": "길 잃은 아이들의 이야기와 그들을 돕는 사람들.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 250
+  },
+  {
+    "id": 25,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "불꽃의 시간",
+    "age": 12,
+    "genre": ["액션", "스릴러"],
+    "duration": 140,
+    "playing": true,
+    "overview": "불꽃처럼 타오르는 시간 속에서의 액션.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 5600
+  },
+  {
+    "id": 26,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "마지막 희망",
+    "age": "all",
+    "genre": ["드라마", "SF"],
+    "duration": 125,
+    "playing": false,
+    "overview": "마지막 희망을 찾기 위한 여정.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 310
+  },
+  {
+    "id": 27,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "신비한 섬",
+    "age": "all",
+    "genre": ["모험", "판타지"],
+    "duration": 130,
+    "playing": true,
+    "overview": "신비한 섬에서의 모험을 그린 이야기.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 6800
+  },
+  {
+    "id": 28,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "전쟁의 기억",
+    "age": 15,
+    "genre": ["전쟁", "드라마"],
+    "duration": 145,
+    "playing": false,
+    "overview": "전쟁 속에서의 인간의 본성을 탐구하는 이야기.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 200
+  },
+  {
+    "id": 29,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "우주를 넘어",
+    "age": "all",
+    "genre": ["SF", "모험"],
+    "duration": 150,
+    "playing": true,
+    "overview": "우주를 넘어 펼쳐지는 경이로운 모험.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 7200
+  },
+  {
+    "id": 30,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "사라진 도시",
+    "age": 12,
+    "genre": ["모험", "미스터리"],
+    "duration": 120,
+    "playing": false,
+    "overview": "사라진 도시를 찾기 위한 여정.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 270
+  }
+]
