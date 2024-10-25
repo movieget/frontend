@@ -25,7 +25,11 @@ const MovieCard: React.FC<MovieInfoCardProps> = ({
   return (
     <MovieCardHolder>
       <MoviePosterImgBox>
-        {$posterImage ? <MoviePosterImg src={$posterImage} alt={$title} /> : <NoImageCard />}
+        {$posterImage ? (
+          <MoviePosterImg src={$posterImage} alt={$title} />
+        ) : (
+          <NoImageCard $width='100%' />
+        )}
       </MoviePosterImgBox>
       <MoviePlayingBox>
         <Badge $playing={$playing ? 'playing' : 'notPlaying'}>

@@ -5,14 +5,6 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import BackDropImage from '../../../assets/img/detail_backdrop.jpg'
 import PosterImage from '../../../assets/img/detail_poster.jpg'
-import Actor01 from '../../../assets/img/detail_actor01.jpg'
-import Actor02 from '../../../assets/img/detail_actor02.jpg'
-import Actor03 from '../../../assets/img/detail_actor03.jpg'
-import Actor04 from '../../../assets/img/detail_actor04.jpg'
-import Actor05 from '../../../assets/img/detail_actor05.jpg'
-import Actor06 from '../../../assets/img/detail_actor06.jpg'
-import Actor07 from '../../../assets/img/detail_actor07.jpg'
-import Actor08 from '../../../assets/img/detail_actor08.jpg'
 import { Badge, BadgeBox, StyleAge, StyleTitle } from '../../../components/Badge/style'
 import { MainBtn } from '../../../components/Button/style'
 import { Checkbox, CheckboxWrapper, CheckHeartCount } from '../../../components/Checkbox/style'
@@ -52,14 +44,14 @@ const dummyData: DummyData = {
     '"더 크로우"는 에릭 드레븐이라는 뮤지션이 사랑하는 여자친구 셸리를 잔인하게 살해당한 후, 해골 같은 새의 힘으로 부활하는 이야기입니다. 에릭은 자신의 죽음을 기억하며 복수의 길에 나섭니다. 범죄자들을 처치하며 셸리와의 사랑을 되찾으려 하고, 자신의 과거와 마주합니다. 이 과정에서 그는 진정한 정의와 사랑의 의미를 찾으려 합니다. 에릭은 복수의 사냥꾼으로서, 그의 고통과 상실을 통해 인간의 복잡한 감정을 드러내며, 관객에게 깊은 여운을 남깁니다.',
   trailer: '트레일러 경로',
   actor: [
-    { name: '빌 스카스가드', image: Actor01 },
-    { name: 'FKA twigs', image: Actor02 },
-    { name: '대니 휴스턴', image: Actor03 },
-    { name: 'Laura Birn', image: Actor04 },
-    { name: 'Jordan Bolger', image: Actor05 },
-    { name: 'Isabella Wei', image: Actor06 },
-    { name: 'Karel Dobrý', image: Actor07 },
-    { name: 'Sebastian Orozco', image: Actor08 },
+    { name: '빌 스카스가드', image: '/img/detail_actor01.jpg' },
+    { name: 'FKA twigs', image: '/img/detail_actor02.jpg' },
+    { name: '대니 휴스턴', image: '/img/detail_actor03.jpg' },
+    { name: 'Laura Birn', image: '/img/detail_actor04.jpg' },
+    { name: 'Jordan Bolger', image: '/img/detail_actor05.jpg' },
+    { name: 'Isabella Wei', image: '/img/detail_actor06.jpg' },
+    { name: 'Karel Dobrý', image: '/img/detail_actor07.jpg' },
+    { name: 'Sebastian Orozco', image: '/img/detail_actor08.jpg' },
   ],
   isLikes: true,
   totalLikes: 2500,
