@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "음악의 정원",
+    "age": "all",
+    "genre": ["드라마", "뮤지컬"],
+    "duration": 100,
+    "playing": true,
+    "overview": "음악이 흐르는 정원에서 펼쳐지는 따뜻한 이야기.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 7500
+  },
+  {
+    "id": 2,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "파괴의 예술",
+    "age": 15,
+    "genre": ["액션", "드라마"],
+    "duration": 130,
+    "playing": false,
+    "overview": "예술을 파괴하려는 이들의 이야기를 다룬 액션 드라마.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 300
+  },
+  {
+    "id": 3,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "미지의 세계",
+    "age": "all",
+    "genre": ["판타지", "모험"],
+    "duration": 140,
+    "playing": true,
+    "overview": "미지의 세계에서 펼쳐지는 모험과 우정의 이야기.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 6200
+  },
+  {
+    "id": 4,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "비밀의 문",
+    "age": 12,
+    "genre": ["미스터리", "스릴러"],
+    "duration": 110,
+    "playing": false,
+    "overview": "비밀의 문을 열고 들어간 후 벌어지는 미스터리한 사건.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 200
+  },
+  {
+    "id": 5,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "그림자 속의 진실",
+    "age": 15,
+    "genre": ["드라마", "미스터리"],
+    "duration": 125,
+    "playing": true,
+    "overview": "그림자 속에서 드러나는 숨겨진 진실.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 4800
+  },
+  {
+    "id": 6,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "시간의 경계",
+    "age": 12,
+    "genre": ["SF", "드라마"],
+    "duration": 135,
+    "playing": false,
+    "overview": "시간의 경계를 넘나드는 사람들의 이야기.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 550
+  },
+  {
+    "id": 7,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "어둠의 속삭임",
+    "age": 18,
+    "genre": ["공포", "스릴러"],
+    "duration": 95,
+    "playing": true,
+    "overview": "어둠 속에서 들려오는 공포의 속삭임.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 3200
+  },
+  {
+    "id": 8,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "조용한 격돌",
+    "age": 15,
+    "genre": ["드라마", "액션"],
+    "duration": 145,
+    "playing": false,
+    "overview": "조용한 일상 속에서 벌어지는 격렬한 충돌.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 150
+  },
+  {
+    "id": 9,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "불멸의 유산",
+    "age": "all",
+    "genre": ["판타지", "모험"],
+    "duration": 130,
+    "playing": true,
+    "overview": "불멸의 존재가 남긴 유산을 찾아 떠나는 모험.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": true,
+    "totalLikes": 7100
+  },
+  {
+    "id": 10,
+    "backdropImage": "",
+    "posterImage": "",
+    "title": "끝없는 여정",
+    "age": 12,
+    "genre": ["드라마", "판타지"],
+    "duration": 120,
+    "playing": false,
+    "overview": "끝없는 여정을 통해 진정한 자신을 찾아가는 이야기.",
+    "trailer": "",
+    "actor": [
+      { "name": "제인 도", "image": "" },
+      { "name": "존 스미스", "image": "" },
+      { "name": "제시카 리", "image": "" },
+      { "name": "마이클 존슨", "image": "" },
+      { "name": "사라 코너", "image": "" }
+    ],
+    "isLikes": false,
+    "totalLikes": 600
+  }
+]
