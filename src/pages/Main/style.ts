@@ -62,6 +62,7 @@ export const StyleTrailerText = styled.div`
     pointer-events: none;
   }
 
+  // -webkit 관련 속성: 레거시... -> 사용이유: 줄거리가 길때 말줄임표를 표현하는데 있어 가장 자연스럽게 표현되는 속성
   span {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -78,51 +79,36 @@ export const StyleTrailerText = styled.div`
     pointer-events: none;
   }
 `
-// 2. (1뒤에 2가 따라 붙어야 함)
-// 상영중 top10/개봉예정 top10 슬라이드형태
-// 영화리스트 포스터 내부 : 공통-연령/영화제목/좋아요/영화정보 버튼
-// 상영중 - 평점/예매하기 버튼추가
 
-// 상영중
-
-// 상영예정
-
-// 영화 카드 컴포넌트
-
-export const StyleMovieCardWrapper = styled.div<{ isPlaying: boolean }>`
-  display: flex;
-
-  width: 128rem;
-  height: 33.4rem;
+// Top10영역들 전체
+export const StyleMovieCardWrapper = styled.div`
+  width: 100%;
+  max-width: 128rem;
+  padding: 0 4rem;
+  margin: 0 auto;
+  top: 20rem;
   position: relative;
-  background: #333;
   color: #fff;
-  border-radius: 10px;
   overflow: hidden;
+  gap: 1rem;
 `
-
-export const StyleMovieCard = styled.div`
-  width: 22.4rem;
-  height: 33.4rem;
-  background-color: palevioletred;
-`
-
+// 타이틀과 컨텐츠간 간격
 export const StyleMovieTitle = styled.h3`
+  display: flex;
   font-size: 1.5rem;
   margin-bottom: 10px;
 `
 
-export const StyleLikeCount = styled.div`
-  margin-top: 10px;
-  font-size: 0.9rem;
+// 상영중 - 개봉예정 묶음
+export const StyleMovieContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `
-
-export const StyleButton = styled.button`
-  margin-top: 15px;
-  padding: 10px 15px;
-  background-color: #6200ea;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`
+// 이미지 박스 -> 적용유무 다시 체크
+// export const StyleMovieListImg = styled.image`
+//   display: block;
+//   position: relative;
+//   width: 100%;
+//   max-width: 20rem;
+// `
