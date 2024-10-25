@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import { LineMdEmojiNeutral } from './LineMdEmojiNeutral'
 
-const NoImageCard = () => {
+const NoImageCard = ({ $width }: INoImageCardProps) => {
+  // $width prop 타입 정의
   return (
-    <CardStyle>
+    <CardStyle $width={$width}>
       <LineMdEmojiNeutral />
       <CardDesc>이미지가 없음</CardDesc>
     </CardStyle>
