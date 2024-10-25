@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import MovieCard from '../../../../components/MovieCard/MovieCard'
 import { Movie } from '../../Movie'
-
+// 테스트용 주석
 interface NowPlayingMovieProps {
   movieData: Movie[]
 }
