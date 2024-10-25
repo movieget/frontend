@@ -4,24 +4,9 @@ import minusIco from '../../../../../../assets/svg/ic--round-minus.svg'
 
 import { dummyArr } from '../../../../../../mocks/dummyArray'
 import { useSeatCounter } from '../../../../../../hooks/\buseSeatCounter'
+import { ICounterBtnProps } from '../../../Booking02.types'
 
-interface CounterBtnProps {
-  ico: 'plus' | 'minus' // 아이콘 타입을 명확히 제한
-  totalSeat: number
-  age: '성인' | '청소년'
-  count: {
-    adult_count: number
-    child_count: number
-  }
-  setCount: (
-    count: (prevCount: { adult_count: number; child_count: number }) => {
-      adult_count: number
-      child_count: number
-    },
-  ) => void
-}
-
-const CounterBtn = ({ age, ico, totalSeat, setCount, count }: CounterBtnProps) => {
+const CounterBtn = ({ age, ico, totalSeat, setCount, count }: ICounterBtnProps) => {
   const icoSrcState = ico === 'plus' ? plusIco : minusIco
   const availableSeat = useSeatCounter(dummyArr)
 

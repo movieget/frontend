@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { StyledWrapper } from '../../../Booking01/ui/SelectDateCarousel/SelectDateCarousel.style'
 import Counter from './ui/Counter'
+import BS2 from '../Booking02.styled' // 작성한 스타일 파일 경로
+import { ISelectPeopleHeaderProps } from '../../Booking02.types'
 
 const SelectPeopleHeader = ({
   totalPrice,
@@ -9,10 +9,10 @@ const SelectPeopleHeader = ({
   setTotalSeat,
   count,
   setCount,
-}) => {
+}: ISelectPeopleHeaderProps) => {
   return (
-    <HeaderWrapper>
-      <CounterWrapper>
+    <BS2.HeaderWrapper>
+      <BS2.CounterContainer>
         <Counter
           count={count}
           setCount={setCount}
@@ -31,22 +31,9 @@ const SelectPeopleHeader = ({
           totalSeat={totalSeat}
           setTotalSeat={setTotalSeat}
         />
-      </CounterWrapper>
-    </HeaderWrapper>
+      </BS2.CounterContainer>
+    </BS2.HeaderWrapper>
   )
 }
 
 export default SelectPeopleHeader
-
-const HeaderWrapper = styled(StyledWrapper)`
-  height: 62px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const CounterWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 4rem;
-`

@@ -1,21 +1,11 @@
-import styled from 'styled-components'
+import BS2 from '../../Booking02.styled'
 
 interface ISeatWrapperProps {
   children: React.ReactNode
 }
 
 const SeatWrapper = ({ children }: ISeatWrapperProps) => {
-  return <StyledWrapper>{children}</StyledWrapper>
+  return <BS2.SeatWrapper>{children}</BS2.SeatWrapper>
 }
 
 export default SeatWrapper
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.4rem;
-  padding: 4rem;
-  margin-bottom: 6rem;
-`

@@ -1,5 +1,5 @@
 import Slider from 'react-slick'
-import { CarouselWrapper, SliderWrapper } from './SelectDateCarousel.style'
+import { CarouselWrapper, SliderWrapper } from './SelectDateCarousel.styled'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import DateButton from './ui/DateButton'

@@ -4,9 +4,10 @@ import ResultAside from './ui/ResultAside/ResultAside'
 import SelectPeopleHeader from './ui/SelectPeopleHeader/SelectPeopleHeader'
 import SelectSeatBody from './ui/SelectSeatBody/SelectSeatBody'
 import { useState } from 'react'
+import { TCount } from './Booking02.types'
 
 const Booking02 = () => {
-  const [count, setCount] = useState({
+  const [count, setCount] = useState<TCount>({
     adult_count: 0,
     child_count: 0,
   })

@@ -1,5 +1,5 @@
 import CenterPageLayout from '../../components/Layouts/CenterPageLayout'
-import { BookingWrapper } from './Booking.style'
+import { BookingWrapper } from './Booking.styled'
 import Booking01 from './Booking01/Booking01'
 import Booking02 from './Booking02/Booking02'
 import { useSearchParams } from 'react-router-dom'
