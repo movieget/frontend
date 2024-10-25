@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { generateDates } from '../utils/generateDates'
 import { useEffect } from 'react'
-import { useSeatCounter } from '../hooks/\buseSeatCounter'
+import { useSeatCounter } from '../hooks/useSeatCounter'
 import { dummyArr } from '../mocks/dummyArray'
 
 const initialDates = generateDates()
