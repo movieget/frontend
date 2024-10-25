@@ -5,7 +5,8 @@ import 'slick-carousel/slick/slick-theme.css'
 import DateButton from './ui/DateButton'
 import { generateDates } from '../../../../../utils/generateDates'
 import { useState } from 'react'
-import ArrowButton from './ui/ArrowButton'
+import NextButton from './ui/NextButton'
+import PrevButton from './ui/PrevButton'
 
 const SelectDateCarousel = () => {
   const dates = generateDates()
@@ -19,8 +20,8 @@ const SelectDateCarousel = () => {
     slidesToShow: 10,
     slidesToScroll: 4,
     arrows: true,
-    nextArrow: <ArrowButton type='next' />,
-    prevArrow: <ArrowButton type='prev' />,
+    nextArrow: <NextButton />,
+    prevArrow: <PrevButton />,
   }
 
   return (

@@ -38,6 +38,8 @@ const SelectBody = () => {
     refetch()
   }, [date])
 
+  console.log(isTimeSelected)
+
   return (
     <BS1.SelectBodyWrapper>
       <BS1.SelectBoxRow>

@@ -1,6 +1,5 @@
 export interface IArrowButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
-  type: 'next' | 'prev'
 }
 
 export interface IDateButtonProps {
