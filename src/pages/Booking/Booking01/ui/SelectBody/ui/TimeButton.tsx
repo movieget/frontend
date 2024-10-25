@@ -1,13 +1,6 @@
 import { BasicBtn } from '../../../../../../components/Button/style'
 import { useBookingStore } from '../../../../../../stores/store'
-
-interface ITimeButtonProps {
-  time?: string
-  id: number
-  isSelected: boolean
-  setIsSelected: (toggleStyle: number | null) => void
-  setIsTimeSelected: React.Dispatch<React.SetStateAction<boolean>>
-}
+import { ITimeButtonProps } from '../../../Booking01.types'
 
 const TimeButton = ({
   id,

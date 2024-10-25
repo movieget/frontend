@@ -2,7 +2,7 @@ import { Checkbox, CheckboxWrapper, CheckSeat } from '../../../../../../componen
 import SeatWrapper from './SeatWrapper'
 import { dummyArr } from '../../../../../../mocks/dummyArray'
 import { ISelectSeatProps } from '../../../Booking02.types'
-import BS2 from '../../Booking02.styled'
+import BS2 from '../../../Booking02.styled'
 
 const SelectSeat = ({ totalSeat, seatId, setSeatId }: ISelectSeatProps) => {
   // totalSeat === 선택할 수 있는 최대 좌석 갯수.

@@ -3,7 +3,7 @@ import plusIco from '../../../../../../assets/svg/ic--round-add.svg'
 import minusIco from '../../../../../../assets/svg/ic--round-minus.svg'
 
 import { dummyArr } from '../../../../../../mocks/dummyArray'
-import { useSeatCounter } from '../../../../../../hooks/\buseSeatCounter'
+import { useSeatCounter } from '../../../../../../hooks/useSeatCounter'
 import { ICounterBtnProps } from '../../../Booking02.types'
 
 const CounterBtn = ({ age, ico, totalSeat, setCount, count }: ICounterBtnProps) => {

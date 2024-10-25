@@ -1,4 +1,4 @@
-import BS2 from '../../Booking02.styled'
+import BS2 from '../../../Booking02.styled'
 import { StyleAge } from '../../../../../../components/Badge/style'
 import { IResultInfoProps } from '../../../Booking02.types'
 

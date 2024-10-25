@@ -11,7 +11,7 @@ interface Row {
 }
 
 /**
- * 예약 가능한 좌석의 갯수를 세어주는 훅
+ * 예약 가능한 좌석의 갯수를 세어주는 훅입니다.
  * @param rows
  * @returns number
  */

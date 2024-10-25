@@ -1,10 +1,9 @@
-import styled from 'styled-components'
-import { SelectBoxCol } from '../Booking01/ui/SelectBody/SelectBody.style'
 import ResultAside from './ui/ResultAside/ResultAside'
 import SelectPeopleHeader from './ui/SelectPeopleHeader/SelectPeopleHeader'
 import SelectSeatBody from './ui/SelectSeatBody/SelectSeatBody'
 import { useState } from 'react'
 import { TCount } from './Booking02.types'
+import BS2 from './Booking02.styled'
 
 const Booking02 = () => {
   const [count, setCount] = useState<TCount>({
@@ -16,8 +15,8 @@ const Booking02 = () => {
   const [seatId, setSeatId] = useState<string[]>([])
   return (
     <>
-      <BoxRow>
-        <BoxCol>
+      <BS2.BoxRow>
+        <BS2.BoxCol>
           <SelectPeopleHeader
             count={count}
             setCount={setCount}
@@ -27,24 +26,11 @@ const Booking02 = () => {
             setTotalSeat={setTotalSeat}
           />
           <SelectSeatBody totalSeat={totalSeat} seatId={seatId} setSeatId={setSeatId} />
-        </BoxCol>
+        </BS2.BoxCol>
         <ResultAside totalPrice={totalPrice} count={count} seatId={seatId} totalSeat={totalSeat} />
-      </BoxRow>
+      </BS2.BoxRow>
     </>
   )
 }
 
 export default Booking02
-
-const BoxRow = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  gap: 2rem;
-`
-
-const BoxCol = styled(SelectBoxCol)`
-  flex: 2;
-`

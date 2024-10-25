@@ -1,4 +1,4 @@
-import BS2 from '../../Booking02.styled'
+import BS2 from '../../../Booking02.styled'
 
 interface ISeatWrapperProps {
   children: React.ReactNode

@@ -1,15 +1,7 @@
 import { StyleAge } from '../../../../../../components/Badge/style'
 import { useBookingStore } from '../../../../../../stores/store'
-import { OptionButtonStyle, OptionLabel } from '../SelectBody.style'
-
-interface IOptionButtonProps {
-  id: number
-  title: '영화' | '지역' | '영화관'
-  age?: 'all' | 12 | 15 | 18
-  label?: string
-  isSelected: boolean
-  setIsSelected: (id: number | null) => void
-}
+import BS1 from '../../../Booking01.styled'
+import { IOptionButtonProps } from '../../../Booking01.types'
 
 const OptionButton = ({
   id,
@@ -59,10 +51,10 @@ const OptionButton = ({
   }
 
   return (
-    <OptionButtonStyle $isSelected={isOptionSelected()} onClick={handleClick}>
+    <BS1.OptionButtonStyle $isSelected={isOptionSelected()} onClick={handleClick}>
       {age && <StyleAge $age={age} />}
-      <OptionLabel>{label}</OptionLabel>
-    </OptionButtonStyle>
+      <BS1.OptionLabel>{label}</BS1.OptionLabel>
+    </BS1.OptionButtonStyle>
   )
 }
 
