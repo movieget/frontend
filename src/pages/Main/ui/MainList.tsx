@@ -1,118 +1,261 @@
 import React from 'react'
-import { IfMovieCardProps } from '../type'
-import { StyleMovieCard, StyleMovieCardWrapper, StyleMovieTitle } from '../style'
-import { Badge, StyleAge, StyleTitle } from '../../../components/Badge/style'
-import { Checkbox, CheckboxWrapper, CheckHeartCount } from '../../../components/Checkbox/style'
-import { formatLikes } from '../../../utils/formatLikes'
-import { BasicBtn, MainBtn } from '../../../components/Button/style'
+import { StyleMovieCardWrapper, StyleMovieContents, StyleMovieTitle } from '../style'
+import { StyleTitle } from '../../../components/Badge/style'
+import MovieCard from '../../../components/MovieCard/MovieCard'
+import Slider from 'react-slick' // 일단제외 - 추후(필수)적용예정
+import { BasicBtn } from '../../../components/Button/style'
+import styled from 'styled-components'
 
-const MovieCard: React.FC<IfMovieCardProps> = ({ $title, $age, $likes, $playing, $isPlaying }) => {
+const isPlayingMovies = [
+  {
+    id: 0,
+    posterImage: '/img/detail_review01.jpg',
+    age: 'all',
+    title: 'API 언제 나오나요?',
+    playing: '',
+    isLikes: true,
+    totalLikes: 22500,
+    isPlaying: true,
+  },
+  {
+    id: 1,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 12,
+    title: 'API는 아직 준비 중입니다',
+    isLikes: true,
+    totalLikes: 15000,
+    isPlaying: false,
+  },
+  {
+    id: 2,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 'all',
+    title: 'API 언제 나오나요?',
+    isLikes: true,
+    totalLikes: 22500,
+    isPlaying: true,
+  },
+  {
+    id: 3,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 12,
+    title: 'API는 아직 준비 중입니다',
+    isLikes: true,
+    totalLikes: 15000,
+    isPlaying: false,
+  },
+  {
+    id: 4,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 'all',
+    title: 'API 언제 나오나요?',
+    isLikes: true,
+    totalLikes: 22500,
+    isPlaying: true,
+  },
+  {
+    id: 5,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 12,
+    title: 'API는 아직 준비 중입니다',
+    isLikes: true,
+    totalLikes: 15000,
+    isPlaying: false,
+  },
+]
+
+const notPlayingMovies = [
+  {
+    id: 0,
+    posterImage: '/img/detail_review01.jpg',
+    age: 'all',
+    title: 'API 언제 나오나요?',
+    playing: true,
+    isLikes: true,
+    totalLikes: 22500,
+    isPlaying: true,
+  },
+  {
+    id: 1,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 12,
+    title: 'API는 아직 준비 중입니다',
+    isLikes: true,
+    totalLikes: 15000,
+    isPlaying: false,
+  },
+  {
+    id: 2,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 'all',
+    title: 'API 언제 나오나요?',
+    isLikes: true,
+    totalLikes: 22500,
+    isPlaying: true,
+  },
+  {
+    id: 3,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 12,
+    title: 'API는 아직 준비 중입니다',
+    isLikes: true,
+    totalLikes: 15000,
+    isPlaying: false,
+  },
+  {
+    id: 4,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 'all',
+    title: 'API 언제 나오나요?',
+    isLikes: true,
+    totalLikes: 22500,
+    isPlaying: true,
+  },
+  {
+    id: 5,
+    posterImage: '/img/detail_review01.jpg',
+    playing: true,
+    age: 12,
+    title: 'API는 아직 준비 중입니다',
+    isLikes: true,
+    totalLikes: 15000,
+    isPlaying: false,
+  },
+]
+
+// 상영중 / 상영예정 필터링을 안해도 되는 이유
+// 백엔드에서 상영중 / 상영예정 리스트를 따로 제공
+const MainList: React.FC = () => {
+  // slick 설정
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 2,
+    arrows: true,
+    initialSlide: 0,
+  }
+
   return (
-    <StyleMovieCardWrapper $isPlaying={$isPlaying}>
-      <StyleMovieCard>
-        <Badge $playing='playing'>상영중</Badge>
-        <Badge
-          $color={$playing ? 'primary' : 'gray'}
-          $playing={$playing ? 'playing' : 'notPlaying'}
-        >
-          {$playing ? '상영중' : '상영예정'}
-        </Badge>
+    <StyleMovieCardWrapper>
+      <StyleMovieContents>
         <StyleMovieTitle>
-          <StyleAge $age={$age} /> {$title}
+          <StyleTitle>상영중 TOP 10</StyleTitle>
+          <BasicBtn $size='small'>더보기</BasicBtn>
         </StyleMovieTitle>
-        <CheckboxWrapper>
-          <Checkbox type='checkbox' id='CheckHeartCount' name='' />
-          <CheckHeartCount
-            htmlFor='CheckHeartCount'
-            $padding=''
-            $borderColor='opercity'
-            $color='opercity'
-          >
-            {formatLikes(Number($likes))}
-          </CheckHeartCount>
-        </CheckboxWrapper>
-
-        <BasicBtn $size='medium'>기본버튼</BasicBtn>
-        {$playing ? <MainBtn $size='medium'>예매하기</MainBtn> : <p></p>}
-      </StyleMovieCard>
+        <StyleMoviePlayingList>
+          {isPlayingMovies.map((item) => (
+            <MovieCard
+              key={item.id}
+              $movieId={item.id}
+              $posterImage={item.posterImage}
+              $title={item.title}
+              $age={item.age ?? 'all'}
+              $playing={true}
+              $totalLikes={item.totalLikes}
+              $isBooking={true}
+            />
+          ))}
+        </StyleMoviePlayingList>
+      </StyleMovieContents>
+      <StyleMovieContents>
+        <StyleMovieTitle>
+          <StyleTitle>개봉예정 TOP 10</StyleTitle>
+          <BasicBtn $size='small'>더보기</BasicBtn>
+        </StyleMovieTitle>
+        <StyleMoviePlayingList>
+          {notPlayingMovies.map((item) => {
+            return (
+              <MovieCard
+                key={item.id}
+                $movieId={item.id}
+                $posterImage={item.posterImage}
+                $title={item.title}
+                $age={item.age ?? 'all'}
+                $playing={true}
+                $totalLikes={item.totalLikes}
+                $isBooking={true}
+              />
+            )
+          })}
+        </StyleMoviePlayingList>
+      </StyleMovieContents>
     </StyleMovieCardWrapper>
   )
 }
 
-const MainList: React.FC = () => {
-  const movies = [
-    {
-      id: 0,
-      posterImage: '/public/img/detail_review01.jpg',
-      playing: true,
-      age: 'all',
-      title: 'API 언제 나오나요?',
-      isLikes: true,
-      totalLikes: 22500,
-      isPlaying: true,
-    },
-    {
-      id: 1,
-      title: 'API는 아직 준비 중입니다',
-      age: 12,
-      likes: 15000,
-      status: '개봉예정',
-      isPlaying: false,
-    },
-    {
-      id: 2,
-      title: 'API 언제 나오나요?',
-      age: 'all',
-      likes: 22500,
-      status: '상영중',
-      isPlaying: true,
-    },
-    {
-      id: 3,
-      title: 'API는 아직 준비 중입니다',
-      age: 12,
-      likes: 15000,
-      status: '개봉예정',
-      isPlaying: false,
-    },
-    {
-      id: 4,
-      title: 'API 언제 나오나요?',
-      age: 'all',
-      likes: 22500,
-      status: '상영중',
-      isPlaying: true,
-    },
-    {
-      id: 5,
-      title: 'API는 아직 준비 중입니다',
-      age: 12,
-      likes: 15000,
-      status: '개봉예정',
-      isPlaying: false,
-    },
-  ]
-
-  return (
-    <>
-      <div>
-        <StyleTitle>상영중 TOP 10</StyleTitle>
-        {movies
-          .filter((movie) => movie.isPlaying)
-          .map((movie) => (
-            <MovieCard key={movie.id} {...movie} />
-          ))}
-      </div>
-      <div>
-        <StyleTitle>개봉예정 TOP 10</StyleTitle>
-        {movies
-          .filter((movie) => !movie.isPlaying)
-          .map((movie) => (
-            <MovieCard key={movie.id} {...movie} />
-          ))}
-      </div>
-    </>
-  )
-}
-
 export default MainList
+
+// 슬릭 스타일 설정
+const StyleMoviePlayingList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+  width: 100%;
+
+  img {
+    width: 20rem;
+  }
+
+  div:focus-visible {
+    outline: none;
+  }
+  .slick-track {
+    display: flex;
+    gap: 1.8rem;
+    width: 100%;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+  .slick-arrow {
+    display: block !important;
+    position: absolute;
+  }
+  .slick-dots {
+    li {
+      width: auto;
+      height: auto;
+      margin: 0 4px;
+      button {
+        content: '';
+        position: initial;
+        display: block;
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        line-height: initial;
+        background-color: #353535;
+        border: 1px solid;
+        border-color: #353535;
+        border-radius: 4px;
+        opacity: 1;
+        transition: all 0.3s;
+        &::before {
+          display: none;
+        }
+      }
+
+      &.slick-active {
+        button {
+          width: 12px;
+          background-color: #f45917;
+          border-color: #ff8b59;
+          transition: all 0.3s;
+        }
+      }
+    }
+  }
+`
