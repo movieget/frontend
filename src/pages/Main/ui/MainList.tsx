@@ -5,7 +5,9 @@ import MovieCard from '../../../components/MovieCard/MovieCard'
 import Slider from 'react-slick' // 일단제외 - 추후(필수)적용예정
 import { BasicBtn } from '../../../components/Button/style'
 import styled from 'styled-components'
+import { IfMovieListProps } from '../type'
 
+// dummy
 const isPlayingMovies = [
   {
     id: 0,
@@ -56,16 +58,6 @@ const isPlayingMovies = [
     isLikes: true,
     totalLikes: 22500,
     isPlaying: true,
-  },
-  {
-    id: 5,
-    posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 12,
-    title: 'API는 아직 준비 중입니다',
-    isLikes: true,
-    totalLikes: 15000,
-    isPlaying: false,
   },
 ]
 
@@ -120,21 +112,11 @@ const notPlayingMovies = [
     totalLikes: 22500,
     isPlaying: true,
   },
-  {
-    id: 5,
-    posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 12,
-    title: 'API는 아직 준비 중입니다',
-    isLikes: true,
-    totalLikes: 15000,
-    isPlaying: false,
-  },
 ]
 
 // 상영중 / 상영예정 필터링을 안해도 되는 이유
 // 백엔드에서 상영중 / 상영예정 리스트를 따로 제공
-const MainList: React.FC = () => {
+const MainList: React.FC<IfMovieListProps> = () => {
   // slick 설정
   var settings = {
     dots: true,
@@ -146,6 +128,7 @@ const MainList: React.FC = () => {
     initialSlide: 0,
   }
 
+  // *MovieCard코드 다시 한번 확인해보고 적용해볼것
   return (
     <StyleMovieCardWrapper>
       <StyleMovieContents>
@@ -154,6 +137,7 @@ const MainList: React.FC = () => {
           <BasicBtn $size='small'>더보기</BasicBtn>
         </StyleMovieTitle>
         <StyleMoviePlayingList>
+          {/* // dummy로 넣어놓은 정보들이 제목, 이미지, 나이, 좋아요수 제외하고 정상적용 되지 않고 있음 */}
           {isPlayingMovies.map((item) => (
             <MovieCard
               key={item.id}
