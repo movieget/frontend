@@ -1,28 +1,17 @@
-import styled from 'styled-components'
-import { StyledWrapper } from '../../../Booking01/ui/SelectDateCarousel/SelectDateCarousel.style'
 import SelectSeat from './ui/SelectSeat'
 import GradientLine from '../../../../../assets/svg/GradientLine'
 import SeatStatus from './ui/SeatStatus'
+import { ISelectSeatBodyProps } from '../../Booking02.types'
+import BS2 from '../Booking02.styled'
 
-const SelectSeatBody = () => {
+const SelectSeatBody = ({ totalSeat, seatId, setSeatId }: ISelectSeatBodyProps) => {
   return (
-    <BodyWrapper>
+    <BS2.SelectSeatBodyWrapper>
       <GradientLine />
-      <SelectSeat />
+      <SelectSeat totalSeat={totalSeat} seatId={seatId} setSeatId={setSeatId} />
       <SeatStatus />
-    </BodyWrapper>
+    </BS2.SelectSeatBodyWrapper>
   )
 }
 
 export default SelectSeatBody
-
-const BodyWrapper = styled(StyledWrapper)`
-  width: 100%;
-  height: 100%;
-  padding: 40px 0;
-
-  svg {
-    width: 100%;
-    object-fit: cover;
-  }
-`

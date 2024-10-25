@@ -67,13 +67,17 @@ export const MainBtn = styled.button<IfBtnHeight>`
     $size === 'large' ? '1.6rem' : $size === 'medium' ? '1.4rem' : '1.2rem'};
   font-weight: 600;
   white-space: nowrap;
-  background: ${({ $disabled }) =>
-    $disabled ? '#4B4B4B' : 'linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb)'};
-  border: 1px solid;
-  border-color: ${({ $disabled }) => ($disabled ? '#4B4B4B' : '#9d7ce5')};
+  color: ${({ theme }) => theme.colors.text_in_box};
+  background: linear-gradient(to bottom, #6d3adb, #6422f2, #6d3adb);
+  border: 1px solid ${({ theme }) => theme.colors.border_purple};
   border-radius: 4px;
-  color: ${({ $disabled }) => ($disabled ? '#797979' : '#FDFDFD')};
-  cursor: ${({ $disabled }) => ($disabled ? 'initial' : 'pointer')};
+
+  &:disabled {
+    color: ${({ theme }) => theme.colors.text_disabled};
+    background: ${({ theme }) => theme.colors.bg_btn_disabled};
+    border-color: ${({ theme }) => theme.colors.text_disabled};
+    cursor: initial;
+  }
 `
 export const IssueBtn = styled.button<IfBtnHeight>`
   min-width: ${({ $size }) =>

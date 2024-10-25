@@ -1,9 +1,9 @@
-import styled from 'styled-components'
-
 import backDropImg from '../../../../../assets/img/darkknight.webp'
 import ResultInfo from './ui/ResultInfo'
 import { BasicBtn, MainBtn } from '../../../../../components/Button/style'
 import { useNavigate } from 'react-router-dom'
+import { IResultAsideProps } from '../../Booking02.types'
+import BS2 from '../Booking02.styled'
 
 const dummyData = {
   reservation: {
@@ -19,72 +19,34 @@ const dummyData = {
   },
   movie: {
     title: '다크 나이트',
-    age: 18,
+    age: 18 as const,
     backdrop: backDropImg,
   },
 }
 
-const ResultAside = () => {
+const ResultAside = ({ totalPrice, count, seatId, totalSeat }: IResultAsideProps) => {
   const navigate = useNavigate()
+
+  // 선택한 좌석의 갯수가 0보다 크거나
+  // 선택한 좌석의 갯수와 선택할 수 있는 좌석의 최대갯수가 일치할때.
+  const isAllSeatSelected = seatId.length > 0 && seatId.length === totalSeat
+
   return (
-    <AsideWrapper>
-      <BackDropLayer>
-        <ResultInfo dummyData={dummyData} />
-        <ButtonWrapper>
+    <BS2.AsideWrapper>
+      <BS2.BackDropLayer>
+        <ResultInfo dummyData={dummyData} count={count} seatId={seatId} />
+        <BS2.AsideBtnWrapper>
           <BasicBtn $size='medium' onClick={() => navigate(-1)}>
             이전
           </BasicBtn>
-          <MainBtn $size='medium' onClick={() => navigate('/charge')}>
-            150,000원 결제하기
+          <MainBtn $size='medium' disabled={!isAllSeatSelected} onClick={() => navigate('/charge')}>
+            {`${totalPrice}원 결제하기`}
           </MainBtn>
-        </ButtonWrapper>
-      </BackDropLayer>
+        </BS2.AsideBtnWrapper>
+      </BS2.BackDropLayer>
       <img src={dummyData.movie.backdrop} alt='' />
-    </AsideWrapper>
+    </BS2.AsideWrapper>
   )
 }
 
 export default ResultAside
-
-const AsideWrapper = styled.div`
-  width: 100%;
-  min-width: 250px;
-  max-width: 300px;
-  height: 100%;
-  background-color: ${({ theme }) => theme.colors.bg_wrapper};
-  border: 1px solid ${({ theme }) => theme.colors.border_wrapper};
-  border-radius: 4px;
-  padding: 0 1.8rem;
-  position: relative;
-  flex: 1;
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    object-fit: contain;
-    z-index: 1;
-  }
-`
-
-const BackDropLayer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 2rem 1.6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  gap: 6rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  background: ${({ theme }) => theme.colors.bg_backdrop};
-`
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: end;
-  gap: 1rem;
-`
