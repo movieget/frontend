@@ -7,7 +7,7 @@
     "age": 15,
     "genre": ["스릴러", "미스터리"],
     "duration": 115,
-    "playing": true,
+    "playing": false,
     "overview": "잃어버린 기억을 찾아가는 여정을 그린 스릴러.",
     "trailer": "",
     "actor": [
@@ -49,7 +49,7 @@
     "age": 12,
     "genre": ["액션", "모험"],
     "duration": 140,
-    "playing": true,
+    "playing": false,
     "overview": "폭풍을 뚫고 나아가는 용감한 이들의 이야기.",
     "trailer": "",
     "actor": [
@@ -91,7 +91,7 @@
     "age": 12,
     "genre": ["모험", "판타지"],
     "duration": 130,
-    "playing": true,
+    "playing": false,
     "overview": "잃어버린 세계를 찾기 위한 여정을 그린 이야기.",
     "trailer": "",
     "actor": [
@@ -133,7 +133,7 @@
     "age": "all",
     "genre": ["드라마", "가족"],
     "duration": 110,
-    "playing": true,
+    "playing": false,
     "overview": "가족의 뿌리를 찾아가는 따뜻한 이야기.",
     "trailer": "",
     "actor": [
@@ -175,7 +175,7 @@
     "age": "all",
     "genre": ["드라마", "판타지"],
     "duration": 125,
-    "playing": true,
+    "playing": false,
     "overview": "천사의 날개를 가진 소녀의 특별한 이야기.",
     "trailer": "",
     "actor": [

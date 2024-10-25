@@ -31,7 +31,7 @@
     "age": "all",
     "genre": ["판타지", "모험"],
     "duration": 110,
-    "playing": false,
+    "playing": true,
     "overview": "신비한 도서관에서 펼쳐지는 마법의 이야기.",
     "trailer": "",
     "actor": [
@@ -79,7 +79,7 @@
     "age": 15,
     "genre": ["드라마", "액션"],
     "duration": 140,
-    "playing": false,
+    "playing": true,
     "overview": "차가운 불꽃처럼 뜨거운 감정의 드라마.",
     "trailer": "",
     "actor": [
@@ -127,7 +127,7 @@
     "age": 12,
     "genre": ["공포", "판타지"],
     "duration": 120,
-    "playing": false,
+    "playing": true,
     "overview": "유령이 남긴 이야기들을 통해 드러나는 과거.",
     "trailer": "",
     "actor": [
@@ -175,7 +175,7 @@
     "age": 18,
     "genre": ["액션", "전쟁"],
     "duration": 150,
-    "playing": false,
+    "playing": true,
     "overview": "인류의 미래를 건 마지막 전투의 이야기.",
     "trailer": "",
     "actor": [
@@ -223,7 +223,7 @@
     "age": 15,
     "genre": ["드라마", "미스터리"],
     "duration": 125,
-    "playing": false,
+    "playing": true,
     "overview": "상실을 통해 발견하는 진정한 자아의 여정.",
     "trailer": "",
     "actor": [

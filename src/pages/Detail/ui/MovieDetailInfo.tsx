@@ -3,63 +3,17 @@ import styled from 'styled-components'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import BackDropImage from '../../../assets/img/detail_backdrop.jpg'
-import PosterImage from '../../../assets/img/detail_poster.jpg'
 import { Badge, BadgeBox, StyleAge, StyleTitle } from '../../../components/Badge/style'
 import { MainBtn } from '../../../components/Button/style'
 import { Checkbox, CheckboxWrapper, CheckHeartCount } from '../../../components/Checkbox/style'
 import { formatLikes } from '../../../utils/formatLikes'
-
-interface Actor {
-  name: string
-  image: string
+import NoImageCard from '../../../components/NoImageCard/NoImageCard'
+import { Movie } from '../../Movie/Movie'
+interface MovieDetailInfoProps {
+  movie: Movie
 }
 
-interface DummyData {
-  id: number
-  backdropImage: string
-  posterImage: string
-  title: string
-  age: 'all' | 12 | 15 | 18
-  genre: string[]
-  duration: number
-  playing: boolean
-  overview: string
-  trailer: string
-  actor: Actor[]
-  isLikes: boolean
-  totalLikes: number
-}
-
-const dummyData: DummyData = {
-  id: 0,
-  backdropImage: '이미지 경로',
-  posterImage: '이미지 경로',
-  title: '더 크로우',
-  age: 18,
-  genre: ['액션', 'SF/판타지'],
-  duration: 200,
-  playing: true,
-  overview:
-    '"더 크로우"는 에릭 드레븐이라는 뮤지션이 사랑하는 여자친구 셸리를 잔인하게 살해당한 후, 해골 같은 새의 힘으로 부활하는 이야기입니다. 에릭은 자신의 죽음을 기억하며 복수의 길에 나섭니다. 범죄자들을 처치하며 셸리와의 사랑을 되찾으려 하고, 자신의 과거와 마주합니다. 이 과정에서 그는 진정한 정의와 사랑의 의미를 찾으려 합니다. 에릭은 복수의 사냥꾼으로서, 그의 고통과 상실을 통해 인간의 복잡한 감정을 드러내며, 관객에게 깊은 여운을 남깁니다.',
-  trailer: '트레일러 경로',
-  actor: [
-    { name: '빌 스카스가드', image: '/img/detail_actor01.jpg' },
-    { name: 'FKA twigs', image: '/img/detail_actor02.jpg' },
-    { name: '대니 휴스턴', image: '/img/detail_actor03.jpg' },
-    { name: 'Laura Birn', image: '/img/detail_actor04.jpg' },
-    { name: 'Jordan Bolger', image: '/img/detail_actor05.jpg' },
-    { name: 'Isabella Wei', image: '/img/detail_actor06.jpg' },
-    { name: 'Karel Dobrý', image: '/img/detail_actor07.jpg' },
-    { name: 'Sebastian Orozco', image: '/img/detail_actor08.jpg' },
-  ],
-  isLikes: true,
-  totalLikes: 2500,
-}
-
-const MovieDetailInfo = () => {
-  const [movie, setMovie] = useState<DummyData>(dummyData)
-
+const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
   const settings = {
     dots: true,
     infinite: false,
@@ -70,13 +24,15 @@ const MovieDetailInfo = () => {
 
   return (
     <>
-      <BackDropImgBox>
-        <BackDropImg src={BackDropImage} alt={movie.title} />
-      </BackDropImgBox>
       <MovieDetailWrapper>
+        {/* 영화정보 */}
         <MovieDetails>
           <PosterImgBox>
-            <PosterImg src={PosterImage} alt={movie.title} />
+            {movie.posterImage ? (
+              <PosterImg src={movie.posterImage} alt={movie.title} />
+            ) : (
+              <NoImageCard $width='100%' />
+            )}
           </PosterImgBox>
           <MovieInfo>
             <MovieInfoTop>
@@ -115,16 +71,20 @@ const MovieDetailInfo = () => {
         {/* 트레일러 */}
         <MovieTrailerBox>
           <StyleTitle>Trailer</StyleTitle>
-          <MovieTrailer
-            width='100%'
-            style={{ aspectRatio: '16 / 9', height: 'auto' }}
-            src='https://www.youtube.com/embed/djSKp_pwmOA?si=l1wO5dvCTL_p6bKx'
-            title='YouTube video player'
-            frameBorder='0'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-            referrerPolicy='strict-origin-when-cross-origin'
-            allowFullScreen
-          ></MovieTrailer>
+          {movie.trailer ? (
+            <MovieTrailer
+              width='100%'
+              style={{ aspectRatio: '16 / 9', height: 'auto' }}
+              src={movie.trailer}
+              title={movie.title}
+              frameBorder='0'
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+              referrerPolicy='strict-origin-when-cross-origin'
+              allowFullScreen
+            ></MovieTrailer>
+          ) : (
+            <NoImageCard $width='100%' $height='50rem' $marginTop='2.4rem' />
+          )}
         </MovieTrailerBox>
 
         {/* 배우 */}
@@ -132,14 +92,18 @@ const MovieDetailInfo = () => {
           <StyleTitle>Actor</StyleTitle>
           <MovieActorList>
             <Slider {...settings}>
-              {movie.actor.map((actor) => (
-                <MovieActor key={actor.name}>
-                  <MovieActorImg
-                    src={actor.image}
-                    alt={actor.name}
-                    style={{ width: '100%', height: 'auto' }}
-                  />
-                  <MovieActorName>{actor.name}</MovieActorName>
+              {movie.actor.map((item) => (
+                <MovieActor key={item.name}>
+                  {item.image ? (
+                    <MovieActorImg
+                      src={item.image}
+                      alt={item.name}
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  ) : (
+                    <NoImageCard $width='100%' />
+                  )}
+                  <MovieActorName>{item.name}</MovieActorName>
                 </MovieActor>
               ))}
             </Slider>
@@ -151,14 +115,6 @@ const MovieDetailInfo = () => {
 }
 
 export default MovieDetailInfo
-
-const BackDropImgBox = styled.span`
-  display: block;
-  margin: 0 auto;
-`
-const BackDropImg = styled.img`
-  width: 100%;
-`
 
 const MovieDetailWrapper = styled.div``
 

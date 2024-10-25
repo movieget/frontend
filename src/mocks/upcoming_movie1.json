@@ -7,7 +7,7 @@
     "age": "all",
     "genre": ["드라마", "뮤지컬"],
     "duration": 100,
-    "playing": true,
+    "playing": false,
     "overview": "음악이 흐르는 정원에서 펼쳐지는 따뜻한 이야기.",
     "trailer": "",
     "actor": [
@@ -49,7 +49,7 @@
     "age": "all",
     "genre": ["판타지", "모험"],
     "duration": 140,
-    "playing": true,
+    "playing": false,
     "overview": "미지의 세계에서 펼쳐지는 모험과 우정의 이야기.",
     "trailer": "",
     "actor": [
@@ -91,7 +91,7 @@
     "age": 15,
     "genre": ["드라마", "미스터리"],
     "duration": 125,
-    "playing": true,
+    "playing": false,
     "overview": "그림자 속에서 드러나는 숨겨진 진실.",
     "trailer": "",
     "actor": [
@@ -133,7 +133,7 @@
     "age": 18,
     "genre": ["공포", "스릴러"],
     "duration": 95,
-    "playing": true,
+    "playing": false,
     "overview": "어둠 속에서 들려오는 공포의 속삭임.",
     "trailer": "",
     "actor": [
@@ -175,7 +175,7 @@
     "age": "all",
     "genre": ["판타지", "모험"],
     "duration": 130,
-    "playing": true,
+    "playing": false,
     "overview": "불멸의 존재가 남긴 유산을 찾아 떠나는 모험.",
     "trailer": "",
     "actor": [

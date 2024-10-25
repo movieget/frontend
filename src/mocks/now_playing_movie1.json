@@ -11,14 +11,14 @@
     "overview": "우연한 사고로 거대한 야생에 불시착한 로봇 로즈는 주변 동물들의 행동을 배우며 낯선 환경 속에 적응해 가던 중, 사고로 세상에 홀로 남겨진 아기 기러기 브라이트빌의 보호자가 된다.",
     "trailer": "",
     "actor": [
-      { "name": "빌 스카스가드", "image": "/img/detail_actor01" },
-      { "name": "FKA twigs", "image": "/img/detail_actor02" },
-      { "name": "대니 휴스턴", "image": "/img/detail_actor03" },
-      { "name": "Laura Birn", "image": "/img/detail_actor04" },
-      { "name": "Jordan Bolger", "image": "/img/detail_actor05" },
-      { "name": "Isabella Wei", "image": "/img/detail_actor06" },
-      { "name": "Karel Dobrý", "image": "/img/detail_actor07" },
-      { "name": "Sebastian Orozco", "image": "/img/detail_actor08" }
+      { "name": "빌 스카스가드", "image": "/img/detail_actor01.jpg" },
+      { "name": "FKA twigs", "image": "/img/detail_actor02.jpg" },
+      { "name": "대니 휴스턴", "image": "/img/detail_actor03.jpg" },
+      { "name": "Laura Birn", "image": "/img/detail_actor04.jpg" },
+      { "name": "Jordan Bolger", "image": "/img/detail_actor05.jpg" },
+      { "name": "Isabella Wei", "image": "/img/detail_actor06.jpg" },
+      { "name": "Karel Dobrý", "image": "/img/detail_actor07.jpg" },
+      { "name": "Sebastian Orozco", "image": "/img/detail_actor08.jpg" }
     ],
     "isLikes": false,
     "totalLikes": 2500
@@ -35,14 +35,14 @@
     "overview": "2142년, 부모 세대가 맞닥뜨렸던 암울한 미래를 피하려는 청년들이 더 나은 삶을 찾기 위해 식민지를 떠날 계획을 세운다.",
     "trailer": "",
     "actor": [
-      { "name": "빌 스카스가드", "image": "/img/detail_actor01" },
-      { "name": "FKA twigs", "image": "/img/detail_actor02" },
-      { "name": "대니 휴스턴", "image": "/img/detail_actor03" },
-      { "name": "Laura Birn", "image": "/img/detail_actor04" },
-      { "name": "Jordan Bolger", "image": "/img/detail_actor05" },
-      { "name": "Isabella Wei", "image": "/img/detail_actor06" },
-      { "name": "Karel Dobrý", "image": "/img/detail_actor07" },
-      { "name": "Sebastian Orozco", "image": "/img/detail_actor08" }
+      { "name": "빌 스카스가드", "image": "/img/detail_actor01.jpg" },
+      { "name": "FKA twigs", "image": "/img/detail_actor02.jpg" },
+      { "name": "대니 휴스턴", "image": "/img/detail_actor03.jpg" },
+      { "name": "Laura Birn", "image": "/img/detail_actor04.jpg" },
+      { "name": "Jordan Bolger", "image": "/img/detail_actor05.jpg" },
+      { "name": "Isabella Wei", "image": "/img/detail_actor06.jpg" },
+      { "name": "Karel Dobrý", "image": "/img/detail_actor07.jpg" },
+      { "name": "Sebastian Orozco", "image": "/img/detail_actor08.jpg" }
     ],
     "isLikes": true,
     "totalLikes": 100000
@@ -55,18 +55,18 @@
     "age": "12",
     "genre": ["판타지", "모험"],
     "duration": 120,
-    "playing": false,
+    "playing": true,
     "overview": "어두운 마법의 세계에서 젊은 마법사가 전설의 마법사와 함께 신비로운 여정을 떠난다.",
     "trailer": "",
     "actor": [
-      { "name": "빌 스카스가드", "image": "/img/detail_actor01" },
-      { "name": "FKA twigs", "image": "/img/detail_actor02" },
-      { "name": "대니 휴스턴", "image": "/img/detail_actor03" },
-      { "name": "Laura Birn", "image": "/img/detail_actor04" },
-      { "name": "Jordan Bolger", "image": "/img/detail_actor05" },
-      { "name": "Isabella Wei", "image": "/img/detail_actor06" },
-      { "name": "Karel Dobrý", "image": "/img/detail_actor07" },
-      { "name": "Sebastian Orozco", "image": "/img/detail_actor08" }
+      { "name": "빌 스카스가드", "image": "/img/detail_actor01.jpg" },
+      { "name": "FKA twigs", "image": "/img/detail_actor02.jpg" },
+      { "name": "대니 휴스턴", "image": "/img/detail_actor03.jpg" },
+      { "name": "Laura Birn", "image": "/img/detail_actor04.jpg" },
+      { "name": "Jordan Bolger", "image": "/img/detail_actor05.jpg" },
+      { "name": "Isabella Wei", "image": "/img/detail_actor06.jpg" },
+      { "name": "Karel Dobrý", "image": "/img/detail_actor07.jpg" },
+      { "name": "Sebastian Orozco", "image": "/img/detail_actor08.jpg" }
     ],
     "isLikes": false,
     "totalLikes": 300
@@ -83,14 +83,14 @@
     "overview": "전쟁의 참상과 그로 인해 변해버린 사람들의 이야기를 담은 드라마.",
     "trailer": "",
     "actor": [
-      { "name": "빌 스카스가드", "image": "/img/detail_actor01" },
-      { "name": "FKA twigs", "image": "/img/detail_actor02" },
-      { "name": "대니 휴스턴", "image": "/img/detail_actor03" },
-      { "name": "Laura Birn", "image": "/img/detail_actor04" },
-      { "name": "Jordan Bolger", "image": "/img/detail_actor05" },
-      { "name": "Isabella Wei", "image": "/img/detail_actor06" },
-      { "name": "Karel Dobrý", "image": "/img/detail_actor07" },
-      { "name": "Sebastian Orozco", "image": "/img/detail_actor08" }
+      { "name": "빌 스카스가드", "image": "/img/detail_actor01.jpg" },
+      { "name": "FKA twigs", "image": "/img/detail_actor02.jpg" },
+      { "name": "대니 휴스턴", "image": "/img/detail_actor03.jpg" },
+      { "name": "Laura Birn", "image": "/img/detail_actor04.jpg" },
+      { "name": "Jordan Bolger", "image": "/img/detail_actor05.jpg" },
+      { "name": "Isabella Wei", "image": "/img/detail_actor06.jpg" },
+      { "name": "Karel Dobrý", "image": "/img/detail_actor07.jpg" },
+      { "name": "Sebastian Orozco", "image": "/img/detail_actor08.jpg" }
     ],
     "isLikes": true,
     "totalLikes": 750
@@ -103,18 +103,18 @@
     "age": "all",
     "genre": ["판타지", "모험"],
     "duration": 95,
-    "playing": false,
+    "playing": true,
     "overview": "어린 소녀가 숨겨진 정원에서 친구들과 함께 신비로운 모험을 떠나는 이야기.",
     "trailer": "",
     "actor": [
-      { "name": "빌 스카스가드", "image": "/img/detail_actor01" },
-      { "name": "FKA twigs", "image": "/img/detail_actor02" },
-      { "name": "대니 휴스턴", "image": "/img/detail_actor03" },
-      { "name": "Laura Birn", "image": "/img/detail_actor04" },
-      { "name": "Jordan Bolger", "image": "/img/detail_actor05" },
-      { "name": "Isabella Wei", "image": "/img/detail_actor06" },
-      { "name": "Karel Dobrý", "image": "/img/detail_actor07" },
-      { "name": "Sebastian Orozco", "image": "/img/detail_actor08" }
+      { "name": "빌 스카스가드", "image": "/img/detail_actor01.jpg" },
+      { "name": "FKA twigs", "image": "/img/detail_actor02.jpg" },
+      { "name": "대니 휴스턴", "image": "/img/detail_actor03.jpg" },
+      { "name": "Laura Birn", "image": "/img/detail_actor04.jpg" },
+      { "name": "Jordan Bolger", "image": "/img/detail_actor05.jpg" },
+      { "name": "Isabella Wei", "image": "/img/detail_actor06.jpg" },
+      { "name": "Karel Dobrý", "image": "/img/detail_actor07.jpg" },
+      { "name": "Sebastian Orozco", "image": "/img/detail_actor08.jpg" }
     ],
     "isLikes": false,
     "totalLikes": 100
@@ -151,18 +151,18 @@
     "age": "12",
     "genre": ["판타지", "모험"],
     "duration": 150,
-    "playing": false,
+    "playing": true,
     "overview": "해리 포터가 마법 학교에서 또 다른 신비로운 사건을 해결하는 이야기.",
     "trailer": "",
     "actor": [
-      { "name": "빌 스카스가드", "image": "/img/detail_actor01" },
-      { "name": "FKA twigs", "image": "/img/detail_actor02" },
-      { "name": "대니 휴스턴", "image": "/img/detail_actor03" },
-      { "name": "Laura Birn", "image": "/img/detail_actor04" },
-      { "name": "Jordan Bolger", "image": "/img/detail_actor05" },
-      { "name": "Isabella Wei", "image": "/img/detail_actor06" },
-      { "name": "Karel Dobrý", "image": "/img/detail_actor07" },
-      { "name": "Sebastian Orozco", "image": "/img/detail_actor08" }
+      { "name": "빌 스카스가드", "image": "/img/detail_actor01.jpg" },
+      { "name": "FKA twigs", "image": "/img/detail_actor02.jpg" },
+      { "name": "대니 휴스턴", "image": "/img/detail_actor03.jpg" },
+      { "name": "Laura Birn", "image": "/img/detail_actor04.jpg" },
+      { "name": "Jordan Bolger", "image": "/img/detail_actor05.jpg" },
+      { "name": "Isabella Wei", "image": "/img/detail_actor06.jpg" },
+      { "name": "Karel Dobrý", "image": "/img/detail_actor07.jpg" },
+      { "name": "Sebastian Orozco", "image": "/img/detail_actor08.jpg" }
     ],
     "isLikes": false,
     "totalLikes": 5000
@@ -179,14 +179,14 @@
     "overview": "시간을 여행하는 소년이 과거의 사건을 바꾸려는 이야기.",
     "trailer": "",
     "actor": [
-      { "name": "빌 스카스가드", "image": "/img/detail_actor01" },
-      { "name": "FKA twigs", "image": "/img/detail_actor02" },
-      { "name": "대니 휴스턴", "image": "/img/detail_actor03" },
-      { "name": "Laura Birn", "image": "/img/detail_actor04" },
-      { "name": "Jordan Bolger", "image": "/img/detail_actor05" },
-      { "name": "Isabella Wei", "image": "/img/detail_actor06" },
-      { "name": "Karel Dobrý", "image": "/img/detail_actor07" },
-      { "name": "Sebastian Orozco", "image": "/img/detail_actor08" }
+      { "name": "빌 스카스가드", "image": "/img/detail_actor01.jpg" },
+      { "name": "FKA twigs", "image": "/img/detail_actor02.jpg" },
+      { "name": "대니 휴스턴", "image": "/img/detail_actor03.jpg" },
+      { "name": "Laura Birn", "image": "/img/detail_actor04.jpg" },
+      { "name": "Jordan Bolger", "image": "/img/detail_actor05.jpg" },
+      { "name": "Isabella Wei", "image": "/img/detail_actor06.jpg" },
+      { "name": "Karel Dobrý", "image": "/img/detail_actor07.jpg" },
+      { "name": "Sebastian Orozco", "image": "/img/detail_actor08.jpg" }
     ],
     "isLikes": true,
     "totalLikes": 1800
@@ -199,18 +199,18 @@
     "age": "15",
     "genre": ["모험", "스릴러"],
     "duration": 140,
-    "playing": false,
+    "playing": true,
     "overview": "잃어버린 도시를 찾아 나선 탐험가들의 위험한 여정.",
     "trailer": "",
     "actor": [
-      { "name": "빌 스카스가드", "image": "/img/detail_actor01" },
-      { "name": "FKA twigs", "image": "/img/detail_actor02" },
-      { "name": "대니 휴스턴", "image": "/img/detail_actor03" },
-      { "name": "Laura Birn", "image": "/img/detail_actor04" },
-      { "name": "Jordan Bolger", "image": "/img/detail_actor05" },
-      { "name": "Isabella Wei", "image": "/img/detail_actor06" },
-      { "name": "Karel Dobrý", "image": "/img/detail_actor07" },
-      { "name": "Sebastian Orozco", "image": "/img/detail_actor08" }
+      { "name": "빌 스카스가드", "image": "/img/detail_actor01.jpg" },
+      { "name": "FKA twigs", "image": "/img/detail_actor02.jpg" },
+      { "name": "대니 휴스턴", "image": "/img/detail_actor03.jpg" },
+      { "name": "Laura Birn", "image": "/img/detail_actor04.jpg" },
+      { "name": "Jordan Bolger", "image": "/img/detail_actor05.jpg" },
+      { "name": "Isabella Wei", "image": "/img/detail_actor06.jpg" },
+      { "name": "Karel Dobrý", "image": "/img/detail_actor07.jpg" },
+      { "name": "Sebastian Orozco", "image": "/img/detail_actor08.jpg" }
     ],
     "isLikes": false,
     "totalLikes": 600
@@ -227,14 +227,14 @@
     "overview": "신비한 동물들이 가득한 세계에서의 모험.",
     "trailer": "",
     "actor": [
-      { "name": "빌 스카스가드", "image": "/img/detail_actor01" },
-      { "name": "FKA twigs", "image": "/img/detail_actor02" },
-      { "name": "대니 휴스턴", "image": "/img/detail_actor03" },
-      { "name": "Laura Birn", "image": "/img/detail_actor04" },
-      { "name": "Jordan Bolger", "image": "/img/detail_actor05" },
-      { "name": "Isabella Wei", "image": "/img/detail_actor06" },
-      { "name": "Karel Dobrý", "image": "/img/detail_actor07" },
-      { "name": "Sebastian Orozco", "image": "/img/detail_actor08" }
+      { "name": "빌 스카스가드", "image": "/img/detail_actor01.jpg" },
+      { "name": "FKA twigs", "image": "/img/detail_actor02.jpg" },
+      { "name": "대니 휴스턴", "image": "/img/detail_actor03.jpg" },
+      { "name": "Laura Birn", "image": "/img/detail_actor04.jpg" },
+      { "name": "Jordan Bolger", "image": "/img/detail_actor05.jpg" },
+      { "name": "Isabella Wei", "image": "/img/detail_actor06.jpg" },
+      { "name": "Karel Dobrý", "image": "/img/detail_actor07.jpg" },
+      { "name": "Sebastian Orozco", "image": "/img/detail_actor08.jpg" }
     ],
     "isLikes": true,
     "totalLikes": 9000
