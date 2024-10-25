@@ -4,11 +4,11 @@ import SelectSeat from './ui/SelectSeat'
 import GradientLine from '../../../../../assets/svg/GradientLine'
 import SeatStatus from './ui/SeatStatus'
 
-const SelectSeatBody = () => {
+const SelectSeatBody = ({ totalSeat, seatId, setSeatId }) => {
   return (
     <BodyWrapper>
       <GradientLine />
-      <SelectSeat />
+      <SelectSeat totalSeat={totalSeat} seatId={seatId} setSeatId={setSeatId} />
       <SeatStatus />
     </BodyWrapper>
   )

@@ -1,18 +1,40 @@
 import styled from 'styled-components'
 import CounterBtn from './CounterBtn'
+import { useEffect } from 'react'
 
 interface ICounterProps {
-  age?: '성인' | '청소년'
+  age: '성인' | '청소년'
+  setTotalPrice: React.Dispatch<React.SetStateAction<number>>
+  setTotalSeat: React.Dispatch<React.SetStateAction<number>>
+  totalSeat: number
+  count: {
+    adult_count: number
+    child_count: number
+  }
+  setCount: React.Dispatch<React.SetStateAction<{ adult_count: number; child_count: number }>>
 }
 
-const Counter = ({ age }: ICounterProps) => {
+const Counter = ({
+  age,
+  setTotalPrice,
+  setTotalSeat,
+  totalSeat,
+  count,
+  setCount,
+}: ICounterProps) => {
+  const totalSeats = count.adult_count + count.child_count
+  useEffect(() => {
+    setTotalPrice(count.adult_count * 14000 + count.child_count * 12000)
+    setTotalSeat(totalSeats)
+  }, [count.adult_count, count.child_count, setTotalPrice, setTotalSeat])
+
   return (
     <Container>
       <CounterTitle>{age}</CounterTitle>
       <Wrapper>
-        <CounterBtn ico='minus' />
-        <p>0</p>
-        <CounterBtn ico='plus' />
+        <CounterBtn ico='minus' count={count} setCount={setCount} totalSeat={totalSeat} age={age} />
+        <p>{age === '성인' ? count.adult_count : count.child_count}</p>
+        <CounterBtn ico='plus' count={count} setCount={setCount} totalSeat={totalSeat} age={age} />
       </Wrapper>
     </Container>
   )

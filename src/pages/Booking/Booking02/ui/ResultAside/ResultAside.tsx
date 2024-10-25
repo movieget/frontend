@@ -24,18 +24,23 @@ const dummyData = {
   },
 }
 
-const ResultAside = () => {
+const ResultAside = ({ totalPrice, count, seatId, totalSeat }) => {
   const navigate = useNavigate()
+
+  // 선택한 좌석의 갯수가 0보다 크거나
+  // 선택한 좌석의 갯수와 선택할 수 있는 좌석의 최대갯수가 일치할때.
+  const isAllSeatSelected = seatId.length > 0 && seatId.length === totalSeat
+
   return (
     <AsideWrapper>
       <BackDropLayer>
-        <ResultInfo dummyData={dummyData} />
+        <ResultInfo dummyData={dummyData} count={count} seatId={seatId} />
         <ButtonWrapper>
           <BasicBtn $size='medium' onClick={() => navigate(-1)}>
             이전
           </BasicBtn>
-          <MainBtn $size='medium' onClick={() => navigate('/charge')}>
-            150,000원 결제하기
+          <MainBtn $size='medium' disabled={!isAllSeatSelected} onClick={() => navigate('/charge')}>
+            {`${totalPrice}원 결제하기`}
           </MainBtn>
         </ButtonWrapper>
       </BackDropLayer>
