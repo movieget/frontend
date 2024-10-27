@@ -1,8 +1,24 @@
 import { Link } from 'react-router-dom'
-import { GNB, HeaderContainer, HeaderLeft, Nav, StyledHeader, Title } from './style'
-import { MainBtn } from '../Button/style'
+import { GNB, HeaderContainer, HeaderLeft, LogoutWrapper, Nav, StyledHeader, Title } from './style'
+import { IconBtn, IconBtnImg, MainBtn } from '../Button/style'
+import BasicProfileImg from '../../assets/svg/profile_user.svg'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
+  const navigate = useNavigate()
+
+  // 임시구성 => 상태관리 해야함
+  const isAuth = window.localStorage.getItem('KakaoToken')
+
+  const logoutHandler = () => {
+    navigate('/')
+    window.localStorage.removeItem('KakaoToken')
+  }
+
+  const loginHandler = () => {
+    navigate('/login')
+  }
+
   return (
     <StyledHeader>
       <HeaderContainer>
@@ -45,9 +61,22 @@ const Header = () => {
             </GNB>
           </Nav>
         </HeaderLeft>
-        <Link to='/login' aria-label='로그인 페이지로 이동'>
-          <MainBtn $size='large'>로그인</MainBtn>
-        </Link>
+        {isAuth ? (
+          <LogoutWrapper>
+            <IconBtn>
+              <IconBtnImg width='100%' height='100%' src={BasicProfileImg} />
+            </IconBtn>
+            <MainBtn $size='large' onClick={logoutHandler}>
+              로그아웃
+            </MainBtn>
+          </LogoutWrapper>
+        ) : (
+          <Link to='/login' aria-label='로그인 페이지로 이동'>
+            <MainBtn $size='large' onClick={loginHandler}>
+              로그인
+            </MainBtn>
+          </Link>
+        )}
       </HeaderContainer>
     </StyledHeader>
   )
