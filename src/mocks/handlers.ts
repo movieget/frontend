@@ -101,4 +101,30 @@ export const handlers = [
     // 해당 날짜의 데이터를 그대로 반환
     return HttpResponse.json(filteredData)
   }),
+
+  // 로그인 응답
+  http.get('/api/v1/user/login/kakao', ({ request }) => {
+    const url = new URL(request.url)
+    const code = url.searchParams.get('code')
+
+    if (!code) {
+      return HttpResponse.json({ error: 'detail' }, { status: 400 })
+    }
+
+    // 가상 응답으로 토큰과 사용자 정보를 생성
+    return HttpResponse.json(
+      {
+        access_token: 'mockAccessTokenATtokenUpcoming',
+        refresh_token: 'mockRefreshTokenRTtokenUpcoming',
+        user_id: '12345',
+        profile_image: '',
+      },
+      {
+        headers: {
+          'Set-Cookie': 'refresh_token=mockRefreshToken; HttpOnly',
+        },
+        status: 200,
+      },
+    )
+  }),
 ]
