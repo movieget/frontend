@@ -133,3 +133,24 @@ export const C_MovieCard = `<MovieCard
   $playing={true}
   $totalLikes={3000}
 />`
+
+export const C_Modal = `
+  const [modal, setModal] = useState(false)
+  const handleModalButtonClick = () => {
+    alert('모달 기능 함수')
+  }
+
+  {modal && (
+    <Modal
+      title={'모달 타이틀'}
+      content={<ExModalContent />}
+      btnText={'버튼명'}
+      onClose={() => setModal(false)}
+      onBtnClick={handleModalButtonClick}
+    />
+  )}
+
+  <MainBtn $size='large' onClick={() => setModal(true)}>
+    모달버튼
+  </MainBtn>
+`

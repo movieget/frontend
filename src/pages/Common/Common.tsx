@@ -62,6 +62,7 @@ import {
   C_SocialBtnGithub,
   C_MainIconBtn,
   C_MovieCard,
+  C_Modal,
 } from './CommonCodes'
 import FormattedCodeBlock from '../../components/CodeFormatter/CodeFormatter'
 import { formatLikes } from '../../utils/formatLikes'
@@ -70,6 +71,8 @@ import { useState } from 'react'
 import ProfileImageUpload from '../../components/Input/ProfileImageUpload/ProfileImageUpload'
 import ProfileBadge from '../../components/Badge/ProfileBadge/ProfileBadge'
 import MovieCard from '../../components/MovieCard/MovieCard'
+import Modal from '../../components/Modal/Modal'
+import ExModalContent from '../../components/Modal/ExModalContent/ExModalContent'
 
 const Common = () => {
   const [image1, setImage1] = useState<string | null>(null)
@@ -77,6 +80,11 @@ const Common = () => {
 
   const { rating: userRating1, handleRatingChange: handleRatingChange1 } = useRating()
   const { rating: userRating2, handleRatingChange: handleRatingChange2 } = useRating()
+
+  const [modal, setModal] = useState(false)
+  const handleModalButtonClick = () => {
+    alert('모달 기능 함수')
+  }
   return (
     <>
       <div className='common'>
@@ -601,6 +609,44 @@ const Common = () => {
                     </th>
                     <td>
                       <FormattedCodeBlock code={C_MovieCard} />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* ETC */}
+          <section className='section'>
+            <h3 className='sec-title'>- MODAL</h3>
+            <p className='sec-exp'>모달</p>
+            <div className='table-box'>
+              <table>
+                <thead>
+                  <tr>
+                    <th>컴포넌트</th>
+                    <th>태그</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>
+                      {modal && (
+                        <Modal
+                          title={'리뷰 수정'}
+                          content={<ExModalContent />}
+                          btnText={'수정하기'}
+                          onClose={() => setModal(false)}
+                          onBtnClick={handleModalButtonClick}
+                        />
+                      )}
+
+                      <MainBtn $size='large' onClick={() => setModal(true)}>
+                        모달버튼
+                      </MainBtn>
+                    </th>
+                    <td>
+                      <FormattedCodeBlock code={C_Modal} />
                     </td>
                   </tr>
                 </tbody>
