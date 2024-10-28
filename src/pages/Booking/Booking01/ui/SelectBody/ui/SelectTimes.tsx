@@ -1,11 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SelectTitle from './SelectTitle'
 import TimeButton from './TimeButton'
 import { ISelectTimesProps } from '../../../Booking01.types'
 import BS1 from '../../../Booking01.styled'
+import { useBookingStore } from '../../../../../../stores/store'
 
-const SelectTimes = ({ setIsTimeSelected, screenings, isValid }: ISelectTimesProps) => {
-  const [isSelected, setIsSelected] = useState<number | null>(null)
+const SelectTimes = ({ setIsTimeSelected, screenings, isValid, date }: ISelectTimesProps) => {
+  const setField = useBookingStore((state) => state.actions.setField)
+  const [selectedId, setSelectedId] = useState<number | null>(null)
+
+  const handleSelectButton = (id: number) => {
+    setSelectedId((prevId) => (prevId === id ? null : id))
+  }
+
+  useEffect(() => {
+    setField('startTime', '')
+    setSelectedId(null)
+    setIsTimeSelected(false)
+  }, [date])
+
   return (
     <BS1.SelectTime>
       <SelectTitle title='시간선택' />
@@ -15,10 +28,11 @@ const SelectTimes = ({ setIsTimeSelected, screenings, isValid }: ISelectTimesPro
             <TimeButton
               key={el.id}
               id={el.id}
-              time={el.start_time.split(' ')[1]}
-              isSelected={isSelected === el.id}
-              setIsSelected={setIsSelected}
+              time={el.start_time}
+              selectedId={selectedId === el.id}
+              setSelectedId={setSelectedId}
               setIsTimeSelected={setIsTimeSelected}
+              onSelect={handleSelectButton}
             />
           ))
         ) : (

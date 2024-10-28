@@ -78,7 +78,7 @@ export const handlers = [
     })
   }),
 
-  http.get('/books/options', ({ request }) => {
+  http.get('/api/v1/books/options', ({ request }) => {
     const url = new URL(request.url)
     const date = url.searchParams.get('screening_date')
 

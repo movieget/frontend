@@ -4,20 +4,22 @@ import { ITimeButtonProps } from '../../../Booking01.types'
 
 const TimeButton = ({
   id,
-  isSelected,
-  setIsSelected,
+  selectedId,
+  setSelectedId,
   setIsTimeSelected,
+  onSelect,
   time = '00:00',
 }: ITimeButtonProps) => {
   const setField = useBookingStore((state) => state.actions.setField)
   const handleClick = () => {
-    const isButtonSelected = !isSelected // 버튼 선택 상태 토글
-    setIsSelected(isButtonSelected ? id : null)
-    setIsTimeSelected(isButtonSelected)
-    setField('start_time', isSelected ? '' : time)
+    const toggleStyle = selectedId ? null : id
+    onSelect(id)
+    setIsTimeSelected(!selectedId)
+    setSelectedId(toggleStyle)
+    setField('startTime', selectedId ? '' : time)
   }
   return (
-    <BasicBtn $size='medium' onClick={handleClick} $isSelected={isSelected}>
+    <BasicBtn $size='medium' onClick={handleClick} $isSelected={selectedId}>
       {time}
     </BasicBtn>
   )

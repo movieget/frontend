@@ -114,15 +114,15 @@ const SelectBox = styled.ul`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0.4rem;
+  padding: 1rem;
   gap: 0.4rem;
   border: 1px solid ${({ theme }) => theme.colors.border_box};
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.bg_box};
-  overflow-y: scroll;
+  overflow: auto;
 `
 
-const SelectLineBox = styled.ul`
+const SelectLineBox = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -146,13 +146,11 @@ const SelectLineBox = styled.ul`
 
 const SelectList = styled.li`
   width: 100%;
-  padding: 0.6rem 0.2rem;
   display: flex;
   flex-direction: column;
   font-size: 1.6rem;
   font-weight: ${({ theme }) => theme.fonts.weight.regular};
   line-height: 1.2;
-  gap: 1rem;
 `
 
 const OptionButtonStyle = styled.button<{ $isSelected: boolean }>`
@@ -192,7 +190,6 @@ const OptionLabel = styled.span`
 
 const SelectBoxCol = styled.div`
   width: 100%;
-
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -202,6 +199,7 @@ const SelectBoxRow = styled.div`
   display: flex;
   gap: 2rem;
   max-height: 30rem;
+  min-height: 30rem;
 `
 
 const SelectMovie = styled.div`
@@ -209,6 +207,7 @@ const SelectMovie = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow: auto;
 `
 const SelectLocation = styled(SelectMovie)`
   flex: 1;
@@ -216,9 +215,7 @@ const SelectLocation = styled(SelectMovie)`
 const SelectTheater = styled(SelectMovie)`
   flex: 1;
 `
-const SelectTime = styled(SelectMovie)`
-  height: 100%;
-`
+const SelectTime = styled(SelectMovie)``
 
 const SelectTitleStyle = styled.h2`
   font-size: 2.2rem;

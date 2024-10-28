@@ -53,6 +53,7 @@ export interface ISelectMoviesProps {
   isLoading: boolean
   isError: boolean
   error?: Error | null
+  date: string
 }
 
 export interface IErrorMessageProps {
@@ -64,8 +65,8 @@ export interface IOptionButtonProps {
   title: '영화' | '지역' | '영화관'
   age?: 'all' | 12 | 15 | 18
   label?: string
-  isSelected: boolean
-  setIsSelected: (id: number | null) => void
+  selectedId: boolean
+  onSelect: (id: number) => void
 }
 
 export interface ISelectLocationsProps {
@@ -73,19 +74,22 @@ export interface ISelectLocationsProps {
   isLoading: boolean
   isError: boolean
   error?: Error | null
+  date: string
 }
 
-export interface ISelectTheaters {
+export interface ISelectTheatersProps {
   cinemas?: TCinemas[]
   isError: boolean
   isLoading: boolean
   error: Error | null
+  date: string
 }
 
 export interface ISelectTimesProps {
   setIsTimeSelected: React.Dispatch<React.SetStateAction<boolean>>
   screenings?: TScreenings[]
   isValid: boolean
+  date: string
 }
 
 export interface ISelectTitleProps {
@@ -95,7 +99,8 @@ export interface ISelectTitleProps {
 export interface ITimeButtonProps {
   time?: string
   id: number
-  isSelected: boolean
-  setIsSelected: (toggleStyle: number | null) => void
+  selectedId: boolean
+  onSelect: (id: number) => void
+  setSelectedId: (toggleStyle: number | null) => void
   setIsTimeSelected: React.Dispatch<React.SetStateAction<boolean>>
 }
