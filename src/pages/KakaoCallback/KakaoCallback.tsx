@@ -3,11 +3,13 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { getAccessToken, getKakaoToken } from './model'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 import { useEffect } from 'react'
+import { useUserStore } from '../../stores/userStore'
+import Cookies from 'js-cookie'
 
 const KakaoCallback = () => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
-
+  const setUser = useUserStore((state) => state.setUser)
   const authCode = searchParams.get('code')
 
   const { data, isLoading, isError, error } = useQuery({
@@ -35,12 +37,25 @@ const KakaoCallback = () => {
 
   useEffect(() => {
     if (data) {
+      const { access_token: access_token, user_id, profile_img, refresh_token } = data
+
+      setUser(access_token, user_id, profile_img)
       localStorage.setItem(
         'KakaoToken',
         JSON.stringify({
-          refresh_token: data.refresh_token,
+          access_token: access_token,
+          user_id,
         }),
       )
+
+      Cookies.set('refresh_token', refresh_token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax',
+        maxAge: 300,
+      })
+
+      console.log('authCode:', authCode)
       navigate('/')
     } else if (isError) {
       console.log(isError)

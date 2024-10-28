@@ -29,15 +29,15 @@ import { KAKAO_API_KEY } from '../../utils/constants'
 //   }
 // }
 
+// 백엔드에서 토큰 및 유저 정보 받아오는 함수
 export const getAccessToken = async (code: string) => {
   try {
-    const response = await axios.get('/api/v1/user/login/kakao', { params: { code } })
-    const { access_token, user_id, profile_image } = response.data
+    const response = await axios.get('/api/v1/user/login/kakao', {
+      params: { code },
+    })
+    // const { access_token, user_id, profile_image, refresh_token } = response.data
 
-    // AT를 로컬 스토리지에 저장
-    localStorage.setItem('KakaoToken', JSON.stringify({ access_token, user_id, profile_image }))
-
-    console.log('response data:', response.data)
+    // console.log('response data:', response.data)
     return response.data
   } catch (error) {
     console.error('Failed to login:', error)

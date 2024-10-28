@@ -42,4 +42,8 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   margin: 0 auto;
 `
-export const LogoutWrapper = styled.div``
+export const LogoutWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+`

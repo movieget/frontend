@@ -12,6 +12,7 @@ import upcoming_movie1 from './upcoming_movie1.json'
 import upcoming_movie2 from './upcoming_movie2.json'
 import upcoming_movie3 from './upcoming_movie3.json'
 import booking_info from './booking_info.json'
+import login_user from './login_user.json'
 
 const REVIEWS_PER_PAGE = 10
 
@@ -28,6 +29,8 @@ const MOVIES_PER_PAGE = 10
 
 const nowPlayingMovie = [...now_playing_movie1, ...now_playing_movie2, ...now_playing_movie3]
 const upcomingMovie = [...upcoming_movie1, ...upcoming_movie2, ...upcoming_movie3]
+
+const loginUsers = login_user
 
 export const handlers = [
   http.get('/api/v1/review', ({ request }) => {
@@ -116,8 +119,9 @@ export const handlers = [
       {
         access_token: 'mockAccessTokenATtokenUpcoming',
         refresh_token: 'mockRefreshTokenRTtokenUpcoming',
-        user_id: '12345',
-        profile_image: '',
+        user_id: loginUsers[0].user_id, // 예시 사용자 ID
+        profile_image: loginUsers[0].profile_image, // 예시 프로필 이미지
+        age: loginUsers[0].age, // 예시 연령 정보
       },
       {
         headers: {
