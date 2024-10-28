@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useRating from '../../../hooks/useRating'
-import { Textarea, TextareaBox } from '../../../components/Input/style'
+import { Input, InputBox, Textarea, TextareaBox } from '../../../components/Input/style'
 import StarRating from '../../../components/StarRating/StarRating'
 import ImageUpload from '../../../components/Input/ImageUpload/ImageUpload'
 import { AddIconBtn } from '../../../components/Button/style'
@@ -12,9 +12,14 @@ const ReviewWriteBox = () => {
 
   return (
     <MovieReviewForm>
-      <TextareaBox>
-        <Textarea placeholder='텍스트를 입력하세요.' />
-      </TextareaBox>
+      <WriteBox>
+        <InputBox $width='100%'>
+          <Input type='text' placeholder='타이틀을 입력하세요.' />
+        </InputBox>
+        <TextareaBox>
+          <Textarea placeholder='텍스트를 입력하세요.' />
+        </TextareaBox>
+      </WriteBox>
 
       <ReviewInputWrapper>
         <StarRating rating={userRating1} onRatingChange={handleRatingChange1} userId='user1' />
@@ -34,6 +39,11 @@ const MovieReviewForm = styled.div`
   margin-top: 2.4rem;
   margin-bottom: 4rem;
   border-bottom: 1px solid #3f3f3f;
+`
+const WriteBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 `
 const ReviewInputWrapper = styled.div`
   display: flex;
