@@ -1,343 +1,233 @@
 [
   {
-    "book_id": 0,
-    "date": "2024-10-25",
-    "movies": [
-      {
-        "id": 1,
-        "title": "Movie A",
-        "genre": "Action",
-        "duration": 120,
-        "rating": 15,
-        "age": "all"
-      },
-      {
-        "id": 2,
-        "title": "Movie B",
-        "genre": "Comedy",
-        "duration": 110,
-        "rating": 12,
-        "age": 18
-      }
-    ],
-    "locations": [
-      {
-        "id": 1,
-        "spot": "Seoul"
-      },
-      {
-        "id": 2,
-        "spot": "Busan"
-      }
-    ],
-    "cinemas": [
-      {
-        "id": 1,
-        "cinema_name": "CGV Gangnam"
-      },
-      {
-        "id": 2,
-        "cinema_name": "Lotte Cinema Busan"
-      }
-    ],
-    "screenings": [
-      {
-        "id": 1,
-        "start_time": "2024-10-24 14:00",
-        "end_time": "2024-10-24 16:00",
-        "movie__title": "Movie A"
-      },
-      {
-        "id": 2,
-        "start_time": "2024-10-24 18:00",
-        "end_time": "2024-10-24 20:00",
-        "movie__title": "Movie A"
-      },
-      {
-        "id": 3,
-        "start_time": "2024-10-24 20:00",
-        "end_time": "2024-10-24 22:00",
-        "movie__title": "Movie B"
-      }
-    ]
-  },
-  {
-    "book_id": 1,
-    "date": "2024-10-25",
-    "movies": [
-      {
-        "id": 3,
-        "title": "Movie C",
-        "genre": "Drama",
-        "duration": 130,
-        "rating": 18,
-        "age": 18
-      },
-      {
-        "id": 4,
-        "title": "Movie D",
-        "genre": "Horror",
-        "duration": 100,
-        "rating": 12,
-        "age": 15
-      }
-    ],
-    "locations": [
-      {
-        "id": 1,
-        "spot": "Incheon"
-      },
-      {
-        "id": 2,
-        "spot": "Gyeongju"
-      }
-    ],
-    "cinemas": [
-      {
-        "id": 1,
-        "cinema_name": "Megabox Incheon"
-      },
-      {
-        "id": 2,
-        "cinema_name": "CGV Gyeongju"
-      }
-    ],
-    "screenings": [
-      {
-        "id": 1,
-        "start_time": "2024-10-25 15:00",
-        "end_time": "2024-10-24 17:10",
-        "movie__title": "Movie C"
-      },
-      {
-        "id": 2,
-        "start_time": "2024-10-25 19:00",
-        "end_time": "2024-10-24 20:40",
-        "movie__title": "Movie D"
-      }
-    ]
-  },
-  {
-    "book_id": 2,
-    "date": "2024-10-26",
-    "movies": [
-      {
-        "id": 5,
-        "title": "Movie E",
-        "genre": "Romance",
-        "duration": 95,
-        "rating": 12,
-        "age": 12
-      },
-      {
-        "id": 6,
-        "title": "Movie F",
-        "genre": "Fantasy",
-        "duration": 140,
-        "rating": 15,
-        "age": 12
-      }
-    ],
-    "locations": [
-      {
-        "id": 1,
-        "spot": "Jeju"
-      },
-      {
-        "id": 2,
-        "spot": "Suwon"
-      }
-    ],
-    "cinemas": [
-      {
-        "id": 1,
-        "cinema_name": "CGV Jeju"
-      },
-      {
-        "id": 2,
-        "cinema_name": "Lotte Cinema Suwon"
-      }
-    ],
-    "screenings": [
-      {
-        "id": 1,
-        "start_time": "2024-10-26 16:00",
-        "end_time": "2024-10-26 17:35",
-        "movie__title": "Movie E"
-      },
-      {
-        "id": 2,
-        "start_time": "2024-10-26 18:00",
-        "end_time": "2024-10-26 20:20",
-        "movie__title": "Movie F"
-      }
-    ]
-  },
-  {
-    "book_id": 3,
-    "date": "2024-10-27",
-    "movies": [
-      {
-        "id": 7,
-        "title": "Movie G",
-        "genre": "Thriller",
-        "duration": 125,
-        "rating": 15,
-        "age": 15
-      },
-      {
-        "id": 8,
-        "title": "Movie H",
-        "genre": "Animation",
-        "duration": 95,
-        "rating": 0,
-        "age": 18
-      }
-    ],
-    "locations": [
-      {
-        "id": 1,
-        "spot": "Daejeon"
-      },
-      {
-        "id": 2,
-        "spot": "Ulsan"
-      }
-    ],
-    "cinemas": [
-      {
-        "id": 1,
-        "cinema_name": "Megabox Daejeon"
-      },
-      {
-        "id": 2,
-        "cinema_name": "CGV Ulsan"
-      }
-    ],
-    "screenings": [
-      {
-        "id": 1,
-        "start_time": "2024-10-27 13:00",
-        "end_time": "2024-10-27 15:05",
-        "movie__title": "Movie G"
-      },
-      {
-        "id": 2,
-        "start_time": "2024-10-27 17:00",
-        "end_time": "2024-10-27 18:35",
-        "movie__title": "Movie H"
-      }
-    ]
-  },
-  {
     "book_id": 4,
-    "date": "2024-10-28",
+    "date": "2024-11-01",
     "movies": [
+      {
+        "id": 10,
+        "title": "영화 하나",
+        "genre": "Action",
+        "duration": 130,
+        "age_rating": "PG-12",
+        "poster_image_url": "https://example.com/movie10.jpg"
+      },
+      {
+        "id": 11,
+        "title": "영화 둘",
+        "genre": "Drama",
+        "duration": 140,
+        "age_rating": "PG-15",
+        "poster_image_url": "https://example.com/movie11.jpg"
+      },
+      {
+        "id": 12,
+        "title": "영화 둘",
+        "genre": "Drama",
+        "duration": 140,
+        "age_rating": "PG-15",
+        "poster_image_url": "https://example.com/movie11.jpg"
+      },
+      {
+        "id": 13,
+        "title": "영화 둘",
+        "genre": "Drama",
+        "duration": 140,
+        "age_rating": "PG-15",
+        "poster_image_url": "https://example.com/movie11.jpg"
+      },
+      {
+        "id": 14,
+        "title": "영화 둘",
+        "genre": "Drama",
+        "duration": 140,
+        "age_rating": "PG-15",
+        "poster_image_url": "https://example.com/movie11.jpg"
+      },
+      {
+        "id": 15,
+        "title": "영화 둘",
+        "genre": "Drama",
+        "duration": 140,
+        "age_rating": "PG-15",
+        "poster_image_url": "https://example.com/movie11.jpg"
+      }
+    ],
+    "locations": [
+      { "id": 9, "spot": "광주" },
+      { "id": 10, "spot": "대전" },
+      { "id": 11, "spot": "광주" },
+      { "id": 12, "spot": "대전" },
+      { "id": 13, "spot": "광주" },
+      { "id": 14, "spot": "대전" },
+      { "id": 15, "spot": "광주" },
+      { "id": 16, "spot": "대전" },
+      { "id": 17, "spot": "광주" },
+      { "id": 18, "spot": "대전" }
+    ],
+    "cinemas": [
+      { "id": 9, "cinema_name": "CGV Gwangju" },
+      { "id": 10, "cinema_name": "Lotte Cinema Daejeon" }
+    ],
+    "screenings": [
       {
         "id": 9,
-        "title": "Movie I",
-        "genre": "Sci-Fi",
-        "duration": 150,
-        "rating": 12,
-        "age": 12
+        "screen_number": 3,
+        "screening_date": "2024-11-01",
+        "start_time": "10:00",
+        "end_time": "12:00",
+        "movie__title": "영화 하나"
       },
       {
         "id": 10,
-        "title": "Movie J",
-        "genre": "Documentary",
-        "duration": 85,
-        "rating": 0,
-        "age": 18
-      }
-    ],
-    "locations": [
-      {
-        "id": 1,
-        "spot": "Changwon"
-      },
-      {
-        "id": 2,
-        "spot": "Gwangju"
-      }
-    ],
-    "cinemas": [
-      {
-        "id": 1,
-        "cinema_name": "CGV Changwon"
-      },
-      {
-        "id": 2,
-        "cinema_name": "Lotte Cinema Gwangju"
-      }
-    ],
-    "screenings": [
-      {
-        "id": 1,
-        "start_time": "2024-10-28 15:00",
-        "end_time": "2024-10-28 17:30",
-        "movie__title": "Movie I"
-      },
-      {
-        "id": 2,
-        "start_time": "2024-10-28 18:00",
-        "end_time": "2024-10-28 19:30",
-        "movie__title": "Movie J"
+        "screen_number": 2,
+        "screening_date": "2024-11-01",
+        "start_time": "12:30",
+        "end_time": "14:30",
+        "movie__title": "영화 둘"
       }
     ]
   },
   {
     "book_id": 5,
-    "date": "2024-10-29",
+    "date": "2024-11-02",
     "movies": [
       {
-        "id": 11,
-        "title": "Movie K",
-        "genre": "Adventure",
-        "duration": 140,
-        "rating": 12,
-        "age": 12
+        "id": 12,
+        "title": "새로운 영화",
+        "genre": "Action",
+        "duration": 125,
+        "age_rating": "PG-12",
+        "poster_image_url": "https://example.com/movie12.jpg"
       },
       {
-        "id": 12,
-        "title": "Movie L",
-        "genre": "Romantic Comedy",
-        "duration": 90,
-        "rating": 0,
-        "age": 18
+        "id": 13,
+        "title": "웃음 터지기",
+        "genre": "Comedy",
+        "duration": 115,
+        "age_rating": "PG-18",
+        "poster_image_url": "https://example.com/movie13.jpg"
       }
     ],
     "locations": [
-      {
-        "id": 1,
-        "spot": "Seongnam"
-      },
-      {
-        "id": 2,
-        "spot": "Suwon"
-      }
+      { "id": 11, "spot": "서울" },
+      { "id": 12, "spot": "부산" }
     ],
     "cinemas": [
-      {
-        "id": 1,
-        "cinema_name": "CGV Seongnam"
-      },
-      {
-        "id": 2,
-        "cinema_name": "Lotte Cinema Suwon"
-      }
+      { "id": 11, "cinema_name": "Megabox Seoul" },
+      { "id": 12, "cinema_name": "CGV Busan" }
     ],
     "screenings": [
       {
-        "id": 1,
-        "start_time": "2024-10-29 14:00",
-        "end_time": "2024-10-28 16:20",
-        "movie__title": "Movie K"
+        "id": 11,
+        "screen_number": 4,
+        "screening_date": "2024-11-02",
+        "start_time": "11:00",
+        "end_time": "13:00",
+        "movie__title": "새로운 영화"
       },
       {
-        "id": 2,
-        "start_time": "2024-10-29 18:00",
-        "end_time": "2024-10-28 19:30",
-        "movie__title": "Movie L"
+        "id": 12,
+        "screen_number": 7,
+        "screening_date": "2024-11-02",
+        "start_time": "14:00",
+        "end_time": "16:00",
+        "movie__title": "웃음 터지기"
+      }
+    ]
+  },
+  {
+    "book_id": 6,
+    "date": "2024-11-03",
+    "movies": [
+      {
+        "id": 14,
+        "title": "최고의 액션",
+        "genre": "Action",
+        "duration": 135,
+        "age_rating": "PG-12",
+        "poster_image_url": "https://example.com/movie14.jpg"
+      },
+      {
+        "id": 15,
+        "title": "코미디 쇼",
+        "genre": "Comedy",
+        "duration": 120,
+        "age_rating": "PG-15",
+        "poster_image_url": "https://example.com/movie15.jpg"
+      }
+    ],
+    "locations": [
+      { "id": 13, "spot": "인천" },
+      { "id": 14, "spot": "대구" }
+    ],
+    "cinemas": [
+      { "id": 13, "cinema_name": "CGV Incheon" },
+      { "id": 14, "cinema_name": "Lotte Cinema Daegu" }
+    ],
+    "screenings": [
+      {
+        "id": 13,
+        "screen_number": 6,
+        "screening_date": "2024-11-03",
+        "start_time": "09:00",
+        "end_time": "11:00",
+        "movie__title": "최고의 액션"
+      },
+      {
+        "id": 14,
+        "screen_number": 3,
+        "screening_date": "2024-11-03",
+        "start_time": "12:00",
+        "end_time": "14:00",
+        "movie__title": "코미디 쇼"
+      }
+    ]
+  },
+  {
+    "book_id": 7,
+    "date": "2024-11-04",
+    "movies": [
+      {
+        "id": 16,
+        "title": "진지한 드라마",
+        "genre": "Drama",
+        "duration": 145,
+        "age_rating": "PG-18",
+        "poster_image_url": "https://example.com/movie16.jpg"
+      },
+      {
+        "id": 17,
+        "title": "코미디 터치",
+        "genre": "Comedy",
+        "duration": 110,
+        "age_rating": "PG-12",
+        "poster_image_url": "https://example.com/movie17.jpg"
+      }
+    ],
+    "locations": [
+      { "id": 15, "spot": "전주" },
+      { "id": 16, "spot": "춘천" }
+    ],
+    "cinemas": [
+      { "id": 15, "cinema_name": "CGV Jeonju" },
+      { "id": 16, "cinema_name": "Megabox Chuncheon" }
+    ],
+    "screenings": [
+      {
+        "id": 15,
+        "screen_number": 5,
+        "screening_date": "2024-11-04",
+        "start_time": "10:00",
+        "end_time": "12:30",
+        "movie__title": "진지한 드라마"
+      },
+      {
+        "id": 16,
+        "screen_number": 1,
+        "screening_date": "2024-11-04",
+        "start_time": "13:00",
+        "end_time": "15:00",
+        "movie__title": "코미디 터치"
       }
     ]
   }
