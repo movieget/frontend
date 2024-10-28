@@ -4,6 +4,7 @@ import ErrorMessage from './ErrorMessage'
 import { SvgSpinner } from '../../../../../../components/Loading/SvgSpinner'
 import { ISelectMoviesProps } from '../../../Booking01.types'
 import BS1 from '../../../Booking01.styled'
+import SelectTitle from './SelectTitle'
 
 const SelectMovies = ({ movies, isError, error, isLoading }: ISelectMoviesProps) => {
   const [isSelected, setIsSelected] = useState<number | null>(null)
@@ -19,7 +20,7 @@ const SelectMovies = ({ movies, isError, error, isLoading }: ISelectMoviesProps)
 
   return (
     <BS1.SelectMovie>
-      <BS1.SelectTitleStyle title={title} />
+      <SelectTitle title={title} />
       <BS1.SelectBox>
         {isLoading && (
           <BS1.MsgBoxStyle>

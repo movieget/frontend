@@ -78,9 +78,9 @@ export const handlers = [
     })
   }),
 
-  http.get('/api/v1/book/screens', ({ request }) => {
+  http.get('/api/v1/book/options', ({ request }) => {
     const url = new URL(request.url)
-    const date = url.searchParams.get('date')
+    const date = url.searchParams.get('screening_date')
 
     // 날짜 매개변수가 없으면 400 오류 응답 반환
     if (!date) {
