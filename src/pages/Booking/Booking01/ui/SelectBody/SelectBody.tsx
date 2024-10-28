@@ -11,8 +11,7 @@ import SelectTimes from './ui/SelectTimes'
 
 const SelectBody = () => {
   const initialBookingState = useBookingStore((state) => state.initialBookingState)
-  const setField = useBookingStore((state) => state.actions.setField)
-  const { date, movie, location, cinema } = initialBookingState
+  const { date, movie, location, cinema, startTime } = initialBookingState
   const [isValid, setIsValid] = useState(false)
   const [isTimeSelected, setIsTimeSelected] = useState(false)
   const { data, isLoading, error, isError, refetch } = useQuery({
@@ -23,37 +22,42 @@ const SelectBody = () => {
     retry: 1,
   })
 
+  console.log(date, movie, location, cinema, startTime)
+
   useEffect(() => {
     const fields = [date, movie, location, cinema] // 검사할 필드 배열
     const allValid = fields.every((field) => field !== '') // 모든 필드가 비어있지 않은지 확인
     setIsValid(allValid) // 유효성에 따라 상태 업데이트
   }, [date, movie, location, cinema])
 
-  // date가 바뀔때마다 전역상태 비우기
   useEffect(() => {
-    setField('movie', '')
-    setField('location', '')
-    setField('cinema', '')
-    setField('start_time', '')
     refetch()
   }, [date])
 
   return (
     <BS1.SelectBodyWrapper>
       <BS1.SelectBoxRow>
-        <SelectMovies movies={data?.movies} error={error} isError={isError} isLoading={isLoading} />
+        <SelectMovies
+          movies={data?.movies}
+          error={error}
+          isError={isError}
+          isLoading={isLoading}
+          date={date}
+        />
         <BS1.SelectBoxCol>
           <SelectLocations
             locations={data?.locations}
             error={error}
             isError={isError}
             isLoading={isLoading}
+            date={date}
           />
           <SelectTheaters
             cinemas={data?.cinemas}
             error={error}
             isError={isError}
             isLoading={isLoading}
+            date={date}
           />
         </BS1.SelectBoxCol>
       </BS1.SelectBoxRow>
@@ -62,6 +66,7 @@ const SelectBody = () => {
         screenings={data?.screenings}
         isValid={isValid}
         setIsTimeSelected={setIsTimeSelected}
+        date={date}
       />
       <BNextButton isValid={isValid} isTimeSelected={isTimeSelected} />
     </BS1.SelectBodyWrapper>

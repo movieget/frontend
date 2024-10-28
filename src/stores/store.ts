@@ -9,7 +9,7 @@ interface IBookingState {
     movie: string
     location: string
     cinema: string
-    start_time: string
+    startTime: string
   }
 
   initialCountState: {
@@ -34,7 +34,7 @@ const initialBookingState = {
   movie: '',
   location: '',
   cinema: '',
-  start_time: '',
+  startTime: '',
 }
 
 const initialCountState = {

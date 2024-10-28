@@ -5,43 +5,28 @@ import { IOptionButtonProps } from '../../../Booking01.types'
 
 const OptionButton = ({
   id,
-  setIsSelected,
+  selectedId,
+  onSelect,
   title,
   age,
   label = '옵션라벨',
 }: IOptionButtonProps) => {
-  const { movie, location, cinema } = useBookingStore((state) => state.initialBookingState)
   const setField = useBookingStore((state) => state.actions.setField)
-
-  // title에 맞는 전역 상태 값과 현재 버튼의 id가 일치하는지 여부를 확인
-  const isOptionSelected = () => {
-    switch (title) {
-      case '영화':
-        return movie === label
-      case '지역':
-        return location === label
-      case '영화관':
-        return cinema === label
-      default:
-        return false
-    }
-  }
 
   // 버튼 클릭 핸들러
   const handleClick = () => {
-    const toggleLabel = isOptionSelected() ? '' : label
-    setIsSelected(isOptionSelected() ? null : id)
+    onSelect(id)
 
     // 전역 상태에 필드 설정
     switch (title) {
       case '영화':
-        setField('movie', toggleLabel)
+        setField('movie', selectedId ? '' : label)
         break
       case '지역':
-        setField('location', toggleLabel)
+        setField('location', selectedId ? '' : label)
         break
       case '영화관':
-        setField('cinema', toggleLabel)
+        setField('cinema', selectedId ? '' : label)
         break
       default:
         throw new Error(
@@ -51,7 +36,7 @@ const OptionButton = ({
   }
 
   return (
-    <BS1.OptionButtonStyle $isSelected={isOptionSelected()} onClick={handleClick}>
+    <BS1.OptionButtonStyle $isSelected={selectedId} onClick={handleClick}>
       {age && <StyleAge $age={age} />}
       <BS1.OptionLabel>{label}</BS1.OptionLabel>
     </BS1.OptionButtonStyle>

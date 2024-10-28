@@ -9,6 +9,7 @@ interface IBNextButtonProps {
 
 const BNextButton = ({ isTimeSelected, isValid }: IBNextButtonProps) => {
   const navigate = useNavigate()
+  console.log(isValid, isTimeSelected)
   const validate = isValid && isTimeSelected
   const handleClick = () => {
     if (validate) {

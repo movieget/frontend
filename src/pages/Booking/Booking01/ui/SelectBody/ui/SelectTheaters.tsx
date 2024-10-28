@@ -1,15 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import OptionButton from './OptionButton'
 import SelectTitle from './SelectTitle'
 import ErrorMessage from './ErrorMessage'
 import { SvgSpinner } from '../../../../../../components/Loading/SvgSpinner'
 import BS1 from '../../../Booking01.styled'
-import { ISelectTheaters } from '../../../Booking01.types'
+import { ISelectTheatersProps } from '../../../Booking01.types'
+import { useBookingStore } from '../../../../../../stores/store'
 
-const SelectTheaters = ({ isLoading, isError, error, cinemas }: ISelectTheaters) => {
-  const [isSelected, setIsSelected] = useState<number | null>(null)
+const SelectTheaters = ({ isLoading, isError, error, cinemas, date }: ISelectTheatersProps) => {
+  const setField = useBookingStore((state) => state.actions.setField)
+  const [selectedId, setSelectedId] = useState<number | null>(null)
   const title = '영화관'
+  const handleSelectButton = (id: number) => {
+    setSelectedId((prevId) => (prevId === id ? null : id))
+  }
 
+  useEffect(() => {
+    setField('cinema', '')
+    setSelectedId(null)
+  }, [date])
   return (
     <BS1.SelectTheater>
       <SelectTitle title={title} />
@@ -22,18 +31,17 @@ const SelectTheaters = ({ isLoading, isError, error, cinemas }: ISelectTheaters)
         {isError ? (
           <ErrorMessage errorMsg={error?.message} />
         ) : (
-          <BS1.SelectList>
-            {cinemas?.map((el) => (
+          cinemas?.map((el) => (
+            <BS1.SelectList key={el.id}>
               <OptionButton
-                key={el.id}
                 id={el.id}
                 title={title}
                 label={el.cinema_name}
-                isSelected={isSelected === el.id}
-                setIsSelected={setIsSelected}
+                selectedId={selectedId === el.id}
+                onSelect={handleSelectButton}
               />
-            ))}
-          </BS1.SelectList>
+            </BS1.SelectList>
+          ))
         )}
       </BS1.SelectBox>
     </BS1.SelectTheater>
