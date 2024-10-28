@@ -8,7 +8,7 @@
         "title": "영화 하나",
         "genre": "Action",
         "duration": 130,
-        "age_rating": "PG-12",
+        "age_rating": "12",
         "poster_image_url": "https://example.com/movie10.jpg"
       },
       {
@@ -16,15 +16,15 @@
         "title": "영화 둘",
         "genre": "Drama",
         "duration": 140,
-        "age_rating": "PG-15",
-        "poster_image_url": "https://example.com/movie11.jpg"
+        "age_rating": "15",
+        "poster_image_url": ""
       },
       {
         "id": 12,
         "title": "영화 둘",
         "genre": "Drama",
         "duration": 140,
-        "age_rating": "PG-15",
+        "age_rating": "15",
         "poster_image_url": "https://example.com/movie11.jpg"
       },
       {
@@ -32,7 +32,7 @@
         "title": "영화 둘",
         "genre": "Drama",
         "duration": 140,
-        "age_rating": "PG-15",
+        "age_rating": "15",
         "poster_image_url": "https://example.com/movie11.jpg"
       },
       {
@@ -40,7 +40,7 @@
         "title": "영화 둘",
         "genre": "Drama",
         "duration": 140,
-        "age_rating": "PG-15",
+        "age_rating": "15",
         "poster_image_url": "https://example.com/movie11.jpg"
       },
       {
@@ -48,7 +48,7 @@
         "title": "영화 둘",
         "genre": "Drama",
         "duration": 140,
-        "age_rating": "PG-15",
+        "age_rating": "15",
         "poster_image_url": "https://example.com/movie11.jpg"
       }
     ],
@@ -96,7 +96,7 @@
         "title": "새로운 영화",
         "genre": "Action",
         "duration": 125,
-        "age_rating": "PG-12",
+        "age_rating": "12",
         "poster_image_url": "https://example.com/movie12.jpg"
       },
       {
@@ -104,7 +104,7 @@
         "title": "웃음 터지기",
         "genre": "Comedy",
         "duration": 115,
-        "age_rating": "PG-18",
+        "age_rating": "18",
         "poster_image_url": "https://example.com/movie13.jpg"
       }
     ],
@@ -144,7 +144,7 @@
         "title": "최고의 액션",
         "genre": "Action",
         "duration": 135,
-        "age_rating": "PG-12",
+        "age_rating": "12",
         "poster_image_url": "https://example.com/movie14.jpg"
       },
       {
@@ -152,7 +152,7 @@
         "title": "코미디 쇼",
         "genre": "Comedy",
         "duration": 120,
-        "age_rating": "PG-15",
+        "age_rating": "15",
         "poster_image_url": "https://example.com/movie15.jpg"
       }
     ],
@@ -192,7 +192,7 @@
         "title": "진지한 드라마",
         "genre": "Drama",
         "duration": 145,
-        "age_rating": "PG-18",
+        "age_rating": "18",
         "poster_image_url": "https://example.com/movie16.jpg"
       },
       {
@@ -200,7 +200,7 @@
         "title": "코미디 터치",
         "genre": "Comedy",
         "duration": 110,
-        "age_rating": "PG-12",
+        "age_rating": "12",
         "poster_image_url": "https://example.com/movie17.jpg"
       }
     ],

@@ -127,4 +127,57 @@ export const handlers = [
       },
     )
   }),
+
+  http.post('/api/v1/books/tosspay', ({ request }) => {
+    const res = request.body
+
+    return HttpResponse.json({
+      res,
+      booking_id: res?.booking_id,
+      msg: '예약이 완료되었습니다.',
+      redirect_url: 'https://tosspayments.com/checkout/some-unique-id',
+    })
+  }),
+
+  http.get('/api/v1/books', ({ request }) => {
+    const url = new URL(request.url)
+    const screenId = url.searchParams.get('screen_id')
+
+    // If screen_id parameter is missing, return 400 error
+    if (!screenId) {
+      return HttpResponse.json({ error: 'screen_id parameter is required' }, { status: 400 })
+    }
+
+    // Generate seating data
+    const seatingData = generateSeatingData()
+
+    // Create the response object
+    const response = {
+      screen_id: parseInt(screenId),
+      rows: seatingData,
+    }
+
+    // Return the data for the given screen_id
+    return HttpResponse.json(response)
+  }),
 ]
+
+// Helper function to generate a random seat status
+const getRandomStatus = () => {
+  const statuses = [true, false, null]
+  return statuses[Math.floor(Math.random() * statuses.length)]
+}
+
+// Generate the seating data
+const generateSeatingData = () => {
+  const rows = 'ABCDEFGHI'.split('')
+  const nullRow = rows[Math.floor(Math.random() * rows.length)]
+
+  return rows.map((rowId) => ({
+    id: rowId,
+    seat: Array.from({ length: 14 }, (_, index) => ({
+      id: (index + 1).toString(),
+      status: rowId === nullRow ? null : getRandomStatus(),
+    })),
+  }))
+}

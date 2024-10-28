@@ -1,10 +1,17 @@
 import { Checkbox, CheckboxWrapper, CheckSeat } from '../../../../../../components/Checkbox/style'
 import SeatWrapper from './SeatWrapper'
-import { dummyArr } from '../../../../../../mocks/dummyArray'
 import { ISelectSeatProps } from '../../../Booking02.types'
 import BS2 from '../../../Booking02.styled'
+import { useQuery } from '@tanstack/react-query'
+import { getSeatData } from '../../../../../../apis/bookingApi'
+import { useBookingStore } from '../../../../../../stores/store'
 
 const SelectSeat = ({ totalSeat, seatId, setSeatId }: ISelectSeatProps) => {
+  const { screenId } = useBookingStore((state) => state.initialBookingState)
+  const { data } = useQuery({
+    queryKey: ['seatData'],
+    queryFn: () => getSeatData(screenId),
+  })
   // totalSeat === 선택할 수 있는 최대 좌석 갯수.
   const handleSelectSeat = (uniqueId: string, isChecked: boolean) => {
     // 최대 좌석 수 초과 시 클릭 무시
@@ -23,7 +30,7 @@ const SelectSeat = ({ totalSeat, seatId, setSeatId }: ISelectSeatProps) => {
 
   return (
     <SeatWrapper>
-      {dummyArr.map((row) => (
+      {data?.rows.map((row) => (
         <BS2.ColWrapper key={row.id}>
           {row.seat.map((seat) => {
             const uniqueId = `${row.id}${seat.id}`

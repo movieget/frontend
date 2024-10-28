@@ -1,31 +1,48 @@
-import backDropImg from '../../../../../assets/img/darkknight.webp'
 import ResultInfo from './ui/ResultInfo'
 import { BasicBtn, MainBtn } from '../../../../../components/Button/style'
 import { useNavigate } from 'react-router-dom'
 import { IResultAsideProps } from '../../Booking02.types'
 import BS2 from '../../Booking02.styled'
-
-const dummyData = {
-  reservation: {
-    date: '2024-10-13',
-    time: '17:50',
-    seats: ['E01', 'E02', 'E03', 'E04'],
-    location: '메가박스 울산 성남 지점',
-    theater: 'C관 1',
-    customer: {
-      adult: 3,
-      teenager: 3,
-    },
-  },
-  movie: {
-    title: '다크 나이트',
-    age: 18 as const,
-    backdrop: backDropImg,
-  },
-}
+import { useBookingStore } from '../../../../../stores/store'
+import NoImageCard from '../../../../../components/NoImageCard/NoImageCard'
+import { useMutation } from '@tanstack/react-query'
+import { postMovieData } from '../../../../../apis/bookingApi'
 
 const ResultAside = ({ totalPrice, count, seatId, totalSeat }: IResultAsideProps) => {
   const navigate = useNavigate()
+  const {
+    bookId,
+    poster,
+    age,
+    duration,
+    title,
+    date,
+    startTime,
+    location,
+    cinema,
+    screenNumber,
+    screeningDate,
+  } = useBookingStore((state) => state.initialBookingState)
+  const postBookingData = useMutation({
+    mutationFn: () =>
+      postMovieData({
+        booking_id: bookId,
+        poster_url: poster,
+        title: title,
+        duration: duration,
+        booking_date: date,
+        screening_date: screeningDate,
+        age_rating: age,
+        seats: seatId,
+        total_price: totalPrice,
+        adult_count: count.adult_count,
+        child_count: count.child_count,
+        screening_time: startTime,
+        spot: location,
+        cinema_name: cinema,
+        screen_number: screenNumber,
+      }),
+  })
 
   // 선택한 좌석의 갯수가 0보다 크거나
   // 선택한 좌석의 갯수와 선택할 수 있는 좌석의 최대갯수가 일치할때.
@@ -34,17 +51,21 @@ const ResultAside = ({ totalPrice, count, seatId, totalSeat }: IResultAsideProps
   return (
     <BS2.AsideWrapper>
       <BS2.BackDropLayer>
-        <ResultInfo dummyData={dummyData} count={count} seatId={seatId} />
+        <ResultInfo count={count} seatId={seatId} />
         <BS2.AsideBtnWrapper>
           <BasicBtn $size='medium' onClick={() => navigate(-1)}>
             이전
           </BasicBtn>
-          <MainBtn $size='medium' disabled={!isAllSeatSelected} onClick={() => navigate('/charge')}>
+          <MainBtn
+            $size='medium'
+            disabled={!isAllSeatSelected}
+            onClick={() => postBookingData.mutate()}
+          >
             {`${totalPrice}원 결제하기`}
           </MainBtn>
         </BS2.AsideBtnWrapper>
       </BS2.BackDropLayer>
-      <img src={dummyData.movie.backdrop} alt='' />
+      {poster !== '' ? <img src={poster} alt={title} /> : <NoImageCard $width='100%' />}
     </BS2.AsideWrapper>
   )
 }

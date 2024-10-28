@@ -5,11 +5,17 @@ const initialDates = generateDates()
 
 interface IBookingState {
   initialBookingState: {
+    bookId: number
+    poster: string
+    age: string
+    duration: number
+    title: string
     date: string
-    movie: string
+    startTime: string
     location: string
     cinema: string
-    startTime: string
+    screenId: number
+    screeningDate: string
   }
 
   initialCountState: {
@@ -30,11 +36,17 @@ interface DarkModeState {
 }
 
 const initialBookingState = {
+  bookId: 0,
+  poster: '',
+  age: '',
+  duration: 0,
+  title: '',
   date: initialDates[0],
-  movie: '',
+  startTime: '',
   location: '',
   cinema: '',
-  startTime: '',
+  screenId: 0,
+  screeningDate: '',
 }
 
 const initialCountState = {
@@ -45,7 +57,7 @@ const initialCountState = {
 
 // 다크 모드 스토어
 export const useDarkModeStore = create<DarkModeState>((set) => ({
-  isDarkMode: false,
+  isDarkMode: true,
   toggleDarkMode: () => set((state) => ({ isDarkMode: !state.isDarkMode })),
 }))
 

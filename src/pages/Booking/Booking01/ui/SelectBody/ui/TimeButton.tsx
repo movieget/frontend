@@ -5,6 +5,8 @@ import { ITimeButtonProps } from '../../../Booking01.types'
 const TimeButton = ({
   id,
   selectedId,
+  screenId,
+  screeningDate,
   setSelectedId,
   setIsTimeSelected,
   onSelect,
@@ -17,6 +19,8 @@ const TimeButton = ({
     setIsTimeSelected(!selectedId)
     setSelectedId(toggleStyle)
     setField('startTime', selectedId ? '' : time)
+    setField('screenId', selectedId ? '' : screenId)
+    setField('screeningDate', selectedId ? '' : screeningDate)
   }
   return (
     <BasicBtn $size='medium' onClick={handleClick} $isSelected={selectedId}>
