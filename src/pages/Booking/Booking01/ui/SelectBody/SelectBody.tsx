@@ -16,7 +16,7 @@ const SelectBody = () => {
   const [isValid, setIsValid] = useState(false)
   const [isTimeSelected, setIsTimeSelected] = useState(false)
   const { data, isLoading, error, isError, refetch } = useQuery({
-    queryKey: ['bookingData', initialBookingState],
+    queryKey: ['bookingData', date],
     queryFn: () => fetchMovieData(date),
     enabled: !!date,
     staleTime: 1000 * 10,

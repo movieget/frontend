@@ -19,7 +19,7 @@ const BNextButton = ({ isTimeSelected, isValid }: IBNextButtonProps) => {
   }
   return (
     <BS1.NextBtnWrapper>
-      <MainBtn $size='large' onClick={handleClick} $disabled={!validate}>
+      <MainBtn $size='large' onClick={handleClick} disabled={!validate}>
         다음
       </MainBtn>
     </BS1.NextBtnWrapper>

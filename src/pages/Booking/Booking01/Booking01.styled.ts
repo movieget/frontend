@@ -10,7 +10,12 @@ const CustomBtn = styled.button`
   align-items: center;
 `
 
-const PrevBtn = styled(CustomBtn)`
+const PrevBtn = styled.button`
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: rotate(-180deg);
 `
 

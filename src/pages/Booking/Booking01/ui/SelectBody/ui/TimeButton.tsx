@@ -11,9 +11,9 @@ const TimeButton = ({
 }: ITimeButtonProps) => {
   const setField = useBookingStore((state) => state.actions.setField)
   const handleClick = () => {
-    const toggleStyle = isSelected ? null : id
-    setIsSelected(toggleStyle)
-    setIsTimeSelected((prev: boolean) => !prev)
+    const isButtonSelected = !isSelected // 버튼 선택 상태 토글
+    setIsSelected(isButtonSelected ? id : null)
+    setIsTimeSelected(isButtonSelected)
     setField('start_time', isSelected ? '' : time)
   }
   return (
