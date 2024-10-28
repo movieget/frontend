@@ -66,7 +66,7 @@ const MovieCard = ({
           {playing && <MainBtn $size='large'>예매하기</MainBtn>}
         </MovieCardBtnBox>
         <CheckboxWrapper>
-          <Checkbox type='checkbox' id={`idFor${id}`} name='' />
+          <Checkbox type='checkbox' id={`idFor${id}`} name='' checked={isLikes} />
           <CheckHeartCount
             htmlFor={`idFor${id}`}
             $padding='0'
