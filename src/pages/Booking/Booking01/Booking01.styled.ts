@@ -124,6 +124,7 @@ const SelectBox = styled.ul`
 
 const SelectLineBox = styled.ul`
   width: 100%;
+  height: 100%;
   display: flex;
   gap: 1rem;
   padding: 2rem 0;
@@ -191,6 +192,7 @@ const OptionLabel = styled.span`
 
 const SelectBoxCol = styled.div`
   width: 100%;
+
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -198,7 +200,6 @@ const SelectBoxCol = styled.div`
 
 const SelectBoxRow = styled.div`
   display: flex;
-  flex: 1;
   gap: 2rem;
   max-height: 30rem;
 `
@@ -215,7 +216,9 @@ const SelectLocation = styled(SelectMovie)`
 const SelectTheater = styled(SelectMovie)`
   flex: 1;
 `
-const SelectTime = styled(SelectMovie)``
+const SelectTime = styled(SelectMovie)`
+  height: 100%;
+`
 
 const SelectTitleStyle = styled.h2`
   font-size: 2.2rem;
