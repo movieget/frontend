@@ -11,7 +11,7 @@ const Booking = lazy(() => import('../pages/Booking/Booking'))
 const Cinema = lazy(() => import('../pages/Cinema/Cinema'))
 const Login = lazy(() => import('../pages/Login/Login'))
 const KakaoCallback = lazy(() => import('../pages/KakaoCallback/KakaoCallback'))
-const TossCallback = lazy(() => import('../pages/TossCallback/TossCallback'))
+const TossCheckout = lazy(() => import('../pages/TossCheckout/TossCheckout'))
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'))
 const Mypage = lazy(() => import('../pages/MyPage/MyPage'))
 
@@ -92,10 +92,10 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path='/toss/callback'
+          path='/toss/checkout'
           element={
             <Suspense fallback={<SvgSpinner />}>
-              <TossCallback />
+              <TossCheckout />
             </Suspense>
           }
         />
