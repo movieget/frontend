@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { KAKAO_BASE_URL } from '../utils/constants'
 
-// axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true
 
 export const client = axios.create({
-  // baseURL: 'https://movieget.kprolabs.space/',
-  baseURL: 'http://localhost:5173',
+  baseURL: 'https://movieget.kprolabs.space',
+  // baseURL: 'http://localhost:5173',
+  // baseURL: 'http://43.203.250.46:8000',
 })
 
 export const kakao = axios.create({

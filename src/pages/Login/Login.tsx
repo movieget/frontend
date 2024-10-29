@@ -1,14 +1,11 @@
 import { SocialBtn } from '../../components/Button/style'
 import ContainerLayout from '../../components/Layouts/ContainerLayout'
-import { KAKAO_AUTH_URI } from '../../utils/constants'
+import { KAKAO_API_KEY, KAKAO_AUTH_URI } from '../../utils/constants'
 import { StyleLoginContainer, StyleLoginTextWrapper, StyleLoginBtnWrapper } from './style'
-
-// VITE_KAKAO_AUTH_BASE_URL
-// https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}
 
 const Login = () => {
   const kakaoLoginHandler = () => {
-    window.location.href = KAKAO_AUTH_URI
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_API_KEY}&redirect_uri=https://movieget.kprolabs.space/api/v1/user/login/kakao&response_type=code`
   }
 
   return (
@@ -25,8 +22,8 @@ const Login = () => {
           <SocialBtn $social='kakao' onClick={kakaoLoginHandler}>
             카카오로 시작하기
           </SocialBtn>
-          <SocialBtn $social='google'>구글로 시작하기</SocialBtn>
-          <SocialBtn $social='naver'>네이버로 시작하기</SocialBtn>
+          {/* <SocialBtn $social='google'>구글로 시작하기</SocialBtn>
+          <SocialBtn $social='naver'>네이버로 시작하기</SocialBtn> */}
         </StyleLoginBtnWrapper>
       </StyleLoginContainer>
     </ContainerLayout>

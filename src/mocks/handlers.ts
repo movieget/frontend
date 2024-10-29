@@ -106,31 +106,31 @@ export const handlers = [
   }),
 
   // 로그인 응답
-  http.get('/api/v1/user/login/kakao', ({ request }) => {
-    const url = new URL(request.url)
-    const code = url.searchParams.get('code')
+  // http.get('/api/v1/user/login/kakao', ({ request }) => {
+  //   const url = new URL(request.url)
+  //   const code = url.searchParams.get('code')
 
-    if (!code) {
-      return HttpResponse.json({ error: 'detail' }, { status: 400 })
-    }
+  //   if (!code) {
+  //     return HttpResponse.json({ error: 'detail' }, { status: 400 })
+  //   }
 
-    // 가상 응답으로 토큰과 사용자 정보를 생성
-    return HttpResponse.json(
-      {
-        access_token: 'mockAccessTokenATtokenUpcoming',
-        refresh_token: 'mockRefreshTokenRTtokenUpcoming',
-        user_id: loginUsers[0].user_id, // 예시 사용자 ID
-        profile_image: loginUsers[0].profile_image, // 예시 프로필 이미지
-        age: loginUsers[0].age, // 예시 연령 정보
-      },
-      {
-        headers: {
-          'Set-Cookie': 'refresh_token=mockRefreshToken; HttpOnly',
-        },
-        status: 200,
-      },
-    )
-  }),
+  //   // 가상 응답으로 토큰과 사용자 정보를 생성
+  //   return HttpResponse.json(
+  //     {
+  //       access_token: 'mockAccessTokenATtokenUpcoming',
+  //       refresh_token: 'mockRefreshTokenRTtokenUpcoming',
+  //       user_id: loginUsers[0].user_id, // 예시 사용자 ID
+  //       profile_image: loginUsers[0].profile_image, // 예시 프로필 이미지
+  //       age: loginUsers[0].age, // 예시 연령 정보
+  //     },
+  //     {
+  //       headers: {
+  //         'Set-Cookie': 'refresh_token=mockRefreshToken; HttpOnly',
+  //       },
+  //       status: 200,
+  //     },
+  //   )
+  // }),
 
   http.post('/api/v1/books/tosspay', ({ request }) => {
     const res = request.body

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleMovieCardWrapper, StyleMovieContents, StyleMovieTitle } from '../style'
 import { StyleTitle } from '../../../components/Badge/style'
 import MovieCard from '../../../components/MovieCard/MovieCard'
@@ -6,6 +6,7 @@ import Slider from 'react-slick' // 일단제외 - 추후(필수)적용예정
 import { BasicBtn } from '../../../components/Button/style'
 import styled from 'styled-components'
 import { IfMovieListProps } from '../type'
+import { useUserStore } from '../../../stores/userStore'
 
 // dummy
 const isPlayingMovies = [
@@ -117,6 +118,13 @@ const notPlayingMovies = [
 // 상영중 / 상영예정 필터링을 안해도 되는 이유
 // 백엔드에서 상영중 / 상영예정 리스트를 따로 제공
 const MainList: React.FC<IfMovieListProps> = () => {
+  // list 불러오는 데이터API 호출
+  // userId 담겨있는 상태 불러와서 list에 매치시켜서 좋아요수 반영
+  const userId = useUserStore((state) => state.userId)
+  // 새로고침하면 렌더링시 userId 못가져옴
+  console.log(userId)
+
+  useEffect(() => {}, [])
   // slick 설정
   var settings = {
     dots: true,
