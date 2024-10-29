@@ -5,7 +5,7 @@ import { ChargeBtnBox, ChargeContainer, ChargeContentsBox, ChargeHeader } from '
 import { useEffect } from 'react'
 import MovieInfoCard from '../../components/MovieInfoCard/MovieInfoCard'
 
-const Charge = () => {
+const TossSuccess = () => {
   const navigate = useNavigate()
 
   // 뒤로가기 막기 -> 결제페이지로 가는것을 막고 메인페이지로 이동
@@ -64,4 +64,4 @@ const Charge = () => {
   )
 }
 
-export default Charge
+export default TossSuccess
