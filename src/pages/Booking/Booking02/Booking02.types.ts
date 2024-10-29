@@ -3,25 +3,6 @@ export type TCount = {
   child_count: number
 }
 
-export type TResultDummyData = {
-  reservation: {
-    date: string
-    time: string
-    seats: string[]
-    location: string
-    theater: string
-    customer: {
-      adult: number
-      teenager: number
-    }
-  }
-  movie: {
-    title: string
-    age: 18 | 'all' | 12 | 15
-    backdrop: string
-  }
-}
-
 // 공통 속성을 포함하는 기본 인터페이스
 interface IPriceSeatProps {
   totalPrice: number
@@ -58,7 +39,6 @@ export interface ISelectSeatBodyProps {
 export interface IResultInfoProps {
   count: TCount
   seatId: string[]
-  dummyData: TResultDummyData
 }
 
 // ISelectSeatProps 정의

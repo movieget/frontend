@@ -10,8 +10,7 @@ import { fetchMovieData } from '../../../../../apis/bookingApi'
 import SelectTimes from './ui/SelectTimes'
 
 const SelectBody = () => {
-  const initialBookingState = useBookingStore((state) => state.initialBookingState)
-  const { date, movie, location, cinema, startTime } = initialBookingState
+  const { date, title, location, cinema } = useBookingStore((state) => state.initialBookingState)
   const [isValid, setIsValid] = useState(false)
   const [isTimeSelected, setIsTimeSelected] = useState(false)
   const { data, isLoading, error, isError, refetch } = useQuery({
@@ -22,13 +21,11 @@ const SelectBody = () => {
     retry: 1,
   })
 
-  console.log(date, movie, location, cinema, startTime)
-
   useEffect(() => {
-    const fields = [date, movie, location, cinema] // 검사할 필드 배열
+    const fields = [date, title, location, cinema] // 검사할 필드 배열
     const allValid = fields.every((field) => field !== '') // 모든 필드가 비어있지 않은지 확인
     setIsValid(allValid) // 유효성에 따라 상태 업데이트
-  }, [date, movie, location, cinema])
+  }, [date, title, location, cinema])
 
   useEffect(() => {
     refetch()
@@ -38,6 +35,7 @@ const SelectBody = () => {
     <BS1.SelectBodyWrapper>
       <BS1.SelectBoxRow>
         <SelectMovies
+          bookId={data?.book_id}
           movies={data?.movies}
           error={error}
           isError={isError}

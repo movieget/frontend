@@ -2,7 +2,9 @@ import { Route, Routes } from 'react-router-dom'
 import { SvgSpinner } from '../components/Loading/SvgSpinner'
 import { Suspense, lazy } from 'react'
 import Common from '../pages/Common/Common'
-import Charge from '../pages/Charge/Charge'
+import Charge from '../pages/TossSuccess/TossSuccess'
+import TossSuccess from '../pages/TossSuccess/TossSuccess'
+import TossFail from '../pages/TossFail/TossFail'
 
 const Main = lazy(() => import('../pages/Main/Main'))
 const Movie = lazy(() => import('../pages/Movie/Movie'))
@@ -11,7 +13,7 @@ const Booking = lazy(() => import('../pages/Booking/Booking'))
 const Cinema = lazy(() => import('../pages/Cinema/Cinema'))
 const Login = lazy(() => import('../pages/Login/Login'))
 const KakaoCallback = lazy(() => import('../pages/KakaoCallback/KakaoCallback'))
-const TossCallback = lazy(() => import('../pages/TossCallback/TossCallback'))
+const TossCheckout = lazy(() => import('../pages/TossCheckout/TossCheckout'))
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'))
 const Mypage = lazy(() => import('../pages/MyPage/MyPage'))
 
@@ -52,14 +54,6 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path='/charge'
-          element={
-            <Suspense fallback={<SvgSpinner />}>
-              <Charge />
-            </Suspense>
-          }
-        />
-        <Route
           path='/cinema'
           element={
             <Suspense fallback={<SvgSpinner />}>
@@ -92,10 +86,26 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path='/toss/callback'
+          path='/toss/checkout'
           element={
             <Suspense fallback={<SvgSpinner />}>
-              <TossCallback />
+              <TossCheckout />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/toss/success'
+          element={
+            <Suspense fallback={<SvgSpinner />}>
+              <TossSuccess />
+            </Suspense>
+          }
+        />
+        <Route
+          path='/toss/fail'
+          element={
+            <Suspense fallback={<SvgSpinner />}>
+              <TossFail />
             </Suspense>
           }
         />

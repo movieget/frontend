@@ -7,25 +7,21 @@ import BS1 from '../../../Booking01.styled'
 import SelectTitle from './SelectTitle'
 import { useBookingStore } from '../../../../../../stores/store'
 
-const SelectMovies = ({ movies, isError, error, isLoading, date }: ISelectMoviesProps) => {
+const SelectMovies = ({ movies, isError, error, isLoading, date, bookId }: ISelectMoviesProps) => {
   const [selectedId, setSelectedId] = useState<number | null>(null)
   const setField = useBookingStore((state) => state.actions.setField)
   const title = '영화'
-
-  // age 매핑을 위한 함수
-  const mapAgeToOption = (age: number): 12 | 15 | 18 | 'all' => {
-    if (age === 12 || age === 15 || age === 18) {
-      return age
-    }
-    return 'all' // 나머지 경우에는 "all"로 처리
-  }
 
   const handleSelectButton = (id: number) => {
     setSelectedId((prevId) => (prevId === id ? null : id))
   }
 
   useEffect(() => {
-    setField('movie', '')
+    setField('bookId', '')
+    setField('title', '')
+    setField('age', '')
+    setField('duration', '')
+    setField('poster', '')
     setSelectedId(null)
   }, [date])
 
@@ -45,8 +41,11 @@ const SelectMovies = ({ movies, isError, error, isLoading, date }: ISelectMovies
             <BS1.SelectList key={el.id}>
               <OptionButton
                 id={el.id}
+                bookId={bookId}
+                duration={el.duration}
                 title={title}
-                age={mapAgeToOption(el.age)}
+                poster={el.poster_image_url}
+                age={el.age_rating}
                 label={el.title}
                 selectedId={selectedId === el.id}
                 onSelect={handleSelectButton}

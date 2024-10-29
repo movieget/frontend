@@ -14,9 +14,9 @@ export type TMovies = {
   id: number
   title: string
   genre: string
-  duration: number // 지속 시간 (분)
-  rating: number // 평점 (예: 8.5)
-  age: number // 연령 제한 (예: 15)
+  duration: number
+  age_rating: string
+  poster_image_url: string
 }
 
 // 위치 정보 타입 정의
@@ -63,7 +63,8 @@ export interface IErrorMessageProps {
 export interface IOptionButtonProps {
   id: number
   title: '영화' | '지역' | '영화관'
-  age?: 'all' | 12 | 15 | 18
+  poster: string
+  age?: 'all' | '12' | '15' | '18'
   label?: string
   selectedId: boolean
   onSelect: (id: number) => void

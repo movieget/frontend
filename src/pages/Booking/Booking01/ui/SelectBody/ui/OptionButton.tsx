@@ -9,6 +9,9 @@ const OptionButton = ({
   onSelect,
   title,
   age,
+  duration,
+  bookId,
+  poster,
   label = '옵션라벨',
 }: IOptionButtonProps) => {
   const setField = useBookingStore((state) => state.actions.setField)
@@ -16,11 +19,15 @@ const OptionButton = ({
   // 버튼 클릭 핸들러
   const handleClick = () => {
     onSelect(id)
-
+    console.log(age)
     // 전역 상태에 필드 설정
     switch (title) {
       case '영화':
-        setField('movie', selectedId ? '' : label)
+        setField('bookId', selectedId ? '' : bookId)
+        setField('title', selectedId ? '' : label)
+        setField('age', selectedId ? '' : age)
+        setField('duration', selectedId ? '' : duration)
+        setField('poster', selectedId ? '' : poster)
         break
       case '지역':
         setField('location', selectedId ? '' : label)

@@ -15,6 +15,8 @@ const SelectTimes = ({ setIsTimeSelected, screenings, isValid, date }: ISelectTi
 
   useEffect(() => {
     setField('startTime', '')
+    setField('screenId', '')
+    setField('screeningDate', '')
     setSelectedId(null)
     setIsTimeSelected(false)
   }, [date])
@@ -28,6 +30,8 @@ const SelectTimes = ({ setIsTimeSelected, screenings, isValid, date }: ISelectTi
             <TimeButton
               key={el.id}
               id={el.id}
+              screenId={el.id}
+              screeningDate={el.screening_date}
               time={el.start_time}
               selectedId={selectedId === el.id}
               setSelectedId={setSelectedId}
