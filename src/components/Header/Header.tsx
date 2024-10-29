@@ -11,8 +11,8 @@ const Header = () => {
   const isAuth = window.localStorage.getItem('KakaoToken')
 
   const logoutHandler = () => {
-    navigate('/')
     window.localStorage.removeItem('KakaoToken')
+    navigate('/')
   }
 
   const loginHandler = () => {
