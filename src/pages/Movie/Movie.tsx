@@ -29,16 +29,52 @@ export interface Movie {
   totalLikes: number // 총 좋아요 수
 }
 
-// api 호출
-const fetchMovieData = async (page: number, type: 'now-playing' | 'upcoming') => {
+const fetchData = async () => {
   try {
-    const res = await client.get(`/api/v1/${type}-movie?page=${page}`)
+    const res = await client.get('/movie?page=1&limit=10', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    console.log(res.data)
     return res.data
   } catch (error) {
-    console.error('영화 데이터 가져오기 실패:', error)
-    throw new Error('영화 데이터를 가져오는 데 실패했습니다.')
+    throw new Error('김대식님 잘하셨어요')
   }
 }
+
+// const fetchData2 = async () => {
+//   try {
+//     const res = await fetch('https://movieget.kprolabs.space/api/v1/movie/78', {
+//       method: 'GET', // 요청 방법 (GET, POST 등)
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       credentials: 'include', // 자격 증명을 포함하도록 설정
+//     })
+
+//     if (!res.ok) {
+//       throw new Error('Network response was not ok')
+//     }
+
+//     const data = await res.json() // 응답 JSON 데이터 파싱
+//     console.log(data)
+//   } catch (err) {
+//     console.error('Error:', err.message)
+//     throw new Error('대용님 승진님 대식님 정말 진짜 왜그러셨어요')
+//   }
+// }
+
+// api 호출
+// const fetchMovieData = async (page: number, type: 'now-playing' | 'upcoming') => {
+//   try {
+//     const res = await client.get(`/api/v1/${type}-movie?page=${page}`)
+//     return res.data
+//   } catch (error) {
+//     console.error('영화 데이터 가져오기 실패:', error)
+//     throw new Error('영화 데이터를 가져오는 데 실패했습니다.')
+//   }
+// }
 
 // 무한스크롤
 const useGetMovieData = (type: 'now-playing' | 'upcoming') => {
@@ -96,6 +132,9 @@ const Movie = () => {
 
   // 영화 목록 추출
   const movieData = data?.pages.flatMap((page) => page.movies) || []
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <PageLayout>
