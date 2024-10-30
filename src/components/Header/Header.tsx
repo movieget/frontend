@@ -4,16 +4,30 @@ import { IconBtn, IconBtnImg, MainBtn } from '../Button/style'
 import { useNavigate } from 'react-router-dom'
 import { useUserStore } from '../../stores/userStore'
 import { useEffect } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { getUser } from '../../pages/KakaoCallback/model'
 
 const Header = () => {
   const navigate = useNavigate()
-  const clearUser = useUserStore((state) => state.clearUser)
-  const { userId, accessToken, profileImg } = useUserStore()
+  const { initializeUser, setLogout } = useUserStore()
+  const userData = useUserStore((state) => state.userData)
 
-  // *임시구성 => 상태관리 해야함
-  const isAuth = window.localStorage.getItem('UserState')
+  useEffect(() => {
+    initializeUser()
+  }, [])
+
+  const handleLogout = () => {
+    setLogout()
+    navigate('/')
+  }
+
+  // const logoutHandler = () => {
+  //   clearUser()
+  //   setIsLogin(false)
+  //   navigate('/')
+  //   localStorage.removeItem('TOKEN')
+  //   // * user토큰 정보 없애는 delete API요청 보내기
+  //   // * 토큰값을 요청에 넣어서 delete요청 하기
+  // }
+  // 유저정보 확인
 
   // *새로고침하면 렌더링시 userId 못가져옴 => useEffect 사용해서 불러와볼것!
   // useEffect(() => {
@@ -28,16 +42,24 @@ const Header = () => {
   //   }
   // }, [])
 
-  const logoutHandler = () => {
-    clearUser()
-    window.localStorage.removeItem('UserState')
-    navigate('/')
-    // *그리고 user토큰 정보 없애는 delete API요청 보내기
-  }
+  // const isAuth = localStorage.getItem('TOKEN')
 
   const pageMove = (page: string) => {
     navigate(`/${page}`)
   }
+
+  // useEffect(() => {
+  //   try {
+  //     const userData = localStorage.getItem('TOKEN')
+  //     if (userData) {
+  //       const { id, access_token, profile_image_url } = JSON.parse(userData)
+  //       setUser(access_token, id, profile_image_url)
+  //     }
+  //   } catch (err) {
+  //     console.error(err)
+  //     throw new Error('로그아웃 상태이거나 유저정보를 정상적으로 가져오지 못했습니다.')
+  //   }
+  // }, [setIsLogin, setUser])
 
   return (
     <StyledHeader>
@@ -81,17 +103,17 @@ const Header = () => {
             </GNB>
           </Nav>
         </HeaderLeft>
-        {isAuth ? (
+        {userData ? (
           <LogoutWrapper>
             <IconBtn>
               <IconBtnImg
                 onClick={() => pageMove('mypage')}
-                width='100%'
-                height='100%'
-                src={profileImg}
+                width='150%'
+                height='150%'
+                src={userData.profile_image_url}
               />
             </IconBtn>
-            <MainBtn $size='large' onClick={logoutHandler}>
+            <MainBtn $size='large' onClick={handleLogout}>
               로그아웃
             </MainBtn>
           </LogoutWrapper>
