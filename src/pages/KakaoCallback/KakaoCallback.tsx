@@ -10,13 +10,18 @@ const KakaoCallback = () => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const setUser = useUserStore((state) => state.setUser)
-  const authCode = searchParams.get('code')
+  const userId = searchParams.get('user_id')
+
+  console.log(userId)
 
   // const { data, isLoading, isError, error } = useQuery({
-  //   queryKey: ['data'],
-  //   queryFn: () => getAccessToken(authCode),
-  //   enabled: !!authCode,
+  //   queryKey: ['token'],
+  //   queryFn: () => getAccessToken(),
   // })
+
+  // useEffect(() => {
+  //   if (data) navigate('/')
+  // }, [data])
 
   // 정상작동 토큰 및 에러처리
   // useEffect(() => {
