@@ -1,12 +1,24 @@
+import { useNavigate } from 'react-router-dom'
 import { SocialBtn } from '../../components/Button/style'
 import ContainerLayout from '../../components/Layouts/ContainerLayout'
+import { useUserStore } from '../../stores/userStore'
 import { KAKAO_API_KEY } from '../../utils/constants'
 import { StyleLoginContainer, StyleLoginTextWrapper, StyleLoginBtnWrapper } from './style'
+import { useEffect } from 'react'
 
 const Login = () => {
+  const userData = useUserStore((state) => state.userData)
+  const navigate = useNavigate()
+
   const kakaoLoginHandler = () => {
     window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_API_KEY}&redirect_uri=http://localhost:5173/kakao/callback&response_type=code&prompt=login`
   }
+
+  useEffect(() => {
+    if (userData) {
+      navigate('/mypage')
+    }
+  }, [userData, navigate])
 
   return (
     <ContainerLayout>
