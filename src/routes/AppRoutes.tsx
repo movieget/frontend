@@ -1,7 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 import { SvgSpinner } from '../components/Loading/SvgSpinner'
-import { Suspense, lazy, useEffect, useState } from 'react'
+import { Suspense, lazy } from 'react'
 import Common from '../pages/Common/Common'
+import Charge from '../pages/TossSuccess/TossSuccess'
+import TossSuccess from '../pages/TossSuccess/TossSuccess'
+import TossFail from '../pages/TossFail/TossFail'
 
 const Main = lazy(() => import('../pages/Main/Main'))
 const Movie = lazy(() => import('../pages/Movie/Movie'))
@@ -39,7 +42,6 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-
         <Route
           path='/cinema'
           element={
@@ -56,7 +58,6 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-
         <Route
           path='/kakao/callback'
           element={
@@ -65,7 +66,6 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-
         <Route
           path='*'
           element={

@@ -11,5 +11,5 @@ export const KAKAO_REDIRECT_URI = import.meta.env.VITE_KAKAO_REDIRECT_URI // 크
 export const KAKAO_AUTH_URI = `${KAKAO_AUTH_BASE_URL}?client_id=${KAKAO_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`
 
 // TOSS
-export const TOSS_CLIENT_KEY = import.meta.env.VITE_TOSS_CLIENT_KEY
+export const TOSS_API_KEY = import.meta.env.VITE_TOSS_API_KEY
 export const TOSS_CUSTOMER_KEY = import.meta.env.VITE_TOSS_CUSTOMER_KEY
