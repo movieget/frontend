@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import prev from '../../assets/svg/prev.svg'
+import next from '../../assets/svg/next.svg'
 
 // 트레일러 구역
 export const StyleTrailerSection = styled.section`
@@ -19,7 +21,6 @@ export const StyleTrailerWrapper = styled.div`
     position: absolute;
     left: 0;
     top: 9.2rem;
-    // 외곽 연하게 조정 필요
     background-image: linear-gradient(
       to right,
       #000 0%,
@@ -78,11 +79,12 @@ export const StyleMovieCardWrapper = styled.div`
   margin: 0 auto;
   color: #fff;
 `
+
 // 타이틀과 컨텐츠간 간격
 export const StyleMovieTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
-  margin-bottom: 8rem;
+  margin-bottom: 2.4rem;
 `
 
 // 상영중 - 개봉예정 묶음
@@ -90,23 +92,27 @@ export const StyleMovieContents = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 12rem;
-  padding-top: 12rem;
+  margin: 12rem 0;
+  /* margin-top: 12rem;
+  padding-top: 12rem; */
 `
 
 // 슬릭 스타일 설정 부분
 // 슬라이더 부모 -> 슬라이더의 자식 컴포넌트 = MovieCard
 export const StyleMovieListWrapper = styled.div`
   width: 100%;
-  height: 28rem;
 
   div:focus-visible {
     outline: none;
   }
 
+  .slick-slider {
+    position: relative;
+  }
+
   .slick-track {
     display: flex;
-    gap: 3rem;
+    gap: 1.8rem;
     width: 100%;
 
     &::before,
@@ -114,22 +120,48 @@ export const StyleMovieListWrapper = styled.div`
       display: none;
     }
   }
-  .slick-arrow {
-    display: block !important;
-    position: absolute;
+  .slick-list {
+    overflow: hidden;
   }
+
+  .slick-arrow {
+    /* display: none !important; */
+    /* display: block !important; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 4.8rem;
+    height: 4.8rem;
+    font-size: 0;
+    background: transparent no-repeat 50% 50%;
+    border: none;
+    border-radius: 50%;
+    &.slick-next {
+      right: -4.8rem;
+      background-image: url(${next});
+    }
+    &.slick-prev {
+      left: -4.8rem;
+      background-image: url(${prev});
+    }
+  }
+
   .slick-dots {
+    display: flex !important;
+    justify-content: center;
+    margin-top: 1rem;
     li {
       width: auto;
       height: auto;
       margin: 0 4px;
       button {
-        content: '';
         position: initial;
         display: block;
         width: 8px;
         height: 8px;
         padding: 0;
+        font-size: 0;
         line-height: initial;
         background-color: #353535;
         border: 1px solid;
@@ -145,8 +177,8 @@ export const StyleMovieListWrapper = styled.div`
       &.slick-active {
         button {
           width: 12px;
-          background-color: #f45917;
-          border-color: #ff8b59;
+          background-color: #ffffff;
+          border-color: #ffffff40;
           transition: all 0.3s;
         }
       }
