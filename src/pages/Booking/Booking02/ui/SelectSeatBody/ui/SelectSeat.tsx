@@ -1,6 +1,6 @@
 import { Checkbox, CheckboxWrapper, CheckSeat } from '../../../../../../components/Checkbox/style'
 import SeatWrapper from './SeatWrapper'
-import { ISelectSeatProps } from '../../../Booking02.types'
+import { ISeatData, ISelectSeatProps, TRowSeat } from '../../../Booking02.types'
 import BS2 from '../../../Booking02.styled'
 import { useQuery } from '@tanstack/react-query'
 import { getSeatData } from '../../../../../../apis/bookingApi'
@@ -8,7 +8,7 @@ import { useBookingStore } from '../../../../../../stores/store'
 
 const SelectSeat = ({ totalSeat, seatId, setSeatId }: ISelectSeatProps) => {
   const { screenId } = useBookingStore((state) => state.initialBookingState)
-  const { data } = useQuery({
+  const { data } = useQuery<ISeatData>({
     queryKey: ['seatData'],
     queryFn: () => getSeatData(screenId),
   })
@@ -31,9 +31,9 @@ const SelectSeat = ({ totalSeat, seatId, setSeatId }: ISelectSeatProps) => {
   return (
     <SeatWrapper>
       {data?.rows.map((row) => (
-        <BS2.ColWrapper key={row.id}>
-          {row.seat.map((seat) => {
-            const uniqueId = `${row.id}${seat.id}`
+        <BS2.ColWrapper key={row.row}>
+          {row.seats.map((seat) => {
+            const uniqueId = `${row.row}${seat.column}`
 
             // 상태에 따른 속성만 설정
             const isDisabled = seat.status === false

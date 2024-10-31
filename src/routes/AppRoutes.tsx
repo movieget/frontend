@@ -1,10 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { SvgSpinner } from '../components/Loading/SvgSpinner'
 import { Suspense, lazy } from 'react'
-import Common from '../pages/Common/Common'
-import Charge from '../pages/TossSuccess/TossSuccess'
-import TossSuccess from '../pages/TossSuccess/TossSuccess'
-import TossFail from '../pages/TossFail/TossFail'
+import PrivateRoute from './PrivateRoute'
 
 const Main = lazy(() => import('../pages/Main/Main'))
 const Movie = lazy(() => import('../pages/Movie/Movie'))
@@ -13,6 +10,12 @@ const Cinema = lazy(() => import('../pages/Cinema/Cinema'))
 const Login = lazy(() => import('../pages/Login/Login'))
 const KakaoCallback = lazy(() => import('../pages/KakaoCallback/KakaoCallback'))
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'))
+const Booking = lazy(() => import('../pages/Booking/Booking'))
+const TossCheckout = lazy(() => import('../pages/TossCheckout/TossCheckout'))
+const Mypage = lazy(() => import('../pages/MyPage/MyPage'))
+const TossSuccess = lazy(() => import('../pages/TossSuccess/TossSuccess'))
+const TossFail = lazy(() => import('../pages/TossFail/TossFail'))
+const Common = lazy(() => import('../pages/Common/Common'))
 
 const AppRoutes = () => {
   return (
@@ -51,6 +54,56 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path='/booking'
+          element={
+            <PrivateRoute>
+              <Suspense fallback={<SvgSpinner />}>
+                <Booking />
+              </Suspense>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/mypage'
+          element={
+            <PrivateRoute>
+              <Suspense fallback={<SvgSpinner />}>
+                <Mypage />
+              </Suspense>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/toss/checkout'
+          element={
+            <PrivateRoute>
+              <Suspense fallback={<SvgSpinner />}>
+                <TossCheckout />
+              </Suspense>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/toss/success'
+          element={
+            <PrivateRoute>
+              <Suspense fallback={<SvgSpinner />}>
+                <TossSuccess />
+              </Suspense>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/toss/fail'
+          element={
+            <PrivateRoute>
+              <Suspense fallback={<SvgSpinner />}>
+                <TossFail />
+              </Suspense>
+            </PrivateRoute>
+          }
+        />
+        <Route
           path='/login'
           element={
             <Suspense fallback={<SvgSpinner />}>
@@ -67,6 +120,14 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path='/common'
+          element={
+            <Suspense fallback={<SvgSpinner />}>
+              <Common />
+            </Suspense>
+          }
+        />
+        <Route
           path='*'
           element={
             <Suspense fallback={<SvgSpinner />}>
@@ -74,7 +135,6 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-        <Route path='/common' element={<Common />} />
       </Routes>
     </>
   )

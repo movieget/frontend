@@ -19,7 +19,6 @@ const PrivateRoute = ({ children }: PrivateRouteProps) => {
   }, [userData, navigate])
 
   if (!userData) {
-    // 로딩 표시나 다른 처리
     return <SvgSpinner />
   }
 

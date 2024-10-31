@@ -1,9 +1,9 @@
 import { client } from './instances'
 
-export const fetchMovieData = async (date: string) => {
+export const fetchMovieData = async (date: string, userId: number) => {
   const formattedDate = date.slice(0, 10)
   try {
-    const res = await client.get(`/api/v1/books/options?screening_date=${formattedDate}`)
+    const res = await client.get(`/books/options?screening_date=${formattedDate}&user_id=${userId}`)
     const data = res.data
     console.log(data)
     return data
@@ -71,7 +71,7 @@ export const postMovieData = async (bookData: {}) => {
 
 export const getSeatData = async (screenId: number) => {
   try {
-    const res = await client.get(`/api/v1/books?screen_id=${screenId}`)
+    const res = await client.get(`books/${screenId}`)
     const data = res.data
     console.log(data)
     return data

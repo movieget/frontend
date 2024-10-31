@@ -21,6 +21,8 @@ const SelectTimes = ({ setIsTimeSelected, screenings, isValid, date }: ISelectTi
     setIsTimeSelected(false)
   }, [date])
 
+  console.log(screenings)
+
   return (
     <BS1.SelectTime>
       <SelectTitle title='시간선택' />
@@ -30,7 +32,7 @@ const SelectTimes = ({ setIsTimeSelected, screenings, isValid, date }: ISelectTi
             <TimeButton
               key={el.id}
               id={el.id}
-              screenId={el.id}
+              screenId={el.screen_id}
               screeningDate={el.screening_date}
               time={el.start_time}
               selectedId={selectedId === el.id}
