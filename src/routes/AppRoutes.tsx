@@ -1,21 +1,15 @@
 import { Route, Routes } from 'react-router-dom'
 import { SvgSpinner } from '../components/Loading/SvgSpinner'
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import Common from '../pages/Common/Common'
-import Charge from '../pages/TossSuccess/TossSuccess'
-import TossSuccess from '../pages/TossSuccess/TossSuccess'
-import TossFail from '../pages/TossFail/TossFail'
 
 const Main = lazy(() => import('../pages/Main/Main'))
 const Movie = lazy(() => import('../pages/Movie/Movie'))
 const Detail = lazy(() => import('../pages/Detail/Detail'))
-const Booking = lazy(() => import('../pages/Booking/Booking'))
 const Cinema = lazy(() => import('../pages/Cinema/Cinema'))
 const Login = lazy(() => import('../pages/Login/Login'))
 const KakaoCallback = lazy(() => import('../pages/KakaoCallback/KakaoCallback'))
-const TossCheckout = lazy(() => import('../pages/TossCheckout/TossCheckout'))
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'))
-const Mypage = lazy(() => import('../pages/MyPage/MyPage'))
 
 const AppRoutes = () => {
   return (
@@ -45,14 +39,7 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-        <Route
-          path='/booking'
-          element={
-            <Suspense fallback={<SvgSpinner />}>
-              <Booking />
-            </Suspense>
-          }
-        />
+
         <Route
           path='/cinema'
           element={
@@ -69,14 +56,7 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-        <Route
-          path='/mypage'
-          element={
-            <Suspense fallback={<SvgSpinner />}>
-              <Mypage />
-            </Suspense>
-          }
-        />
+
         <Route
           path='/kakao/callback'
           element={
@@ -85,30 +65,7 @@ const AppRoutes = () => {
             </Suspense>
           }
         />
-        <Route
-          path='/toss/checkout'
-          element={
-            <Suspense fallback={<SvgSpinner />}>
-              <TossCheckout />
-            </Suspense>
-          }
-        />
-        <Route
-          path='/toss/success'
-          element={
-            <Suspense fallback={<SvgSpinner />}>
-              <TossSuccess />
-            </Suspense>
-          }
-        />
-        <Route
-          path='/toss/fail'
-          element={
-            <Suspense fallback={<SvgSpinner />}>
-              <TossFail />
-            </Suspense>
-          }
-        />
+
         <Route
           path='*'
           element={

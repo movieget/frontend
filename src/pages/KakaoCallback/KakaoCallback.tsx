@@ -1,88 +1,41 @@
 import { useQuery } from '@tanstack/react-query'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { getAccessToken } from './model'
+import { kakaoLogin } from './model'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 import { useEffect } from 'react'
 import { useUserStore } from '../../stores/userStore'
-import Cookies from 'js-cookie'
 
+// 백엔드로부터 인가코드 전달 후 data 받음
 const KakaoCallback = () => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
-  const setUser = useUserStore((state) => state.setUser)
-  const userId = searchParams.get('user_id')
+  const { setIsLogin } = useUserStore()
+  const code = searchParams.get('code')
 
-  console.log(userId)
+  // 인가코드 추출 확인
+  // console.log(code)
 
-  // const { data, isLoading, isError, error } = useQuery({
-  //   queryKey: ['token'],
-  //   queryFn: () => getAccessToken(),
-  // })
+  // 데이터 요청
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['data'],
+    queryFn: () => kakaoLogin(code!),
+    enabled: !!code,
+  })
 
-  // useEffect(() => {
-  //   if (data) navigate('/')
-  // }, [data])
+  // data 상태가 업데이트 될때마다 useEffect 실행
+  useEffect(() => {
+    if (data) {
+      setIsLogin(data)
+      navigate('/')
+    }
+  }, [data])
 
-  // 정상작동 토큰 및 에러처리
-  // useEffect(() => {
-  //   if (isError) {
-  //     alert('로그인 요청에 실패하였습니다. 로그인 페이지로 이동합니다.')
-  //     navigate('/login')
-  //   } else if (data) {
-  //     localStorage.setItem(
-  //       'KakaoToken',
-  //       JSON.stringify({
-  //         access_token: data.access_token,
-  //         refresh_token: data.refresh_token,
-  //       }),
-  //     )
-  //     navigate('/')
-  //   }
-  // }, [data, isError])
-
-  // useEffect(() => {
-  // if (data) {
-  //   const {
-  //     accessToken: access_token,
-  //     userId: user_id,
-  //     profileImg: profile_img,
-  //     refreshToken: refresh_token,
-  //   } = data
-
-  //   setUser(access_token, user_id, profile_img)
-  //   localStorage.setItem(
-  //     'UserState',
-  //     JSON.stringify({
-  //       access_token: access_token,
-  //     }),
-  //   )
-
-  // Cookies.set('refresh_token', refresh_token, {
-  //   httpOnly: true,
-  //   path: '/',
-  //   // secure: true,
-  //   // sameSite: 'None',
-  //   // maxAge: 300,
-  // })
-
-  // *쿠키추출 -> 검증(정상적으로 안들어왔을때의 예외처리 필요함)
-  //
-
-  // Cookies.get
-
-  //       console.log('authCode:', authCode)
-  //       navigate('/')
-  //     } else if (isError) {
-  //       console.log(isError)
-  //       alert('로그인에 실패하였습니다. 로그인 페이지로 이동합니다.')
-  //       navigate('/login')
-  //     }
-  //   }, [data, isError])
-
+  // 로딩상태, error 상태메세지 출력
+  // * error메세지 출력 후 로그인페이지로 돌아갈수 있게 에러 핸들링
   return (
     <>
-      {/* {isLoading && <SvgSpinner />}
-      {isError && <div>{error.message}</div>} */}
+      {isLoading && <SvgSpinner />}
+      {isError && <div>{error.message}</div>}
     </>
   )
 }
