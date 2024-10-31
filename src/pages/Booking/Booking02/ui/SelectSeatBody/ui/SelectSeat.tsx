@@ -28,6 +28,8 @@ const SelectSeat = ({ totalSeat, seatId, setSeatId }: ISelectSeatProps) => {
     })
   }
 
+  console.log(data)
+
   return (
     <SeatWrapper>
       {data?.rows.map((row) => (

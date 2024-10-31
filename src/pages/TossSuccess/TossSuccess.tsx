@@ -1,12 +1,60 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { BasicBtn, MainBtn } from '../../components/Button/style'
 import ContainerLayout from '../../components/Layouts/ContainerLayout'
 import { ChargeBtnBox, ChargeContainer, ChargeContentsBox, ChargeHeader } from './style'
 import { useEffect } from 'react'
 import MovieInfoCard from '../../components/MovieInfoCard/MovieInfoCard'
+import { client } from '../../apis/instances'
+import { useMutation } from '@tanstack/react-query'
 
 const TossSuccess = () => {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const params = Object.fromEntries([...searchParams])
+  const orderParam = searchParams.get('orderId')
+  const paymentKeyParam = searchParams.get('paymentKey')
+  const amountParam = searchParams.get('amount')
+
+  console.log(params.start_time)
+
+  const tossPaymentMutation = useMutation({
+    mutationFn: async () => {
+      const res = await client.post(
+        '/payment/confirm',
+        {
+          book_id: params.book_id,
+          poster: params.poster,
+          age: params.age,
+          duration: Number(params.duration),
+          title: params.title,
+          date: params.date.substring(0, 10),
+          start_time: params.start_time,
+          location: params.location,
+          cinema: params.cinema,
+          screen_id: params.screen_id,
+          screening_date: params.screening_date,
+          adult_count: params.adult_count,
+          child_count: params.child_count,
+          paymentKey: paymentKeyParam,
+          orderId: orderParam,
+          amount: Number(amountParam),
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      return { status: res.status, data: res.data }
+    },
+    onSuccess: ({ status, data }) => {
+      console.log(status)
+      console.log(data)
+    },
+    onError: (err) => {
+      console.error(err)
+    },
+  })
 
   // 뒤로가기 막기 -> 결제페이지로 가는것을 막고 메인페이지로 이동
   // popstate는 단순히 이벤트만 처리, 히스토리 변경 X -> 사용자가 뒤로가기를 시도했다가 앞으로 가면 원래있던 페이지로 되돌아감
@@ -27,6 +75,10 @@ const TossSuccess = () => {
       window.removeEventListener('popstate', preventBack)
     }
   }, [navigate])
+
+  useEffect(() => {
+    tossPaymentMutation.mutate()
+  }, [])
 
   return (
     <ContainerLayout>
