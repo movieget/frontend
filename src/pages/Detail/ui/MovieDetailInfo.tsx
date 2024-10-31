@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import styled from 'styled-components'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -44,9 +43,7 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
                 <Badge $playing='playing'>상영중</Badge>
               </MovieTitleHolder>
               <BadgeBox>
-                {movie.genre.map((item) => {
-                  return <Badge key={item}>{item}</Badge>
-                })}
+                <Badge>{movie.genre}</Badge>
                 <Badge $color='orange'>{movie.duration}분</Badge>
               </BadgeBox>
               <MovieOverview>{movie.overview}</MovieOverview>
@@ -71,11 +68,12 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
         {/* 트레일러 */}
         <MovieTrailerBox>
           <StyleTitle>Trailer</StyleTitle>
-          {movie.trailer ? (
+          {movie.trailerUrl ? (
             <MovieTrailer
               width='100%'
               style={{ aspectRatio: '16 / 9', height: 'auto' }}
-              src={movie.trailer}
+              // src={movie.trailerUrl}
+              src={`https://www.youtube.com/embed/P5Vc2IxPPUI`}
               title={movie.title}
               frameBorder='0'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
@@ -92,9 +90,10 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
           <StyleTitle>Actor</StyleTitle>
           <MovieActorList>
             <Slider {...settings}>
-              {movie.actor.map((item) => (
-                <MovieActor key={item.name}>
-                  {item.image ? (
+              {movie.actorImages.map((item, index) => (
+                <MovieActor key={index}>
+                  <MovieActorImg src={item} style={{ width: '100%', height: 'auto' }} />
+                  {/* {item.image ? (
                     <MovieActorImg
                       src={item.image}
                       alt={item.name}
@@ -102,7 +101,7 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
                     />
                   ) : (
                     <NoImageCard $width='100%' />
-                  )}
+                  )} */}
                   <MovieActorName>{item.name}</MovieActorName>
                 </MovieActor>
               ))}
