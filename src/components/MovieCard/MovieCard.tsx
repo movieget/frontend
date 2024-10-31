@@ -6,6 +6,21 @@ import { BasicBtn, MainBtn } from '../Button/style'
 import NoImageCard from '../NoImageCard/NoImageCard'
 import { Link } from 'react-router-dom'
 import { Movie } from '../../pages/Movie/Movie'
+// import { useState } from 'react'
+// import { useMutation } from '@tanstack/react-query'
+
+// const toggleLike = async (id: number, isLiked: boolean) => {
+//   const response = await fetch('/favorite', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({ id, liked: isLiked }),
+//   })
+//   if (!response.ok) {
+//     throw new Error('김대식')
+//   }
+// }
 
 const MovieCard = ({
   id,
@@ -17,11 +32,28 @@ const MovieCard = ({
   genre,
   duration,
   overview,
-  trailer,
-  actor,
+  trailerUrl,
+  actorImages,
   isLikes,
   totalLikes,
 }: Movie) => {
+  // const [isChecked, setIsChecked] = useState(isLikes)
+
+  // const mutation = useMutation({
+  //   mutationFn: toggleLike,
+  //   onSuccess: (data) => {
+  //     console.log('aa', data)
+  //   },
+  //   onError: (error) => {
+  //     console.log('bb', error)
+  //   },
+  // })
+
+  // const handleCheckboxChange = () => {
+  //   const newCheckedState = !isChecked
+  //   setIsChecked(newCheckedState)
+  //   mutation.mutate(id, newCheckedState)
+  // }
   return (
     <MovieCardHolder>
       <MoviePosterImgBox>
@@ -55,8 +87,8 @@ const MovieCard = ({
               genre,
               duration,
               overview,
-              trailer,
-              actor,
+              trailerUrl,
+              actorImages,
               isLikes,
               totalLikes,
             }}
@@ -66,7 +98,13 @@ const MovieCard = ({
           {playing && <MainBtn $size='large'>예매하기</MainBtn>}
         </MovieCardBtnBox>
         <CheckboxWrapper>
-          <Checkbox type='checkbox' id={`idFor${id}`} name='' checked={isLikes} />
+          <Checkbox
+            type='checkbox'
+            id={`idFor${id}`}
+            name=''
+            // onChange={handleCheckboxChange}
+            // checked={isChecked}
+          />
           <CheckHeartCount
             htmlFor={`idFor${id}`}
             $padding='0'

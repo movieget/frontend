@@ -1,24 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { CustomSelectBox, Option, Select, SelectButton, SelectLi, SelectUl } from './style'
+import { CustomSelectBox, Option, SelectButton, SelectLi, SelectUl } from './style'
 
 interface CustomSelectProps {
   items?: string[]
   $direction?: 'left' | 'right'
+  onSelect?: (value: string) => void // 선택된 값을 부모로 전달하기 위한 props
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({ items, $direction }) => {
+const CustomSelect: React.FC<CustomSelectProps> = ({ items = [], $direction, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedValue, setSelectedValue] = useState<string>('선택하기')
   const dropdownRef = useRef<HTMLDivElement | null>(null)
 
   const handleItemClick = (item: string) => {
-    setSelectedValue(item) // 선택된 값 업데이트
-    setIsOpen(false) // 리스트 닫기
-  }
-
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedValue(event.target.value) // 선택된 값 업데이트
-    setIsOpen(false) // 리스트 닫기
+    setSelectedValue(item)
+    setIsOpen(false)
+    if (onSelect) onSelect(item) // 선택된 값을 부모로 전달
   }
 
   useEffect(() => {
@@ -50,13 +47,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ items, $direction }) => {
           ))}
         </SelectUl>
       )}
-      <Select value={selectedValue} onChange={handleSelectChange}>
-        {items.map((item) => (
-          <Option key={item} value={item}>
-            {item}
-          </Option>
-        ))}
-      </Select>
     </CustomSelectBox>
   )
 }
