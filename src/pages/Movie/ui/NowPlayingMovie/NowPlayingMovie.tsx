@@ -22,8 +22,8 @@ const NowPlayingMovie = ({ movieData }: NowPlayingMovieProps) => {
             genre={movie.genre}
             duration={movie.duration}
             overview={movie.overview}
-            trailer={movie.trailer}
-            actor={movie.actor}
+            trailerUrl={movie.trailerUrl}
+            actorImages={movie.actorImages}
             isLikes={movie.isLikes}
           />
         </MovieCardBox>

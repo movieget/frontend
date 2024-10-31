@@ -18,69 +18,35 @@ export interface Movie {
   posterImage: string // 포스터 이미지 URL
   backdropImage: string // 배경 이미지 URL
   title: string // 영화 제목
-  age: 'all' | 12 | 15 | 18 // 연령 제한
+  age: 'all' | '12' | '15' | '18' // 연령 제한
   playing: boolean // 상영중 & 개봉예정
   genre: string[] // 장르 배열
   duration: number // 상영 시간 (분)
   overview: string // 영화 개요
-  trailer?: string // 트레일러 URL (선택적)
-  actor: { name: string; image: string }[] // 출연 배우 배열
+  trailerUrl: string // 트레일러 URL (선택적)
+  actorImages: { name: string; image: string }[] // 출연 배우 배열
   isLikes: boolean // 좋아요 여부
   totalLikes: number // 총 좋아요 수
 }
 
-const fetchData = async () => {
+const fetchMovieData = async (type: 'now' | 'soon') => {
   try {
-    const res = await client.get('/movie?page=1&limit=10', {
+    const res = await client.get(`/movie/movies/${type}?page=1&limit=10`, {
       headers: {
         'Content-Type': 'application/json',
       },
     })
-    console.log(res.data)
     return res.data
   } catch (error) {
-    throw new Error('김대식님 잘하셨어요')
+    throw new Error('영화 데이터를 가져오는 데 실패했습니다.')
   }
 }
 
-// const fetchData2 = async () => {
-//   try {
-//     const res = await fetch('https://movieget.kprolabs.space/api/v1/movie/78', {
-//       method: 'GET', // 요청 방법 (GET, POST 등)
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       credentials: 'include', // 자격 증명을 포함하도록 설정
-//     })
-
-//     if (!res.ok) {
-//       throw new Error('Network response was not ok')
-//     }
-
-//     const data = await res.json() // 응답 JSON 데이터 파싱
-//     console.log(data)
-//   } catch (err) {
-//     console.error('Error:', err.message)
-//     throw new Error('대용님 승진님 대식님 정말 진짜 왜그러셨어요')
-//   }
-// }
-
-// api 호출
-// const fetchMovieData = async (page: number, type: 'now-playing' | 'upcoming') => {
-//   try {
-//     const res = await client.get(`/api/v1/${type}-movie?page=${page}`)
-//     return res.data
-//   } catch (error) {
-//     console.error('영화 데이터 가져오기 실패:', error)
-//     throw new Error('영화 데이터를 가져오는 데 실패했습니다.')
-//   }
-// }
-
 // 무한스크롤
-const useGetMovieData = (type: 'now-playing' | 'upcoming') => {
+const useGetMovieData = (menu: 'now' | 'soon') => {
   return useInfiniteQuery({
-    queryKey: [`${type}-data`],
-    queryFn: ({ pageParam = 1 }) => fetchMovieData(pageParam, type),
+    queryKey: [`${menu}-data`],
+    queryFn: ({ pageParam }) => fetchMovieData(menu),
     getNextPageParam: (last) => {
       if (last.currentPage < last.totalPages) {
         return last.currentPage + 1
@@ -94,10 +60,11 @@ const useGetMovieData = (type: 'now-playing' | 'upcoming') => {
 const Movie = () => {
   const [urlSearchParams, setUrlSearchParams] = useSearchParams()
   const menu = urlSearchParams.get('menu')
+  const [sortOption, setSortOption] = useState('최신순') // 기본 정렬 기준
 
   useEffect(() => {
     if (!menu) {
-      setUrlSearchParams({ menu: 'now-playing' })
+      setUrlSearchParams({ menu: 'now' })
     }
   }, [menu])
 
@@ -118,8 +85,9 @@ const Movie = () => {
 
   // api data & 무한 스크롤
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetMovieData(
-    menu === 'now-playing' ? 'now-playing' : 'upcoming',
+    menu === 'now' ? 'now' : 'soon',
   )
+
   const { ref, inView } = useInView({
     threshold: 1.0,
   })
@@ -132,9 +100,20 @@ const Movie = () => {
 
   // 영화 목록 추출
   const movieData = data?.pages.flatMap((page) => page.movies) || []
-  useEffect(() => {
-    fetchData()
-  }, [])
+
+  // 영화 데이터 정렬
+  const sortMovies = (movies: Movie[]) => {
+    switch (sortOption) {
+      case '가나다순':
+        return [...movies].sort((a, b) => a.title.localeCompare(b.title))
+      default:
+        return [...movies] // 기본적으로 정렬하지 않음
+    }
+  }
+
+  console.log(movieData)
+
+  const sortedMovieData = sortMovies(movieData)
 
   return (
     <PageLayout>
@@ -147,30 +126,30 @@ const Movie = () => {
           </MainIconBtn>
         </InputBox>
         <CategoryBtnBox>
-          <Link to='?menu=now-playing'>
-            <CategoryBtn type='button' $active={menu === 'now-playing'}>
+          <Link to='?menu=now'>
+            <CategoryBtn type='button' $active={menu === 'now'}>
               상영중
             </CategoryBtn>
           </Link>
-          <Link to='?menu=upcoming'>
-            <CategoryBtn type='button' $active={menu === 'upcoming'}>
+          <Link to='?menu=soon'>
+            <CategoryBtn type='button' $active={menu === 'soon'}>
               개봉예정
             </CategoryBtn>
           </Link>
         </CategoryBtnBox>
       </SearchBox>
 
-      {/* 검색결과 */}
+      {/* 영화 목록 렌더링 */}
       <SearchResultWrapper>
         <SearchContentBox>
           <SearchTitle>
             {inputValue ? `"${inputValue}" 와 관련된 검색어` : '검색어를 입력해주세요.'}
           </SearchTitle>
-          <CustomSelect items={['최신순', '가나다순', '평점순']} $direction='right' />
+          <CustomSelect items={['가나다순']} $direction='right' onSelect={setSortOption} />
         </SearchContentBox>
 
-        {menu === 'now-playing' && <NowPlayingMovie movieData={movieData} />}
-        {menu === 'upcoming' && <UpcomingMovie movieData={movieData} />}
+        {menu === 'now' && <NowPlayingMovie movieData={sortedMovieData} />}
+        {menu === 'soon' && <UpcomingMovie movieData={sortedMovieData} />}
       </SearchResultWrapper>
 
       {/* 무한 스크롤을 위한 로딩 표시 */}
