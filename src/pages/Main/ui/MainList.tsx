@@ -207,7 +207,7 @@ const MainList: React.FC<IfMovieListProps> = () => {
   const userId = useUserStore((state) => state.userData?.id)
   console.log(userId)
 
-  useEffect(() => {}, [])
+  // useEffect(() => {}, [])
   // slick 설정
   var settings = {
     arrows: true, // 화살표
