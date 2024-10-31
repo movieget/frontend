@@ -16,7 +16,7 @@ import {
 
 interface MovieInfoCardProps {
   $title?: string // 영화 제목 (선택적, 문자열)
-  $age?: 'all' | 12 | 15 | 18 // 연령 정보를 추가
+  $age?: 'all' | '12' | '15' | '18' // 연령 정보를 추가
   $genre?: string[] // 장르 정보 (선택적, 문자열 배열)
   $overview?: string // 줄거리 정보 (선택적, 문자열)
   $screeningDate?: string // 상영 날짜 (선택적, 문자열)
@@ -34,9 +34,14 @@ interface MovieInfoCardProps {
   $youthCount?: number // 청소년 수 (선택적, 숫자)
   $location?: string // 상영 지점 (선택적, 문자열)
   $posterImage?: string // 포스터 이미지 경로 (선택적, 문자열)
+  $orderId?: string // 주문 번호
+  $paymentKey?: string // 결제 번호
+  $startTime?: string // 시작 시간 (선택적, 문자열)
+  $cinema?: string // 상영 지점 (선택적, 문자열)
+  $screenId?: string // 상영관 ID (선택적, 문자열)
 }
 
-const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
+const MovieInfoCard = ({
   $title,
   $age,
   $genre,
@@ -56,7 +61,12 @@ const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
   $youthCount,
   $location,
   $posterImage,
-}) => {
+  $orderId,
+  $paymentKey,
+  $startTime,
+  $cinema,
+  $screenId,
+}: MovieInfoCardProps) => {
   return (
     <MovieInfoCardWrapper>
       <MoviePosterBox>
@@ -68,6 +78,18 @@ const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
           {$title && <MovieTitle>{$title}</MovieTitle>}
         </MovieTitleBox>
         <MovieInfoList>
+          {$orderId && (
+            <MovieInfo>
+              <MovieInfoTitle>주문번호</MovieInfoTitle>
+              <MovieInfoContent>: {$orderId}</MovieInfoContent>
+            </MovieInfo>
+          )}
+          {$paymentKey && (
+            <MovieInfo>
+              <MovieInfoTitle>결제번호</MovieInfoTitle>
+              <MovieInfoContent>: {$paymentKey}</MovieInfoContent>
+            </MovieInfo>
+          )}
           {$bookingDate && (
             <MovieInfo>
               <MovieInfoTitle>예매일</MovieInfoTitle>
@@ -164,10 +186,28 @@ const MovieInfoCard: React.FC<MovieInfoCardProps> = ({
               <MovieInfoContent>: {$duration}분</MovieInfoContent>
             </MovieInfo>
           )}
+          {$startTime && (
+            <MovieInfo>
+              <MovieInfoTitle>시작시간</MovieInfoTitle>
+              <MovieInfoContent>: {$startTime}</MovieInfoContent>
+            </MovieInfo>
+          )}
           {$location && (
             <MovieInfo>
-              <MovieInfoTitle>지점</MovieInfoTitle>
+              <MovieInfoTitle>지역</MovieInfoTitle>
               <MovieInfoContent>: {$location}</MovieInfoContent>
+            </MovieInfo>
+          )}
+          {$cinema && (
+            <MovieInfo>
+              <MovieInfoTitle>지점</MovieInfoTitle>
+              <MovieInfoContent>: {$cinema}</MovieInfoContent>
+            </MovieInfo>
+          )}
+          {$screenId && (
+            <MovieInfo>
+              <MovieInfoTitle>상영관</MovieInfoTitle>
+              <MovieInfoContent>: {$screenId}</MovieInfoContent>
             </MovieInfo>
           )}
         </MovieInfoList>

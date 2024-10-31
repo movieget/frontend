@@ -6,6 +6,10 @@ import { useEffect } from 'react'
 import MovieInfoCard from '../../components/MovieInfoCard/MovieInfoCard'
 import { client } from '../../apis/instances'
 import { useMutation } from '@tanstack/react-query'
+import { SvgSpinner } from '../../components/Loading/SvgSpinner'
+import { ErrorMsg } from '../KakaoCallback/KakaoCallback.styled'
+import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
+import { commonColors } from '../../styles/theme'
 
 const TossSuccess = () => {
   const navigate = useNavigate()
@@ -47,13 +51,6 @@ const TossSuccess = () => {
       )
       return { status: res.status, data: res.data }
     },
-    onSuccess: ({ status, data }) => {
-      console.log(status)
-      console.log(data)
-    },
-    onError: (err) => {
-      console.error(err)
-    },
   })
 
   // 뒤로가기 막기 -> 결제페이지로 가는것을 막고 메인페이지로 이동
@@ -83,34 +80,53 @@ const TossSuccess = () => {
   return (
     <ContainerLayout>
       <ChargeContainer>
-        <ChargeHeader>
-          <p>
-            50,000원
-            <br />
-            결제가 완료되었습니다.
-          </p>
-        </ChargeHeader>
-        <ChargeContentsBox>
-          <MovieInfoCard
-            $posterImage=''
-            $age='15'
-            $title='위키드'
-            $bookingDate='2024년 10월 22일'
-            $screeningDate='2024년 11월 20일'
-            $duration={160}
-            $adultCount={2}
-            $location='메가박스 울산 성남 지점'
-          />
-        </ChargeContentsBox>
-        <ChargeBtnBox>
-          {/* navigate - replace : true -> 페이지로 이동 후 뒤로가기 안됨 */}
-          <BasicBtn $size='large' onClick={() => navigate('/mypage', { replace: true })}>
-            예약내역확인
-          </BasicBtn>
-          <MainBtn $size='large' onClick={() => navigate('/')}>
-            메인으로가기
-          </MainBtn>
-        </ChargeBtnBox>
+        {tossPaymentMutation.isError && (
+          <ErrorMsg>
+            <LineMdAlertLoop color={commonColors.warning} width={120} height={120} />
+            <span>{tossPaymentMutation.error.message}</span>
+            <MainBtn $size='large' onClick={() => navigate('/')}>
+              메인으로 돌아가기
+            </MainBtn>
+          </ErrorMsg>
+        )}
+        {tossPaymentMutation.isPending && <SvgSpinner />}
+        {tossPaymentMutation.isSuccess && (
+          <>
+            <ChargeHeader>
+              <p>
+                {tossPaymentMutation.data?.data.amount + '원'}
+                <br />
+                결제가 완료되었습니다.
+              </p>
+            </ChargeHeader>
+            <ChargeContentsBox>
+              <MovieInfoCard
+                $posterImage={tossPaymentMutation.data?.data.poster}
+                $age={tossPaymentMutation.data?.data.age}
+                $title={tossPaymentMutation.data?.data.title}
+                $bookingDate={tossPaymentMutation.data?.data.date}
+                $screeningDate={tossPaymentMutation.data?.data.screening_date}
+                $duration={tossPaymentMutation.data?.data.duration}
+                $adultCount={tossPaymentMutation.data?.data.adult_count}
+                $youthCount={tossPaymentMutation.data?.data.child_count}
+                $location={tossPaymentMutation.data?.data.location}
+                $orderId={tossPaymentMutation.data?.data.orderId}
+                $paymentKey={tossPaymentMutation.data?.data.paymentKey}
+                $screenId={tossPaymentMutation.data?.data.screen_id}
+                $cinema={tossPaymentMutation.data?.data.cinema}
+              />
+            </ChargeContentsBox>
+            <ChargeBtnBox>
+              {/* navigate - replace : true -> 페이지로 이동 후 뒤로가기 안됨 */}
+              <BasicBtn $size='large' onClick={() => navigate('/mypage', { replace: true })}>
+                예약내역확인
+              </BasicBtn>
+              <MainBtn $size='large' onClick={() => navigate('/')}>
+                메인으로가기
+              </MainBtn>
+            </ChargeBtnBox>
+          </>
+        )}
       </ChargeContainer>
     </ContainerLayout>
   )
