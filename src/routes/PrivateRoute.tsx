@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import { useUserStore } from '../stores/userStore'
 import { SvgSpinner } from '../components/Loading/SvgSpinner'
 
-const PrivateRoute = ({ children }: React.ReactNode) => {
+interface PrivateRouteProps {
+  children: React.ReactNode
+}
+
+const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const userData = useUserStore((state) => state.userData)
   const navigate = useNavigate()
 
