@@ -16,6 +16,7 @@ interface IBookingState {
     cinema: string
     screenId: number
     screeningDate: string
+    seats: string[]
   }
 
   initialCountState: {
@@ -47,6 +48,7 @@ const initialBookingState = {
   cinema: '',
   screenId: 0,
   screeningDate: '',
+  seats: [],
 }
 
 const initialCountState = {

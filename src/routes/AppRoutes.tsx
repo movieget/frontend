@@ -86,21 +86,17 @@ const AppRoutes = () => {
         <Route
           path='/toss/success'
           element={
-            <PrivateRoute>
-              <Suspense fallback={<SvgSpinner />}>
-                <TossSuccess />
-              </Suspense>
-            </PrivateRoute>
+            <Suspense fallback={<SvgSpinner />}>
+              <TossSuccess />
+            </Suspense>
           }
         />
         <Route
           path='/toss/fail'
           element={
-            <PrivateRoute>
-              <Suspense fallback={<SvgSpinner />}>
-                <TossFail />
-              </Suspense>
-            </PrivateRoute>
+            <Suspense fallback={<SvgSpinner />}>
+              <TossFail />
+            </Suspense>
           }
         />
         <Route

@@ -13,6 +13,7 @@ interface IPriceSeatProps {
 
 // ISelectPeopleHeaderProps 정의
 export interface ISelectPeopleHeaderProps extends IPriceSeatProps {
+  seatId: string[]
   count: TCount
   setCount: React.Dispatch<React.SetStateAction<TCount>>
 }

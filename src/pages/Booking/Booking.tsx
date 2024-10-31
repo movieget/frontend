@@ -3,10 +3,16 @@ import CenterPageLayout from '../../components/Layouts/CenterPageLayout'
 import Booking01 from './Booking01/Booking01'
 import Booking02 from './Booking02/Booking02'
 import { useSearchParams } from 'react-router-dom'
+import { useBookingStore } from '../../stores/store'
 
 const Booking = () => {
   const [searchParams] = useSearchParams()
   const page = searchParams.get('page')
+  const bookData = useBookingStore((state) => state.initialBookingState)
+  const countData = useBookingStore((state) => state.initialCountState)
+
+  console.log('예약데이터: ', bookData)
+  console.log('카운트데이터: ', countData)
 
   return (
     <CenterPageLayout>

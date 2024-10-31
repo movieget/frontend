@@ -4,16 +4,52 @@ import { useLocation } from 'react-router-dom'
 import { TOSS_API_KEY } from '../../utils/constants'
 import { customAlphabet } from 'nanoid'
 import S from './style'
+import { useBookingStore } from '../../stores/store'
 
-const customerKey = '12930u0sda9jf0asoidj'
+const nanoid = customAlphabet('0123456789ABCDEF', 8)
+const customerKey = nanoid()
+const orderId = nanoid()
 
 const TossCheckout = () => {
-  const location = useLocation()
-  const nanoid = customAlphabet('0123456789ABCDEF', 8)
-  const orderId = nanoid()
-  const { amount, title, id, currency } = location.state
+  const lc = useLocation()
+  const bookData = useBookingStore((state) => state.initialBookingState)
+  const adultCount = useBookingStore((state) => state.initialCountState.adult_count)
+  const childCount = useBookingStore((state) => state.initialCountState.child_count)
+  const { currency, amount } = lc.state
   const [payment, setPayment] = useState(null)
-  console.log(location.state)
+
+  console.log('성인 카운트 데이터: ', adultCount)
+  console.log('아동 카운트 데이터: ', childCount)
+
+  const {
+    book_id,
+    poster,
+    age,
+    duration,
+    date,
+    start_time,
+    title,
+    location,
+    cinema,
+    screen_id,
+    screening_date,
+    adult_count,
+    child_count,
+  } = {
+    book_id: bookData.bookId,
+    poster: bookData.poster,
+    age: bookData.age,
+    duration: bookData.duration,
+    title: bookData.title,
+    date: bookData.date.substring(0, 10),
+    start_time: bookData.startTime,
+    location: bookData.location,
+    cinema: bookData.cinema,
+    screen_id: bookData.screenId,
+    screening_date: bookData.screeningDate,
+    adult_count: adultCount,
+    child_count: childCount,
+  }
 
   useEffect(() => {
     async function fetchPayment() {
@@ -45,7 +81,8 @@ const TossCheckout = () => {
       },
       orderId: orderId, // 고유 주문번호
       orderName: title,
-      successUrl: window.location.origin + '/toss/success', // 결제 요청이 성공하면 리다이렉트되는 URL
+      successUrl: `${window.location.origin}/toss/success?book_id=${encodeURIComponent(book_id)}&poster=${encodeURIComponent(poster)}&age=${encodeURIComponent(age)}&duration=${encodeURIComponent(duration)}&date=${encodeURIComponent(date)}&start_time=${encodeURIComponent(start_time)}&title=${encodeURIComponent(title)}&location=${encodeURIComponent(location)}&cinema=${encodeURIComponent(cinema)}&screen_id=${encodeURIComponent(screen_id)}&screening_date=${encodeURIComponent(screening_date)}&adult_count=${encodeURIComponent(adult_count)}&child_count=${encodeURIComponent(child_count)}`,
+      // 결제 요청이 성공하면 리다이렉트되는 URL
       failUrl: window.location.origin + '/toss/fail', // 결제 요청이 실패하면 리다이렉트되는 URL
       // customerEmail: 'customer123@gmail.com',
       // customerName: '김토스',
