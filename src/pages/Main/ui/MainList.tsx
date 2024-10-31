@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
-import { StyleMovieCardWrapper, StyleMovieContents, StyleMovieTitle } from '../style'
+import {
+  StyleMovieCardWrapper,
+  StyleMovieContents,
+  StyleMovieTitle,
+  StyleMovieListWrapper,
+} from '../style'
 import { StyleTitle } from '../../../components/Badge/style'
 import MovieCard from '../../../components/MovieCard/MovieCard'
-import Slider from 'react-slick' // 일단제외 - 추후(필수)적용예정
+import Slider from 'react-slick'
 import { BasicBtn } from '../../../components/Button/style'
-import styled from 'styled-components'
 import { IfMovieListProps } from '../type'
 import { useUserStore } from '../../../stores/userStore'
 
@@ -13,52 +17,92 @@ const isPlayingMovies = [
   {
     id: 0,
     posterImage: '/img/detail_review01.jpg',
-    age: 'all',
     title: 'API 언제 나오나요?',
-    playing: '',
+    age: 'all',
+    playing: true,
     isLikes: true,
     totalLikes: 22500,
-    isPlaying: true,
   },
   {
     id: 1,
     posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 12,
     title: 'API는 아직 준비 중입니다',
-    isLikes: true,
+    age: '12',
+    playing: true,
+    isLikes: false,
     totalLikes: 15000,
-    isPlaying: false,
   },
   {
     id: 2,
     posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 'all',
     title: 'API 언제 나오나요?',
+    age: 'all',
+    playing: true,
     isLikes: true,
     totalLikes: 22500,
-    isPlaying: true,
   },
   {
     id: 3,
     posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 12,
     title: 'API는 아직 준비 중입니다',
+    age: '18',
+    playing: true,
     isLikes: true,
     totalLikes: 15000,
-    isPlaying: false,
   },
   {
     id: 4,
     posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 'all',
     title: 'API 언제 나오나요?',
+    age: 'all',
+    playing: true,
     isLikes: true,
     totalLikes: 22500,
-    isPlaying: true,
+  },
+  {
+    id: 5,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API 언제 나오나요?',
+    age: 'all',
+    playing: true,
+    isLikes: true,
+    totalLikes: 22500,
+  },
+  {
+    id: 6,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API는 아직 준비 중입니다',
+    age: '15',
+    playing: true,
+    isLikes: false,
+    totalLikes: 15000,
+  },
+  {
+    id: 7,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API 언제 나오나요?',
+    age: 'all',
+    playing: true,
+    isLikes: true,
+    totalLikes: 22500,
+  },
+  {
+    id: 8,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API는 아직 준비 중입니다',
+    age: '15',
+    playing: true,
+    isLikes: true,
+    totalLikes: 15000,
+  },
+  {
+    id: 9,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API 언제 나오나요?',
+    age: '12',
+    playing: true,
+    isLikes: true,
+    totalLikes: 22500,
   },
 ]
 
@@ -66,52 +110,92 @@ const notPlayingMovies = [
   {
     id: 0,
     posterImage: '/img/detail_review01.jpg',
-    age: 'all',
     title: 'API 언제 나오나요?',
-    playing: true,
-    isLikes: true,
+    age: 'all',
+    playing: false,
+    isLikes: false,
     totalLikes: 22500,
-    isPlaying: true,
   },
   {
     id: 1,
     posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 12,
     title: 'API는 아직 준비 중입니다',
-    isLikes: true,
+    age: '12',
+    playing: false,
+    isLikes: false,
     totalLikes: 15000,
-    isPlaying: false,
   },
   {
     id: 2,
     posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 'all',
     title: 'API 언제 나오나요?',
+    age: 'all',
+    playing: false,
     isLikes: true,
     totalLikes: 22500,
-    isPlaying: true,
   },
   {
     id: 3,
     posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 12,
     title: 'API는 아직 준비 중입니다',
+    age: '18',
+    playing: false,
     isLikes: true,
     totalLikes: 15000,
-    isPlaying: false,
   },
   {
     id: 4,
     posterImage: '/img/detail_review01.jpg',
-    playing: true,
-    age: 'all',
     title: 'API 언제 나오나요?',
+    age: 'all',
+    playing: false,
     isLikes: true,
     totalLikes: 22500,
-    isPlaying: true,
+  },
+  {
+    id: 5,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API 언제 나오나요?',
+    age: 'all',
+    playing: false,
+    isLikes: false,
+    totalLikes: 22500,
+  },
+  {
+    id: 6,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API는 아직 준비 중입니다',
+    age: '15',
+    playing: false,
+    isLikes: true,
+    totalLikes: 15000,
+  },
+  {
+    id: 7,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API 언제 나오나요?',
+    age: 'all',
+    playing: false,
+    isLikes: true,
+    totalLikes: 22500,
+  },
+  {
+    id: 8,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API는 아직 준비 중입니다',
+    age: '15',
+    playing: false,
+    isLikes: true,
+    totalLikes: 15000,
+  },
+  {
+    id: 9,
+    posterImage: '/img/detail_review01.jpg',
+    title: 'API 언제 나오나요?',
+    age: '12',
+    playing: false,
+    isLikes: false,
+    totalLikes: 22500,
   },
 ]
 
@@ -120,23 +204,25 @@ const notPlayingMovies = [
 const MainList: React.FC<IfMovieListProps> = () => {
   // list 불러오는 데이터API 호출
   // userId 담겨있는 상태 불러와서 list에 매치시켜서 좋아요수 반영
-  const userId = useUserStore((state) => state.userId)
-  // 새로고침하면 렌더링시 userId 못가져옴
+  const userId = useUserStore((state) => state.userData?.id)
   console.log(userId)
 
   useEffect(() => {}, [])
   // slick 설정
   var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 2,
-    arrows: true,
-    initialSlide: 0,
+    arrows: true, // 화살표
+    dots: true, // 하단 점
+    infinite: true, // 슬라이더 처음-마지막 연결
+    slidesToShow: 4, // 1줄에 보이는 컨텐츠 수
+    slidesToScroll: 2, // 한번에 넘어가는 콘텐츠 수
+    autoplay: true, // 자동 슬라이드
+    autoplaySpeed: 5000, // 자동 슬라이드 넘어가는 시간
+    draggable: true, // 드래그 가능 - 기본값: true
+    pauseOnHover: true, // 호버시 멈춤
+    initialSlide: 0, // 처음에 보여질 슬라이드 번호
+    speed: 1000,
   }
 
-  // *MovieCard코드 다시 한번 확인해보고 적용해볼것
   return (
     <StyleMovieCardWrapper>
       <StyleMovieContents>
@@ -144,110 +230,47 @@ const MainList: React.FC<IfMovieListProps> = () => {
           <StyleTitle>상영중 TOP 10</StyleTitle>
           <BasicBtn $size='small'>더보기</BasicBtn>
         </StyleMovieTitle>
-        <StyleMoviePlayingList>
-          {/* // dummy로 넣어놓은 정보들이 제목, 이미지, 나이, 좋아요수 제외하고 정상적용 되지 않고 있음 */}
-          {isPlayingMovies.map((item) => (
-            <MovieCard
-              key={item.id}
-              $movieId={item.id}
-              $posterImage={item.posterImage}
-              $title={item.title}
-              $age={item.age ?? 'all'}
-              $playing={true}
-              $totalLikes={item.totalLikes}
-              $isBooking={true}
-            />
-          ))}
-        </StyleMoviePlayingList>
+        <StyleMovieListWrapper>
+          <Slider {...settings}>
+            {isPlayingMovies.map((item) => (
+              <MovieCard
+                key={item.id}
+                movieId={item.id}
+                posterImage={item.posterImage}
+                title={item.title}
+                age={item.age}
+                playing={item.playing}
+                isLikes={item.isLikes}
+                totalLikes={item.totalLikes}
+              />
+            ))}
+          </Slider>
+        </StyleMovieListWrapper>
       </StyleMovieContents>
       <StyleMovieContents>
         <StyleMovieTitle>
           <StyleTitle>개봉예정 TOP 10</StyleTitle>
           <BasicBtn $size='small'>더보기</BasicBtn>
         </StyleMovieTitle>
-        <StyleMoviePlayingList>
-          {notPlayingMovies.map((item) => {
-            return (
+        <StyleMovieListWrapper>
+          <Slider {...settings}>
+            {notPlayingMovies.map((item) => (
               <MovieCard
                 key={item.id}
-                $movieId={item.id}
-                $posterImage={item.posterImage}
-                $title={item.title}
-                $age={item.age ?? 'all'}
-                $playing={true}
-                $totalLikes={item.totalLikes}
-                $isBooking={true}
+                movieId={item.id}
+                posterImage={item.posterImage}
+                title={item.title}
+                age={item.age}
+                playing={item.playing}
+                isLikes={item.isLikes}
+                totalLikes={item.totalLikes}
               />
-            )
-          })}
-        </StyleMoviePlayingList>
+            ))}
+          </Slider>
+        </StyleMovieListWrapper>
       </StyleMovieContents>
     </StyleMovieCardWrapper>
   )
 }
 
 export default MainList
-
-// 슬릭 스타일 설정
-const StyleMoviePlayingList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.8rem;
-  width: 100%;
-
-  img {
-    width: 20rem;
-  }
-
-  div:focus-visible {
-    outline: none;
-  }
-  .slick-track {
-    display: flex;
-    gap: 1.8rem;
-    width: 100%;
-
-    &::before,
-    &::after {
-      display: none;
-    }
-  }
-  .slick-arrow {
-    display: block !important;
-    position: absolute;
-  }
-  .slick-dots {
-    li {
-      width: auto;
-      height: auto;
-      margin: 0 4px;
-      button {
-        content: '';
-        position: initial;
-        display: block;
-        width: 8px;
-        height: 8px;
-        padding: 0;
-        line-height: initial;
-        background-color: #353535;
-        border: 1px solid;
-        border-color: #353535;
-        border-radius: 4px;
-        opacity: 1;
-        transition: all 0.3s;
-        &::before {
-          display: none;
-        }
-      }
-
-      &.slick-active {
-        button {
-          width: 12px;
-          background-color: #f45917;
-          border-color: #ff8b59;
-          transition: all 0.3s;
-        }
-      }
-    }
-  }
-`
