@@ -5,42 +5,10 @@ import { IResultAsideProps } from '../../Booking02.types'
 import BS2 from '../../Booking02.styled'
 import { useBookingStore } from '../../../../../stores/store'
 import NoImageCard from '../../../../../components/NoImageCard/NoImageCard'
-import { useMutation } from '@tanstack/react-query'
-import { postMovieData } from '../../../../../apis/bookingApi'
-
-// postMovieData({
-//   booking_id: bookId,
-//   poster_url: poster,
-//   title: title,
-//   duration: duration,
-//   booking_date: date,
-//   screening_date: screeningDate,
-//   age_rating: age,
-//   seats: seatId,
-//   total_price: totalPrice,
-//   adult_count: count.adult_count,
-//   child_count: count.child_count,
-//   screening_time: startTime,
-//   spot: location,
-//   cinema_name: cinema,
-//   screen_number: screenNumber,
-// }),
 
 const ResultAside = ({ totalPrice, count, seatId, totalSeat }: IResultAsideProps) => {
   const navigate = useNavigate()
-  const {
-    bookId,
-    poster,
-    age,
-    duration,
-    title,
-    date,
-    startTime,
-    location,
-    cinema,
-    screenNumber,
-    screeningDate,
-  } = useBookingStore((state) => state.initialBookingState)
+  const { bookId, poster, title } = useBookingStore((state) => state.initialBookingState)
   // const postBookingData = useMutation({
   //   mutationFn: () =>
 

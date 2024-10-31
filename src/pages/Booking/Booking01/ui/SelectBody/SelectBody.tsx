@@ -8,15 +8,17 @@ import SelectTheaters from './ui/SelectTheaters'
 import { useQuery } from '@tanstack/react-query'
 import { fetchMovieData } from '../../../../../apis/bookingApi'
 import SelectTimes from './ui/SelectTimes'
+import { useUserStore } from '../../../../../stores/userStore'
 
 const SelectBody = () => {
   const { date, title, location, cinema } = useBookingStore((state) => state.initialBookingState)
+  const { id } = useUserStore((state) => state.userData || {})
   const [isValid, setIsValid] = useState(false)
   const [isTimeSelected, setIsTimeSelected] = useState(false)
   const { data, isLoading, error, isError, refetch } = useQuery({
-    queryKey: ['bookingData', date],
-    queryFn: () => fetchMovieData(date),
-    enabled: !!date,
+    queryKey: ['bookingData', date, id],
+    queryFn: () => fetchMovieData(date, id),
+    enabled: !!date && !!id,
     staleTime: 1000 * 10,
     retry: 1,
   })

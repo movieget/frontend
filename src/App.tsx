@@ -4,7 +4,6 @@ import theme from './styles/theme'
 import CommonLayout from './components/Layouts/CommonLayout'
 import ResetCSS from './styles/ResetCSS'
 import { useDarkModeStore } from './stores/store'
-import AuthRoutes from './routes/AuthRoutes'
 
 function App() {
   const isDarkMode = useDarkModeStore((state) => state.isDarkMode)
@@ -14,7 +13,6 @@ function App() {
         <ResetCSS />
         <CommonLayout>
           <AppRoutes />
-          <AuthRoutes />
         </CommonLayout>
       </ThemeProvider>
     </>
