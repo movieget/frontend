@@ -38,14 +38,8 @@ auth.interceptors.request.use(
       console.warn('No USER_DATA found in localStorage.')
     }
 
-    const refreshToken = Cookies.get('refresh_token') // 쿠키에서 리프레시 토큰 가져오기
-
     if (accessToken) {
       config.headers['Authorization'] = `Bearer ${accessToken}` // 엑세스 토큰 헤더 추가
-    }
-
-    if (refreshToken) {
-      config.headers['Refresh-Token'] = refreshToken // 리프레시 토큰 헤더 추가
     }
 
     // 본문(body)에 user_id 추가 (POST 요청 시)
@@ -80,15 +74,6 @@ auth.interceptors.response.use(
           throw new Error('잘못된 요청입니다. 요청 내용을 확인하세요.')
         case 401:
           console.log('Access token expired, attempting to refresh automatically.')
-
-          // 쿠키에서 리프레시 토큰 가져오기
-          const refreshToken = Cookies.get('refresh_token')
-
-          if (!refreshToken) {
-            console.error('Refresh token is not available. User may be logged out.')
-            useUserStore.getState().setLogout() // Zustand store의 setLogout 호출
-            throw new Error('로그인 세션이 만료되었습니다. 다시 로그인해주세요.')
-          }
 
           // 로컬 스토리지에서 USER_DATA 가져오기
           const userData = localStorage.getItem('USER_DATA')
