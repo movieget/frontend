@@ -4,6 +4,10 @@ import { kakaoLogin } from './model'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 import { useEffect } from 'react'
 import { useUserStore } from '../../stores/userStore'
+import { commonColors } from '../../styles/theme'
+import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
+import { MainBtn } from '../../components/Button/style'
+import { ErrorMsg } from './KakaoCallback.styled'
 
 // 백엔드로부터 인가코드 전달 후 data 받음
 const KakaoCallback = () => {
@@ -35,7 +39,15 @@ const KakaoCallback = () => {
   return (
     <>
       {isLoading && <SvgSpinner />}
-      {isError && <div>{error.message}</div>}
+      {isError && (
+        <ErrorMsg>
+          <LineMdAlertLoop color={commonColors.warning} width={120} height={120} />
+          <span>{error.message}</span>
+          <MainBtn $size='large' onClick={() => navigate('/')}>
+            메인으로 돌아가기
+          </MainBtn>
+        </ErrorMsg>
+      )}
     </>
   )
 }
