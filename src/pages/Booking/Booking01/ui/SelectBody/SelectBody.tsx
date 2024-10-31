@@ -12,7 +12,7 @@ import { useUserStore } from '../../../../../stores/userStore'
 
 const SelectBody = () => {
   const { date, title, location, cinema } = useBookingStore((state) => state.initialBookingState)
-  const { id } = useUserStore((state) => state.userData || {})
+  const { id } = useUserStore((state) => state.userData)
   const [isValid, setIsValid] = useState(false)
   const [isTimeSelected, setIsTimeSelected] = useState(false)
   const { data, isLoading, error, isError, refetch } = useQuery({

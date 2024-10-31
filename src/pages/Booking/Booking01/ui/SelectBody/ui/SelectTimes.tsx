@@ -34,7 +34,7 @@ const SelectTimes = ({ setIsTimeSelected, screenings, isValid, date }: ISelectTi
               id={el.id}
               screenId={el.screen_id}
               screeningDate={el.screening_date}
-              time={el.start_time}
+              time={el.start_time.substring(0, 5)}
               selectedId={selectedId === el.id}
               setSelectedId={setSelectedId}
               setIsTimeSelected={setIsTimeSelected}
