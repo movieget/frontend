@@ -4,6 +4,7 @@ import { IconBtn, IconBtnImg, MainBtn } from '../Button/style'
 import { useNavigate } from 'react-router-dom'
 import { useUserStore } from '../../stores/userStore'
 import { useEffect } from 'react'
+import { fetchLogout } from '../../apis/userApi'
 
 const Header = () => {
   const navigate = useNavigate()
@@ -15,8 +16,12 @@ const Header = () => {
   }, [])
 
   const handleLogout = () => {
-    setLogout()
-    navigate('/')
+    if (userData) {
+      // 로그아웃 함수 추가
+      fetchLogout(userData.access_token)
+      setLogout()
+      navigate('/')
+    }
   }
 
   // const logoutHandler = () => {
