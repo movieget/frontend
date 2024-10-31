@@ -19,7 +19,7 @@ const TimeButton = ({
     setIsTimeSelected(!selectedId)
     setSelectedId(toggleStyle)
     setField('startTime', selectedId ? '' : time)
-    setField('screenId', selectedId ? '' : screenId)
+    setField('screenId', selectedId ? null : screenId)
     setField('screeningDate', selectedId ? '' : screeningDate)
   }
   return (

@@ -5,7 +5,7 @@ import { useBookingStore } from '../../../../../../stores/store'
 
 const ResultInfo = ({ count, seatId }: IResultInfoProps) => {
   const seatCount = seatId.join(' / ')
-  const { title, age, date, startTime, location, cinema, screenNumber } = useBookingStore(
+  const { title, age, date, startTime, location, cinema, screenId } = useBookingStore(
     (state) => state.initialBookingState,
   )
 
@@ -22,7 +22,7 @@ const ResultInfo = ({ count, seatId }: IResultInfoProps) => {
       </p>
       <p>좌석 : {seatId.length !== 0 ? `[ ${seatCount} ]` : '[ 좌석을 선택해주세요 ]'}</p>
       <p>지점 : {`${location} ${cinema}`}</p>
-      <p>상영관 : {screenNumber}</p>
+      <p>상영관 : {screenId}</p>
     </BS2.AsideInfoWrapper>
   )
 }

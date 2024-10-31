@@ -50,3 +50,16 @@ export interface IResultAsideProps {
   count: TCount
   seatId: string[]
 }
+
+export type TRowSeat = {
+  row: string // 'row' 속성 추가
+  seats: {
+    column: string
+    status: boolean | null
+  }[]
+}
+
+export interface ISeatData {
+  screen_id: number | null
+  rows: TRowSeat[]
+}

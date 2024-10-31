@@ -54,6 +54,7 @@ export interface ISelectMoviesProps {
   isError: boolean
   error?: Error | null
   date: string
+  bookId: number
 }
 
 export interface IErrorMessageProps {
@@ -101,6 +102,8 @@ export interface ITimeButtonProps {
   time?: string
   id: number
   selectedId: boolean
+  screenId: number
+  screeningDate: string
   onSelect: (id: number) => void
   setSelectedId: (toggleStyle: number | null) => void
   setIsTimeSelected: React.Dispatch<React.SetStateAction<boolean>>
