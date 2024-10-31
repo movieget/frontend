@@ -4,24 +4,59 @@ import { Checkbox, CheckboxWrapper, CheckHeartCount } from '../Checkbox/style'
 import { formatLikes } from '../../utils/formatLikes'
 import { BasicBtn, MainBtn } from '../Button/style'
 import NoImageCard from '../NoImageCard/NoImageCard'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Movie } from '../../pages/Movie/Movie'
-// import { useState } from 'react'
-// import { useMutation } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
+import { useMutation, useQuery } from '@tanstack/react-query'
+import { useUserStore } from '../../stores/userStore'
+import { client } from '../../apis/instances'
 
-// const toggleLike = async (id: number, isLiked: boolean) => {
-//   const response = await fetch('/favorite', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({ id, liked: isLiked }),
-//   })
-//   if (!response.ok) {
-//     throw new Error('김대식')
-//   }
-// }
+// 좋아요 상태를 포스트하는 함수
+const postLikeStatus = async ({
+  id,
+  isLiked,
+  userId,
+}: {
+  id: number
+  isLiked: boolean
+  userId: number | null
+}) => {
+  try {
+    const response = await client.post(
+      `/favorite/${userId}`,
+      {
+        is_liked: isLiked,
+        movie_id: id,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    return response.data // 필요에 따라 데이터를 반환
+  } catch (err) {
+    console.error(err) // 에러 로그 출력
+    throw new Error('네트워크 오류가 발생했습니다.') // 에러 핸들링
+  }
+}
 
+// 사용자의 좋아요 상태를 가져오는 함수
+const fetchLikes = async (userId: number, movie_id: number) => {
+  try {
+    const res = await client.get(`/favorite?user_id=${userId}&movie_id=${movie_id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const data = res.data
+    return data
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+// MovieCard 컴포넌트 정의
 const MovieCard = ({
   id,
   posterImage,
@@ -37,23 +72,54 @@ const MovieCard = ({
   isLikes,
   totalLikes,
 }: Movie) => {
-  // const [isChecked, setIsChecked] = useState(isLikes)
+  const user = useUserStore((state) => state.userData)
+  const userId = user ? user.id : null
+  const navigate = useNavigate()
 
-  // const mutation = useMutation({
-  //   mutationFn: toggleLike,
-  //   onSuccess: (data) => {
-  //     console.log('aa', data)
-  //   },
-  //   onError: (error) => {
-  //     console.log('bb', error)
-  //   },
-  // })
+  // useQuery로 좋아요 상태를 가져오는 쿼리
+  const { data } = useQuery({
+    queryKey: ['favorite', userId, id], // 쿼리 키 설정
+    queryFn: () => fetchLikes(userId, id), // 좋아요 상태 가져오는 함수
+    enabled: !!userId, // userId가 존재할 때만 쿼리 실행
+  })
 
-  // const handleCheckboxChange = () => {
-  //   const newCheckedState = !isChecked
-  //   setIsChecked(newCheckedState)
-  //   mutation.mutate(id, newCheckedState)
-  // }
+  // isChecked 상태 초기화
+  const [isChecked, setIsChecked] = useState(isLikes)
+
+  // totalCount
+  const [likesCount, setLikesCount] = useState(totalLikes)
+
+  // useEffect를 사용하여 data가 업데이트될 때 isChecked를 설정
+  useEffect(() => {
+    if (data) {
+      setIsChecked(data.is_liked) // 데이터가 존재하면 is_liked로 상태 업데이트
+    }
+  }, [data]) // data가 변경될 때마다 실행
+
+  // 좋아요 상태 변경 뮤테이션 정의
+  const mutation = useMutation({
+    mutationFn: postLikeStatus,
+    onSuccess: (data) => {
+      // 성공 시 데이터 로그
+    },
+    onError: (error) => {
+      console.log('에러', error) // 에러 발생 시 출력
+    },
+  })
+
+  // 체크박스 변경 핸들러
+  const handleCheckboxChange = () => {
+    if (!user) {
+      alert('로그인을 해주세요.') // 사용자 로그인 확인
+      navigate('/login') // 로그인 페이지로 이동
+    } else {
+      const newCheckedState = !isChecked // 체크박스 상태 반전
+      setIsChecked(newCheckedState) // 새로운 체크 상태 설정
+      mutation.mutate({ id, isLiked: newCheckedState, userId }) // 좋아요 상태 변경 요청
+      setLikesCount((prevCount) => (newCheckedState ? prevCount + 1 : prevCount - 1))
+    }
+  }
+
   return (
     <MovieCardHolder>
       <MoviePosterImgBox>
@@ -90,7 +156,7 @@ const MovieCard = ({
               trailerUrl,
               actorImages,
               isLikes,
-              totalLikes,
+              totalLikes: likesCount,
             }}
           >
             <BasicBtn $size='large'>영화정보</BasicBtn>
@@ -102,8 +168,8 @@ const MovieCard = ({
             type='checkbox'
             id={`idFor${id}`}
             name=''
-            // onChange={handleCheckboxChange}
-            // checked={isChecked}
+            onChange={handleCheckboxChange}
+            checked={isChecked} // 체크박스 상태
           />
           <CheckHeartCount
             htmlFor={`idFor${id}`}
@@ -112,7 +178,7 @@ const MovieCard = ({
             $borderColor='transparent'
             $color='transparent'
           >
-            {formatLikes(totalLikes)}
+            {formatLikes(likesCount)}
           </CheckHeartCount>
         </CheckboxWrapper>
       </MovieCardActionBox>
@@ -122,6 +188,7 @@ const MovieCard = ({
 
 export default MovieCard
 
+// 스타일 정의
 const MovieCardHolder = styled.div`
   max-width: 50rem;
   position: relative;

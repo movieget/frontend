@@ -20,18 +20,18 @@ export interface Movie {
   title: string // 영화 제목
   age: 'all' | '12' | '15' | '18' // 연령 제한
   playing: boolean // 상영중 & 개봉예정
-  genre: string[] // 장르 배열
+  genre: string // 장르 배열
   duration: number // 상영 시간 (분)
   overview: string // 영화 개요
   trailerUrl: string // 트레일러 URL (선택적)
-  actorImages: { name: string; image: string }[] // 출연 배우 배열
+  actorImages: { name: string; imageUrl: string }[] // 출연 배우 배열
   isLikes: boolean // 좋아요 여부
   totalLikes: number // 총 좋아요 수
 }
 
-const fetchMovieData = async (type: 'now' | 'soon') => {
+const fetchMovieData = async (type: 'now' | 'soon', page: number) => {
   try {
-    const res = await client.get(`/movie/movies/${type}?page=1&limit=10`, {
+    const res = await client.get(`/movie/movies/${type}?page=${page}&limit=10`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -45,11 +45,13 @@ const fetchMovieData = async (type: 'now' | 'soon') => {
 // 무한스크롤
 const useGetMovieData = (menu: 'now' | 'soon') => {
   return useInfiniteQuery({
-    queryKey: [`${menu}-data`],
-    queryFn: ({ pageParam }) => fetchMovieData(menu),
+    queryKey: ['review-data'],
+    queryFn: ({ pageParam }) => {
+      return fetchMovieData(menu, pageParam)
+    },
     getNextPageParam: (last) => {
-      if (last.currentPage < last.totalPages) {
-        return last.currentPage + 1
+      if (last.nextPage < last.total) {
+        return last.nextPage
       }
       return undefined
     },
@@ -111,7 +113,7 @@ const Movie = () => {
     }
   }
 
-  console.log(movieData)
+  console.log(data)
 
   const sortedMovieData = sortMovies(movieData)
 

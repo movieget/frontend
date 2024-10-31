@@ -20,6 +20,7 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
     slidesToShow: 6,
     slidesToScroll: 1,
   }
+  // console.log(movie)
 
   return (
     <>
@@ -73,7 +74,7 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
               width='100%'
               style={{ aspectRatio: '16 / 9', height: 'auto' }}
               // src={movie.trailerUrl}
-              src={`https://www.youtube.com/embed/P5Vc2IxPPUI`}
+              src={`https://www.youtube.com/embed/${movie.trailerUrl}`}
               title={movie.title}
               frameBorder='0'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
@@ -92,16 +93,15 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
             <Slider {...settings}>
               {movie.actorImages.map((item, index) => (
                 <MovieActor key={index}>
-                  <MovieActorImg src={item} style={{ width: '100%', height: 'auto' }} />
-                  {/* {item.image ? (
+                  {item.imageUrl ? (
                     <MovieActorImg
-                      src={item.image}
+                      src={item.imageUrl}
                       alt={item.name}
                       style={{ width: '100%', height: 'auto' }}
                     />
                   ) : (
                     <NoImageCard $width='100%' />
-                  )} */}
+                  )}
                   <MovieActorName>{item.name}</MovieActorName>
                 </MovieActor>
               ))}
