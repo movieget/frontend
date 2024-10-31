@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { KAKAO_BASE_URL } from '../utils/constants'
-import Cookies from 'js-cookie'
 import { useUserStore } from '../stores/userStore'
 
 axios.defaults.withCredentials = true
