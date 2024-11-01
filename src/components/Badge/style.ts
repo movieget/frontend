@@ -57,6 +57,7 @@ export const StyleAge = styled.span<IfStyleAge>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-width: 2rem;
   width: 2rem;
   height: 2rem;
   border-radius: 0.4rem;
