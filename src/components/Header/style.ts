@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
   width: 100%;
   height: 74px;
   font-size: 1.8rem;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.bg};
