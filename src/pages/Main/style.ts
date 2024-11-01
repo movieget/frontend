@@ -43,8 +43,8 @@ export const StyleTrailerText = styled.div`
   // 트레일러 텍스트
   // 부모요소 기준
   position: absolute;
-  left: 52rem;
-  top: 60rem;
+  left: 20%;
+  top: 55%;
   z-index: 3;
 `
 export const StyleTrailerTitle = styled.div`
