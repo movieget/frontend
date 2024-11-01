@@ -21,4 +21,7 @@ export default CommonLayout
 const Main = styled.main`
   width: 100%;
   /* height: 100%; */
+  min-height: calc(100% - 30rem);
+  height: auto;
+  margin-top: 74px;
 `

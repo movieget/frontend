@@ -67,7 +67,10 @@ const Footer = () => {
 export default Footer
 
 const StyleFooter = styled.footer`
-  padding: 4.4rem 0;
+  display: flex;
+  align-items: center;
+  height: 30rem;
+  margin-top: 12rem;
   background-color: #0a0a0a;
   border-top: 1px solid #3f3f3f;
 `
