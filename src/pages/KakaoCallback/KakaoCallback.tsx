@@ -8,6 +8,7 @@ import { commonColors } from '../../styles/theme'
 import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
 import { MainBtn } from '../../components/Button/style'
 import { ErrorMsg } from './KakaoCallback.styled'
+import ContainerLayout from '../../components/Layouts/ContainerLayout'
 
 // 백엔드로부터 인가코드 전달 후 data 받음
 const KakaoCallback = () => {
@@ -37,7 +38,7 @@ const KakaoCallback = () => {
   // 로딩상태, error 상태메세지 출력
   // * error메세지 출력 후 로그인페이지로 돌아갈수 있게 에러 핸들링
   return (
-    <>
+    <ContainerLayout>
       {isLoading && <SvgSpinner />}
       {isError && (
         <ErrorMsg>
@@ -48,7 +49,7 @@ const KakaoCallback = () => {
           </MainBtn>
         </ErrorMsg>
       )}
-    </>
+    </ContainerLayout>
   )
 }
 export default KakaoCallback

@@ -8,7 +8,9 @@ export const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: ${({ theme }) => theme.colors.bg};
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(24px);
 `
 export const Nav = styled.nav`
   display: flex;

@@ -4,7 +4,7 @@ const BoxRow = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex: 1;
   gap: 2rem;
 `
@@ -67,7 +67,7 @@ const AsideWrapper = styled.div`
   width: 100%;
   min-width: 250px;
   max-width: 300px;
-  height: 100%;
+  height: auto;
   background-color: ${({ theme }) => theme.colors.bg_wrapper};
   border: 1px solid ${({ theme }) => theme.colors.border_wrapper};
   border-radius: 4px;
