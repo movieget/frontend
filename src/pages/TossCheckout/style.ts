@@ -1,4 +1,16 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const displayPaymentUI = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+`
 
 //style.ts
 const Container = styled.div`
@@ -9,7 +21,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #202632;
 
   img {
     width: 12rem;
@@ -29,6 +40,7 @@ const PayCard = styled.div`
   border-radius: 4px;
   box-shadow: 0 0 5px 0 rgba(0 0 0 0.2);
   gap: 2rem;
+  animation: ${displayPaymentUI} 1s ease-in-out;
 
   h2 {
     width: 100%;
