@@ -6,7 +6,8 @@ export const ChargeContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 77rem;
-  height: 57rem;
+  min-height: 50rem;
+  padding: 4rem;
   border: 1px solid #474747;
   border-radius: 0.8rem;
   background-color: #181818;
