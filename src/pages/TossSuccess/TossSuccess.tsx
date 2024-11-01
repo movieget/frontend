@@ -10,6 +10,8 @@ import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../KakaoCallback/KakaoCallback.styled'
 import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
 import { commonColors } from '../../styles/theme'
+import MovieInfoCard2 from '../../components/MovieInfoCard/MovieInfoCard2'
+import { LineMdConfirmCircleFilled } from '../../assets/svg/LineMdConfirmCircleFilled'
 
 const TossSuccess = () => {
   const navigate = useNavigate()
@@ -93,6 +95,7 @@ const TossSuccess = () => {
         {tossPaymentMutation.isSuccess && (
           <>
             <ChargeHeader>
+              <LineMdConfirmCircleFilled width={64} height={64} />
               <p>
                 {tossPaymentMutation.data?.data.amount + '원'}
                 <br />
@@ -100,7 +103,7 @@ const TossSuccess = () => {
               </p>
             </ChargeHeader>
             <ChargeContentsBox>
-              <MovieInfoCard
+              <MovieInfoCard2
                 $posterImage={tossPaymentMutation.data?.data.poster}
                 $age={tossPaymentMutation.data?.data.age}
                 $title={tossPaymentMutation.data?.data.title}

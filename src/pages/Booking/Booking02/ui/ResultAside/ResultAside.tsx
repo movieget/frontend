@@ -5,14 +5,14 @@ import { IResultAsideProps } from '../../Booking02.types'
 import BS2 from '../../Booking02.styled'
 import { useBookingStore } from '../../../../../stores/store'
 import NoImageCard from '../../../../../components/NoImageCard/NoImageCard'
+import { useState } from 'react'
+import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
 
 const ResultAside = ({ totalPrice, count, seatId, totalSeat }: IResultAsideProps) => {
   const navigate = useNavigate()
   const { bookId, poster, title } = useBookingStore((state) => state.initialBookingState)
-  // const postBookingData = useMutation({
-  //   mutationFn: () =>
+  const [isLoading, setIsLoading] = useState(true) // 이미지 로딩 상태
 
-  // })
   const handleTossPay = () => {
     navigate('/toss/checkout', {
       state: {
@@ -24,8 +24,6 @@ const ResultAside = ({ totalPrice, count, seatId, totalSeat }: IResultAsideProps
     })
   }
 
-  // 선택한 좌석의 갯수가 0보다 크거나
-  // 선택한 좌석의 갯수와 선택할 수 있는 좌석의 최대갯수가 일치할때.
   const isAllSeatSelected = seatId.length > 0 && seatId.length === totalSeat
 
   return (
@@ -37,11 +35,23 @@ const ResultAside = ({ totalPrice, count, seatId, totalSeat }: IResultAsideProps
             이전
           </BasicBtn>
           <MainBtn $size='medium' disabled={!isAllSeatSelected} onClick={handleTossPay}>
-            {`${totalPrice}원 결제하기`}
+            {`${totalPrice.toLocaleString()}원 결제하기`} {/* 3자리마다 쉼표 표시 */}
           </MainBtn>
         </BS2.AsideBtnWrapper>
       </BS2.BackDropLayer>
-      {poster !== '' ? <img src={poster} alt={title} /> : <NoImageCard $width='100%' />}
+      {poster !== '' ? (
+        <>
+          {isLoading && <SvgSpinner />}
+          <img
+            src={poster}
+            alt={title}
+            onLoad={() => setIsLoading(false)} // 이미지 로딩 완료 시 로딩 상태 업데이트
+            style={{ display: isLoading ? 'none' : 'block' }} // 로딩 중일 때 이미지 숨기기
+          />
+        </>
+      ) : (
+        <NoImageCard $width='100%' />
+      )}
     </BS2.AsideWrapper>
   )
 }
