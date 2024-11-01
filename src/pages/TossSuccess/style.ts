@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-//style.ts
 export const ChargeContainer = styled.div`
   display: flex;
   flex-direction: column;
