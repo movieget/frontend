@@ -96,7 +96,7 @@ const TossSuccess = () => {
             <ChargeHeader>
               <LineMdConfirmCircleFilled width={64} height={64} />
               <p>
-                {tossPaymentMutation.data?.data.amount + '원'}
+                {tossPaymentMutation.data?.data.amount.toLocaleString() + '원'}
                 <br />
                 결제가 완료되었습니다.
               </p>
