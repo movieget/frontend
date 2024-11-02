@@ -34,8 +34,8 @@ const Login = () => {
           <SocialBtn $social='kakao' onClick={kakaoLoginHandler}>
             카카오로 시작하기
           </SocialBtn>
-          <SocialBtn $social='google'>구글로 시작하기</SocialBtn>
           <SocialBtn $social='naver'>네이버로 시작하기</SocialBtn>
+          <SocialBtn $social='google'>구글로 시작하기</SocialBtn>
         </StyleLoginBtnWrapper>
       </StyleLoginContainer>
     </ContainerLayout>

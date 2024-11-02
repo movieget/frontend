@@ -17,8 +17,7 @@ const KakaoCallback = () => {
   const { setIsLogin } = useUserStore()
   const code = searchParams.get('code')
 
-  // 인가코드 추출 확인
-  // console.log(code)
+  // 인가코드 추출 확인 console.log(code)
 
   // 데이터 요청
   const { data, isLoading, isError, error } = useQuery({
@@ -36,7 +35,6 @@ const KakaoCallback = () => {
   }, [data])
 
   // 로딩상태, error 상태메세지 출력
-  // * error메세지 출력 후 로그인페이지로 돌아갈수 있게 에러 핸들링
   return (
     <ContainerLayout>
       {isLoading && <SvgSpinner />}
