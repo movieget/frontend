@@ -32,11 +32,10 @@ const Header = () => {
   //   // * user토큰 정보 없애는 delete API요청 보내기
   //   // * 토큰값을 요청에 넣어서 delete요청 하기
   // }
-  // 유저정보 확인
 
-  // *새로고침하면 렌더링시 userId 못가져옴 => useEffect 사용해서 불러와볼것!
+  // 유저정보 확인
+  // 리로드 될때 토큰꺼내와서 서버에 로그인요청 보낸후 유저데이터 로드
   // useEffect(() => {
-  //   // *리로드 될때 토큰꺼내와서 서버에 로그인요청 보낸후 유저데이터 로드
   //   const isAuth = () => {
   //     const Token = window.localStorage.getItem('UserState')
   //     const { data, isLoading, isError, error } = useQuery({
@@ -46,8 +45,6 @@ const Header = () => {
   //     })
   //   }
   // }, [])
-
-  // const isAuth = localStorage.getItem('TOKEN')
 
   const pageMove = (page: string) => {
     navigate(`/${page}`)
