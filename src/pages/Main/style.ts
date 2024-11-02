@@ -60,15 +60,17 @@ export const StyleTrailerTitle = styled.div`
 // -webkit 관련 속성: 레거시... -> 사용이유: 줄거리가 길때 말줄임표를 표현하는데 있어 가장 자연스럽게 표현되는 속성
 export const StyleTrailerOverview = styled.span`
   // 트레일러 영화 줄거리
+  width: 32rem;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   margin-top: 4rem;
+  overflow: hidden;
   font-size: 2rem;
   color: ${({ theme }) => theme.colors.text_in_box};
   line-height: 2;
+  word-break: keep-all;
   text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   pointer-events: none;
 `
 
@@ -125,6 +127,7 @@ export const StyleMovieListWrapper = styled.div`
   }
 
   .slick-arrow {
+    // Card가 세로로 정렬되던 부분 수정: 아래 주석 건들지 마세요
     /* display: none !important; */
     /* display: block !important; */
     position: absolute;

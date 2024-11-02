@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
   StyleMovieCardWrapper,
   StyleMovieContents,
@@ -9,205 +9,207 @@ import { StyleTitle } from '../../../components/Badge/style'
 import MovieCard from '../../../components/MovieCard/MovieCard'
 import Slider from 'react-slick'
 import { BasicBtn } from '../../../components/Button/style'
-import { IfMovieListProps } from '../type'
+import { IfMovieStoreProps } from '../type'
+import { useSearchParams } from 'react-router-dom'
 import { useUserStore } from '../../../stores/userStore'
+import { useMovieStore } from '../../../stores/store'
 
 // dummy
-const isPlayingMovies = [
+const isNowMovies = [
   {
     id: 0,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: true,
-    isLikes: true,
-    totalLikes: 22500,
+    is_likes: true,
+    total_likes: 22500,
   },
   {
     id: 1,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API는 아직 준비 중입니다',
-    age: '12',
+    age_rating: '12',
     playing: true,
-    isLikes: false,
-    totalLikes: 15000,
+    is_likes: false,
+    total_likes: 15000,
   },
   {
     id: 2,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: true,
-    isLikes: true,
-    totalLikes: 22500,
+    is_likes: true,
+    total_likes: 22500,
   },
   {
     id: 3,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API는 아직 준비 중입니다',
-    age: '18',
+    age_rating: '18',
     playing: true,
-    isLikes: true,
-    totalLikes: 15000,
+    is_likes: true,
+    total_likes: 15000,
   },
   {
     id: 4,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: true,
-    isLikes: true,
-    totalLikes: 22500,
+    is_likes: true,
+    total_likes: 22500,
   },
   {
     id: 5,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: true,
-    isLikes: true,
-    totalLikes: 22500,
+    is_likes: true,
+    total_likes: 22500,
   },
   {
     id: 6,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API는 아직 준비 중입니다',
-    age: '15',
+    age_rating: '15',
     playing: true,
-    isLikes: false,
-    totalLikes: 15000,
+    is_likes: false,
+    total_likes: 15000,
   },
   {
     id: 7,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: true,
-    isLikes: true,
-    totalLikes: 22500,
+    is_likes: true,
+    total_likes: 22500,
   },
   {
     id: 8,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API는 아직 준비 중입니다',
-    age: '15',
+    age_rating: '15',
     playing: true,
-    isLikes: true,
-    totalLikes: 15000,
+    is_likes: true,
+    total_likes: 15000,
   },
   {
     id: 9,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: '12',
+    age_rating: '12',
     playing: true,
-    isLikes: true,
-    totalLikes: 22500,
+    is_likes: true,
+    total_likes: 22500,
   },
 ]
 
-const notPlayingMovies = [
+const isSoonMovies = [
   {
     id: 0,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: false,
-    isLikes: false,
-    totalLikes: 22500,
+    is_likes: false,
+    total_likes: 22500,
   },
   {
     id: 1,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API는 아직 준비 중입니다',
-    age: '12',
+    age_rating: '12',
     playing: false,
-    isLikes: false,
-    totalLikes: 15000,
+    is_likes: false,
+    total_likes: 15000,
   },
   {
     id: 2,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: false,
-    isLikes: true,
-    totalLikes: 22500,
+    is_likes: true,
+    total_likes: 22500,
   },
   {
     id: 3,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API는 아직 준비 중입니다',
-    age: '18',
+    age_rating: '18',
     playing: false,
-    isLikes: true,
-    totalLikes: 15000,
+    is_likes: true,
+    total_likes: 15000,
   },
   {
     id: 4,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: false,
-    isLikes: true,
-    totalLikes: 22500,
+    is_likes: true,
+    total_likes: 22500,
   },
   {
     id: 5,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: false,
-    isLikes: false,
-    totalLikes: 22500,
+    is_likes: false,
+    total_likes: 22500,
   },
   {
     id: 6,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API는 아직 준비 중입니다',
-    age: '15',
+    age_rating: '15',
     playing: false,
-    isLikes: true,
-    totalLikes: 15000,
+    is_likes: true,
+    total_likes: 15000,
   },
   {
     id: 7,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: 'all',
+    age_rating: 'all',
     playing: false,
-    isLikes: true,
-    totalLikes: 22500,
+    is_likes: true,
+    total_likes: 22500,
   },
   {
     id: 8,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API는 아직 준비 중입니다',
-    age: '15',
+    age_rating: '15',
     playing: false,
-    isLikes: true,
-    totalLikes: 15000,
+    is_likes: true,
+    total_likes: 15000,
   },
   {
     id: 9,
-    posterImage: '/img/detail_review01.jpg',
+    poster_image: '/img/detail_review01.jpg',
     title: 'API 언제 나오나요?',
-    age: '12',
+    age_rating: '12',
     playing: false,
-    isLikes: false,
-    totalLikes: 22500,
+    is_likes: false,
+    total_likes: 22500,
   },
 ]
 
 // 상영중 / 상영예정 필터링을 안해도 되는 이유
 // 백엔드에서 상영중 / 상영예정 리스트를 따로 제공
-const MainList: React.FC<IfMovieListProps> = () => {
-  // list 불러오는 데이터API 호출
-  // userId 담겨있는 상태 불러와서 list에 매치시켜서 좋아요수 반영
-  const userId = useUserStore((state) => state.userData?.id)
-  console.log(userId)
 
-  // useEffect(() => {}, [])
+// 상영중/상영예정 필터링을 안해도 되는 이유: 백엔드에서 상영중/상영예정 따로 제공
+const MainList: React.FC<IfMovieStoreProps> = () => {
+  const [searchParams] = useSearchParams()
+
+  const { nowMovies, soonMovies } = useMovieStore()
+
   // slick 설정
   var settings = {
     arrows: true, // 화살표
@@ -232,16 +234,16 @@ const MainList: React.FC<IfMovieListProps> = () => {
         </StyleMovieTitle>
         <StyleMovieListWrapper>
           <Slider {...settings}>
-            {isPlayingMovies.map((item) => (
+            {isNowMovies?.map((item) => (
               <MovieCard
                 key={item.id}
                 movieId={item.id}
-                posterImage={item.posterImage}
+                poster_image={item.poster_image}
                 title={item.title}
-                age={item.age}
+                age_rating={item.age_rating ?? 'all'}
                 playing={item.playing}
-                isLikes={item.isLikes}
-                totalLikes={item.totalLikes}
+                is_likes={item.is_likes}
+                total_likes={item.total_likes}
               />
             ))}
           </Slider>
@@ -249,21 +251,21 @@ const MainList: React.FC<IfMovieListProps> = () => {
       </StyleMovieContents>
       <StyleMovieContents>
         <StyleMovieTitle>
-          <StyleTitle>개봉예정 TOP 10</StyleTitle>
+          <StyleTitle>개봉예정</StyleTitle>
           <BasicBtn $size='small'>더보기</BasicBtn>
         </StyleMovieTitle>
         <StyleMovieListWrapper>
           <Slider {...settings}>
-            {notPlayingMovies.map((item) => (
+            {isSoonMovies?.map((item) => (
               <MovieCard
                 key={item.id}
                 movieId={item.id}
-                posterImage={item.posterImage}
+                poster_image={item.poster_image}
                 title={item.title}
-                age={item.age}
+                age_rating={item.age_rating ?? 'all'}
                 playing={item.playing}
-                isLikes={item.isLikes}
-                totalLikes={item.totalLikes}
+                is_likes={item.is_likes}
+                total_likes={item.total_likes}
               />
             ))}
           </Slider>
