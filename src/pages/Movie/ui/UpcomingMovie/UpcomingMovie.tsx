@@ -13,18 +13,18 @@ const UpcomingMovie = ({ movieData }: UpcomingMovieProps) => {
         <MovieCardBox key={movie.id}>
           <MovieCard
             id={movie.id}
-            posterImage={movie.posterImage}
+            poster_image={movie.poster_image}
             title={movie.title}
-            age={movie.age ?? 'all'}
-            playing={false}
-            totalLikes={movie.totalLikes}
-            backdropImage={movie.backdropImage}
+            age_rating={movie.age_rating ?? 'all'}
+            playing={movie.playing}
+            total_likes={movie.total_likes}
+            backdrop_image={movie.backdrop_image}
             genre={movie.genre}
             duration={movie.duration}
             overview={movie.overview}
-            trailer={movie.trailer}
-            actor={movie.actor}
-            isLikes={movie.isLikes}
+            trailer_url={movie.trailer_url}
+            actor_images={movie.actor_images}
+            is_likes={movie.is_likes}
           />
         </MovieCardBox>
       ))}

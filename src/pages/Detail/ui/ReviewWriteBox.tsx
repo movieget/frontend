@@ -5,21 +5,65 @@ import StarRating from '../../../components/StarRating/StarRating'
 import ImageUpload from '../../../components/Input/ImageUpload/ImageUpload'
 import { AddIconBtn } from '../../../components/Button/style'
 import styled from 'styled-components'
+import { client } from '../../../apis/instances'
+import { useUserStore } from '../../../stores/userStore'
+import { useMutation } from '@tanstack/react-query'
+
+interface UploadImageParams {
+  userId: number | null
+  image: File | null
+}
+
+const uploadImage = async ({ userId, image }: UploadImageParams) => {
+  const formData = new FormData()
+  if (image) {
+    formData.append('image_file', image) // 이미지 파일 추가
+  }
+
+  // FormData 내용 출력
+  for (let [key, value] of formData.entries()) {
+    console.log(`${key}:`, value)
+  }
+
+  const response = await client.post(`/review/image/${userId}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  })
+  return response.data
+}
 
 const ReviewWriteBox = () => {
-  const [image1, setImage1] = useState<string | null>(null)
+  const user = useUserStore((state) => state.userData)
+  const userId = user ? user.id : null
+
+  const [image1, setImage1] = useState<File | null>(null)
   const { rating: userRating1, handleRatingChange: handleRatingChange1 } = useRating()
   const titleRef = useRef<HTMLInputElement | null>(null)
   const textRef = useRef<HTMLTextAreaElement | null>(null)
 
-  const ReviewRefHandler = () => {
-    if (titleRef.current && textRef.current) {
-      const title = titleRef.current.value
-      const text = textRef.current.value
-      console.log('Title:', title) // 타이틀 출력
-      console.log('Text:', text) // 텍스트 출력
-      console.log('Rating:', userRating1) // 평점도 출력
-      console.log('Image:', image1) // 이미지 출력 (파일 경로 또는 데이터)
+  const mutation = useMutation({
+    mutationFn: async ({ userId, image }: UploadImageParams) => {
+      try {
+        const data = await uploadImage({ userId, image })
+        return data // 성공적으로 응답을 반환
+      } catch (error) {
+        throw new Error('이미지 업로드에 실패했습니다.') // 에러 발생 시 throw
+      }
+    },
+    onSuccess: (data) => {
+      console.log('Upload successful:', data)
+    },
+    onError: (error) => {
+      console.error('Upload failed:', error.message) // 에러 메시지 출력
+    },
+  })
+
+  const handleSubmit = () => {
+    if (image1 && userId) {
+      mutation.mutate({ userId, image: image1 }) // userId와 image를 함께 전송
+    } else {
+      console.log('이미지를 선택하지 않거나 사용자 ID가 없습니다.')
     }
   }
 
@@ -38,7 +82,7 @@ const ReviewWriteBox = () => {
         <StarRating rating={userRating1} onRatingChange={handleRatingChange1} userId='user1' />
         <ActionBtnBox>
           <ImageUpload image={image1} setImage={setImage1} />
-          <AddIconBtn $size='large' onClick={ReviewRefHandler}>
+          <AddIconBtn $size='large' onClick={handleSubmit}>
             작성하기
           </AddIconBtn>
         </ActionBtnBox>
@@ -55,17 +99,20 @@ const MovieReviewForm = styled.div`
   margin-bottom: 4rem;
   border-bottom: 1px solid #3f3f3f;
 `
-const WriteBox = styled.div`
+
+const WriteBox = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 `
+
 const ReviewInputWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 1.2rem;
 `
+
 const ActionBtnBox = styled.div`
   display: flex;
   align-items: flex-start;

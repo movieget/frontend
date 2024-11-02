@@ -7,24 +7,25 @@ interface NowPlayingMovieProps {
 }
 
 const NowPlayingMovie = ({ movieData }: NowPlayingMovieProps) => {
+  console.log(movieData)
   return (
     <MovieCardWrapper>
       {movieData?.map((movie) => (
         <MovieCardBox key={movie.id}>
           <MovieCard
             id={movie.id}
-            posterImage={movie.posterImage}
+            poster_image={movie.poster_image}
             title={movie.title}
-            age={movie.age ?? 'all'}
+            age_rating={movie.age_rating ?? 'all'}
             playing={movie.playing}
-            totalLikes={movie.totalLikes}
-            backdropImage={movie.backdropImage}
+            total_likes={movie.total_likes}
+            backdrop_image={movie.backdrop_image}
             genre={movie.genre}
             duration={movie.duration}
             overview={movie.overview}
-            trailerUrl={movie.trailerUrl}
-            actorImages={movie.actorImages}
-            isLikes={movie.isLikes}
+            trailer_url={movie.trailer_url}
+            actor_images={movie.actor_images}
+            is_likes={movie.is_likes}
           />
         </MovieCardBox>
       ))}

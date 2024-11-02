@@ -15,18 +15,18 @@ import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 
 export interface Movie {
   id: number // 영화 ID
-  posterImage: string // 포스터 이미지 URL
-  backdropImage: string // 배경 이미지 URL
+  poster_image: string // 포스터 이미지 URL
+  backdrop_image: string // 배경 이미지 URL
   title: string // 영화 제목
-  age: 'all' | '12' | '15' | '18' // 연령 제한
+  age_rating: 'all' | '12' | '15' | '18' // 연령 제한
   playing: boolean // 상영중 & 개봉예정
   genre: string // 장르 배열
   duration: number // 상영 시간 (분)
   overview: string // 영화 개요
-  trailerUrl: string // 트레일러 URL (선택적)
-  actorImages: { name: string; imageUrl: string }[] // 출연 배우 배열
-  isLikes: boolean // 좋아요 여부
-  totalLikes: number // 총 좋아요 수
+  trailer_url: string // 트레일러 URL (선택적)
+  actor_images: { name: string; image_url: string }[] // 출연 배우 배열
+  is_likes: boolean // 좋아요 여부
+  total_likes: number // 총 좋아요 수
 }
 
 const fetchMovieData = async (type: 'now' | 'soon', page: number) => {
@@ -114,6 +114,7 @@ const Movie = () => {
 
   // 영화 목록 추출
   const movieData = data?.pages.flatMap((page) => page.movies) || []
+  console.log(movieData)
   const searchResults = searchData?.movies || []
 
   // 영화 데이터 정렬
