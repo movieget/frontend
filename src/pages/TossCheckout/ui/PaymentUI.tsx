@@ -1,14 +1,34 @@
+import { useNavigate } from 'react-router-dom'
+import { LineMdAlertLoop } from '../../../assets/svg/LineMdAlertLoop'
+import { SvgSpinner } from '../../../components/Loading/SvgSpinner'
+import { commonColors } from '../../../styles/theme'
+import { ErrorMsg } from '../../KakaoCallback/KakaoCallback.styled'
 import S from '../style'
+import { MainBtn } from '../../../components/Button/style'
 
 interface IPaymentUIProps {
   amount: number
   requestPayment: () => void
   point: number
   setPoint: (num: number) => void
-  maxPoint: number // 추가된 prop
+  data: any
+  isLoading: boolean
+  isError: boolean
+  error: any
 }
 
-const PaymentUI = ({ amount, requestPayment, point, setPoint, maxPoint }: IPaymentUIProps) => {
+const PaymentUI = ({
+  amount,
+  requestPayment,
+  point,
+  setPoint,
+  isLoading,
+  isError,
+  error,
+  data,
+}: IPaymentUIProps) => {
+  const maxPoint = data?.available_points
+  const navigate = useNavigate()
   const handlePointChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newPoint = e.target.value ? Number(e.target.value) : 0
 
@@ -16,14 +36,24 @@ const PaymentUI = ({ amount, requestPayment, point, setPoint, maxPoint }: IPayme
     if (isNaN(newPoint)) return
 
     // 포인트 값이 음수이거나 최대 포인트를 넘지 않도록 제한
-    if (newPoint < 0) newPoint = 0
-    else if (newPoint > maxPoint) newPoint = maxPoint
+    if (newPoint < 0) point = 0
+    else if (newPoint > maxPoint) return
 
     setPoint(newPoint)
   }
 
   return (
     <S.PayCard>
+      {isLoading && <SvgSpinner />}
+      {isError && (
+        <ErrorMsg>
+          <LineMdAlertLoop color={commonColors.warning} width={120} height={120} />
+          <span>{error.message}</span>
+          <MainBtn $size='large' onClick={() => navigate('/')}>
+            메인으로 돌아가기
+          </MainBtn>
+        </ErrorMsg>
+      )}
       <h2>결제 정보</h2>
       <S.PayInfoWrapper>
         <span>결제 금액:</span>
