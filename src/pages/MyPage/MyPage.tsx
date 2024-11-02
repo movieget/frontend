@@ -10,6 +10,9 @@ import PageLayout from '../../components/Layouts/PageLayout'
 import { useEffect, useState } from 'react'
 import MyMovieStory from './ui/MyMovieStory/MyMovieStory'
 import ProfileBadge from '../../components/Badge/ProfileBadge/ProfileBadge'
+import { useQuery } from '@tanstack/react-query'
+import { useInfoStore, useUserStore } from '../../stores/userStore'
+import { fetchUserData } from '../../apis/userApi'
 
 interface MenuItem {
   id: number
@@ -61,6 +64,22 @@ const Mypage = () => {
   const [URLSearchParams, setSearchParams] = useSearchParams()
   const menu = URLSearchParams.get('menu') || 'default'
   const [activeMenu, setActiveMenu] = useState(menu)
+  const { userData, initializeUser } = useUserStore()
+  const { userInfo, fetchInfo } = useInfoStore()
+
+  // 유저정보 요청
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['data'],
+    queryFn: () => fetchUserData(),
+  })
+
+  // data, isError상태 업뎃시 useEffect실행
+  useEffect(() => {
+    if (data && !isError) {
+      fetchInfo(data)
+      console.log(data.nickname)
+    }
+  }, [data, isError])
 
   useEffect(() => {
     // menu가 'default'일 경우 첫 번째 메뉴로 초기화
@@ -99,11 +118,13 @@ const Mypage = () => {
           </MyMenuBox>
           <MyInfoBox>
             <MyInfo>
-              <ProfileBadge src='' width='10rem' height='10rem' />
+              <ProfileBadge src={userData?.profile_image_url} width='10rem' height='10rem' />
               <MyName>
                 안녕하세요!
                 <br />
-                <MyNameStrong>김진모님</MyNameStrong>
+                <MyNameStrong>
+                  {userData?.id ? userInfo?.nickname : userInfo?.username}
+                </MyNameStrong>
               </MyName>
             </MyInfo>
             <MyPoint>350,000P</MyPoint>
