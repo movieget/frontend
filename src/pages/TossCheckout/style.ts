@@ -15,7 +15,7 @@ const displayPaymentUI = keyframes`
 //style.ts
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   gap: 2rem;
   flex-direction: column;

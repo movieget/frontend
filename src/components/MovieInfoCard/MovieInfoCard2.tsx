@@ -212,16 +212,11 @@ const MovieInfoCardWrapper = styled.div`
   gap: 3.6rem;
 `
 
-// 영화 포스터
-interface MoviePosterSize {
-  $width?: string
-  $height?: string
-}
-const MoviePosterBox = styled.span<MoviePosterSize>`
+const MoviePosterBox = styled.span`
   display: block;
-  max-width: 24rem;
+  max-width: 22rem;
   width: 100%;
-  height: 24rem;
+  height: 22rem;
 `
 const MoviePoster = styled.img`
   width: 100%;

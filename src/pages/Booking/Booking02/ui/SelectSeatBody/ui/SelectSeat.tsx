@@ -37,6 +37,8 @@ const SelectSeat = ({ totalSeat, seatId, setSeatId }: ISelectSeatProps) => {
     })
   }
 
+  console.log(data)
+
   return (
     <SeatWrapper>
       {isLoading && <SvgSpinner />}

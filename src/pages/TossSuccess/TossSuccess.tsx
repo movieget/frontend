@@ -3,7 +3,6 @@ import { BasicBtn, MainBtn } from '../../components/Button/style'
 import ContainerLayout from '../../components/Layouts/ContainerLayout'
 import { ChargeBtnBox, ChargeContainer, ChargeContentsBox, ChargeHeader } from './style'
 import { useEffect } from 'react'
-import MovieInfoCard from '../../components/MovieInfoCard/MovieInfoCard'
 import { client } from '../../apis/instances'
 import { useMutation } from '@tanstack/react-query'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
@@ -97,7 +96,7 @@ const TossSuccess = () => {
             <ChargeHeader>
               <LineMdConfirmCircleFilled width={64} height={64} />
               <p>
-                {tossPaymentMutation.data?.data.amount + '원'}
+                {tossPaymentMutation.data?.data.amount.toLocaleString() + '원'}
                 <br />
                 결제가 완료되었습니다.
               </p>

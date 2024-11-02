@@ -32,7 +32,14 @@ export const handleApiError = (err: AxiosError) => {
 export const fetchMovieData = async (date: string, userId: number) => {
   const formattedDate = date.slice(0, 10)
   try {
-    const res = await client.get(`/books/options?screening_date=${formattedDate}&user_id=${userId}`)
+    const res = await client.get(
+      `/books/options?screening_date=${formattedDate}&user_id=${userId}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
     const data = res.data
     if (!data.movies || data.movies.length === 0) {
       throw new Error('해당 날짜에 상영되고 있는 영화정보가 없어요.')
@@ -46,8 +53,13 @@ export const fetchMovieData = async (date: string, userId: number) => {
 // 영화 데이터 저장하기
 export const postMovieData = async (bookData: IPaymentData) => {
   try {
-    const res = await client.post(`/api/v1/books/tosspay`, bookData)
-    return res.data
+    const res = await client.post(`/api/v1/books/tosspay`, bookData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const data = res.data
+    return data
   } catch (err: any) {
     handleApiError(err)
   }
@@ -56,9 +68,31 @@ export const postMovieData = async (bookData: IPaymentData) => {
 // 좌석 데이터 가져오기
 export const getSeatData = async (screenId: number) => {
   try {
-    const res = await client.get(`/books/${screenId}`)
-    return res.data
+    const res = await client.get(`/books/${screenId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const data = res.data
+    return data
   } catch (err: any) {
     handleApiError(err)
   }
 }
+
+export const getUserPoint = async (userId: string | undefined) => {
+  try {
+    const res = await client.get(`/books/points/${userId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    console.log(res.data)
+    const data = res.data
+    return data
+  } catch (err: any) {
+    handleApiError(err)
+  }
+}
+
+// export const postUsePoint = async ()

@@ -14,7 +14,7 @@ export const ChargeContainer = styled.div`
   gap: 4rem;
 `
 
-export const ChargeHeader = styled.p`
+export const ChargeHeader = styled.div`
   text-align: center;
   font-size: 4rem;
   font-weight: 800;

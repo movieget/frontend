@@ -8,6 +8,9 @@ import { customAlphabet } from 'nanoid'
 import S from './style'
 import { useBookingStore } from '../../stores/store'
 import PaymentUI from './ui/PaymentUI'
+import { useUserStore } from '../../stores/userStore'
+import { getUserPoint } from '../../apis/bookingApi'
+import { useQuery } from '@tanstack/react-query'
 
 const nanoid = customAlphabet('0123456789ABCDEF', 8)
 const customerKey = nanoid()
@@ -19,10 +22,21 @@ const TossCheckout = () => {
   const adultCount = useBookingStore((state) => state.initialCountState.adult_count)
   const childCount = useBookingStore((state) => state.initialCountState.child_count)
   const { currency, amount } = lc.state
-  const maxPoint = 5000
   const [payment, setPayment] = useState(null)
-  const [point, setPoint] = useState(maxPoint)
+  const [point, setPoint] = useState(0)
   const [price, setPrice] = useState(amount)
+  const userId = useUserStore((state) => state.userData?.id)
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['userPoint'],
+    queryFn: () => getUserPoint(userId),
+  })
+
+  useEffect(() => {
+    if (data) {
+      setPoint(Number(data.available_points))
+    }
+  }, [data])
 
   const {
     book_id,
@@ -97,11 +111,14 @@ const TossCheckout = () => {
   return (
     <S.Container>
       <PaymentUI
+        isLoading={isLoading}
+        isError={isError}
+        error={error}
         amount={amount}
         requestPayment={requestPayment}
         point={point}
         setPoint={setPoint}
-        maxPoint={maxPoint} // point 값을 maxPoint로 전달
+        data={data}
       />
     </S.Container>
   )

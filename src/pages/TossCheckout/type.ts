@@ -16,3 +16,8 @@ export interface IPaymentData {
   order_id: string
   payment_key: string
 }
+
+export interface IUserPoint {
+  user_id: number
+  available_points: number
+}
