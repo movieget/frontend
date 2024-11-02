@@ -31,10 +31,25 @@ export const useUserStore = create<IUserDataState>((set) => ({
   },
 }))
 
-// export const useUserStore = create<IfUserState>((set) => ({
-//   accessToken: null,
-//   userId: null,
-//   profileImg: null,
-//   setUser: (accessToken, userId, profileImg) => set({ accessToken, userId, profileImg }),
-//   clearUser: () => set({ accessToken: null, userId: null, profileImg: null }),
-// }))
+type UserInfo = {
+  kakao_id: number
+  nickname: string
+  email: string
+  username: string
+  birthday: string
+  phone_number: string
+  oauth_provider: string
+}
+
+interface IUserInfoState {
+  userInfo: UserInfo | null
+  fetchInfo: (status: UserInfo) => void
+}
+
+// 회원정보가져오기, 회원정보수정, 회원탈퇴
+export const useInfoStore = create<IUserInfoState>((set) => ({
+  userInfo: null,
+  fetchInfo: (status) => {
+    set({ userInfo: status })
+  },
+}))
