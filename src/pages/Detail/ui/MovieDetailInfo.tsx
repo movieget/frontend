@@ -28,8 +28,8 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
         {/* 영화정보 */}
         <MovieDetails>
           <PosterImgBox>
-            {movie.posterImage ? (
-              <PosterImg src={movie.posterImage} alt={movie.title} />
+            {movie.poster_image ? (
+              <PosterImg src={movie.poster_image} alt={movie.title} />
             ) : (
               <NoImageCard $width='100%' />
             )}
@@ -56,10 +56,10 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
                   type='checkbox'
                   id='CheckHeartCount'
                   name=''
-                  defaultChecked={movie.isLikes}
+                  defaultChecked={movie.is_likes}
                 />
                 <CheckHeartCount htmlFor='CheckHeartCount'>
-                  {formatLikes(movie.totalLikes)}
+                  {formatLikes(movie.total_likes)}
                 </CheckHeartCount>
               </CheckboxWrapper>
             </MovieInfoBottom>
@@ -69,12 +69,12 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
         {/* 트레일러 */}
         <MovieTrailerBox>
           <StyleTitle>Trailer</StyleTitle>
-          {movie.trailerUrl ? (
+          {movie.trailer_url ? (
             <MovieTrailer
               width='100%'
               style={{ aspectRatio: '16 / 9', height: 'auto' }}
               // src={movie.trailerUrl}
-              src={`https://www.youtube.com/embed/${movie.trailerUrl}`}
+              src={`https://www.youtube.com/embed/${movie.trailer_url}`}
               title={movie.title}
               frameBorder='0'
               allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
@@ -91,11 +91,11 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
           <StyleTitle>Actor</StyleTitle>
           <MovieActorList>
             <Slider {...settings}>
-              {movie.actorImages.map((item, index) => (
+              {movie.actor_images.map((item, index) => (
                 <MovieActor key={index}>
-                  {item.imageUrl ? (
+                  {item.image_url ? (
                     <MovieActorImg
-                      src={item.imageUrl}
+                      src={item.image_url}
                       alt={item.name}
                       style={{ width: '100%', height: 'auto' }}
                     />

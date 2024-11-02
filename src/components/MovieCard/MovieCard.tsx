@@ -59,18 +59,18 @@ const fetchLikes = async (userId: number, movie_id: number) => {
 // MovieCard 컴포넌트 정의
 const MovieCard = ({
   id,
-  posterImage,
-  backdropImage,
+  poster_image,
+  backdrop_image,
   title,
-  age,
+  age_rating,
   playing,
   genre,
   duration,
   overview,
-  trailerUrl,
-  actorImages,
-  isLikes,
-  totalLikes,
+  trailer_url,
+  actor_images,
+  is_likes,
+  total_likes,
 }: Movie) => {
   const user = useUserStore((state) => state.userData)
   const userId = user ? user.id : null
@@ -84,10 +84,10 @@ const MovieCard = ({
   })
 
   // isChecked 상태 초기화
-  const [isChecked, setIsChecked] = useState(isLikes)
+  const [isChecked, setIsChecked] = useState(is_likes)
 
   // totalCount
-  const [likesCount, setLikesCount] = useState(totalLikes)
+  const [likesCount, setLikesCount] = useState(total_likes)
 
   // useEffect를 사용하여 data가 업데이트될 때 isChecked를 설정
   useEffect(() => {
@@ -123,8 +123,8 @@ const MovieCard = ({
   return (
     <MovieCardHolder>
       <MoviePosterImgBox>
-        {posterImage ? (
-          <MoviePosterImg src={posterImage} alt={title} />
+        {poster_image ? (
+          <MoviePosterImg src={poster_image} alt={title} />
         ) : (
           <NoImageCard $width='100%' />
         )}
@@ -136,7 +136,7 @@ const MovieCard = ({
       </MoviePlayingBox>
       <MovieInfoBox>
         <MovieTitleHolder>
-          <StyleAge $age={age} />
+          <StyleAge $age={age_rating} />
           <MovieTitle>{title}</MovieTitle>
         </MovieTitleHolder>
       </MovieInfoBox>
@@ -146,17 +146,17 @@ const MovieCard = ({
             to='/detail'
             state={{
               id,
-              posterImage,
-              backdropImage,
+              poster_image,
+              backdrop_image,
               title,
-              age,
+              age_rating,
               genre,
               duration,
               overview,
-              trailerUrl,
-              actorImages,
-              isLikes,
-              totalLikes: likesCount,
+              trailer_url,
+              actor_images,
+              is_likes,
+              total_likes: likesCount,
             }}
           >
             <BasicBtn $size='large'>영화정보</BasicBtn>

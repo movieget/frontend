@@ -19,7 +19,7 @@ interface Review {
 }
 
 const fetchReviewData = async (currentPage: any) => {
-  const res = await client.get(`/api/v1/review?page=${currentPage}`)
+  const res = await client.get(`/review?page=${currentPage}`)
   const data = res.data
   return data
 }
@@ -95,39 +95,6 @@ const UserReviewList = () => {
 }
 
 export default UserReviewList
-
-// 카드 스켈레톤 UI 작업 보류(리팩토링때 진행)
-// const SkeletonBox = styled.div`
-//   height: 300px;
-//   background-color: ${({ theme }) => theme.colors.bg_wrapper};
-//   position: relative;
-// `
-
-// const Skeleton = styled.div`
-//   position: absolute;
-//   left: 0;
-//   top: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: linear-gradient(
-//     90deg,
-//     rgba(255, 255, 255, 0.1) 0%,
-//     rgba(200, 200, 200, 0.3) 50%,
-//     rgba(255, 255, 255, 0.1) 100%
-//   );
-//   background-size: 200% 100%;
-//   animation: shimmer 2s infinite linear;
-//   border-radius: 8px; /* 필요에 따라 모서리 반경 조정 */
-
-//   @keyframes shimmer {
-//     0% {
-//       background-position: 200% 0;
-//     }
-//     100% {
-//       background-position: 0 0;
-//     }
-//   }
-// `
 
 const UserReviewWrapper = styled.div`
   .my-masonry-grid {

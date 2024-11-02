@@ -13,12 +13,13 @@ import NoImageCard from '../../components/NoImageCard/NoImageCard'
 const Detail = () => {
   const location = useLocation()
   const [movie] = useState<Movie>(location.state)
+  console.log(movie)
 
   return (
     <DetailPage>
       <BackDropImgBox>
-        {movie.backdropImage ? (
-          <BackDropImg src={movie.backdropImage} alt={movie.title} />
+        {movie.backdrop_image ? (
+          <BackDropImg src={movie.backdrop_image} alt={movie.title} />
         ) : (
           <NoImageCard $width='100%' $height='50rem' />
         )}
@@ -28,7 +29,7 @@ const Detail = () => {
         <MovieReviewWrapper>
           <StyleTitle>Review</StyleTitle>
           <ReviewWriteBox />
-          <UserReviewList />
+          {/* <UserReviewList /> */}
         </MovieReviewWrapper>
       </PageLayout>
     </DetailPage>
