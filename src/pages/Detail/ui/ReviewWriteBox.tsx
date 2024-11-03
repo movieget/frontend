@@ -60,6 +60,18 @@ const ReviewWriteBox = ({ movieId }) => {
       const contents = textRef.current?.value || ''
       const rating = userRating1
 
+      // 타이틀 길이 체크
+      if (title.length > 20) {
+        alert('타이틀은 20자 이하로 입력해야 합니다.')
+        return // 길이가 초과할 경우 함수 종료
+      }
+
+      // 타이틀 또는 내용이 입력되지 않았을 경우
+      if (!title || !contents) {
+        alert('타이틀과 내용을 모두 입력해야 합니다.')
+        return // 필드가 비어있을 경우 함수 종료
+      }
+
       const formatDate = (date: Date) => {
         const year = date.getFullYear()
         const month = String(date.getMonth() + 1).padStart(2, '0') // 월은 0부터 시작하므로 1을 더해줌
