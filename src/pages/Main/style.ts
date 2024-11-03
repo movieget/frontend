@@ -74,7 +74,7 @@ export const StyleTrailerOverview = styled.span`
   pointer-events: none;
 `
 
-// Top10영역들 전체
+// movie list 영역들 전체
 export const StyleMovieCardWrapper = styled.div`
   width: 100%;
   max-width: 128rem;
@@ -140,17 +140,22 @@ export const StyleMovieListWrapper = styled.div`
     background: transparent no-repeat 50% 50%;
     border: none;
     border-radius: 50%;
+
     &.slick-next {
       right: -4.8rem;
-      background-image: url(${next});
+      background: url(${next}) no-repeat 50% 50%;
     }
     &.slick-prev {
       left: -4.8rem;
-      background-image: url(${prev});
+      background: url(${prev}) no-repeat 50% 50%;
+    }
+    &::before {
+      display: none;
     }
   }
 
   .slick-dots {
+    // !important 지우면 버튼 display: flex 자체가 안됨
     display: flex !important;
     justify-content: center;
     margin-top: 1rem;
@@ -188,3 +193,65 @@ export const StyleMovieListWrapper = styled.div`
     }
   }
 `
+
+// main 하단 전체
+export const StyleFooterSection = styled.section`
+  height: 70rem;
+  margin-top: 10rem;
+`
+
+// 하단 컨텐츠 묶음
+export const StyleFooterWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+`
+
+interface InfoBoxProps {
+  title?: string
+  description?: string
+  buttonText?: string
+  iconUrl?: string
+  backgroundImageUrl?: string
+}
+
+// 하단 컨텐츠 본문
+export const StyleFooterContainer = styled.div`
+  height: 44rem;
+  width: 41rem;
+  background-color: #181818;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+// const Icon = styled.img`
+//   width: 5rem;
+//   height: 5rem;
+//   margin-bottom: 10rem;
+// `
+
+// const Title = styled.h3`
+// color: ${({theme}) => theme.colors.text};
+// font-size: 16rem;
+// margin-bottom: 10rem;
+// `
+
+// const Subtitle = styled.p`
+// color: ${({theme}) => theme.colors.text};
+// font-size: 12rem;
+// margin-bottom: 20rem;
+// `
+
+// // 버튼은 메인버튼 사용
+
+// // 광고
+// const AdBanner = styled.div`
+// background-image: url(${props => props.backgroundImage});
+// background-size: cover;
+// background-position: center;
+// `
+
+// *GPT

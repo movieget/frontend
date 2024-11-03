@@ -1,14 +1,18 @@
 import { fetchMovieListData } from '../../apis/movieApi'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
-import { useMovieStore } from '../../stores/store'
+import { IMovieStoreProps } from './type'
 import MainFooter from './ui/MainFooter'
 import MainList from './ui/MainList'
 import MainTrailer from './ui/MainTrailer'
 import { useQuery } from '@tanstack/react-query'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const Main = () => {
-  const { nowMovies, soonMovies, setNowMovies, setSoonMovies } = useMovieStore()
+  // props로 하위 컴포넌트에 뿌릴예정이기 때문에 전역상태관리 불필요
+  // const { nowMovies, soonMovies, setNowMovies, setSoonMovies } = useMovieStore()
+
+  const [nowMovies, setNowMovies] = useState<IMovieStoreProps[] | null>(null)
+  const [soonMovies, setSoonMovies] = useState<IMovieStoreProps[] | null>(null)
 
   // 상영 중인 영화 데이터 쿼리
   const {
@@ -30,6 +34,9 @@ const Main = () => {
     queryFn: () => fetchMovieListData('soon'),
   })
 
+  console.log(nowMovies)
+  console.log(soonMovies)
+
   // 데이터 상태변경시 랜더링
   useEffect(() => {
     if (nowData) {
@@ -38,7 +45,7 @@ const Main = () => {
     if (soonData) {
       setSoonMovies(soonData)
     }
-  }, [nowData, soonData, setNowMovies, setSoonMovies])
+  }, [nowData, soonData])
 
   if (!nowData && nowLoading) {
     return <SvgSpinner />
@@ -53,8 +60,8 @@ const Main = () => {
 
   return (
     <>
-      <MainTrailer />
-      <MainList />
+      <MainTrailer nowData={nowMovies} />
+      <MainList nowData={nowMovies} soonData={soonMovies} />
       <MainFooter />
     </>
   )
