@@ -79,7 +79,7 @@ const MovieCard = ({
   // useQuery로 좋아요 상태를 가져오는 쿼리
   const { data } = useQuery({
     queryKey: ['favorite', userId, id], // 쿼리 키 설정
-    queryFn: () => fetchLikes(userId, id), // 좋아요 상태 가져오는 함수
+    queryFn: () => fetchLikes(Number(userId), id), // 좋아요 상태 가져오는 함수
     enabled: !!userId, // userId가 존재할 때만 쿼리 실행
   })
 
@@ -99,9 +99,9 @@ const MovieCard = ({
   // 좋아요 상태 변경 뮤테이션 정의
   const mutation = useMutation({
     mutationFn: postLikeStatus,
-    onSuccess: (data) => {
-      // 성공 시 데이터 로그
-    },
+    // onSuccess: (data) => {
+    //   // 성공 시 데이터 로그
+    // },
     onError: (error) => {
       console.log('에러', error) // 에러 발생 시 출력
     },
@@ -115,7 +115,10 @@ const MovieCard = ({
     } else {
       const newCheckedState = !isChecked // 체크박스 상태 반전
       setIsChecked(newCheckedState) // 새로운 체크 상태 설정
-      mutation.mutate({ id, isLiked: newCheckedState, userId }) // 좋아요 상태 변경 요청
+      if (userId !== null) {
+        // userId가 null이 아닐 때만 호출
+        mutation.mutate({ id, isLiked: newCheckedState, userId: Number(userId) }) // 좋아요 상태 변경 요청
+      }
       setLikesCount((prevCount) => (newCheckedState ? prevCount + 1 : prevCount - 1))
     }
   }

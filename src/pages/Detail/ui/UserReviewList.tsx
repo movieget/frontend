@@ -8,40 +8,43 @@ import ProfileBadge from '../../../components/Badge/ProfileBadge/ProfileBadge'
 import StarRating from '../../../components/StarRating/StarRating'
 import { SvgSpinner } from '../../../components/Loading/SvgSpinner'
 
-interface Review {
-  id: number
-  reviewImage: string
-  userId: string
-  creationDate: string
-  score: number
-  title: string
-  content: string
-}
+// interface Review {
+//   id: number
+//   reviewImage: string
+//   userId: string
+//   creationDate: string
+//   score: number
+//   title: string
+//   content: string
+// }
 
-const fetchReviewData = async (currentPage: any) => {
-  const res = await client.get(`/review?page=${currentPage}`)
-  const data = res.data
-  return data
-}
+const UserReviewList = ({ movieId }: any) => {
+  const fetchReviewData = async () => {
+    const res = await client.get(`/reviews?movie_id=${movieId}`)
+    const data = res.data
+    // console.log(data)
+    return data
+  }
 
-const useGetReviewData = () => {
-  return useInfiniteQuery({
-    queryKey: ['popular-movie'],
-    queryFn: ({ pageParam }) => {
-      return fetchReviewData(pageParam)
-    },
-    getNextPageParam: (last) => {
-      if (last.currentPage < last.totalPages) {
-        return last.currentPage + 1
-      }
-      return undefined
-    },
-    initialPageParam: 1,
-  })
-}
+  const useGetReviewData = () => {
+    return useInfiniteQuery({
+      queryKey: ['review-data'],
+      queryFn: fetchReviewData,
+      getNextPageParam: (last) => {
+        if (last.next_page < last.total) {
+          return last.next_page
+        }
+        return undefined
+      },
+      initialPageParam: 1,
+    })
+  }
 
-const UserReviewList = () => {
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetReviewData()
+  console.log(data)
+
+  const reviewData = data?.pages.flatMap((page) => page.reviews) || []
+  console.log(reviewData)
 
   const { ref, inView } = useInView({
     threshold: 1.0, // 요소가 100% 보일 때
@@ -63,8 +66,10 @@ const UserReviewList = () => {
           className='my-masonry-grid' // 클래스 이름
           columnClassName='my-masonry-grid_column' // 각 열의 클래스 이름
         >
-          {data?.pages.map((page) =>
-            page.reviews.map((review: Review) => (
+          {/* {data?.pages.map((page) =>
+            page.reviews.map((review: Review) => ( */}
+          {reviewData?.map((review) => {
+            return (
               <UserReviewBox key={review?.id}>
                 <ReviewImgBox>
                   <ReviewImg src={review?.reviewImage} alt='사람들이 업로드한 이미지' />
@@ -84,8 +89,11 @@ const UserReviewList = () => {
                   <ReviewContent>{review.content}</ReviewContent>
                 </ReviewInfoBox>
               </UserReviewBox>
-            )),
-          )}
+            )
+          })}
+
+          {/* )),
+          )} */}
         </Masonry>
       </UserReviewWrapper>
       <LoadReview ref={ref} />

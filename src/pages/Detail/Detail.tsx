@@ -28,8 +28,8 @@ const Detail = () => {
         <MovieDetailInfo movie={movie} />
         <MovieReviewWrapper>
           <StyleTitle>Review</StyleTitle>
-          <ReviewWriteBox />
-          {/* <UserReviewList /> */}
+          <ReviewWriteBox movieId={movie.id} />
+          <UserReviewList movieId={movie.id} />
         </MovieReviewWrapper>
       </PageLayout>
     </DetailPage>

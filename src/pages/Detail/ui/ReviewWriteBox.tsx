@@ -20,11 +20,6 @@ const uploadImage = async ({ userId, image }: UploadImageParams) => {
     formData.append('image_file', image) // 이미지 파일 추가
   }
 
-  // FormData 내용 출력
-  for (let [key, value] of formData.entries()) {
-    console.log(`${key}:`, value)
-  }
-
   const response = await client.post(`/review/image/${userId}`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
@@ -33,7 +28,7 @@ const uploadImage = async ({ userId, image }: UploadImageParams) => {
   return response.data
 }
 
-const ReviewWriteBox = () => {
+const ReviewWriteBox = ({ movieId }) => {
   const user = useUserStore((state) => state.userData)
   const userId = user ? user.id : null
 
@@ -46,24 +41,60 @@ const ReviewWriteBox = () => {
     mutationFn: async ({ userId, image }: UploadImageParams) => {
       try {
         const data = await uploadImage({ userId, image })
-        return data // 성공적으로 응답을 반환
+        return data
       } catch (error) {
-        throw new Error('이미지 업로드에 실패했습니다.') // 에러 발생 시 throw
+        throw new Error('이미지 업로드에 실패했습니다.')
       }
     },
     onSuccess: (data) => {
       console.log('Upload successful:', data)
     },
     onError: (error) => {
-      console.error('Upload failed:', error.message) // 에러 메시지 출력
+      console.error('Upload failed:', error.message)
     },
   })
 
-  const handleSubmit = () => {
-    if (image1 && userId) {
-      mutation.mutate({ userId, image: image1 }) // userId와 image를 함께 전송
+  const handleSubmit = async () => {
+    if (userId) {
+      const title = titleRef.current?.value || ''
+      const contents = textRef.current?.value || ''
+      const rating = userRating1
+
+      const formatDate = (date: Date) => {
+        const year = date.getFullYear()
+        const month = String(date.getMonth() + 1).padStart(2, '0') // 월은 0부터 시작하므로 1을 더해줌
+        const day = String(date.getDate()).padStart(2, '0') // 하루를 두 자리로 포맷팅
+
+        return `${year}-${month}-${day}` // "YYYY-MM-DD" 형식으로 반환
+      }
+
+      const reviewPayload = {
+        user_id: userId,
+        title,
+        contents,
+        rating,
+        review_image_url: image1 ? URL.createObjectURL(image1) : '', // 이미지 URL
+        registration_date: formatDate(new Date()),
+      }
+
+      try {
+        // 이미지 업로드
+        if (image1) {
+          await mutation.mutateAsync({ userId, image: image1 })
+        }
+
+        // 리뷰 데이터 전송 (무비 ID 포함)
+        const response = await client.post(`/review/${movieId}`, reviewPayload, {
+          headers: {
+            'Content-Type': 'application/json', // JSON 데이터로 전송
+          },
+        })
+        console.log('리뷰 업로드 성공:', response.data)
+      } catch (error) {
+        console.error('리뷰 업로드 실패:', error)
+      }
     } else {
-      console.log('이미지를 선택하지 않거나 사용자 ID가 없습니다.')
+      console.log('사용자 ID가 없습니다.')
     }
   }
 
@@ -77,7 +108,6 @@ const ReviewWriteBox = () => {
           <Textarea placeholder='텍스트를 입력하세요.' ref={textRef} />
         </TextareaBox>
       </WriteBox>
-
       <ReviewInputWrapper>
         <StarRating rating={userRating1} onRatingChange={handleRatingChange1} userId='user1' />
         <ActionBtnBox>
@@ -117,4 +147,16 @@ const ActionBtnBox = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 0.8rem;
+`
+
+const SuccessMessage = styled.div`
+  color: green;
+  font-weight: bold;
+  margin-bottom: 1rem;
+`
+
+const ErrorMessage = styled.div`
+  color: red;
+  font-weight: bold;
+  margin-bottom: 1rem;
 `

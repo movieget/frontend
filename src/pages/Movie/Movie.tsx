@@ -14,6 +14,7 @@ import { useInView } from 'react-intersection-observer'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 
 export interface Movie {
+  age: 'all' | '12' | '15' | '18'
   id: number // 영화 ID
   poster_image: string // 포스터 이미지 URL
   backdrop_image: string // 배경 이미지 URL
@@ -48,8 +49,8 @@ const useGetMovieData = (menu: 'now' | 'soon') => {
     queryKey: [`movie-data-${menu}`], // 메뉴에 따라 쿼리 키 변경
     queryFn: ({ pageParam = 1 }) => fetchMovieData(menu, pageParam),
     getNextPageParam: (last) => {
-      if (last.nextPage < last.total) {
-        return last.nextPage
+      if (last.next_page < last.total) {
+        return last.next_page
       }
       return undefined
     },
@@ -75,6 +76,7 @@ const Movie = () => {
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetMovieData(
     menu as 'now' | 'soon',
   )
+  // console.log(data)
 
   const { ref, inView } = useInView({
     threshold: 1.0,
@@ -114,7 +116,7 @@ const Movie = () => {
 
   // 영화 목록 추출
   const movieData = data?.pages.flatMap((page) => page.movies) || []
-  console.log(movieData)
+  // console.log(movieData)
   const searchResults = searchData?.movies || []
 
   // 영화 데이터 정렬
@@ -128,6 +130,7 @@ const Movie = () => {
   }
 
   const sortedMovieData = sortMovies(movieData)
+  // const sortedSearchResults = sortMovies(searchResults);
 
   return (
     <PageLayout>
@@ -163,7 +166,7 @@ const Movie = () => {
         </SearchContentBox>
 
         {searchResults.length > 0 ? (
-          <NowPlayingMovie movieData={searchResults} /> // 검색 결과 표시
+          <NowPlayingMovie movieData={sortMovies(searchResults)} /> // 정렬된 검색 결과
         ) : (
           <>
             {menu === 'now' && <NowPlayingMovie movieData={sortedMovieData} />}
