@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Input, InputBox } from '../../../../../components/Input/style'
 import { ContentsBigTitle, ContentsTitle } from '../../../style'
 import { MainBtn } from '../../../../../components/Button/style'
-import ProfileImageUpload from '../../../../../components/Input/ProfileImageUpload/ProfileImageUpload'
 import { useInfoStore, useUserStore } from '../../../../../stores/userStore'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { auth } from '../../../../../apis/instances'
@@ -11,6 +10,7 @@ import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../../../../KakaoCallback/KakaoCallback.styled'
 import { commonColors } from '../../../../../styles/theme'
 import { LineMdAlertLoop } from '../../../../../assets/svg/LineMdAlertLoop'
+import ProfileImageUpload from '../../../../../components/Input/ProfileImageUpload/ProfileImageUpload'
 
 const patchUserNickName = async (nickName: string | undefined) => {
   try {

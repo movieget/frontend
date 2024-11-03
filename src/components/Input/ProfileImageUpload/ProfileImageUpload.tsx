@@ -7,30 +7,29 @@ import {
   ProfilePreviewImg,
   ProfilePreviewImgBox,
 } from './style'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { auth } from '../../../apis/instances'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 interface ProfileImageUploadProps {
   image: File | null
   setImage: (image: File | null) => void
 }
 
-const uploadUserProfileImg = async (profileImg: File | null) => {
-  const formData = new FormData()
-  console.log('프로필이미지: ', profileImg)
-  if (profileImg) {
-    formData.append('image_file', profileImg)
-  }
-
-  console.log(formData)
-
+const uploadUserProfileImg = async (profileImg: string | null) => {
   try {
-    const res = await auth.patch('/user/me', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data', // multipart/form-data로 설정
+    const res = await auth.patch(
+      `/user/me`,
+      {
+        image_url: profileImg,
       },
-    })
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
     const data = res.data
+    console.log(data)
     return data
   } catch (err) {
     console.error(err)
@@ -41,19 +40,26 @@ const uploadUserProfileImg = async (profileImg: File | null) => {
 const ProfileImageUpload = ({ image, setImage }: ProfileImageUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const queryClient = useQueryClient()
+
+  // useMutation을 사용하여 이미지 업로드 설정
   const { mutate } = useMutation({
     mutationKey: ['userProfileImg'],
-    mutationFn: () => uploadUserProfileImg(image),
+    mutationFn: (file: File | null) => uploadUserProfileImg(file),
     onSuccess: () => {
       queryClient.invalidateQueries(['userInfoData', 'userNickName', 'userProfileImg'])
+      resetImage() // 업로드 성공 시 이미지 리셋
     },
   })
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (file) {
-      setImage(file)
-      mutate()
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setImage(reader.result as string)
+        mutate(image) // 파일을 mutate 호출에 전달하여 서버에 업로드
+      }
+      reader.readAsDataURL(file)
     }
   }
 

@@ -12,7 +12,12 @@ import MyMovieStory from './ui/MyMovieStory/MyMovieStory'
 import ProfileBadge from '../../components/Badge/ProfileBadge/ProfileBadge'
 import { useQuery } from '@tanstack/react-query'
 import { useInfoStore, useUserStore } from '../../stores/userStore'
-import { fetchUserData } from '../../apis/userApi'
+import { fetchUserDataAndPoints } from './model'
+import { SvgSpinner } from '../../components/Loading/SvgSpinner'
+import { ErrorMsg } from '../KakaoCallback/KakaoCallback.styled'
+import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
+import { commonColors } from '../../styles/theme'
+import { useFetchStore } from '../../stores/fetchStore'
 
 interface MenuItem {
   id: number
@@ -68,18 +73,20 @@ const Mypage = () => {
   const { userInfo, fetchInfo } = useInfoStore()
 
   // 유저정보 요청
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['data'],
-    queryFn: () => fetchUserData(),
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['userInfoData', 'userNickName', 'userProfileImg'],
+    queryFn: () => fetchUserDataAndPoints(userData?.id),
   })
 
   // data, isError상태 업뎃시 useEffect실행
   useEffect(() => {
     if (data && !isError) {
-      fetchInfo(data)
-      console.log(data.nickname)
+      fetchInfo(data.userData)
+      console.log(data.userData.nickname)
     }
   }, [data, isError])
+
+  console.log(data?.pointData)
 
   useEffect(() => {
     // menu가 'default'일 경우 첫 번째 메뉴로 초기화
@@ -117,17 +124,36 @@ const Mypage = () => {
             </MyMenuList>
           </MyMenuBox>
           <MyInfoBox>
-            <MyInfo>
-              <ProfileBadge src={userData?.profile_image_url} width='10rem' height='10rem' />
-              <MyName>
-                안녕하세요!
-                <br />
-                <MyNameStrong>
-                  {userData?.id ? userInfo?.nickname : userInfo?.username}
-                </MyNameStrong>
-              </MyName>
-            </MyInfo>
-            <MyPoint>350,000P</MyPoint>
+            {isLoading && (
+              <Wrapper>
+                <SvgSpinner />
+              </Wrapper>
+            )}
+
+            {isError && (
+              <Wrapper>
+                <ErrorMsg>
+                  <LineMdAlertLoop color={commonColors.warning} width={64} height={64} />
+                  <p>{error.message}</p>
+                </ErrorMsg>
+              </Wrapper>
+            )}
+
+            {data && (
+              <>
+                <MyInfo>
+                  <ProfileBadge src={userData?.profile_image_url} width='10rem' height='10rem' />
+                  <MyName>
+                    안녕하세요!
+                    <br />
+                    <MyNameStrong>
+                      {userData?.id ? userInfo?.nickname : userInfo?.username} 님
+                    </MyNameStrong>
+                  </MyName>
+                </MyInfo>
+                <MyPoint>{data?.pointData.available_points}P</MyPoint>
+              </>
+            )}
           </MyInfoBox>
         </MyMenuWrapper>
 
@@ -216,4 +242,11 @@ const MypageContents = styled.div`
 
 const MyContentsBox = styled.div`
   margin-top: 5.6rem;
+`
+
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

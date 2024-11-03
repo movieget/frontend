@@ -22,4 +22,10 @@ export const ErrorMsg = styled.div`
     color: ${({ theme }) => theme.colors.text};
     font-size: 4rem;
   }
+
+  p {
+    text-align: center;
+    color: ${({ theme }) => theme.colors.text};
+    font-size: 2rem;
+  }
 `
