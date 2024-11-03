@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { generateDates } from '../utils/generateDates'
-import { IfMovieStoreProps } from '../pages/Main/type'
+import { IMovieStoreProps } from '../pages/Main/type'
 
 const initialDates = generateDates()
 

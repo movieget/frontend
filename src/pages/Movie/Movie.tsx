@@ -14,7 +14,6 @@ import { useInView } from 'react-intersection-observer'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 
 export interface Movie {
-  age: 'all' | '12' | '15' | '18'
   id: number // 영화 ID
   poster_image: string // 포스터 이미지 URL
   backdrop_image: string // 배경 이미지 URL
