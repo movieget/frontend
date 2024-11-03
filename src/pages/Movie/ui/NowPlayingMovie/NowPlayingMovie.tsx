@@ -7,7 +7,7 @@ interface NowPlayingMovieProps {
 }
 
 const NowPlayingMovie = ({ movieData }: NowPlayingMovieProps) => {
-  console.log(movieData)
+  // console.log(movieData)
   return (
     <MovieCardWrapper>
       {movieData?.map((movie) => (

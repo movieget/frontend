@@ -8,11 +8,80 @@ import { Checkbox, CheckboxWrapper, CheckHeartCount } from '../../../components/
 import { formatLikes } from '../../../utils/formatLikes'
 import NoImageCard from '../../../components/NoImageCard/NoImageCard'
 import { Movie } from '../../Movie/Movie'
+import { client } from '../../../apis/instances'
+import { useUserStore } from '../../../stores/userStore'
+import { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
+
+// 좋아요 상태를 포스트하는 함수
+const postLikeStatus = async ({
+  id,
+  isLiked,
+  userId,
+}: {
+  id: number
+  isLiked: boolean
+  userId: number | null
+}) => {
+  try {
+    const response = await client.post(
+      `/favorite/${userId}`,
+      {
+        is_liked: isLiked,
+        movie_id: id,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    return response.data // 필요에 따라 데이터를 반환
+  } catch (err) {
+    console.error(err) // 에러 로그 출력
+    throw new Error('네트워크 오류가 발생했습니다.') // 에러 핸들링
+  }
+}
+
 interface MovieDetailInfoProps {
   movie: Movie
 }
 
 const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
+  const user = useUserStore((state) => state.userData)
+  const userId = user ? Number(user.id) : null
+  const navigate = useNavigate()
+
+  // 좋아요 상태 관리
+  const [isChecked, setIsChecked] = useState(movie.is_likes)
+  const [likesCount, setLikesCount] = useState(movie.total_likes)
+
+  // 좋아요 상태 변경 뮤테이션 정의
+  const mutation = useMutation({
+    mutationFn: postLikeStatus,
+    // onSuccess: (data) => {
+    //   // 성공 시 데이터 로그
+    // },
+    onError: (error) => {
+      console.log('에러', error) // 에러 발생 시 출력
+    },
+  })
+
+  // 체크박스 변경 핸들러
+  const handleCheckboxChange = () => {
+    if (!user) {
+      alert('로그인을 해주세요.') // 사용자 로그인 확인
+      // 로그인 페이지로 이동 (navigate 사용)
+      navigate('/login')
+    } else {
+      const newCheckedState = !isChecked // 체크박스 상태 반전
+      setIsChecked(newCheckedState) // 새로운 체크 상태 설정
+      mutation.mutate({ id: movie.id, isLiked: newCheckedState, userId }) // 좋아요 상태 변경 요청
+      setLikesCount((prevCount) => (newCheckedState ? prevCount + 1 : prevCount - 1))
+    }
+  }
+
   const settings = {
     dots: true,
     infinite: false,
@@ -20,7 +89,6 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
     slidesToShow: 6,
     slidesToScroll: 1,
   }
-  // console.log(movie)
 
   return (
     <>
@@ -56,10 +124,11 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
                   type='checkbox'
                   id='CheckHeartCount'
                   name=''
-                  defaultChecked={movie.is_likes}
+                  onChange={handleCheckboxChange}
+                  checked={isChecked}
                 />
                 <CheckHeartCount htmlFor='CheckHeartCount'>
-                  {formatLikes(movie.total_likes)}
+                  {formatLikes(likesCount)}
                 </CheckHeartCount>
               </CheckboxWrapper>
             </MovieInfoBottom>
