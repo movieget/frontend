@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import { generateDates } from '../utils/generateDates'
-import { IMovieStoreProps } from '../pages/Main/type'
 
 const initialDates = generateDates()
 
@@ -92,11 +91,3 @@ export const useBookingStore = create<IBookingState>((set) => ({
 // 좌석을 선택할 때 마다 총 합계 금액 증가
 // 성인은 14000원씩 증가
 // 청소년은 12000원씩 증가
-
-// 영화리스트스토어
-export const useMovieStore = create<IfMovieStoreProps>((set) => ({
-  nowMovies: null,
-  soonMovies: null,
-  setNowMovies: (movies) => set({ nowMovies: movies }),
-  setSoonMovies: (movies) => set({ soonMovies: movies }),
-}))

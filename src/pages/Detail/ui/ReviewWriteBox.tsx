@@ -160,15 +160,3 @@ const ActionBtnBox = styled.div`
   align-items: flex-start;
   gap: 0.8rem;
 `
-
-const SuccessMessage = styled.div`
-  color: green;
-  font-weight: bold;
-  margin-bottom: 1rem;
-`
-
-const ErrorMessage = styled.div`
-  color: red;
-  font-weight: bold;
-  margin-bottom: 1rem;
-`

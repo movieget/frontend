@@ -15,7 +15,7 @@ export type TMovies = {
   title: string
   genre: string
   duration: number
-  age_rating: string
+  age_rating: 'all' | '12' | '15' | '18'
   poster_image_url: string
 }
 
@@ -64,10 +64,12 @@ export interface IErrorMessageProps {
 export interface IOptionButtonProps {
   id: number
   title: '영화' | '지역' | '영화관'
-  poster: string
+  poster?: string
   age?: 'all' | '12' | '15' | '18'
   label?: string
   selectedId: boolean
+  duration?: number
+  bookId?: number
   onSelect: (id: number) => void
 }
 

@@ -12,7 +12,8 @@ import { useUserStore } from '../../../../../stores/userStore'
 
 const SelectBody = () => {
   const { date, title, location, cinema } = useBookingStore((state) => state.initialBookingState)
-  const { id } = useUserStore((state) => state.userData)
+  const userData = useUserStore((state) => state.userData) // 수정: userData를 먼저 가져옵니다.
+  const id = userData ? userData.id : null // 수정: userData가 null이 아닐 경우 id를 설정합니다.
   const [isValid, setIsValid] = useState(false)
   const [isTimeSelected, setIsTimeSelected] = useState(false)
   const { data, isLoading, error, isError, refetch } = useQuery({

@@ -30,7 +30,7 @@ const dummyData: Point[] = [
 ]
 
 const EarnPointList = () => {
-  const [earnPoint, setEarnPoint] = useState<Point[]>(dummyData)
+  const [earnPoint] = useState<Point[]>(dummyData)
   return (
     <>
       <PointTitleBox>
