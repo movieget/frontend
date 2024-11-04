@@ -11,7 +11,7 @@ interface Review {
   id: number
   poster: string
   title: string
-  age: 'all' | 12 | 15 | 18
+  age: 'all' | '12' | '15' | '18'
   createdDate: string
   reviewType: string
   rating: number

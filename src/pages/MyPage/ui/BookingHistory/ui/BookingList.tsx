@@ -7,7 +7,7 @@ interface Movie {
   id: number
   poster: string
   title: string
-  age: number
+  age: 'all' | '12' | '15' | '18'
   bookingDate: string
   screeningDate: string
   seats: string[]
@@ -19,12 +19,12 @@ interface Movie {
   watched: boolean
 }
 
-const dummyData = [
+const dummyData: Movie[] = [
   {
     id: 0,
     poster: '',
     title: '크라벤',
-    age: 18,
+    age: '18',
     bookingDate: '2024년 10월 20일',
     screeningDate: '2024년 10월 21일',
     seats: ['A열 10석', 'A열 11석'],
@@ -39,7 +39,7 @@ const dummyData = [
     id: 1,
     poster: '',
     title: '갓 더 뽀로로',
-    age: 18,
+    age: '18',
     bookingDate: '2024년 10월 20일',
     screeningDate: '2024년 12월 13일',
     seats: ['J열 3석'],
@@ -69,7 +69,7 @@ const dummyData = [
     id: 3,
     poster: '',
     title: '죠스',
-    age: 12,
+    age: '12',
     bookingDate: '2020년 12월 1일',
     screeningDate: '2020년 12월 3일',
     seats: [
@@ -92,7 +92,7 @@ const dummyData = [
 ]
 
 const BookingList = () => {
-  const [bookingList, setBookingList] = useState<Movie[]>(dummyData)
+  const [bookingList] = useState<Movie[]>(dummyData)
 
   return (
     <MovieListBox>
