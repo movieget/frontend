@@ -66,7 +66,6 @@ const TossCheckout = () => {
     screening_date: bookData.screeningDate,
     adult_count: adultCount,
     child_count: childCount,
-    seats: bookData.seats,
   }
 
   useEffect(() => {

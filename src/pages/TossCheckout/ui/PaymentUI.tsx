@@ -7,6 +7,7 @@ import S from '../style'
 import { MainBtn } from '../../../components/Button/style'
 import { useMutation } from '@tanstack/react-query'
 import { auth } from '../../../apis/instances'
+import { useEffect } from 'react'
 
 interface IPaymentUIProps {
   amount: number
@@ -60,7 +61,10 @@ const PaymentUI = ({
 }: IPaymentUIProps) => {
   const maxPoint = data?.available_points
   const navigate = useNavigate()
-  console.log(userId)
+
+  useEffect(() => {
+    setPoint(0) // 컴포넌트가 처음 렌더링될 때 point를 0으로 초기화
+  }, [setPoint])
 
   const mutatePoint = useMutation({
     mutationKey: ['usePoint'],
