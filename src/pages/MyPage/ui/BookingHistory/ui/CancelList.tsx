@@ -6,7 +6,7 @@ interface Movie {
   id: number
   poster: string
   title: string
-  age: string
+  age: 'all' | '12' | '15' | '18'
   cancelDate: string
   seats: string[]
   refundAmount: number
@@ -15,7 +15,7 @@ interface Movie {
   location: string
 }
 
-const dummyData = [
+const dummyData: Movie[] = [
   {
     id: 0,
     poster: '',
@@ -76,7 +76,7 @@ const dummyData = [
 ]
 
 const CancelList = () => {
-  const [cancelList, setCancelList] = useState<Movie[]>(dummyData)
+  const [cancelList] = useState<Movie[]>(dummyData)
   return (
     <MovieListBox>
       {cancelList?.map((movie) => {

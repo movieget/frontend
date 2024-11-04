@@ -13,7 +13,7 @@ interface Favorite {
   id: number
   poster: string
   title: string
-  age: 'all' | 12 | 15 | 18
+  age: 'all' | '12' | '15' | '18'
   genre: string[]
   overview: string
   totalLikes: number
