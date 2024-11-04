@@ -15,7 +15,7 @@ interface ProfileImageUploadProps {
   setImage: (image: File | null) => void
 }
 
-const uploadUserProfileImg = async (profileImg: string | null) => {
+const uploadUserProfileImg = async (profileImg: File | null) => {
   try {
     const res = await auth.patch(
       `/user/me`,
@@ -46,25 +46,26 @@ const ProfileImageUpload = ({ image, setImage }: ProfileImageUploadProps) => {
     mutationKey: ['userProfileImg'],
     mutationFn: (file: File | null) => uploadUserProfileImg(file),
     onSuccess: () => {
-      queryClient.invalidateQueries(['userInfoData', 'userNickName', 'userProfileImg'])
-      resetImage() // 업로드 성공 시 이미지 리셋
+      queryClient.invalidateQueries({
+        queryKey: ['userInfoData', 'userNickName', 'userProfileImg'],
+      })
     },
   })
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (file) {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setImage(reader.result as string)
-        mutate(image) // 파일을 mutate 호출에 전달하여 서버에 업로드
-      }
-      reader.readAsDataURL(file)
+      // const reader = new FileReader()
+      // reader.onloadend = () => {
+      setImage(file)
+      // mutate(image) // 파일을 mutate 호출에 전달하여 서버에 업로드
+      // }
+      // reader.readAsDataURL(file)
     }
   }
 
   // image에서 URL 생성
-  // const imagePreviewUrl = image ? URL.createObjectURL(image) : null
+  const imagePreviewUrl = image ? URL.createObjectURL(image) : null
 
   return (
     <ProfileImgInpBox>
@@ -77,9 +78,9 @@ const ProfileImageUpload = ({ image, setImage }: ProfileImageUploadProps) => {
           id='file02'
         />
         <ProfileInputFileLabel htmlFor='file02'>파일첨부</ProfileInputFileLabel>
-        {image && ( // imagePreviewUrl이 null이 아닐 때만 렌더링
+        {imagePreviewUrl && ( // imagePreviewUrl이 null이 아닐 때만 렌더링
           <ProfilePreviewImgBox>
-            <ProfilePreviewImg src={image} alt='첨부한 이미지 미리보기' />
+            <ProfilePreviewImg src={imagePreviewUrl} alt='첨부한 이미지 미리보기' />
           </ProfilePreviewImgBox>
         )}
       </ProfileAreaImgInpBox>
