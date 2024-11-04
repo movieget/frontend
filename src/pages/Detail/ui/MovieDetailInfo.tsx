@@ -52,6 +52,7 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
   const user = useUserStore((state) => state.userData)
   const userId = user ? Number(user.id) : null
   const navigate = useNavigate()
+  console.log(movie)
 
   // 좋아요 상태 관리
   const [isChecked, setIsChecked] = useState(movie.is_likes)
@@ -106,7 +107,7 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
             <MovieInfoTop>
               <MovieTitleHolder>
                 <MovieTitle>
-                  <StyleAge $age={movie.age} />
+                  <StyleAge $age={movie.age_rating} />
                   {movie.title}
                 </MovieTitle>
                 <Badge $playing='playing'>상영중</Badge>
