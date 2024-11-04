@@ -116,7 +116,7 @@ const SelectBox = styled.ul`
   flex-direction: column;
   padding: 1rem;
   gap: 0.4rem;
-  border: 1px solid ${({ theme }) => theme.colors.border_box};
+  border: 1px solid ${({ theme }) => theme.colors.border_normal};
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.bg_box};
   overflow: auto;

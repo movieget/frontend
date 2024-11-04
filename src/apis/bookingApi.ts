@@ -37,7 +37,7 @@ export const handleApiError = (err: unknown) => {
 }
 
 // 영화 데이터 가져오기
-export const fetchMovieData = async (date: string, userId: number) => {
+export const fetchMovieData = async (date: string, userId: string | null) => {
   const formattedDate = date.slice(0, 10)
   try {
     const res = await client.get(

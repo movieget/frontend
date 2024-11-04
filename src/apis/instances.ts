@@ -42,9 +42,9 @@ auth.interceptors.request.use(
     }
 
     // 본문(body)에 user_id 추가 (POST 요청 시)
-    if (config.method === 'post' || config.method === 'put' || config.method === 'get') {
+    if (config.method === 'put' || config.method === 'get') {
       config.data = {
-        ...(config.data || {}), // 기존 데이터가 있을 경우 유지
+        ...config.data,
         user_id: userId, // user_id 추가
       }
     }
