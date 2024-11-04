@@ -15,13 +15,13 @@ import { useUserStore } from '../../stores/userStore'
 
 const postBookSuccess = async (
   userId: string | undefined,
-  screenId: string,
+  screenId: string | null,
   params: any,
   paymentKeyParam: string | null,
   orderParam: string | null,
   amountParam: string | null,
 ) => {
-  console.log(params.seats)
+  console.log(params.seats.split(','))
   try {
     const res = await auth.post(
       `/books/success/${userId}/${screenId}`,
@@ -68,6 +68,7 @@ const TossSuccess = () => {
   const userId = useUserStore((state) => state.userData?.id)
 
   console.log('쿼리파라매터: ', params)
+  console.log(params.seats.split(','))
 
   const body = {
     book_id: params.book_id,

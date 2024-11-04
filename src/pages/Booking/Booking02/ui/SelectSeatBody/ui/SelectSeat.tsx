@@ -13,14 +13,26 @@ import { LineMdAlertLoop } from '../../../../../../assets/svg/LineMdAlertLoop'
 import { MainBtn } from '../../../../../../components/Button/style'
 import { useNavigate } from 'react-router-dom'
 import { commonColors } from '../../../../../../styles/theme'
+import { useSeatStore } from '../../../../../../stores/seatStore'
+import { useEffect } from 'react'
 
 const SelectSeat = ({ totalSeat, seatId, setSeatId }: ISelectSeatProps) => {
   const navigate = useNavigate()
-  const { screenId } = useBookingStore((state) => state.initialBookingState)
+  const { screenId, screeningDate, startTime } = useBookingStore(
+    (state) => state.initialBookingState,
+  )
   const { data, isLoading, isError, error } = useQuery<ISeatData>({
     queryKey: ['seatData'],
-    queryFn: () => getSeatData(screenId),
+    queryFn: () => getSeatData(screenId, screeningDate, startTime),
   })
+
+  const { rows, setRows } = useSeatStore()
+  useEffect(() => {
+    if (data) {
+      setRows(data.rows)
+      console.log(rows)
+    }
+  }, [data])
   // totalSeat === 선택할 수 있는 최대 좌석 갯수.
   const handleSelectSeat = (uniqueId: string, isChecked: boolean) => {
     // 최대 좌석 수 초과 시 클릭 무시
@@ -36,8 +48,6 @@ const SelectSeat = ({ totalSeat, seatId, setSeatId }: ISelectSeatProps) => {
       }
     })
   }
-
-  console.log(data)
 
   return (
     <SeatWrapper>

@@ -61,11 +61,11 @@ const TossCheckout = () => {
     start_time: bookData.startTime,
     location: bookData.location,
     cinema: bookData.cinema,
+    seats: bookData.seats,
     screen_id: bookData.screenId,
     screening_date: bookData.screeningDate,
     adult_count: adultCount,
     child_count: childCount,
-    seats: bookData.seats,
   }
 
   useEffect(() => {
@@ -99,7 +99,7 @@ const TossCheckout = () => {
       },
       orderId: orderId,
       orderName: title,
-      successUrl: `${window.location.origin}/toss/success?book_id=${encodeURIComponent(book_id)}&poster=${encodeURIComponent(poster)}&age=${encodeURIComponent(age)}&duration=${encodeURIComponent(duration)}&date=${encodeURIComponent(date)}&start_time=${encodeURIComponent(start_time)}&title=${encodeURIComponent(title)}&location=${encodeURIComponent(location)}&cinema=${encodeURIComponent(cinema)}&screen_id=${encodeURIComponent(screen_id)}&screening_date=${encodeURIComponent(screening_date)}&adult_count=${encodeURIComponent(adult_count)}&child_count=${encodeURIComponent(child_count)}&seats=${seats.join(',')}`,
+      successUrl: `${window.location.origin}/toss/success?book_id=${encodeURIComponent(book_id)}&poster=${encodeURIComponent(poster)}&age=${encodeURIComponent(age)}&duration=${encodeURIComponent(duration)}&date=${encodeURIComponent(date)}&start_time=${encodeURIComponent(start_time)}&title=${encodeURIComponent(title)}&location=${encodeURIComponent(location)}&cinema=${encodeURIComponent(cinema)}&screen_id=${encodeURIComponent(screen_id)}&screening_date=${encodeURIComponent(screening_date)}&adult_count=${encodeURIComponent(adult_count)}&child_count=${encodeURIComponent(child_count)}&seats=${encodeURIComponent(seats.join(','))}`,
       failUrl: window.location.origin + '/toss/fail',
       card: {
         useEscrow: false,
