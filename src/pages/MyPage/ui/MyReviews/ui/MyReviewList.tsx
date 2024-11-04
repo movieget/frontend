@@ -52,7 +52,7 @@ const dummyData: Review[] = [
 ]
 
 const MyReviewList = () => {
-  const [reviewList, setReviewList] = useState<Review[]>(dummyData)
+  const [reviewList] = useState<Review[]>(dummyData)
   const [modal, setModal] = useState(false)
   const [selectedReview, setSelectedReview] = useState<Review | null>(null)
 

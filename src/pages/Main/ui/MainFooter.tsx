@@ -1,5 +1,5 @@
 import { StyleFooterContainer, StyleFooterSection, StyleFooterWrapper } from '../style'
-import Location from '../../../assets/svg/naver_location.svg'
+// import Location from '../../../assets/svg/naver_location.svg'
 
 const MainFooter = () => {
   return (

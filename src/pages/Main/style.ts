@@ -207,13 +207,13 @@ export const StyleFooterWrapper = styled.div`
   gap: 1.6rem;
 `
 
-interface InfoBoxProps {
-  title?: string
-  description?: string
-  buttonText?: string
-  iconUrl?: string
-  backgroundImageUrl?: string
-}
+// interface InfoBoxProps {
+//   title?: string
+//   description?: string
+//   buttonText?: string
+//   iconUrl?: string
+//   backgroundImageUrl?: string
+// }
 
 // 하단 컨텐츠 본문
 export const StyleFooterContainer = styled.div`

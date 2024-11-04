@@ -27,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({ $label, $isActive, onClick }) => {
 interface TabsProps {
   tabs: string[]
   contents: React.ReactNode[]
-  isSelect: boolean
+  isSelect?: boolean
   isAllDeleteBtn?: boolean
 }
 

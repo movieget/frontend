@@ -27,7 +27,7 @@ const dummyData: Point[] = [
 ]
 
 const UsePointList = () => {
-  const [usePoint, setUsePoint] = useState<Point[]>(dummyData)
+  const [usePoint] = useState<Point[]>(dummyData)
   return (
     <>
       <PointTitleBox>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { CustomSelectBox, Option, SelectButton, SelectLi, SelectUl } from './style'
+import { CustomSelectBox, SelectButton, SelectLi, SelectUl } from './style'
 
 interface CustomSelectProps {
   items?: string[]

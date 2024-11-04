@@ -30,7 +30,7 @@ const MOVIES_PER_PAGE = 10
 const nowPlayingMovie = [...now_playing_movie1, ...now_playing_movie2, ...now_playing_movie3]
 const upcomingMovie = [...upcoming_movie1, ...upcoming_movie2, ...upcoming_movie3]
 
-const loginUsers = login_user
+// const loginUsers = login_user
 
 export const handlers = [
   http.get('/api/v1/review', ({ request }) => {
