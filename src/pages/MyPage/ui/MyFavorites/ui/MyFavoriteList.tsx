@@ -25,7 +25,7 @@ const dummyData: Favorite[] = [
     id: 0,
     poster: '',
     title: '크라벤',
-    age: 18,
+    age: '18',
     genre: ['액션', 'SF/판타지'],
     overview: '줄거리',
     totalLikes: 200,

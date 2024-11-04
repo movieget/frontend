@@ -28,7 +28,7 @@ const uploadImage = async ({ userId, image }: UploadImageParams) => {
   return response.data
 }
 
-const ReviewWriteBox = ({ movieId }) => {
+const ReviewWriteBox = ({ movieId }: { movieId: number }) => {
   const user = useUserStore((state) => state.userData)
   const userId = user ? user.id : null
 
