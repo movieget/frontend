@@ -5,6 +5,8 @@ import { commonColors } from '../../../styles/theme'
 import { ErrorMsg } from '../../KakaoCallback/KakaoCallback.styled'
 import S from '../style'
 import { MainBtn } from '../../../components/Button/style'
+import { useMutation } from '@tanstack/react-query'
+import { auth } from '../../../apis/instances'
 
 interface IPaymentUIProps {
   amount: number
@@ -15,6 +17,33 @@ interface IPaymentUIProps {
   isLoading: boolean
   isError: boolean
   error: any
+  bookId: number
+  userId: string | undefined
+}
+
+const postUsePoint = async (
+  userId: string | undefined,
+  bookId: number,
+  totalPoint: string | null,
+) => {
+  try {
+    const res = await auth.post(
+      '/books/points/use',
+      {
+        user_id: userId,
+        book_id: bookId,
+        total_point: totalPoint,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    return res.data
+  } catch (err) {
+    throw err
+  }
 }
 
 const PaymentUI = ({
@@ -26,34 +55,52 @@ const PaymentUI = ({
   isError,
   error,
   data,
+  bookId,
+  userId,
 }: IPaymentUIProps) => {
   const maxPoint = data?.available_points
   const navigate = useNavigate()
+  console.log(userId)
+
+  const mutatePoint = useMutation({
+    mutationKey: ['usePoint'],
+    mutationFn: () => {
+      return postUsePoint(userId, bookId, point.toString())
+    },
+  })
+
   const handlePointChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newPoint = e.target.value ? Number(e.target.value) : 0
 
-    // 숫자 외의 값이 입력되지 않도록 강제
     if (isNaN(newPoint)) return
 
-    // 포인트 값이 음수이거나 최대 포인트를 넘지 않도록 제한
-    if (newPoint < 0) point = 0
-    else if (newPoint > maxPoint) return
+    if (newPoint < 0) newPoint = 0
+    else if (newPoint > maxPoint) newPoint = maxPoint
 
     setPoint(newPoint)
   }
 
+  const handlePayment = () => {
+    mutatePoint.mutate()
+    requestPayment()
+  }
+
+  if (isLoading) return <SvgSpinner />
+
+  if (isError) {
+    return (
+      <ErrorMsg>
+        <LineMdAlertLoop color={commonColors.warning} width={120} height={120} />
+        <span>{error.message}</span>
+        <MainBtn $size='large' onClick={() => navigate('/')}>
+          메인으로 돌아가기
+        </MainBtn>
+      </ErrorMsg>
+    )
+  }
+
   return (
     <S.PayCard>
-      {isLoading && <SvgSpinner />}
-      {isError && (
-        <ErrorMsg>
-          <LineMdAlertLoop color={commonColors.warning} width={120} height={120} />
-          <span>{error.message}</span>
-          <MainBtn $size='large' onClick={() => navigate('/')}>
-            메인으로 돌아가기
-          </MainBtn>
-        </ErrorMsg>
-      )}
       <h2>결제 정보</h2>
       <S.PayInfoWrapper>
         <span>결제 금액:</span>
@@ -62,19 +109,19 @@ const PaymentUI = ({
 
       <S.PayInfoWrapper>
         <span>사용 가능한 포인트: </span>
-        <span>{maxPoint} P</span> {/* 최대 사용 가능 포인트 표시 */}
+        <span>{maxPoint} P</span>
       </S.PayInfoWrapper>
 
       <S.PayInputWrapper>
         <span>사용할 포인트</span>
-        <input type='text' onChange={handlePointChange} value={point} min='0' max={maxPoint} />
+        <input type='number' onChange={handlePointChange} value={point} min='0' max={maxPoint} />
       </S.PayInputWrapper>
       <S.PayAmountWrapper>
         <span>최종 결제 금액:</span>
         <span>{amount - point} 원</span>
       </S.PayAmountWrapper>
 
-      <S.PayButton className='button' onClick={() => requestPayment()}>
+      <S.PayButton className='button' onClick={handlePayment}>
         <img src='../../../public/img/Toss_Symbol_Secondary_White.png' alt='토스로고' />
         <span>{`토스 간편결제`}</span>
       </S.PayButton>

@@ -17,7 +17,6 @@ import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../KakaoCallback/KakaoCallback.styled'
 import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
 import { commonColors } from '../../styles/theme'
-import { useFetchStore } from '../../stores/fetchStore'
 
 interface MenuItem {
   id: number

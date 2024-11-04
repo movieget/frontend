@@ -1,7 +1,5 @@
-// TossCheckout 컴포넌트
-
 import { useEffect, useState } from 'react'
-import { loadTossPayments } from '@tosspayments/tosspayments-sdk'
+import { TossPaymentsPayment, loadTossPayments } from '@tosspayments/tosspayments-sdk'
 import { useLocation } from 'react-router-dom'
 import { TOSS_API_KEY } from '../../utils/constants'
 import { customAlphabet } from 'nanoid'
@@ -22,13 +20,13 @@ const TossCheckout = () => {
   const adultCount = useBookingStore((state) => state.initialCountState.adult_count)
   const childCount = useBookingStore((state) => state.initialCountState.child_count)
   const { currency, amount } = lc.state
-  const [payment, setPayment] = useState(null)
+  const [payment, setPayment] = useState<TossPaymentsPayment | null>(null)
   const [point, setPoint] = useState(0)
   const [price, setPrice] = useState(amount)
   const userId = useUserStore((state) => state.userData?.id)
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ['userPoint'],
+    queryKey: ['userPoint', userId],
     queryFn: () => getUserPoint(userId),
   })
 
@@ -52,6 +50,7 @@ const TossCheckout = () => {
     screening_date,
     adult_count,
     child_count,
+    seats,
   } = {
     book_id: bookData.bookId,
     poster: bookData.poster,
@@ -66,6 +65,7 @@ const TossCheckout = () => {
     screening_date: bookData.screeningDate,
     adult_count: adultCount,
     child_count: childCount,
+    seats: bookData.seats,
   }
 
   useEffect(() => {
@@ -75,7 +75,9 @@ const TossCheckout = () => {
         const payment = tossPayments.payment({
           customerKey,
         })
-        setPayment(payment)
+        if (payment) {
+          setPayment(payment)
+        }
       } catch (error) {
         console.error('Error fetching payment:', error)
       }
@@ -85,11 +87,11 @@ const TossCheckout = () => {
   }, [TOSS_API_KEY, customerKey])
 
   useEffect(() => {
-    setPrice(amount - point >= 0 ? amount - point : 0) // 금액이 음수가 되지 않도록 설정
+    setPrice(amount - point >= 0 ? amount - point : 0)
   }, [point, amount])
 
   async function requestPayment() {
-    await payment.requestPayment({
+    await payment?.requestPayment({
       method: 'CARD',
       amount: {
         value: price,
@@ -97,7 +99,7 @@ const TossCheckout = () => {
       },
       orderId: orderId,
       orderName: title,
-      successUrl: `${window.location.origin}/toss/success?book_id=${encodeURIComponent(book_id)}&poster=${encodeURIComponent(poster)}&age=${encodeURIComponent(age)}&duration=${encodeURIComponent(duration)}&date=${encodeURIComponent(date)}&start_time=${encodeURIComponent(start_time)}&title=${encodeURIComponent(title)}&location=${encodeURIComponent(location)}&cinema=${encodeURIComponent(cinema)}&screen_id=${encodeURIComponent(screen_id)}&screening_date=${encodeURIComponent(screening_date)}&adult_count=${encodeURIComponent(adult_count)}&child_count=${encodeURIComponent(child_count)}`,
+      successUrl: `${window.location.origin}/toss/success?book_id=${encodeURIComponent(book_id)}&poster=${encodeURIComponent(poster)}&age=${encodeURIComponent(age)}&duration=${encodeURIComponent(duration)}&date=${encodeURIComponent(date)}&start_time=${encodeURIComponent(start_time)}&title=${encodeURIComponent(title)}&location=${encodeURIComponent(location)}&cinema=${encodeURIComponent(cinema)}&screen_id=${encodeURIComponent(screen_id)}&screening_date=${encodeURIComponent(screening_date)}&adult_count=${encodeURIComponent(adult_count)}&child_count=${encodeURIComponent(child_count)}&seats=${seats.join(',')}`,
       failUrl: window.location.origin + '/toss/fail',
       card: {
         useEscrow: false,
@@ -119,6 +121,8 @@ const TossCheckout = () => {
         point={point}
         setPoint={setPoint}
         data={data}
+        bookId={book_id}
+        userId={userId}
       />
     </S.Container>
   )

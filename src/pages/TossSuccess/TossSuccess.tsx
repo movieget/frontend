@@ -3,7 +3,7 @@ import { BasicBtn, MainBtn } from '../../components/Button/style'
 import ContainerLayout from '../../components/Layouts/ContainerLayout'
 import { ChargeBtnBox, ChargeContainer, ChargeContentsBox, ChargeHeader } from './style'
 import { useEffect } from 'react'
-import { client } from '../../apis/instances'
+import { auth, client } from '../../apis/instances'
 import { useMutation } from '@tanstack/react-query'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../KakaoCallback/KakaoCallback.styled'
@@ -11,6 +11,52 @@ import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
 import { commonColors } from '../../styles/theme'
 import MovieInfoCard2 from '../../components/MovieInfoCard/MovieInfoCard2'
 import { LineMdConfirmCircleFilled } from '../../assets/svg/LineMdConfirmCircleFilled'
+import { useUserStore } from '../../stores/userStore'
+
+const postBookSuccess = async (
+  userId: string | undefined,
+  screenId: string,
+  params: any,
+  paymentKeyParam: string | null,
+  orderParam: string | null,
+  amountParam: string | null,
+) => {
+  console.log(params.seats)
+  try {
+    const res = await auth.post(
+      `/books/success/${userId}/${screenId}`,
+      {
+        book_id: params.book_id,
+        poster_url: params.poster,
+        age_rating: params.age,
+        duration: Number(params.duration),
+        title: params.title,
+        booking_date: params.date.substring(0, 10),
+        screening_time: params.start_time,
+        spot: params.location,
+        cinema_name: params.cinema,
+        screen_number: params.screen_id,
+        screening_date: params.screening_date,
+        adult_count: params.adult_count,
+        child_count: params.child_count,
+        seats: params.seats.split(','),
+        paymentKey: paymentKeyParam,
+        orderId: orderParam,
+        amount: Number(amountParam),
+        total_price: Number(amountParam),
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    const data = res.data
+    return data
+  } catch (err) {
+    throw err
+  }
+}
 
 const TossSuccess = () => {
   const navigate = useNavigate()
@@ -19,30 +65,37 @@ const TossSuccess = () => {
   const orderParam = searchParams.get('orderId')
   const paymentKeyParam = searchParams.get('paymentKey')
   const amountParam = searchParams.get('amount')
+  const userId = useUserStore((state) => state.userData?.id)
 
-  console.log(params.start_time)
+  console.log('쿼리파라매터: ', params)
+
+  const body = {
+    book_id: params.book_id,
+    poster_url: params.poster,
+    age_rating: params.age,
+    duration: Number(params.duration),
+    title: params.title,
+    booking_date: params.date.substring(0, 10),
+    screening_time: params.start_time,
+    spot: params.location,
+    cinema_name: params.cinema,
+    screen_number: params.screen_id,
+    screening_date: params.screening_date,
+    adult_count: params.adult_count,
+    child_count: params.child_count,
+    seats: params.seats.split(','),
+    paymentKey: paymentKeyParam,
+    orderId: orderParam,
+    amount: Number(amountParam),
+  }
 
   const tossPaymentMutation = useMutation({
+    mutationKey: ['paymentConfirm'],
     mutationFn: async () => {
       const res = await client.post(
         '/payment/confirm',
         {
-          book_id: params.book_id,
-          poster: params.poster,
-          age: params.age,
-          duration: Number(params.duration),
-          title: params.title,
-          date: params.date.substring(0, 10),
-          start_time: params.start_time,
-          location: params.location,
-          cinema: params.cinema,
-          screen_id: params.screen_id,
-          screening_date: params.screening_date,
-          adult_count: params.adult_count,
-          child_count: params.child_count,
-          paymentKey: paymentKeyParam,
-          orderId: orderParam,
-          amount: Number(amountParam),
+          ...body,
         },
         {
           headers: {
@@ -52,6 +105,12 @@ const TossSuccess = () => {
       )
       return { status: res.status, data: res.data }
     },
+  })
+
+  const bookSuccessMutation = useMutation({
+    mutationKey: ['bookSuccess'],
+    mutationFn: () =>
+      postBookSuccess(userId, params.screen_id, params, paymentKeyParam, orderParam, amountParam),
   })
 
   // 뒤로가기 막기 -> 결제페이지로 가는것을 막고 메인페이지로 이동
@@ -76,6 +135,7 @@ const TossSuccess = () => {
 
   useEffect(() => {
     tossPaymentMutation.mutate()
+    bookSuccessMutation.mutate()
   }, [])
 
   return (
@@ -103,19 +163,19 @@ const TossSuccess = () => {
             </ChargeHeader>
             <ChargeContentsBox>
               <MovieInfoCard2
-                $posterImage={tossPaymentMutation.data?.data.poster}
-                $age={tossPaymentMutation.data?.data.age}
+                $posterImage={tossPaymentMutation.data?.data.poster_url}
+                $age={tossPaymentMutation.data?.data.age_rating}
                 $title={tossPaymentMutation.data?.data.title}
-                $bookingDate={tossPaymentMutation.data?.data.date}
+                $bookingDate={tossPaymentMutation.data?.data.booking_date}
                 $screeningDate={tossPaymentMutation.data?.data.screening_date}
                 $duration={tossPaymentMutation.data?.data.duration}
                 $adultCount={tossPaymentMutation.data?.data.adult_count}
                 $youthCount={tossPaymentMutation.data?.data.child_count}
-                $location={tossPaymentMutation.data?.data.location}
+                $location={tossPaymentMutation.data?.data.spot}
                 $orderId={tossPaymentMutation.data?.data.orderId}
-                $paymentKey={tossPaymentMutation.data?.data.paymentKey}
-                $screenId={tossPaymentMutation.data?.data.screen_id}
-                $cinema={tossPaymentMutation.data?.data.cinema}
+                $screenId={tossPaymentMutation.data?.data.screen_number}
+                $cinema={tossPaymentMutation.data?.data.cinema_name}
+                $seats={tossPaymentMutation.data?.data.seats}
               />
             </ChargeContentsBox>
             <ChargeBtnBox>
