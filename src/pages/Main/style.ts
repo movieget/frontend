@@ -9,9 +9,8 @@ export const StyleTrailerSection = styled.section`
   background-color: black;
 `
 
+// 트레일러 영상 + 텍스트 묶는 구역
 export const StyleTrailerWrapper = styled.div`
-  // 트레일러 영상 + 텍스트 묶는 구역
-
   // 양옆 그라데이션
   &::before {
     content: '';
@@ -34,21 +33,21 @@ export const StyleTrailerWrapper = styled.div`
   }
 `
 
+// 트레일러 영상
 export const StyleTrailer = styled.iframe`
-  // 트레일러 영상
   height: 100rem;
 `
 
+// 트레일러 텍스트
 export const StyleTrailerText = styled.div`
-  // 트레일러 텍스트
   // 부모요소 기준
   position: absolute;
   left: 20%;
   top: 55%;
   z-index: 3;
 `
+// 트레일러 영화제목
 export const StyleTrailerTitle = styled.div`
-  // 트레일러 영화제목
   font-weight: 700;
   font-size: 4rem;
   color: ${({ theme }) => theme.colors.text_in_box};
@@ -58,8 +57,8 @@ export const StyleTrailerTitle = styled.div`
 `
 
 // -webkit 관련 속성: 레거시... -> 사용이유: 줄거리가 길때 말줄임표를 표현하는데 있어 가장 자연스럽게 표현되는 속성
+// 트레일러 영화 줄거리
 export const StyleTrailerOverview = styled.span`
-  // 트레일러 영화 줄거리
   width: 32rem;
   display: -webkit-box;
   margin-top: 4rem;
@@ -193,65 +192,3 @@ export const StyleMovieListWrapper = styled.div`
     }
   }
 `
-
-// main 하단 전체
-export const StyleFooterSection = styled.section`
-  height: 70rem;
-  margin-top: 10rem;
-`
-
-// 하단 컨텐츠 묶음
-export const StyleFooterWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 1.6rem;
-`
-
-// interface InfoBoxProps {
-//   title?: string
-//   description?: string
-//   buttonText?: string
-//   iconUrl?: string
-//   backgroundImageUrl?: string
-// }
-
-// 하단 컨텐츠 본문
-export const StyleFooterContainer = styled.div`
-  height: 44rem;
-  width: 41rem;
-  background-color: #181818;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
-
-// const Icon = styled.img`
-//   width: 5rem;
-//   height: 5rem;
-//   margin-bottom: 10rem;
-// `
-
-// const Title = styled.h3`
-// color: ${({theme}) => theme.colors.text};
-// font-size: 16rem;
-// margin-bottom: 10rem;
-// `
-
-// const Subtitle = styled.p`
-// color: ${({theme}) => theme.colors.text};
-// font-size: 12rem;
-// margin-bottom: 20rem;
-// `
-
-// // 버튼은 메인버튼 사용
-
-// // 광고
-// const AdBanner = styled.div`
-// background-image: url(${props => props.backgroundImage});
-// background-size: cover;
-// background-position: center;
-// `
-
-// *GPT
