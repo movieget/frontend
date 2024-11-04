@@ -9,6 +9,7 @@ import MovieCard from '../../../components/MovieCard/MovieCard'
 import Slider from 'react-slick'
 import { BasicBtn } from '../../../components/Button/style'
 import { IMovieStoreProps } from '../type'
+import { Link } from 'react-router-dom'
 
 // 상영중 / 상영예정 필터링을 안해도 되는 이유: 리스트를 따로 제공
 const MainList = ({ nowData, soonData }: IMovieStoreProps) => {
@@ -34,7 +35,9 @@ const MainList = ({ nowData, soonData }: IMovieStoreProps) => {
       <StyleMovieContents>
         <StyleMovieTitle>
           <StyleTitle>상영중 TOP 10</StyleTitle>
-          <BasicBtn $size='small'>더보기</BasicBtn>
+          <Link to='/movie?menu=now'>
+            <BasicBtn $size='small'>더보기</BasicBtn>
+          </Link>
         </StyleMovieTitle>
         <StyleMovieListWrapper>
           <Slider {...settings}>
@@ -62,7 +65,9 @@ const MainList = ({ nowData, soonData }: IMovieStoreProps) => {
       <StyleMovieContents>
         <StyleMovieTitle>
           <StyleTitle>개봉예정</StyleTitle>
-          <BasicBtn $size='small'>더보기</BasicBtn>
+          <Link to='/movie?menu=soon'>
+            <BasicBtn $size='small'>더보기</BasicBtn>
+          </Link>
         </StyleMovieTitle>
         <StyleMovieListWrapper>
           <Slider {...settings}>

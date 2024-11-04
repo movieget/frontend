@@ -9,8 +9,6 @@ import { useEffect, useState } from 'react'
 
 const Main = () => {
   // props로 하위 컴포넌트에 뿌릴예정이기 때문에 전역상태관리 불필요
-  // const { nowMovies, soonMovies, setNowMovies, setSoonMovies } = useMovieStore()
-
   const [nowMovies, setNowMovies] = useState<IMovieStoreProps[] | null>(null)
   const [soonMovies, setSoonMovies] = useState<IMovieStoreProps[] | null>(null)
 
@@ -33,9 +31,9 @@ const Main = () => {
     queryKey: ['soonMovies'],
     queryFn: () => fetchMovieListData('soon'),
   })
-
-  console.log(nowMovies)
-  console.log(soonMovies)
+  // 영화데이터 확인
+  // console.log(nowMovies)
+  // console.log(soonMovies)
 
   // 데이터 상태변경시 랜더링
   useEffect(() => {

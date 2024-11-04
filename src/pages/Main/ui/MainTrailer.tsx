@@ -63,9 +63,8 @@ const MainTrailer = ({ nowData }: IMovieStoreProps) => {
         )}
 
         <StyleTrailerText>
-          {/* // 해당부분 받아오는 api에서 title, overview받아와 삽입할 예정 */}
-          <StyleTrailerTitle>{nowData.movies.title}</StyleTrailerTitle>
-          <StyleTrailerOverview>{nowData.movies.overview}</StyleTrailerOverview>
+          <StyleTrailerTitle>{nowData?.movies.title}</StyleTrailerTitle>
+          <StyleTrailerOverview>{nowData?.movies.overview}</StyleTrailerOverview>
         </StyleTrailerText>
       </StyleTrailerWrapper>
     </StyleTrailerSection>
@@ -87,9 +86,9 @@ const SkeletonAnimation = keyframes`
 // Skeleton 스타일 컴포넌트
 const SkeletonTrailer = styled.div`
   height: 100rem;
-  background: linear-gradient(90deg, #4b4b4b 25%, #353535 50%, #4b4b4b 75%);
+  background: linear-gradient(90deg, #303030 25%, #6422f230 50%, #303030 75%);
   background-size: 200% 100%;
-  animation: ${SkeletonAnimation} 1.5s infinite;
+  animation: ${SkeletonAnimation} 3s infinite;
 `
 
 const SkeletonText = styled.div`
@@ -103,13 +102,13 @@ const SkeletonTitle = styled.div`
   width: 20rem;
   height: 4rem;
   margin-bottom: 1rem;
-  background-color: #4b4b4b;
+  background-color: #303030;
   animation: ${SkeletonAnimation} 1.5s infinite;
 `
 
 const SkeletonOverview = styled.div`
   width: 32rem;
   height: 4rem;
-  background-color: #4b4b4b;
+  background-color: #303030;
   animation: ${SkeletonAnimation} 1.5s infinite;
 `
