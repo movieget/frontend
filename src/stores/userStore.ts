@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-type UserData = {
+export type UserData = {
   access_token: string
   id: string
   profile_image_url: string

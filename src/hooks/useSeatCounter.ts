@@ -1,13 +1,13 @@
 import { useMemo } from 'react'
 
 interface Seat {
-  id: string
+  column: string
   status: boolean | null
 }
 
 interface Row {
-  id: string
-  seat: Seat[]
+  row: string
+  seats: Seat[]
 }
 
 /**
@@ -19,7 +19,7 @@ export const useSeatCounter = (rows: Row[]) => {
   // useMemo를 사용하여 최적화
   const availableSeatCount = useMemo(() => {
     return rows.reduce((total, row) => {
-      const trueSeatsInRow = row.seat.filter((seat) => seat.status === true).length
+      const trueSeatsInRow = row?.seats.filter((seat) => seat?.status === true).length
       return total + trueSeatsInRow
     }, 0)
   }, [rows])

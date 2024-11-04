@@ -49,6 +49,7 @@ const initialBookingState = {
   screenId: 0,
   screeningDate: '',
   seats: [],
+  movieId: 0,
 }
 
 const initialCountState = {

@@ -74,9 +74,9 @@ export const postMovieData = async (bookData: IPaymentData) => {
 }
 
 // 좌석 데이터 가져오기
-export const getSeatData = async (screenId: number) => {
+export const getSeatData = async (screenId: number, screeningDate: string, startTime: string) => {
   try {
-    const res = await client.get(`/books/${screenId}`, {
+    const res = await client.get(`/books/${screenId}/${screeningDate}/${startTime}`, {
       headers: {
         'Content-Type': 'application/json',
       },

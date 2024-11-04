@@ -2,13 +2,15 @@ import { IconBtn, IconBtnImg } from '../../../../../../components/Button/style'
 import plusIco from '../../../../../../assets/svg/ic--round-add.svg'
 import minusIco from '../../../../../../assets/svg/ic--round-minus.svg'
 
-import { dummyArr } from '../../../../../../mocks/dummyArray'
 import { useSeatCounter } from '../../../../../../hooks/useSeatCounter'
 import { ICounterBtnProps } from '../../../Booking02.types'
+import { useSeatStore } from '../../../../../../stores/seatStore'
 
 const CounterBtn = ({ age, ico, totalSeat, setCount, count }: ICounterBtnProps) => {
   const icoSrcState = ico === 'plus' ? plusIco : minusIco
-  const availableSeat = useSeatCounter(dummyArr)
+  const { rows } = useSeatStore()
+  console.log(rows)
+  const availableSeat = useSeatCounter(rows)
 
   // 총 좌석 수가 availableSeat 이하일 때 증가 가능
   const isPlusAllowed = totalSeat < availableSeat
