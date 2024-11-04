@@ -74,8 +74,10 @@ const PaymentUI = ({
 
     if (isNaN(newPoint)) return
 
+    const maxAllowedPoint = Math.min(maxPoint, amount) // amount와 maxPoint 중 작은 값으로 설정
+
     if (newPoint < 0) newPoint = 0
-    else if (newPoint > maxPoint) newPoint = maxPoint
+    else if (newPoint > maxAllowedPoint) newPoint = maxAllowedPoint
 
     setPoint(newPoint)
   }
@@ -114,7 +116,13 @@ const PaymentUI = ({
 
       <S.PayInputWrapper>
         <span>사용할 포인트</span>
-        <input type='number' onChange={handlePointChange} value={point} min='0' max={maxPoint} />
+        <input
+          type='text'
+          onChange={handlePointChange}
+          value={point}
+          min='0'
+          max={Math.min(maxPoint, amount)} // 최대값을 amount와 maxPoint 중 작은 값으로 설정
+        />
       </S.PayInputWrapper>
       <S.PayAmountWrapper>
         <span>최종 결제 금액:</span>
