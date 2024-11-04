@@ -30,12 +30,6 @@ const TossCheckout = () => {
     queryFn: () => getUserPoint(userId),
   })
 
-  useEffect(() => {
-    if (data) {
-      setPoint(Number(data.available_points))
-    }
-  }, [data])
-
   const {
     book_id,
     poster,
