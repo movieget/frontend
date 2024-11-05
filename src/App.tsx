@@ -7,6 +7,7 @@ import { useDarkModeStore } from './stores/store'
 
 function App() {
   const isDarkMode = useDarkModeStore((state) => state.isDarkMode)
+
   return (
     <>
       <ThemeProvider theme={isDarkMode ? theme.dark : theme.light}>
