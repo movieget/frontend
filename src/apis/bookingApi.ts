@@ -32,7 +32,7 @@ export const handleApiError = (err: unknown) => {
       throw new Error('요청 중 오류가 발생했습니다.')
     }
   } else {
-    throw new Error('알 수 없는 오류가 발생했습니다.') // Axios가 아닌 다른 에러에 대한 기본 메시지 추가
+    throw err
   }
 }
 
@@ -102,5 +102,3 @@ export const getUserPoint = async (userId: string | undefined) => {
     handleApiError(err)
   }
 }
-
-// export const postUsePoint = async ()

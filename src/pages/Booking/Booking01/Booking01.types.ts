@@ -106,6 +106,7 @@ export interface ITimeButtonProps {
   selectedId: boolean
   screenId: number
   screeningDate: string
+  screenInfoId: string
   onSelect: (id: number) => void
   setSelectedId: (toggleStyle: number | null) => void
   setIsTimeSelected: React.Dispatch<React.SetStateAction<boolean>>

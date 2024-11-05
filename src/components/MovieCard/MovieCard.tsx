@@ -12,7 +12,7 @@ import { useUserStore } from '../../stores/userStore'
 import { client } from '../../apis/instances'
 
 // 좋아요 상태를 포스트하는 함수
-const postLikeStatus = async ({
+export const postLikeStatus = async ({
   id,
   isLiked,
   userId,

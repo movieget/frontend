@@ -100,7 +100,7 @@ const Day = styled.p`
 
 const SelectBodyWrapper = styled.div`
   width: 100%;
-  height: 74rem;
+  /* height: 74rem; */
   padding: 8rem 6rem;
   display: flex;
   flex-direction: column;
@@ -126,10 +126,10 @@ const SelectLineBox = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   padding: 2rem 0;
   border-top: 1px solid ${({ theme }) => theme.colors.border_wrapper};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border_wrapper};
 
   div {
     width: 100%;
@@ -215,7 +215,9 @@ const SelectLocation = styled(SelectMovie)`
 const SelectTheater = styled(SelectMovie)`
   flex: 1;
 `
-const SelectTime = styled(SelectMovie)``
+const SelectTime = styled(SelectMovie)`
+  overflow: visible;
+`
 
 const SelectTitleStyle = styled.h2`
   font-size: 2.2rem;

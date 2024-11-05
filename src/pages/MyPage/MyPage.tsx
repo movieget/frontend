@@ -68,13 +68,13 @@ const Mypage = () => {
   const [URLSearchParams, setSearchParams] = useSearchParams()
   const menu = URLSearchParams.get('menu') || 'default'
   const [activeMenu, setActiveMenu] = useState(menu)
-  const { userData, initializeUser } = useUserStore()
+  const userId = useUserStore((state) => state.userData?.id)
   const { userInfo, fetchInfo } = useInfoStore()
 
   // 유저정보 요청
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['userInfoData', 'userNickName', 'userProfileImg'],
-    queryFn: () => fetchUserDataAndPoints(userData?.id),
+    queryFn: () => fetchUserDataAndPoints(userId),
   })
 
   // data, isError상태 업뎃시 useEffect실행
@@ -141,13 +141,11 @@ const Mypage = () => {
             {data && (
               <>
                 <MyInfo>
-                  <ProfileBadge src={userData?.profile_image_url} width='10rem' height='10rem' />
+                  <ProfileBadge src={data.userData.image_url} width='10rem' height='10rem' />
                   <MyName>
                     안녕하세요!
                     <br />
-                    <MyNameStrong>
-                      {userData?.id ? userInfo?.nickname : userInfo?.username} 님
-                    </MyNameStrong>
+                    <MyNameStrong>{data.userData.nickname} 님</MyNameStrong>
                   </MyName>
                 </MyInfo>
                 <MyPoint>{data?.pointData.available_points}P</MyPoint>

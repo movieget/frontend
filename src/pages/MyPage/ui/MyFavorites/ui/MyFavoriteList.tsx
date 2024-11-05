@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { MainBtn } from '../../../../../components/Button/style'
 import MovieInfoCard from '../../../../../components/MovieInfoCard/MovieInfoCard'
 import { BtnBox, MovieList, MovieListBox } from '../../../style'
@@ -8,81 +7,113 @@ import {
   CheckHeartCount,
 } from '../../../../../components/Checkbox/style'
 import { formatLikes } from '../../../../../utils/formatLikes'
+import { client } from '../../../../../apis/instances'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useUserStore } from '../../../../../stores/userStore'
+import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
+import { ErrorMsg } from '../../../../KakaoCallback/KakaoCallback.styled'
+import { LineMdAlertLoop } from '../../../../../assets/svg/LineMdAlertLoop'
+import { commonColors } from '../../../../../styles/theme'
+import { postLikeStatus } from '../../../../../components/MovieCard/MovieCard'
+import { useFavoriteMovieStore } from '../../../../../stores/favoriteMovieStore'
+import { useEffect } from 'react'
 
 interface Favorite {
-  id: number
-  poster: string
+  favorite_id: number
+  movie_id: number
+  is_liked: boolean
   title: string
-  age: 'all' | '12' | '15' | '18'
-  genre: string[]
+  poster_image: string
+  age_rating: 'all' | '12' | '15' | '18' | undefined
+  genre: string
   overview: string
-  totalLikes: number
-  isLikes: boolean
+  trailer_url: string
+  duration: number
+  rating: number
+  total_likes: number
 }
 
-const dummyData: Favorite[] = [
-  {
-    id: 0,
-    poster: '',
-    title: '크라벤',
-    age: '18',
-    genre: ['액션', 'SF/판타지'],
-    overview: '줄거리',
-    totalLikes: 200,
-    isLikes: true,
-  },
-  {
-    id: 1,
-    poster: '',
-    title: '다크나이트',
-    age: 'all',
-    genre: ['스릴러', '멜로', '공포', '어린이', 'SF/판타지'],
-    overview:
-      '줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리',
-    totalLikes: 1262,
-    isLikes: true,
-  },
-]
+export const getFavoriteMovies = async (userId: string | undefined) => {
+  const res = await client.get(`/favorites?user_id=${userId}`)
+  return res.data
+}
 
 const MyFavoriteList = () => {
-  const [favoriteList, setFavoriteList] = useState<Favorite[]>(dummyData)
+  const userId = useUserStore((state) => state.userData?.id)
+  const { setFavoriteMovies } = useFavoriteMovieStore()
+  const queryClient = useQueryClient()
 
-  const handleCheckboxChange = (id: number) => {
-    setFavoriteList((prevList) =>
-      prevList.map((movie) => (movie.id === id ? { ...movie, isLikes: !movie.isLikes } : movie)),
-    )
+  const {
+    data: favoriteMoviesData,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ['favoriteMovies', userId],
+    queryFn: () => getFavoriteMovies(userId),
+    enabled: !!userId,
+  })
+
+  const mutation = useMutation({
+    mutationFn: postLikeStatus,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['favoriteMovies', userId])
+    },
+    onError: (error) => {
+      console.log('에러', error)
+    },
+  })
+
+  const handleCheckboxChange = (id: number, isLiked: boolean) => {
+    if (userId) {
+      mutation.mutate({ id, isLiked: !isLiked, userId: Number(userId) })
+    }
+  }
+
+  const truncateString = (str: string) => {
+    return str.length > 12 ? str.slice(0, 12) + '...' : str
   }
 
   return (
     <MovieListBox>
-      {favoriteList?.map((movie) => {
-        return (
-          <MovieList key={movie.id}>
+      {(isLoading || mutation.isPending) && <SvgSpinner />}
+      {isError && (
+        <ErrorMsg>
+          <LineMdAlertLoop color={commonColors.warning} width={120} height={120} />
+          <span>{error.message}</span>
+          <MainBtn $size='large' onClick={() => refetch()}>
+            재시도
+          </MainBtn>
+        </ErrorMsg>
+      )}
+      {favoriteMoviesData &&
+        favoriteMoviesData.favorites.map((movie: Favorite) => (
+          <MovieList key={movie.favorite_id}>
             <MovieInfoCard
-              $posterImage=''
-              $title={movie.title}
-              $age={movie.age}
+              $posterImage={movie.poster_image}
+              $title={truncateString(movie.title)}
+              $age={movie.age_rating}
               $genre={movie.genre}
-              $overview={movie.overview}
+              $duration={movie.duration}
             />
             <BtnBox>
               <CheckboxWrapper>
                 <Checkbox
                   type='checkbox'
-                  id={`checkbox-${movie.id}`}
-                  name=''
-                  checked={movie.isLikes}
-                  onChange={() => handleCheckboxChange(movie.id)}
+                  id={`checkbox-${movie.favorite_id}`}
+                  name={movie.title}
+                  checked={movie.is_liked}
+                  onChange={() => handleCheckboxChange(movie.movie_id, movie.is_liked)}
                 />
-                <CheckHeartCount htmlFor={`checkbox-${movie.id}`}>
-                  {formatLikes(movie.totalLikes)}
+                <CheckHeartCount htmlFor={`checkbox-${movie.favorite_id}`}>
+                  {formatLikes(movie.total_likes)}
                 </CheckHeartCount>
               </CheckboxWrapper>
               <MainBtn $size='large'>예매하기</MainBtn>
             </BtnBox>
           </MovieList>
-        )
-      })}
+        ))}
     </MovieListBox>
   )
 }

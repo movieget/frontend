@@ -6,6 +6,7 @@ const initialDates = generateDates()
 interface IBookingState {
   initialBookingState: {
     bookId: number
+    movieId: number
     poster: string
     age: string
     duration: number
@@ -17,6 +18,7 @@ interface IBookingState {
     screenId: number
     screeningDate: string
     seats: string[]
+    screenInfoId: string
   }
 
   initialCountState: {
@@ -48,6 +50,7 @@ const initialBookingState = {
   cinema: '',
   screenId: 0,
   screeningDate: '',
+  screenInfoId: '',
   seats: [],
   movieId: 0,
 }

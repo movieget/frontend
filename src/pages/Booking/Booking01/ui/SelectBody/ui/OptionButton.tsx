@@ -12,6 +12,7 @@ const OptionButton = ({
   duration,
   bookId,
   poster,
+
   label = '옵션라벨',
 }: IOptionButtonProps) => {
   const setField = useBookingStore((state) => state.actions.setField)
@@ -28,6 +29,7 @@ const OptionButton = ({
         setField('age', selectedId ? '' : age)
         setField('duration', selectedId ? '' : duration)
         setField('poster', selectedId ? '' : poster)
+        setField('movieId', selectedId ? '' : id)
         break
       case '지역':
         setField('location', selectedId ? '' : label)

@@ -69,14 +69,13 @@ const fetchSearchData = async (inputValue: string) => {
 
 const Movie = () => {
   const [urlSearchParams, setUrlSearchParams] = useSearchParams()
-  const menu = urlSearchParams.get('menu') || 'now' // 기본값 설정
-  const [sortOption, setSortOption] = useState('최신순') // 기본 정렬 기준
-  const [inputValue, setInputValue] = useState('') // 검색어 상태 추가
+  const menu = urlSearchParams.get('menu') || 'now'
+  const [sortOption, setSortOption] = useState('최신순')
+  const [inputValue, setInputValue] = useState('')
 
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetMovieData(
     menu as 'now' | 'soon',
   )
-  // console.log(data)
 
   const { ref, inView } = useInView({
     threshold: 1.0,
@@ -86,14 +85,13 @@ const Movie = () => {
     if (inView && hasNextPage && !isFetchingNextPage) {
       fetchNextPage()
     }
-  }, [inView, hasNextPage, fetchNextPage])
+  }, [inView, hasNextPage, fetchNextPage, isFetchingNextPage])
 
   useEffect(() => {
     setUrlSearchParams({ menu })
-    setInputValue('') // 메뉴 변경 시 검색어 초기화
+    setInputValue('')
   }, [menu, setUrlSearchParams])
 
-  // 검색 기능
   const inputRef = useRef<HTMLInputElement | null>(null)
   const inputHandler = () => {
     if (inputRef.current) {
@@ -111,30 +109,25 @@ const Movie = () => {
   const { data: searchData } = useQuery({
     queryKey: ['search-data', inputValue],
     queryFn: () => fetchSearchData(inputValue),
-    enabled: !!inputValue, // inputValue가 있을 때만 쿼리 실행
+    enabled: !!inputValue,
   })
 
-  // 영화 목록 추출
   const movieData = data?.pages.flatMap((page) => page.movies) || []
-  // console.log(movieData)
   const searchResults = searchData?.movies || []
 
-  // 영화 데이터 정렬
   const sortMovies = (movies: Movie[]) => {
     switch (sortOption) {
       case '가나다순':
         return [...movies].sort((a, b) => a.title.localeCompare(b.title))
       default:
-        return [...movies] // 기본적으로 정렬하지 않음
+        return [...movies]
     }
   }
 
   const sortedMovieData = sortMovies(movieData)
-  // const sortedSearchResults = sortMovies(searchResults);
 
   return (
     <PageLayout>
-      {/* 검색 */}
       <SearchBox onSubmit={formHandler}>
         <InputBox $width='100%'>
           <Input type='text' $radius='1.2rem' placeholder='검색어를 입력해주세요.' ref={inputRef} />
@@ -155,8 +148,6 @@ const Movie = () => {
           </Link>
         </CategoryBtnBox>
       </SearchBox>
-
-      {/* 영화 목록 렌더링 */}
       <SearchResultWrapper>
         <SearchContentBox>
           <SearchTitle>
@@ -166,7 +157,7 @@ const Movie = () => {
         </SearchContentBox>
 
         {searchResults.length > 0 ? (
-          <NowPlayingMovie movieData={sortMovies(searchResults)} /> // 정렬된 검색 결과
+          <NowPlayingMovie movieData={sortMovies(searchResults)} />
         ) : (
           <>
             {menu === 'now' && <NowPlayingMovie movieData={sortedMovieData} />}
@@ -174,10 +165,9 @@ const Movie = () => {
           </>
         )}
       </SearchResultWrapper>
-
       {/* 무한 스크롤을 위한 로딩 표시 */}
       <LoadMovie ref={ref} />
-      {!isLoading && <SvgSpinner />}
+      {isFetchingNextPage && hasNextPage && <SvgSpinner />} {/* 추가된 조건부 렌더링 */}
     </PageLayout>
   )
 }

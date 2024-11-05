@@ -37,13 +37,15 @@ const postBookSuccess = async (
         cinema_name: params.cinema,
         screen_number: params.screen_id,
         screening_date: params.screening_date,
-        adult_count: params.adult_count,
-        child_count: params.child_count,
+        adult_count: Number(params.adult_count),
+        child_count: Number(params.child_count),
         seats: params.seats.split(','),
         paymentKey: paymentKeyParam,
         orderId: orderParam,
         amount: Number(amountParam),
         total_price: Number(amountParam),
+        total_point: Number(params.total_point),
+        screen_info_id: Number(params.screen_info_id),
       },
       {
         headers: {
@@ -88,6 +90,7 @@ const TossSuccess = () => {
     paymentKey: paymentKeyParam,
     orderId: orderParam,
     amount: Number(amountParam),
+    screen_info_id: params.screen_info_id,
   }
 
   const tossPaymentMutation = useMutation({

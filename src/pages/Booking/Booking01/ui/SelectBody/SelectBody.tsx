@@ -13,9 +13,11 @@ import { useUserStore } from '../../../../../stores/userStore'
 const SelectBody = () => {
   const { date, title, location, cinema } = useBookingStore((state) => state.initialBookingState)
   const userData = useUserStore((state) => state.userData) // 수정: userData를 먼저 가져옵니다.
+  const movieId = useBookingStore((state) => state.initialBookingState.movieId)
   const id = userData ? userData.id : null // 수정: userData가 null이 아닐 경우 id를 설정합니다.
   const [isValid, setIsValid] = useState(false)
   const [isTimeSelected, setIsTimeSelected] = useState(false)
+  const [screenings, setScreenings] = useState<any[]>([])
   const { data, isLoading, error, isError, refetch } = useQuery({
     queryKey: ['bookingData', date, id],
     queryFn: () => fetchMovieData(date, id),
@@ -33,6 +35,19 @@ const SelectBody = () => {
   useEffect(() => {
     refetch()
   }, [date])
+
+  useEffect(() => {
+    if (data) {
+      // movieId에 해당하는 영화가 있는지 확인 후 `screenings`를 설정.
+      const searchedMovie = data?.movies.find((movie: any) => movie.id === movieId)
+      if (searchedMovie && searchedMovie.screenings) {
+        setScreenings([...searchedMovie.screenings])
+      }
+    }
+  }, [movieId, data])
+
+  console.log(movieId)
+  console.log(data?.movies.filter((movie: any) => movie.id === movieId))
 
   return (
     <BS1.SelectBodyWrapper>
@@ -64,7 +79,7 @@ const SelectBody = () => {
       </BS1.SelectBoxRow>
 
       <SelectTimes
-        screenings={data?.screenings}
+        screenings={screenings}
         isValid={isValid}
         setIsTimeSelected={setIsTimeSelected}
         date={date}
