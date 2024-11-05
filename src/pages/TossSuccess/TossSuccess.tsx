@@ -7,10 +7,10 @@ import { auth, client } from '../../apis/instances'
 import { useMutation } from '@tanstack/react-query'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../KakaoCallback/KakaoCallback.styled'
-import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
+import { LineMdAlertLoop } from '../../../public/svg/LineMdAlertLoop'
 import { commonColors } from '../../styles/theme'
 import MovieInfoCard2 from '../../components/MovieInfoCard/MovieInfoCard2'
-import { LineMdConfirmCircleFilled } from '../../assets/svg/LineMdConfirmCircleFilled'
+import { LineMdConfirmCircleFilled } from '../../../public/svg/LineMdConfirmCircleFilled'
 import { useUserStore } from '../../stores/userStore'
 
 const postBookSuccess = async (

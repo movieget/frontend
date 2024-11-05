@@ -1,6 +1,6 @@
 import { IconBtn, IconBtnImg } from '../../../../../../components/Button/style'
-import plusIco from '../../../../../../assets/svg/ic--round-add.svg'
-import minusIco from '../../../../../../assets/svg/ic--round-minus.svg'
+import plusIco from '/svg/ic--round-add.svg'
+import minusIco from '/svg/ic--round-minus.svg'
 
 import { useSeatCounter } from '../../../../../../hooks/useSeatCounter'
 import { ICounterBtnProps } from '../../../Booking02.types'

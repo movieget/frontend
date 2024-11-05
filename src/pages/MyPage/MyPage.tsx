@@ -15,7 +15,7 @@ import { useInfoStore, useUserStore } from '../../stores/userStore'
 import { fetchUserDataAndPoints } from './model'
 import { SvgSpinner } from '../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../KakaoCallback/KakaoCallback.styled'
-import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
+import { LineMdAlertLoop } from '../../../public/svg/LineMdAlertLoop'
 import { commonColors } from '../../styles/theme'
 
 interface MenuItem {

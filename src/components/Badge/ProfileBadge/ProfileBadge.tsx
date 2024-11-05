@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import BasicProfile from '../../../assets/svg/profile_user.svg'
+import BasicProfile from '/svg/profile_user.svg'
 
 interface ProfileBadgeProps {
   src?: string // 선택적 문자열

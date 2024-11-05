@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import AdImage from '../../../assets/img/advertise.png'
-import NaverMapIcon from '../../../assets/svg/naver_location.svg'
-import EasyBooking from '../../../assets/svg/coupons.svg'
+import AdImage from '/img/advertise.png'
+import NaverMapIcon from '/svg/naver_location.svg'
+import EasyBooking from '/svg/coupons.svg'
 import { NavLink } from 'react-router-dom'
 import { MainBtn } from '../../../components/Button/style'
 

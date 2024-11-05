@@ -1,5 +1,5 @@
-import Bell from '../../assets/svg/bell.svg'
-import Profile from '../../assets/img/Profile.svg'
+import Bell from '/svg/bell.svg'
+import Profile from '/img/profile.svg'
 import './style.css'
 
 import {

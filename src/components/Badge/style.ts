@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import AllIcon from '../../assets/svg/all.svg'
-import Age12Icon from '../../assets/svg/12.svg'
-import Age15Icon from '../../assets/svg/15.svg'
-import Age18Icon from '../../assets/svg/18.svg'
+import AllIcon from '/svg/all.svg'
+import Age12Icon from '/svg/12.svg'
+import Age15Icon from '/svg/15.svg'
+import Age18Icon from '/svg/18.svg'
 
 // commons badge
 interface IfBadgeColor {

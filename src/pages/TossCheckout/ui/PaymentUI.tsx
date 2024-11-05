@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { LineMdAlertLoop } from '../../../assets/svg/LineMdAlertLoop'
+import { LineMdAlertLoop } from '../../../../public/svg/LineMdAlertLoop'
 import { SvgSpinner } from '../../../components/Loading/SvgSpinner'
 import { commonColors } from '../../../styles/theme'
 import { ErrorMsg } from '../../KakaoCallback/KakaoCallback.styled'

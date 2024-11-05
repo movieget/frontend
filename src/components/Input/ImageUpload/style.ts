@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import FileButtonIcon from '../../../assets/svg/file_button_icon.svg'
-import FileUploadReset from '../../../assets/svg/file_upload_reset.svg'
+import FileButtonIcon from '/svg/file_button_icon.svg'
+import FileUploadReset from '/svg/file_upload_reset.svg'
 
 // input - file
 export const ImgInpBox = styled.span`

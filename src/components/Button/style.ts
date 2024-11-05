@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import KakaoLogo from '../../assets/svg/kakao_logo.svg'
-import NaverLogo from '../../assets/svg/naver_logo.svg'
-import GoogleLogo from '../../assets/svg/google_g_logo.svg'
-import GithubLogo from '../../assets/svg/github_logo.svg'
-import AddIconPlus from '../../assets/svg/add_icon_btn_plus.svg'
+import KakaoLogo from '/svg/kakao_logo.svg'
+import NaverLogo from '/svg/naver_logo.svg'
+import GoogleLogo from '/svg/google_g_logo.svg'
+import GithubLogo from '/svg/github_logo.svg'
+import AddIconPlus from '/svg/add_icon_btn_plus.svg'
 
 //button styles
 interface IfBtnHeight {
