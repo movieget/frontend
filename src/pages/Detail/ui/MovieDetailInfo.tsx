@@ -14,36 +14,6 @@ import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 
-// 좋아요 상태를 포스트하는 함수
-const postLikeStatus = async ({
-  id,
-  isLiked,
-  userId,
-}: {
-  id: number
-  isLiked: boolean
-  userId: number | null
-}) => {
-  try {
-    const response = await client.post(
-      `/favorite/${userId}`,
-      {
-        is_liked: isLiked,
-        movie_id: id,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    )
-    return response.data // 필요에 따라 데이터를 반환
-  } catch (err) {
-    console.error(err) // 에러 로그 출력
-    throw new Error('네트워크 오류가 발생했습니다.') // 에러 핸들링
-  }
-}
-
 interface MovieDetailInfoProps {
   movie: Movie
 }
@@ -52,18 +22,41 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
   const user = useUserStore((state) => state.userData)
   const userId = user ? Number(user.id) : null
   const navigate = useNavigate()
-  console.log(movie)
+  // console.log(movie)
 
   // 좋아요 상태 관리
-  const [isChecked, setIsChecked] = useState(movie.is_likes)
+  const [isChecked, setIsChecked] = useState(movie.isChecked)
   const [likesCount, setLikesCount] = useState(movie.total_likes)
+
+  // 좋아요 상태를 포스트하는 함수
+  const postLikeStatus = async ({ id, userId }: { id: number; userId: number | null }) => {
+    try {
+      const response = await client.post(
+        `/favorite/${userId}`,
+        {
+          is_liked: isChecked,
+          movie_id: id,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      setIsChecked(response.data.is_liked)
+      return response.data // 필요에 따라 데이터를 반환
+    } catch (err) {
+      console.error(err) // 에러 로그 출력
+      throw new Error('네트워크 오류가 발생했습니다.') // 에러 핸들링
+    }
+  }
 
   // 좋아요 상태 변경 뮤테이션 정의
   const mutation = useMutation({
     mutationFn: postLikeStatus,
-    // onSuccess: (data) => {
-    //   // 성공 시 데이터 로그
-    // },
+    onSuccess: (data) => {
+      console.log('데이터', data)
+    },
     onError: (error) => {
       console.log('에러', error) // 에러 발생 시 출력
     },
@@ -127,6 +120,7 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
                   name=''
                   onChange={handleCheckboxChange}
                   checked={isChecked}
+                  disabled={mutation.isLoading}
                 />
                 <CheckHeartCount htmlFor='CheckHeartCount'>
                   {formatLikes(likesCount)}

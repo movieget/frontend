@@ -41,21 +41,6 @@ const postLikeStatus = async ({
   }
 }
 
-// 사용자의 좋아요 상태를 가져오는 함수
-const fetchLikes = async (userId: number, movie_id: number) => {
-  try {
-    const res = await client.get(`/favorite?user_id=${userId}&movie_id=${movie_id}`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    const data = res.data
-    return data
-  } catch (err) {
-    console.error(err)
-  }
-}
-
 // MovieCard 컴포넌트 정의
 const MovieCard = ({
   id,
@@ -84,10 +69,26 @@ const MovieCard = ({
   })
 
   // isChecked 상태 초기화
-  const [isChecked, setIsChecked] = useState(is_likes)
+  const [isChecked, setIsChecked] = useState()
 
   // totalCount
   const [likesCount, setLikesCount] = useState(total_likes)
+
+  // 사용자의 좋아요 상태를 가져오는 함수
+  const fetchLikes = async (userId: number, movie_id: number) => {
+    try {
+      const res = await client.get(`/favorite?user_id=${userId}&movie_id=${movie_id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      const data = res.data
+      setIsChecked(data.is_liked)
+      return data
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   // useEffect를 사용하여 data가 업데이트될 때 isChecked를 설정
   useEffect(() => {
@@ -160,6 +161,7 @@ const MovieCard = ({
               actor_images,
               is_likes,
               total_likes: likesCount,
+              isChecked,
             }}
           >
             <BasicBtn $size='large'>영화정보</BasicBtn>
