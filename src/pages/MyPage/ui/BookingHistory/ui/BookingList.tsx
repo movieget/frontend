@@ -6,8 +6,8 @@ import { auth } from '../../../../../apis/instances'
 import { useUserStore } from '../../../../../stores/userStore'
 import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../../../../KakaoCallback/KakaoCallback.styled'
-import { LineMdAlertLoop } from '../../../../../assets/svg/LineMdAlertLoop'
 import { commonColors } from '../../../../../styles/theme'
+import { LineMdAlertLoop } from '../../../../../../public/svg/LineMdAlertLoop'
 
 export interface IBookedInfo {
   booking_id: number

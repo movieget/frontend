@@ -4,12 +4,11 @@ import { MovieList, MovieListBox } from '../../../style'
 import { useQuery } from '@tanstack/react-query'
 import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../../../../KakaoCallback/KakaoCallback.styled'
-import { LineMdAlertLoop } from '../../../../../assets/svg/LineMdAlertLoop'
 import { commonColors } from '../../../../../styles/theme'
 import { MainBtn } from '../../../../../components/Button/style'
 import { auth } from '../../../../../apis/instances'
 import { useUserStore } from '../../../../../stores/userStore'
-import axios from 'axios'
+import { LineMdAlertLoop } from '../../../../../../public/svg/LineMdAlertLoop'
 
 interface ICanceledList {
   booking_id: number

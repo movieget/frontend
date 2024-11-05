@@ -5,10 +5,10 @@ import { useUserStore } from '../../../../../stores/userStore'
 import { useQuery } from '@tanstack/react-query'
 import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../../../../KakaoCallback/KakaoCallback.styled'
-import { LineMdAlertLoop } from '../../../../../assets/svg/LineMdAlertLoop'
 import { commonColors } from '../../../../../styles/theme'
 import { MainBtn } from '../../../../../components/Button/style'
 import { EPriod, IGetUsedPointInfoParams, Point } from '../pointsHistory.type'
+import { LineMdAlertLoop } from '../../../../../../public/svg/LineMdAlertLoop'
 
 const getUsedPointInfo = async ({ userId, period }: IGetUsedPointInfoParams) => {
   try {
@@ -25,7 +25,7 @@ const getUsedPointInfo = async ({ userId, period }: IGetUsedPointInfoParams) => 
 }
 
 const UsePointList = () => {
-  const [filterOption, setFilterOption] = useState<EPriod>(EPriod.today)
+  const [filterOption] = useState<EPriod>(EPriod.today)
   const userId = useUserStore((state) => state.userData?.id)
   const { data, isLoading, isError, error, refetch } = useQuery<Point[]>({
     queryKey: ['usedPointInfo'],

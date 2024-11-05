@@ -12,11 +12,10 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useUserStore } from '../../../../../stores/userStore'
 import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../../../../KakaoCallback/KakaoCallback.styled'
-import { LineMdAlertLoop } from '../../../../../assets/svg/LineMdAlertLoop'
 import { commonColors } from '../../../../../styles/theme'
 import { postLikeStatus } from '../../../../../components/MovieCard/MovieCard'
-import { useFavoriteMovieStore } from '../../../../../stores/favoriteMovieStore'
-import { useEffect } from 'react'
+import { LineMdAlertLoop } from '../../../../../../public/svg/LineMdAlertLoop'
+import { useNavigate } from 'react-router-dom'
 
 interface Favorite {
   favorite_id: number
@@ -40,8 +39,8 @@ export const getFavoriteMovies = async (userId: string | undefined) => {
 
 const MyFavoriteList = () => {
   const userId = useUserStore((state) => state.userData?.id)
-  const { setFavoriteMovies } = useFavoriteMovieStore()
   const queryClient = useQueryClient()
+  const navigate = useNavigate()
 
   const {
     data: favoriteMoviesData,
@@ -110,7 +109,12 @@ const MyFavoriteList = () => {
                   {formatLikes(movie.total_likes)}
                 </CheckHeartCount>
               </CheckboxWrapper>
-              <MainBtn $size='large'>예매하기</MainBtn>
+              <MainBtn
+                $size='large'
+                onClick={() => navigate(`/booking?movie_id=${movie.movie_id}`)}
+              >
+                예매하기
+              </MainBtn>
             </BtnBox>
           </MovieList>
         ))}

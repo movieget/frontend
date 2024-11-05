@@ -6,9 +6,9 @@ import { useQuery } from '@tanstack/react-query'
 import { useUserStore } from '../../../../../stores/userStore'
 import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../../../../KakaoCallback/KakaoCallback.styled'
-import { LineMdAlertLoop } from '../../../../../assets/svg/LineMdAlertLoop'
 import { commonColors } from '../../../../../styles/theme'
 import { MainBtn } from '../../../../../components/Button/style'
+import { LineMdAlertLoop } from '../../../../../../public/svg/LineMdAlertLoop'
 
 interface Point {
   id: number
