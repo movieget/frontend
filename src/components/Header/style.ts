@@ -5,10 +5,12 @@ export const StyledHeader = styled.header`
   width: 100%;
   height: 74px;
   font-size: 1.8rem;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: ${({ theme }) => theme.colors.bg};
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(24px);
 `
 export const Nav = styled.nav`
   display: flex;
@@ -41,4 +43,9 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
+`
+export const LogoutWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 `

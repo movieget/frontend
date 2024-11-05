@@ -1,0 +1,102 @@
+[
+  {
+    "id": 30,
+    "userProfile": "",
+    "userId": "user31",
+    "score": 4,
+    "title": "감정이입이 잘 되는 영화",
+    "content": "몰입감이 좋았습니다. 강력 추천!",
+    "reviewImage": "/public/img/detail_review31.jpg",
+    "creationDate": "2023-10-31"
+  },
+  {
+    "id": 31,
+    "userProfile": "",
+    "userId": "user32",
+    "score": 3,
+    "title": "보통의 수준",
+    "content": "전반적으로 무난했습니다.",
+    "reviewImage": "/public/img/detail_review32.jpg",
+    "creationDate": "2023-11-01"
+  },
+  {
+    "id": 32,
+    "userProfile": "",
+    "userId": "user33",
+    "score": 5,
+    "title": "정말 훌륭한 작품",
+    "content": "특히 음악이 뛰어났습니다.",
+    "reviewImage": "/public/img/detail_review33.jpg",
+    "creationDate": "2023-11-02"
+  },
+  {
+    "id": 33,
+    "userProfile": "",
+    "userId": "user34",
+    "score": 2,
+    "title": "지루한 전개",
+    "content": "스토리가 느렸습니다.",
+    "reviewImage": "/public/img/detail_review34.jpg",
+    "creationDate": "2023-11-03"
+  },
+  {
+    "id": 34,
+    "userProfile": "",
+    "userId": "user35",
+    "score": 4,
+    "title": "재미있었습니다",
+    "content": "긴장감이 뛰어났습니다.",
+    "reviewImage": "/public/img/detail_review35.jpg",
+    "creationDate": "2023-11-04"
+  },
+  {
+    "id": 35,
+    "userProfile": "",
+    "userId": "user36",
+    "score": 3,
+    "title": "나쁘지 않았습니다",
+    "content": "특별한 감동은 없었습니다.",
+    "reviewImage": "/public/img/detail_review36.jpg",
+    "creationDate": "2023-11-05"
+  },
+  {
+    "id": 36,
+    "userProfile": "",
+    "userId": "user37",
+    "score": 5,
+    "title": "강력 추천",
+    "content": "감정적으로 연결되었습니다.",
+    "reviewImage": "/public/img/detail_review37.jpg",
+    "creationDate": "2023-11-06"
+  },
+  {
+    "id": 37,
+    "userProfile": "",
+    "userId": "user38",
+    "score": 4,
+    "title": "매력적인 스토리",
+    "content": "스토리가 흥미로웠습니다.",
+    "reviewImage": "/public/img/detail_review38.jpg",
+    "creationDate": "2023-11-07"
+  },
+  {
+    "id": 38,
+    "userProfile": "",
+    "userId": "user39",
+    "score": 2,
+    "title": "실망스러운 영화",
+    "content": "기대 이하였습니다.",
+    "reviewImage": "/public/img/detail_review39.jpg",
+    "creationDate": "2023-11-08"
+  },
+  {
+    "id": 39,
+    "userProfile": "",
+    "userId": "user40",
+    "score": 5,
+    "title": "감동적이었습니다",
+    "content": "강력한 메시지가 있었습니다.",
+    "reviewImage": "/public/img/detail_review40.jpg",
+    "creationDate": "2023-11-09"
+  }
+]

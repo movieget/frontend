@@ -1,0 +1,102 @@
+[
+  {
+    "id": 40,
+    "userProfile": "",
+    "userId": "user41",
+    "score": 4,
+    "title": "감정의 깊이가 느껴졌습니다",
+    "content": "훌륭한 작품이었습니다.",
+    "reviewImage": "/public/img/detail_review41.jpg",
+    "creationDate": "2023-11-10"
+  },
+  {
+    "id": 41,
+    "userProfile": "",
+    "userId": "user42",
+    "score": 3,
+    "title": "무난한 영화",
+    "content": "기대에 미치지 못했습니다.",
+    "reviewImage": "/public/img/detail_review42.jpg",
+    "creationDate": "2023-11-11"
+  },
+  {
+    "id": 42,
+    "userProfile": "",
+    "userId": "user43",
+    "score": 5,
+    "title": "눈물 나는 영화",
+    "content": "강한 감정선이 느껴졌습니다.",
+    "reviewImage": "/public/img/detail_review43.jpg",
+    "creationDate": "2023-11-12"
+  },
+  {
+    "id": 43,
+    "userProfile": "",
+    "userId": "user44",
+    "score": 2,
+    "title": "지루한 전개",
+    "content": "지루한 느낌이었습니다.",
+    "reviewImage": "/public/img/detail_review44.jpg",
+    "creationDate": "2023-11-13"
+  },
+  {
+    "id": 44,
+    "userProfile": "",
+    "userId": "user45",
+    "score": 4,
+    "title": "재미있었습니다",
+    "content": "전반적으로 좋았습니다.",
+    "reviewImage": "/public/img/detail_review45.jpg",
+    "creationDate": "2023-11-14"
+  },
+  {
+    "id": 45,
+    "userProfile": "",
+    "userId": "user46",
+    "score": 3,
+    "title": "보통의 영화",
+    "content": "기대 이하였습니다.",
+    "reviewImage": "/public/img/detail_review46.jpg",
+    "creationDate": "2023-11-15"
+  },
+  {
+    "id": 46,
+    "userProfile": "",
+    "userId": "user47",
+    "score": 5,
+    "title": "명작입니다",
+    "content": "정말 감동적이었습니다.",
+    "reviewImage": "/public/img/detail_review47.jpg",
+    "creationDate": "2023-11-16"
+  },
+  {
+    "id": 47,
+    "userProfile": "",
+    "userId": "user48",
+    "score": 4,
+    "title": "인상 깊었습니다",
+    "content": "캐릭터가 매력적이었습니다.",
+    "reviewImage": "/public/img/detail_review48.jpg",
+    "creationDate": "2023-11-17"
+  },
+  {
+    "id": 48,
+    "userProfile": "",
+    "userId": "user49",
+    "score": 2,
+    "title": "실망했습니다",
+    "content": "재미가 없었습니다.",
+    "reviewImage": "/public/img/detail_review49.jpg",
+    "creationDate": "2023-11-18"
+  },
+  {
+    "id": 49,
+    "userProfile": "",
+    "userId": "user50",
+    "score": 5,
+    "title": "완벽한 영화",
+    "content": "모든 것이 완벽했습니다.",
+    "reviewImage": "/public/img/detail_review50.jpg",
+    "creationDate": "2023-11-19"
+  }
+]

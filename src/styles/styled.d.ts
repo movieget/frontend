@@ -12,16 +12,23 @@ declare module 'styled-components' {
       bg_btn_normal: string
       bg_btn_disabled: string
       bg_btn_purple: string
+      bg_btn_gradient_purple: string
       bg_btn_orange: string
       border_disabled: string
       border_normal: string
       border_purple: string
       border_orange: string
+      border_wrapper: string
+      border_box: string
       bg_kakao: string
       text_kakao: string
       bg_naver: string
       bg: string
+      bg_wrapper: string
+      bg_box: string
+      bg_backdrop: string
       text: string
+      text_disabled: string
     }
     fonts: {
       weight: {
