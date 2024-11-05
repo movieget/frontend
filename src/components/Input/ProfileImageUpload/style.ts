@@ -1,5 +1,5 @@
-import ProfileUser from '../../../assets/svg/profile_user.svg'
-import ProfileSetting from '../../../assets/svg/profile_setting.svg'
+import ProfileUser from '/svg/profile_user.svg'
+import ProfileSetting from '/svg/profile_setting.svg'
 import styled from 'styled-components'
 
 // input - file - profile

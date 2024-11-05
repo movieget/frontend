@@ -1,6 +1,6 @@
-import SeatUnchecked from '../../../../../../assets/svg/seat_unchecked.svg'
-import SeatChecked from '../../../../../../assets/svg/seat_checked.svg'
-import SeatDisabled from '../../../../../../assets/svg/seat_disabled.svg'
+import SeatUnchecked from '/svg/seat_unchecked.svg'
+import SeatChecked from '/svg/seat_checked.svg'
+import SeatDisabled from '/svg/seat_disabled.svg'
 import BS2 from '../../../Booking02.styled'
 
 const SeatStatus = () => {

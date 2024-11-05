@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import CheckboxTextUnChecked from '../../assets/svg/checkbox_unchecked.svg'
-import CheckboxTextChecked from '../../assets/svg/checkbox_checked.svg'
-import HeartUnChecked from '../../assets/svg/heart_unchecked.svg'
-import HeartChecked from '../../assets/svg/heart_checked.svg'
-import SeatUnchecked from '../../assets/svg/seat_unchecked.svg'
-import SeatChecked from '../../assets/svg/seat_checked.svg'
-import SeatDisabled from '../../assets/svg/seat_disabled.svg'
+import CheckboxTextUnChecked from '/svg/checkbox_unchecked.svg'
+import CheckboxTextChecked from '/svg/checkbox_checked.svg'
+import HeartUnChecked from '/svg/heart_unchecked.svg'
+import HeartChecked from '/svg/heart_checked.svg'
+import SeatUnchecked from '/svg/seat_unchecked.svg'
+import SeatChecked from '/svg/seat_checked.svg'
+import SeatDisabled from '/svg/seat_disabled.svg'
 
 // checkbox
 export const CheckboxWrapper = styled.span``

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import SelectArrow from '../../assets/svg/select_arrow.svg'
+import SelectArrow from '/svg/select_arrow.svg'
 
 export const CustomSelectBox = styled.div`
   display: inline-block;

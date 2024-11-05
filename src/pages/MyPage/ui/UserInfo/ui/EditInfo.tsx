@@ -9,7 +9,7 @@ import { auth } from '../../../../../apis/instances'
 import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
 import { ErrorMsg } from '../../../../KakaoCallback/KakaoCallback.styled'
 import { commonColors } from '../../../../../styles/theme'
-import { LineMdAlertLoop } from '../../../../../assets/svg/LineMdAlertLoop'
+import { LineMdAlertLoop } from '../../../../../../public/svg/LineMdAlertLoop'
 import ProfileImageUpload from '../../../../../components/Input/ProfileImageUpload/ProfileImageUpload'
 
 const patchUserNickName = async (nickName: string | undefined) => {

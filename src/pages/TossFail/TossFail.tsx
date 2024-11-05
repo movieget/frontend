@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { LineMdAlertLoop } from '../../assets/svg/LineMdAlertLoop'
+import { LineMdAlertLoop } from '../../../public/svg/LineMdAlertLoop'
 import { MainBtn } from '../../components/Button/style'
 import { ErrorMsg } from '../KakaoCallback/KakaoCallback.styled'
 import { commonColors } from '../../styles/theme'

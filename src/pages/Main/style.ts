@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import prev from '../../assets/svg/prev.svg'
-import next from '../../assets/svg/next.svg'
+import prev from '/svg/prev.svg'
+import next from '/svg/next.svg'
 
 // 트레일러 구역
 export const StyleTrailerSection = styled.section`

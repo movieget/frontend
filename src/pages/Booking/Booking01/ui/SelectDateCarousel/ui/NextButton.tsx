@@ -1,5 +1,5 @@
 import BS1 from '../../../Booking01.styled'
-import { WeuiArrowOutlined } from '../../../../../../assets/svg/WeuiArrowOutlined'
+import { WeuiArrowOutlined } from '../../../../../../../public/svg/WeuiArrowOutlined'
 import { IArrowButtonProps } from '../../../Booking01.types'
 
 const NextButton = ({ onClick }: IArrowButtonProps) => {

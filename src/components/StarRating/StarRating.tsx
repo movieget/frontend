@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { IconoirStar } from '../../assets/svg/IconoirStar'
+import { IconoirStar } from '../../../public/svg/IconoirStar'
 
 interface StarRatingProps {
   rating?: number
