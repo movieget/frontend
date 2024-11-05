@@ -41,10 +41,10 @@ const UserReviewList = ({ movieId }: any) => {
   }
 
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } = useGetReviewData()
-  console.log(data)
+  // console.log(data)
 
   const reviewData = data?.pages.flatMap((page) => page.reviews) || []
-  console.log(reviewData)
+  // console.log(reviewData)
 
   const { ref, inView } = useInView({
     threshold: 1.0, // 요소가 100% 보일 때
@@ -91,9 +91,6 @@ const UserReviewList = ({ movieId }: any) => {
               </UserReviewBox>
             )
           })}
-
-          {/* )),
-          )} */}
         </Masonry>
       </UserReviewWrapper>
       <LoadReview ref={ref} />
