@@ -8,7 +8,7 @@ import { SvgSpinner } from '../../../../components/Loading/SvgSpinner'
 const MyMovieStory = () => {
   const userId = useUserStore((state) => state.userData?.id)
 
-  const { data, isLoading} = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['myMovieData', userId],
     queryFn: async () => {
       const [successBookInfo, favoriteMoviesData] = await Promise.all([
