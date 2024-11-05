@@ -17,7 +17,7 @@ import {
 interface MovieInfoCardProps {
   $title?: string // 영화 제목 (선택적, 문자열)
   $age?: 'all' | '12' | '15' | '18' // 연령 정보를 추가
-  $genre?: string[] // 장르 정보 (선택적, 문자열 배열)
+  $genre?: string // 장르 정보 (선택적, 문자열 배열)
   $overview?: string // 줄거리 정보 (선택적, 문자열)
   $screeningDate?: string // 상영 날짜 (선택적, 문자열)
   $bookingDate?: string // 예매 날짜 (선택적, 문자열)
@@ -39,6 +39,7 @@ interface MovieInfoCardProps {
   $startTime?: string // 시작 시간 (선택적, 문자열)
   $cinema?: string // 상영 지점 (선택적, 문자열)
   $screenId?: string // 상영관 ID (선택적, 문자열)
+  $isPlaying?: boolean // 상영중인지 아닌지
 }
 
 const MovieInfoCard = ({
@@ -66,6 +67,7 @@ const MovieInfoCard = ({
   $startTime,
   $cinema,
   $screenId,
+  $isPlaying,
 }: MovieInfoCardProps) => {
   return (
     <MovieInfoCardWrapper>
@@ -117,7 +119,7 @@ const MovieInfoCard = ({
           {$genre && (
             <MovieInfo>
               <MovieInfoTitle>장르</MovieInfoTitle>
-              <MovieInfoContent>: {$genre.join(', ')}</MovieInfoContent>
+              <MovieInfoContent>: {$genre}</MovieInfoContent>
             </MovieInfo>
           )}
           {$overview && (
@@ -208,6 +210,12 @@ const MovieInfoCard = ({
             <MovieInfo>
               <MovieInfoTitle>상영관</MovieInfoTitle>
               <MovieInfoContent>: {$screenId}</MovieInfoContent>
+            </MovieInfo>
+          )}
+          {$isPlaying && (
+            <MovieInfo>
+              <MovieInfoTitle>상영 상태</MovieInfoTitle>
+              <MovieInfoContent>: {$isPlaying ? '상영중' : '개봉예정'}</MovieInfoContent>
             </MovieInfo>
           )}
         </MovieInfoList>

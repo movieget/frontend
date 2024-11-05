@@ -7,12 +7,12 @@ import NoImageCard from '../NoImageCard/NoImageCard'
 import { Link, useNavigate } from 'react-router-dom'
 import { Movie } from '../../pages/Movie/Movie'
 import { useEffect, useState } from 'react'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useUserStore } from '../../stores/userStore'
 import { client } from '../../apis/instances'
 
 // 좋아요 상태를 포스트하는 함수
-const postLikeStatus = async ({
+export const postLikeStatus = async ({
   id,
   isLiked,
   userId,
@@ -41,6 +41,20 @@ const postLikeStatus = async ({
   }
 }
 
+// 사용자의 좋아요 상태를 가져오는 함수
+export const fetchLikes = async (userId: number, movie_id: number) => {
+  try {
+    const res = await client.get(`/favorite?user_id=${userId}&movie_id=${movie_id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    return res.data // 데이터 반환
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 // MovieCard 컴포넌트 정의
 const MovieCard = ({
   id,
@@ -60,6 +74,7 @@ const MovieCard = ({
   const user = useUserStore((state) => state.userData)
   const userId = user ? user.id : null
   const navigate = useNavigate()
+  const queryClient = useQueryClient()
 
   // useQuery로 좋아요 상태를 가져오는 쿼리
   const { data } = useQuery({
@@ -69,40 +84,31 @@ const MovieCard = ({
   })
 
   // isChecked 상태 초기화
-  const [isChecked, setIsChecked] = useState()
-
-  // totalCount
-  const [likesCount, setLikesCount] = useState(total_likes)
-
-  // 사용자의 좋아요 상태를 가져오는 함수
-  const fetchLikes = async (userId: number, movie_id: number) => {
-    try {
-      const res = await client.get(`/favorite?user_id=${userId}&movie_id=${movie_id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      const data = res.data
-      setIsChecked(data.is_liked)
-      return data
-    } catch (err) {
-      console.error(err)
-    }
-  }
+  const [isChecked, setIsChecked] = useState(false) // 초기값 false
+  const [likesCount, setLikesCount] = useState(total_likes) // totalCount
 
   // useEffect를 사용하여 data가 업데이트될 때 isChecked를 설정
   useEffect(() => {
     if (data) {
       setIsChecked(data.is_liked) // 데이터가 존재하면 is_liked로 상태 업데이트
+      setLikesCount(data.is_liked ? total_likes + 1 : total_likes) // 초기 likesCount 설정
     }
-  }, [data]) // data가 변경될 때마다 실행
+  }, [data, total_likes]) // data와 total_likes가 변경될 때마다 실행
 
   // 좋아요 상태 변경 뮤테이션 정의
   const mutation = useMutation({
     mutationFn: postLikeStatus,
-    // onSuccess: (data) => {
-    //   // 성공 시 데이터 로그
-    // },
+    onSuccess: (newData) => {
+      // 사용자 ID와 영화 ID를 사용하여 쿼리 키를 설정
+      queryClient.invalidateQueries(['favorite', userId, id]) // 좋아요 상태를 다시 가져오기 위한 쿼리 무효화
+
+      // 뮤테이션 후 likesCount를 업데이트
+      if (newData.is_liked) {
+        setLikesCount((prevCount) => prevCount + 1) // 좋아요 추가
+      } else {
+        setLikesCount((prevCount) => Math.max(0, prevCount - 1)) // 좋아요 제거
+      }
+    },
     onError: (error) => {
       console.log('에러', error) // 에러 발생 시 출력
     },
@@ -116,12 +122,16 @@ const MovieCard = ({
     } else {
       const newCheckedState = !isChecked // 체크박스 상태 반전
       setIsChecked(newCheckedState) // 새로운 체크 상태 설정
+
       if (userId !== null) {
         // userId가 null이 아닐 때만 호출
         mutation.mutate({ id, isLiked: newCheckedState, userId: Number(userId) }) // 좋아요 상태 변경 요청
       }
-      setLikesCount((prevCount) => (newCheckedState ? prevCount + 1 : prevCount - 1))
     }
+  }
+
+  const handleBookingBtn = () => {
+    navigate(`/booking?movie_id=${id}`)
   }
 
   return (
@@ -166,7 +176,11 @@ const MovieCard = ({
           >
             <BasicBtn $size='large'>영화정보</BasicBtn>
           </Link>
-          {playing && <MainBtn $size='large'>예매하기</MainBtn>}
+          {playing && (
+            <MainBtn $size='large' onClick={handleBookingBtn}>
+              예매하기
+            </MainBtn>
+          )}
         </MovieCardBtnBox>
         <CheckboxWrapper>
           <Checkbox
@@ -175,6 +189,7 @@ const MovieCard = ({
             name=''
             onChange={handleCheckboxChange}
             checked={isChecked} // 체크박스 상태
+            disabled={mutation.isPending}
           />
           <CheckHeartCount
             htmlFor={`idFor${id}`}

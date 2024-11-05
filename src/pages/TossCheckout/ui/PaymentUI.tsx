@@ -83,6 +83,12 @@ const PaymentUI = ({
     if (newPoint < 0) newPoint = 0
     else if (newPoint > maxAllowedPoint) newPoint = maxAllowedPoint
 
+    // 최종 결제 금액이 1000원 이하가 되지 않도록 포인트 조정
+    const finalAmount = amount - newPoint
+    if (finalAmount < 1000) {
+      newPoint = amount - 1000 // 포인트를 조정하여 최종 결제 금액이 1000원이 되도록 함
+    }
+
     setPoint(newPoint)
   }
 

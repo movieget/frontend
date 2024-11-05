@@ -22,6 +22,7 @@ const SelectMovies = ({ movies, isError, error, isLoading, date, bookId }: ISele
     setField('age', '')
     setField('duration', '')
     setField('poster', '')
+    setField('movieId', '')
     setSelectedId(null)
   }, [date])
 

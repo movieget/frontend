@@ -4,6 +4,7 @@ import { ITimeButtonProps } from '../../../Booking01.types'
 
 const TimeButton = ({
   id,
+  screenInfoId,
   selectedId,
   screenId,
   screeningDate,
@@ -21,6 +22,7 @@ const TimeButton = ({
     setField('startTime', selectedId ? '' : time)
     setField('screenId', selectedId ? null : screenId)
     setField('screeningDate', selectedId ? '' : screeningDate)
+    setField('screenInfoId', selectedId ? '' : screenInfoId)
   }
   return (
     <BasicBtn $size='medium' onClick={handleClick} $isSelected={selectedId}>

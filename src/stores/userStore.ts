@@ -32,7 +32,7 @@ export const useUserStore = create<IUserDataState>((set) => ({
 }))
 
 type UserInfo = {
-  kakao_id: number
+  oauth_id: number
   nickname: string
   email: string
   username: string

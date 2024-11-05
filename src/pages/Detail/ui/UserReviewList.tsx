@@ -62,39 +62,35 @@ const UserReviewList = ({ movieId }: any) => {
     <>
       <UserReviewWrapper>
         <Masonry
-          breakpointCols={4} // 화면 크기에 따라 열 수 조정
-          className='my-masonry-grid' // 클래스 이름
-          columnClassName='my-masonry-grid_column' // 각 열의 클래스 이름
+          breakpointCols={4}
+          className='my-masonry-grid'
+          columnClassName='my-masonry-grid_column'
         >
-          {/* {data?.pages.map((page) =>
-            page.reviews.map((review: Review) => ( */}
-          {reviewData?.map((review) => {
-            return (
-              <UserReviewBox key={review?.id}>
-                <ReviewImgBox>
-                  <ReviewImg src={review?.reviewImage} alt='사람들이 업로드한 이미지' />
-                </ReviewImgBox>
-                <ReviewInfoBox>
-                  <ReviewUserInfo>
-                    <UserInfoHolder>
-                      <ProfileBadge src='' width='3.2rem' height='3.2rem' />
-                      <UserInfoBox>
-                        <UserId>{review.userId}</UserId>
-                        <CreationDate>{review.creationDate}</CreationDate>
-                      </UserInfoBox>
-                    </UserInfoHolder>
-                    <StarRating value={review.score} disabled={true} />
-                  </ReviewUserInfo>
-                  <ReviewTitle>{review.title}</ReviewTitle>
-                  <ReviewContent>{review.content}</ReviewContent>
-                </ReviewInfoBox>
-              </UserReviewBox>
-            )
-          })}
+          {reviewData?.map((review, idx) => (
+            <UserReviewBox key={idx}>
+              <ReviewImgBox>
+                <ReviewImg src={review?.reviewImage} alt='사람들이 업로드한 이미지' />
+              </ReviewImgBox>
+              <ReviewInfoBox>
+                <ReviewUserInfo>
+                  <UserInfoHolder>
+                    <ProfileBadge src='' width='3.2rem' height='3.2rem' />
+                    <UserInfoBox>
+                      <UserId>{review.userId}</UserId>
+                      <CreationDate>{review.creationDate}</CreationDate>
+                    </UserInfoBox>
+                  </UserInfoHolder>
+                  <StarRating value={review.score} disabled={true} />
+                </ReviewUserInfo>
+                <ReviewTitle>{review.title}</ReviewTitle>
+                <ReviewContent>{review.content}</ReviewContent>
+              </ReviewInfoBox>
+            </UserReviewBox>
+          ))}
         </Masonry>
       </UserReviewWrapper>
       <LoadReview ref={ref} />
-      {!isLoading && <SvgSpinner />}
+      {(isLoading || isFetchingNextPage) && <SvgSpinner />}
     </>
   )
 }

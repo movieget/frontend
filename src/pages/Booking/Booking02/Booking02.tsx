@@ -13,7 +13,7 @@ const Booking02 = () => {
   })
   const [totalPrice, setTotalPrice] = useState<number>(0)
   const [totalSeat, setTotalSeat] = useState<number>(0)
-  const [seatId, setSeatId] = useState<any[]>([])
+  const [seatId, setSeatId] = useState<string[]>([])
   const setGlobalCount = useBookingStore((state) => state.actions.setCount)
 
   useEffect(() => {

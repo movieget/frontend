@@ -6,8 +6,13 @@ import { AxiosError } from 'axios' // 추가: AxiosError 임포트
 // auth interceptor에서 token을 보내므로 GET요청에서 인수로 넣어줄 필요가 없음
 export const fetchUserData = async () => {
   try {
-    const response = await auth.get(`/user/me`)
-    return response.data
+    const res = await auth.get(`/user/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const data = res.data
+    return data
   } catch (err: unknown) {
     // 여기서 에러 처리를 생략
     // 에러는 인터셉터에서 처리됨

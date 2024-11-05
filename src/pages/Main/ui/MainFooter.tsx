@@ -54,7 +54,7 @@ const StyleFooterWrapper = styled.div`
 `
 
 // 하단 내부내용 컨테이너
-const StyleFooterItemContainer = styled.div<{ backgroundImg?: string }>`
+const StyleFooterItemContainer = styled.div<{ $backgroundImg?: string }>`
   height: 44rem;
   width: 41rem;
   display: flex;
@@ -63,8 +63,8 @@ const StyleFooterItemContainer = styled.div<{ backgroundImg?: string }>`
   justify-content: center;
   gap: 2rem;
   padding-left: 4rem;
-  background-color: ${({ backgroundImg }) => (backgroundImg ? 'transparent' : '#181818')};
-  background-image: ${({ backgroundImg }) => (backgroundImg ? `url(${backgroundImg})` : 'none')};
+  background-color: ${({ $backgroundImg }) => ($backgroundImg ? 'transparent' : '#181818')};
+  background-image: ${({ $backgroundImg }) => ($backgroundImg ? `url(${$backgroundImg})` : 'none')};
   background-size: cover;
   background-position: center;
   border-radius: 4px;
@@ -106,7 +106,7 @@ const FooterItem = ({
 }: IFooterItemProps) => {
   // const Content = linkTo ? NavLink : 'div'
   return (
-    <StyleFooterItemContainer backgroundImg={backgroundImg}>
+    <StyleFooterItemContainer $backgroundImg={backgroundImg}>
       {iconSrc && <Icon src={iconSrc} alt={`${title} icon`} />}
       <StyleFooterTextWrapper>
         <Title>{title}</Title>

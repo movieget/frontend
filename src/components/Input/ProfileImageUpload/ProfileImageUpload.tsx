@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import {
   ProfileAreaImgInpBox,
   ProfileImgInpBox,
@@ -24,7 +24,7 @@ const uploadUserProfileImg = async (profileImg: File | null) => {
       },
       {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
       },
     )
@@ -40,8 +40,8 @@ const uploadUserProfileImg = async (profileImg: File | null) => {
 const ProfileImageUpload = ({ image, setImage }: ProfileImageUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const queryClient = useQueryClient()
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null)
 
-  // useMutation을 사용하여 이미지 업로드 설정
   const { mutate } = useMutation({
     mutationKey: ['userProfileImg'],
     mutationFn: (file: File | null) => uploadUserProfileImg(file),
@@ -55,17 +55,10 @@ const ProfileImageUpload = ({ image, setImage }: ProfileImageUploadProps) => {
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (file) {
-      // const reader = new FileReader()
-      // reader.onloadend = () => {
       setImage(file)
-      // mutate(image) // 파일을 mutate 호출에 전달하여 서버에 업로드
-      // }
-      // reader.readAsDataURL(file)
+      mutate(file)
     }
   }
-
-  // image에서 URL 생성
-  const imagePreviewUrl = image ? URL.createObjectURL(image) : null
 
   return (
     <ProfileImgInpBox>
@@ -78,9 +71,9 @@ const ProfileImageUpload = ({ image, setImage }: ProfileImageUploadProps) => {
           id='file02'
         />
         <ProfileInputFileLabel htmlFor='file02'>파일첨부</ProfileInputFileLabel>
-        {imagePreviewUrl && ( // imagePreviewUrl이 null이 아닐 때만 렌더링
+        {image && (
           <ProfilePreviewImgBox>
-            <ProfilePreviewImg src={imagePreviewUrl} alt='첨부한 이미지 미리보기' />
+            <ProfilePreviewImg src={image} alt='첨부한 이미지 미리보기' />
           </ProfilePreviewImgBox>
         )}
       </ProfileAreaImgInpBox>

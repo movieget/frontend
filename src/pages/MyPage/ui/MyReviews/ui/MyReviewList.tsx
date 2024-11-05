@@ -68,7 +68,7 @@ const MyReviewList = () => {
   return (
     <>
       <MovieListBox>
-        {reviewList?.map((review) => {
+        {reviewList?.map((review, idx) => {
           return (
             <>
               <MovieList key={review.id}>

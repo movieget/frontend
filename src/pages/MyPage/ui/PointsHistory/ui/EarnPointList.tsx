@@ -1,5 +1,14 @@
 import { useState } from 'react'
 import { PointText, PointTextBox, PointTextLi, PointTitle, PointTitleBox } from '../../../style'
+import { EPriod, IGetUsedPointInfoParams, PointStack } from '../pointsHistory.type'
+import { client } from '../../../../../apis/instances'
+import { useQuery } from '@tanstack/react-query'
+import { useUserStore } from '../../../../../stores/userStore'
+import { SvgSpinner } from '../../../../../components/Loading/SvgSpinner'
+import { ErrorMsg } from '../../../../KakaoCallback/KakaoCallback.styled'
+import { commonColors } from '../../../../../styles/theme'
+import { MainBtn } from '../../../../../components/Button/style'
+import { LineMdAlertLoop } from '../../../../../../public/svg/LineMdAlertLoop'
 
 interface Point {
   id: number
@@ -29,8 +38,27 @@ const dummyData: Point[] = [
   },
 ]
 
+const getUsedPointStackInfo = async ({ userId, period }: IGetUsedPointInfoParams) => {
+  try {
+    const res = await client.get(`user/point/stack/${userId}?period=${period}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const data = res.data
+    return data
+  } catch (err) {
+    throw err
+  }
+}
+
 const EarnPointList = () => {
-  const [earnPoint] = useState<Point[]>(dummyData)
+  const [filterOption, setFilterOption] = useState<EPriod>(EPriod.today)
+  const userId = useUserStore((state) => state.userData?.id)
+  const { data, isLoading, isError, error, refetch } = useQuery<PointStack[]>({
+    queryKey: ['pointStackInfo'],
+    queryFn: () => getUsedPointStackInfo({ userId, period: filterOption }),
+  })
   return (
     <>
       <PointTitleBox>
@@ -41,14 +69,24 @@ const EarnPointList = () => {
         <PointTitle>남은 포인트</PointTitle>
       </PointTitleBox>
       <PointTextBox>
-        {earnPoint?.map((item) => {
+        {isLoading && <SvgSpinner />}
+        {isError && (
+          <ErrorMsg>
+            <LineMdAlertLoop color={commonColors.warning} width={120} height={120} />
+            <span>{error.message}</span>
+            <MainBtn $size='large' onClick={() => refetch()}>
+              재시도
+            </MainBtn>
+          </ErrorMsg>
+        )}
+        {data?.map((item) => {
           return (
-            <PointTextLi key={item.id}>
-              <PointText>{item.division}</PointText>
-              <PointText>{item.earnPointDate}</PointText>
-              <PointText>{item.title}</PointText>
-              <PointText>{item.earnedPoint}P</PointText>
-              <PointText>{item.remainingPoints}P</PointText>
+            <PointTextLi key={item.accumulation_date}>
+              <PointText>{item.type}</PointText>
+              <PointText>{item.accumulation_date.split('T')[0]}</PointText>
+              <PointText>{item.movie_title}</PointText>
+              <PointText>{item.points_earned}P</PointText>
+              <PointText>{item.remaining_points}P</PointText>
             </PointTextLi>
           )
         })}

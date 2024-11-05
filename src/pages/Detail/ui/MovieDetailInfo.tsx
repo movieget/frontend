@@ -8,11 +8,11 @@ import { Checkbox, CheckboxWrapper, CheckHeartCount } from '../../../components/
 import { formatLikes } from '../../../utils/formatLikes'
 import NoImageCard from '../../../components/NoImageCard/NoImageCard'
 import { Movie } from '../../Movie/Movie'
-import { client } from '../../../apis/instances'
 import { useUserStore } from '../../../stores/userStore'
-import { useState } from 'react'
-import { useMutation } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
+import { fetchLikes, postLikeStatus } from '../../../components/MovieCard/MovieCard'
 
 interface MovieDetailInfoProps {
   movie: Movie
@@ -22,59 +22,59 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
   const user = useUserStore((state) => state.userData)
   const userId = user ? Number(user.id) : null
   const navigate = useNavigate()
-  // console.log(movie)
+  const queryClient = useQueryClient()
+
+  // useQuery로 좋아요 상태를 가져오는 쿼리
+  const { data } = useQuery({
+    queryKey: ['favorite', userId, movie.id], // 쿼리 키 설정
+    queryFn: () => fetchLikes(Number(userId), movie.id), // 좋아요 상태 가져오는 함수
+    enabled: !!userId, // userId가 존재할 때만 쿼리 실행
+  })
 
   // 좋아요 상태 관리
-  const [isChecked, setIsChecked] = useState(movie.isChecked)
+  const [isChecked, setIsChecked] = useState(movie.is_likes)
   const [likesCount, setLikesCount] = useState(movie.total_likes)
-
-  // 좋아요 상태를 포스트하는 함수
-  const postLikeStatus = async ({ id, userId }: { id: number; userId: number | null }) => {
-    try {
-      const response = await client.post(
-        `/favorite/${userId}`,
-        {
-          is_liked: isChecked,
-          movie_id: id,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      )
-      setIsChecked(response.data.is_liked)
-      return response.data // 필요에 따라 데이터를 반환
-    } catch (err) {
-      console.error(err) // 에러 로그 출력
-      throw new Error('네트워크 오류가 발생했습니다.') // 에러 핸들링
-    }
-  }
 
   // 좋아요 상태 변경 뮤테이션 정의
   const mutation = useMutation({
     mutationFn: postLikeStatus,
-    onSuccess: (data) => {
-      console.log('데이터', data)
+    onSuccess: (newData) => {
+      // 좋아요 상태를 다시 가져오기 위한 쿼리 무효화
+      queryClient.invalidateQueries(['favorite', userId, movie.id])
+
+      // 뮤테이션 후 likesCount를 업데이트
+      if (newData.is_liked) {
+        setLikesCount((prevCount) => prevCount + 1)
+      } else {
+        setLikesCount((prevCount) => Math.max(0, prevCount - 1))
+      }
     },
     onError: (error) => {
-      console.log('에러', error) // 에러 발생 시 출력
+      console.log('에러', error)
     },
   })
 
   // 체크박스 변경 핸들러
   const handleCheckboxChange = () => {
     if (!user) {
-      alert('로그인을 해주세요.') // 사용자 로그인 확인
-      // 로그인 페이지로 이동 (navigate 사용)
+      alert('로그인을 해주세요.')
       navigate('/login')
     } else {
-      const newCheckedState = !isChecked // 체크박스 상태 반전
-      setIsChecked(newCheckedState) // 새로운 체크 상태 설정
-      mutation.mutate({ id: movie.id, isLiked: newCheckedState, userId }) // 좋아요 상태 변경 요청
-      setLikesCount((prevCount) => (newCheckedState ? prevCount + 1 : prevCount - 1))
+      const newCheckedState = !isChecked
+      setIsChecked(newCheckedState)
+
+      if (userId !== null) {
+        mutation.mutate({ id: movie.id, isLiked: newCheckedState, userId })
+      }
     }
   }
+
+  useEffect(() => {
+    if (data) {
+      setIsChecked(data.is_liked)
+      setLikesCount(data.is_liked ? movie.total_likes + 1 : movie.total_likes)
+    }
+  }, [data, movie.total_likes])
 
   const settings = {
     dots: true,
@@ -87,7 +87,6 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
   return (
     <>
       <MovieDetailWrapper>
-        {/* 영화정보 */}
         <MovieDetails>
           <PosterImgBox>
             {movie.poster_image ? (
@@ -112,15 +111,16 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
               <MovieOverview>{movie.overview}</MovieOverview>
             </MovieInfoTop>
             <MovieInfoBottom>
-              <MainBtn $size='large'>예매하기</MainBtn>
+              <MainBtn $size='large' onClick={() => navigate(`/booking?movie_id=${movie.id}`)}>
+                예매하기
+              </MainBtn>
               <CheckboxWrapper>
                 <Checkbox
                   type='checkbox'
                   id='CheckHeartCount'
-                  name=''
                   onChange={handleCheckboxChange}
                   checked={isChecked}
-                  disabled={mutation.isLoading}
+                  disabled={mutation.isPending}
                 />
                 <CheckHeartCount htmlFor='CheckHeartCount'>
                   {formatLikes(likesCount)}
@@ -130,14 +130,12 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
           </MovieInfo>
         </MovieDetails>
 
-        {/* 트레일러 */}
         <MovieTrailerBox>
           <StyleTitle>Trailer</StyleTitle>
           {movie.trailer_url ? (
             <MovieTrailer
               width='100%'
               style={{ aspectRatio: '16 / 9', height: 'auto' }}
-              // src={movie.trailerUrl}
               src={`https://www.youtube.com/embed/${movie.trailer_url}`}
               title={movie.title}
               frameBorder='0'
@@ -150,7 +148,6 @@ const MovieDetailInfo = ({ movie }: MovieDetailInfoProps) => {
           )}
         </MovieTrailerBox>
 
-        {/* 배우 */}
         <MovieActorBox>
           <StyleTitle>Actor</StyleTitle>
           <MovieActorList>

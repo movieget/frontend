@@ -19,7 +19,7 @@ const MainList = ({ nowData, soonData }: IMovieStoreProps) => {
   var settings = {
     arrows: true, // 화살표
     dots: true, // 하단 점
-    infinite: true, // 슬라이더 처음-마지막 연결
+    infinite: false, // 슬라이더 처음-마지막 연결
     slidesToShow: 4, // 1줄에 보이는 컨텐츠 수
     slidesToScroll: 2, // 한번에 넘어가는 콘텐츠 수
     autoplay: true, // 자동 슬라이드

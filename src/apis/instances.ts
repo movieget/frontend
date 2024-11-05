@@ -6,8 +6,6 @@ axios.defaults.withCredentials = true
 
 export const client = axios.create({
   baseURL: 'https://movieget.kprolabs.space/api/v1',
-  // baseURL: 'http://localhost:5173',
-  // baseURL: 'http://43.203.250.46:8000',
 })
 
 export const auth = axios.create({
@@ -116,7 +114,7 @@ auth.interceptors.response.use(
         case 403:
           throw new Error('로그인 후 이용가능해요.')
         case 404:
-          throw new Error('해당 유저 정보가 없어요.')
+          throw new Error('해당 정보가 없어요!')
         case 500:
           throw new Error('서버 오류가 발생했습니다. 잠시 후 다시 시도하세요.')
         default:
